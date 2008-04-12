@@ -166,13 +166,13 @@
 ;; auto-insert
 (add-hook 'find-file-hooks 'auto-insert)
 (setq auto-insert-query t)
-(setq auto-insert-directory "~/.emacs.d/auto-insert/")
+(setq auto-insert-directory "~/.emacs.d/tmpl/")
 (setq auto-insert-alist
       (append '(
-                (c-mode . "template.c")
-                (cc-mode . "template.c")
-                (sh-mode . "template.sh")
-                (makefile-mode . "template.mk")
-                (make-mode . "template.mk")
-                (html-mode . "template.html")
+                (c-mode . "gpl.c")
+                (cc-mode . "gpl.c")
+                (sh-mode . "templ.sh")
+                (makefile-mode . "templ.mk")
+                (make-mode . "templ.mk")
+                (html-mode . "strict.html")
                 )))
