@@ -10,6 +10,9 @@ setopt auto_pushd
 setopt no_flow_control
 setopt print_exit_value
 setopt hist_ignore_dups
+setopt share_history 
+autoload -U colors
+colors
 
 bindkey -e
 
@@ -21,13 +24,14 @@ zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
 # set prompts
-if [ -f /etc/hostname ]; then
-    PROMPT='[%n@'`cat /etc/hostname`']%# '
+if [ -f ~/.hostcolor ]; then
+    PROMPT="[%n@%{${fg[`cat ~/.hostcolor`]}%}%m%{${reset_color}%}]%# "
 else
     PROMPT='[%n@%m]%# '
 fi
 RPROMPT=' %~'
 
+# history
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
