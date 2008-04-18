@@ -40,6 +40,8 @@ defscrollback 1024
 # don't kill window after the process died
 # zombie "^["
 
+term $TERM
+
 ################
 #
 # xterm tweaks
