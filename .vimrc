@@ -3,12 +3,12 @@
 syntax on
 filetype on
 set backspace=indent,eol,start
-if $LANG == "ja_JP.UTF-8"
-    set encoding=utf-8
-else
+if $LANG == "ja_JP.eucJP"
     set encoding=euc-jp
+else
+    set encoding=utf-8
 endif
-set fileencodings=utf-8,iso-2022-jp,euc-jp
+set fileencodings=iso-2022-jp,utf-8,euc-jp
 set expandtab
 set history=50
 set hlsearch
