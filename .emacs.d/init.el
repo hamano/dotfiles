@@ -7,17 +7,18 @@
 ;; Language configuration
 ;(require 'jisx0213)
 ;(set-language-environment "Japanese")
-(set-default-coding-systems 'euc-japan)
-(set-terminal-coding-system 'euc-japan)
-(set-buffer-file-coding-system 'euc-japan)
-(set-keyboard-coding-system 'euc-japan)
+
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
 
 (cond
- ((equal (getenv "LANG") "ja_JP.UTF-8")
-  (set-default-coding-systems 'utf-8)
-  (set-terminal-coding-system 'utf-8)
-  (set-buffer-file-coding-system 'utf-8)
-  (set-keyboard-coding-system 'utf-8)
+ ((equal (getenv "LANG") "ja_JP.eucJP")
+  (set-default-coding-systems 'euc-japan)
+  (set-terminal-coding-system 'euc-japan)
+  (set-buffer-file-coding-system 'euc-japan)
+  (set-keyboard-coding-system 'euc-japan)
   )
  )
 
