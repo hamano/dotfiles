@@ -8,7 +8,7 @@ if $LANG == "ja_JP.UTF-8"
 else
     set encoding=euc-jp
 endif
-set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp
+set fileencodings=utf-8,iso-2022-jp,euc-jp
 set expandtab
 set history=50
 set hlsearch
@@ -33,6 +33,7 @@ set wrap
 set cursorline
 highlight cursorline ctermbg=gray
 au BufEnter ?akefile* set noexpandtab
+au BufEnter *.wiki setlocal nobomb
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff <wouter@blub.net>
