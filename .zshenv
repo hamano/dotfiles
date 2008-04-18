@@ -37,6 +37,8 @@ export CVSEDITOR=vi
 export MALLOC_CHECK_=0
 #export MALLOC_TRACE=mtrace.log
 
+export GIT_PAGER=cat
+
 if [ -f ~/.zshenv.local ]; then
     . ~/.zshenv.local
 fi
