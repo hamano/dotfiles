@@ -8,7 +8,7 @@ if $LANG == "ja_JP.UTF-8"
 else
     set encoding=euc-jp
 endif
-set fileencodings=iso-2022-jp,euc-jp,utf-8
+set fileencodings=ucs-bom,utf-8,iso-2022-jp,euc-jp
 set expandtab
 set history=50
 set hlsearch
