@@ -62,6 +62,9 @@
 (set-face-foreground 'region "black")
 (set-face-background 'region "green")
 
+(set-face-foreground 'mode-line "white")
+(set-face-background 'mode-line "black")
+
 ;; X
 (if window-system
     (progn
