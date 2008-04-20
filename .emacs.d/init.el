@@ -64,6 +64,8 @@
 
 (set-face-foreground 'mode-line "white")
 (set-face-background 'mode-line "black")
+(set-face-foreground 'mode-line-inactive "white")
+(set-face-background 'mode-line-inactive "brightblack")
 
 ;; X
 (if window-system

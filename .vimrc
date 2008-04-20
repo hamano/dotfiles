@@ -31,7 +31,7 @@ set viminfo='10,\"10
 set visualbell
 set wrap
 set cursorline
-highlight cursorline ctermbg=gray
+"highlight cursorline ctermbg=gray
 au BufEnter ?akefile* set noexpandtab
 au BufEnter *.wiki setlocal nobomb
 
