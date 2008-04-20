@@ -1,0 +1,9 @@
+[user]
+    name = Tsukasa Hamano
+    email = hamano@cuspy.org
+
+[alias]
+    ci = commit -a
+    co = checkout
+    st = status -a
+    praise = blame 
