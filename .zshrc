@@ -10,7 +10,7 @@ setopt auto_pushd
 setopt no_flow_control
 setopt print_exit_value
 setopt hist_ignore_dups
-setopt share_history 
+setopt no_share_history 
 autoload -U colors
 colors
 
