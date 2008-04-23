@@ -24,11 +24,7 @@ zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
 # set prompts
-if [ -f ~/.hostcolor ]; then
-    PROMPT="[%n@%{${fg[`cat ~/.hostcolor`]}%}%m%{${reset_color}%}]%# "
-else
-    PROMPT='[%n@%m]%# '
-fi
+PROMPT="%B[%b%n@%{${fg[$HOSTCOLOR]}%}%m%{${reset_color}%}%B]%b%# "
 RPROMPT=' %~'
 
 # history
