@@ -24,7 +24,8 @@ fi
 
 if [[ "X$TERM" == "Xrxvt-unicode" ]]; then
     export LANG="ja_JP.UTF-8";
-#    export TERM="rxvt";
+elif [[ "X$TERM" == "Xxterm-256color" ]]; then
+    export LANG="ja_JP.UTF-8";
 elif [[ "X$TERM" == "Xrxvt" ]]; then
     export LANG=ja_JP.eucJP
 else
