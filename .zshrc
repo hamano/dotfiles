@@ -24,8 +24,8 @@ zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
 # set prompts
-PROMPT="%B[%b%n@[${color[$HOSTATTR]}m[${color[$HOSTCOLOR]}m\
-%m${reset_color}%B]%b%# "
+PROMPT="%B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
+"%m%{${reset_color}%}%B]%b%# "
 RPROMPT=' %~'
 
 # history
