@@ -1,9 +1,9 @@
-Maildir
 .viminfo
 .ssh
-cvs
-git
 .gnupg/
 .zshenv.local
 .zcompdump
 .histfile
+Maildir
+cvs
+git
