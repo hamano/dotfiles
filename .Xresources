@@ -1,0 +1,36 @@
+!!krxvt
+krxvt*font:             -shinonome-gothic-medium-r-normal--12-*
+krxvt*mfont:            k12g
+krxvt*background:       ivory
+krxvt*foreground:       black
+krxvt*cursorColor:      blue
+krxvt*saveLines:        10000
+
+!!xterm
+xterm*background:       ivory
+xterm*foreground:       black
+xterm*cursorColor:      blue
+xterm*saveLines:        10000
+xterm*scrollbar:        left
+!!kterm
+kterm*background:       ivory
+kterm*foreground:       black
+kterm*cursorColor:      blue
+kterm*saveLines:        10000
+kterm*vt100*ScrollBar:  true
+
+!!urxvt
+urxvt*font:             r12, k12g
+urxvt*boldFont:         r12b, k12b
+urxvt*italicFont:       r12i, k12i
+urxvt*boldItalicFont:   r12bi, k12bi
+urxvt*background:       ivory
+urxvt*foreground:       black
+urxvt*cursorColor:      blue
+urxvt*saveLines:        10000
+urxvt*tripleclick-words:true
+
+!!emacs
+emacs.fontset-0: -shinonome-gothic-medium-r-normal--12-*
+emacs.font:      -shinonome-gothic-medium-r-normal--12-*
+emacs.borderWidth: 20
