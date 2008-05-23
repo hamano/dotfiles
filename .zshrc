@@ -11,6 +11,7 @@ setopt no_flow_control
 setopt print_exit_value
 setopt hist_ignore_dups
 setopt no_share_history 
+setopt checkjobs
 autoload -U colors
 colors
 
@@ -38,6 +39,9 @@ SAVEHIST=1000
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias urxvtf='urxvt -g 40x20 \
+-fn "xft:vl.pgothic:size=20:antialias=true" \
+-fb "xft:vl.pgothic:weight=bold:size=20:antialias=true"'
 
 if [ `uname -s` = "SunOS" ]; then
     alias ec='emacs-clean \( -type d -a \! -name . -prune \) -o -type f'

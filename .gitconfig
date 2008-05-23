@@ -6,3 +6,14 @@
     co = checkout
     st = status -a
     praise = blame 
+
+[diff]
+    color = auto
+    rename = copy 
+
+[pager]
+    color = true 
+
+[status]
+    color = auto
+
