@@ -33,7 +33,7 @@ set wrap
 set cursorline
 "highlight cursorline ctermbg=gray
 au BufEnter ?akefile* set noexpandtab
-au BufEnter *.wiki setlocal nobomb
+"au BufEnter *.wiki setlocal nobomb
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff <wouter@blub.net>
