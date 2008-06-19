@@ -34,6 +34,8 @@ set cursorline
 "highlight cursorline ctermbg=gray
 au BufEnter ?akefile* set noexpandtab
 "au BufEnter *.wiki setlocal nobomb
+" for git
+au BufEnter COMMIT_EDITMSG set fenc=utf-8
 
 " Transparent editing of gpg encrypted files.
 " By Wouter Hanegraaff <wouter@blub.net>
