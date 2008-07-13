@@ -98,8 +98,8 @@ default_shade_color black
 default_outline_color black
 
 # Text alignment, other possible values are commented
-alignment top_left
-#alignment top_right
+#alignment top_left
+alignment top_right
 #alignment bottom_left
 #alignment bottom_right
 #alignment none
@@ -188,3 +188,7 @@ ${color #ddaa00}Outbound Connection ${alignr} Remote Service/Port$color
  ${tcp_portmon 32768 61000 rhost 3} ${alignr} ${tcp_portmon 32768 61000 rservice 3}
  ${tcp_portmon 32768 61000 rhost 4} ${alignr} ${tcp_portmon 32768 61000 rservice 4}
  ${tcp_portmon 32768 61000 rhost 5} ${alignr} ${tcp_portmon 32768 61000 rservice 5}
+
+${color red}Battery$color
+   time:$alignr$battery_time
+   battery percent:$alignr$battery_percent %
