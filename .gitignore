@@ -4,6 +4,7 @@
 .zshenv.local
 .zcompdump
 .histfile
+.bash_history
 Maildir
 cvs
 git

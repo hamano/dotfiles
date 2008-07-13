@@ -33,6 +33,7 @@ RPROMPT=' %~'
 HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
+REPORTTIME=1
 
 # set alias
 #alias ls='ls --color=auto'
