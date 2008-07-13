@@ -4,7 +4,11 @@
 # autoload
 autoload run-help
 autoload -U compinit
-compinit
+if [ `uname -s` = "CYGWIN_NT-5.1" ]; then
+    compinit -u
+else
+    compinit
+fi
 setopt auto_cd
 setopt auto_pushd
 setopt no_flow_control
