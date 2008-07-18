@@ -30,7 +30,7 @@ set title
 set viminfo='10,\"10
 set visualbell
 set wrap
-
+set ambw=double
 if v:version >= 700
     set cursorline
 endif
