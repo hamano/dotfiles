@@ -8,7 +8,7 @@ export LANG="ja_JP.UTF-8"
 #    . /opt/atokx2/bin/atokx2_client.sh
 #fi
 
-export XMODIFIERS=@im=uim-xim
+export XMODIFIERS=@im=uim
 export GTK_IM_MODULE=uim-xim
 uim-xim &
 uim-toolbar-gtk &
