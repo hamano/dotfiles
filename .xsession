@@ -8,11 +8,11 @@ export LANG="ja_JP.UTF-8"
 #    . /opt/atokx2/bin/atokx2_client.sh
 #fi
 
-export XMODIFIERS=@im=uim
-export GTK_IM_MODULE=uim
+export XMODIFIERS=@im=uim-xim
+export GTK_IM_MODULE=uim-xim
 uim-xim &
-#uim-toolbar-gtk-systray &
 uim-toolbar-gtk &
+#uim-toolbar-gtk-systray &
 
 sleep 2 && wmclock -exe 'LANG=C cal -3 | xmessage -file -' &
 sleep 2 && wmwifi -s &
