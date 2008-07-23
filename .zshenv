@@ -22,15 +22,23 @@ if [ -d ~/bin ]; then
 	PATH=~/bin:"${PATH}"
 fi
 
-if [[ "X$TERM" == "Xrxvt-unicode" ]]; then
-    export LANG="ja_JP.UTF-8";
-elif [[ "X$TERM" == "Xxterm-256color" ]]; then
-    export LANG="ja_JP.UTF-8";
-elif [[ "X$TERM" == "Xrxvt" ]]; then
-    export LANG=ja_JP.eucJP
-else
-    export LANG=C
-fi
+case $TERM in
+    'rxvt')
+        export LANG=ja_JP.UTF-8;
+        ;;
+    'rxvt-unicode')
+        export LANG=ja_JP.UTF-8;
+        ;;
+    'xterm-256color')
+        export LANG=ja_JP.UTF-8;
+        ;;
+    'krxvt')
+        export LANG=ja_JP.eucJP;
+        ;;
+    *)
+        export LANG=C
+        ;;
+esac
 
 export PATH
 export EDITOR=vi

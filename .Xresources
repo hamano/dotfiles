@@ -31,6 +31,7 @@ urxvt*cursorColor:      blue
 urxvt*saveLines:        10000
 urxvt*tripleclick-words:true
 urxvt*imLocale:         ja_JP.EUC-JP
+urxvt*termName:         rxvt
 
 !!emacs
 emacs.fontset-0: -shinonome-gothic-medium-r-normal--12-*
