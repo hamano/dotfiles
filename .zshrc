@@ -28,6 +28,9 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
+# set bindkey
+bindkey "^?" backward-delete-char
+
 # set prompts
 PROMPT="%B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
 "%m%{${reset_color}%}%B]%b%# "
