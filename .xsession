@@ -15,6 +15,7 @@ uim-toolbar-gtk &
 #uim-toolbar-gtk-systray &
 
 sleep 2 && wmclock -exe 'LANG=C cal -3 | xmessage -file -' &
+sleep 2 && wmacpi &
 sleep 2 && wmwifi -s &
 #sleep 1 && bbdock "/usr/share/xscreensaver/glade/screensaver-locking.png:xlock -mode blank:xlock" &
 #sleep 1 && bbpager &
