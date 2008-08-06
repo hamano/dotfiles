@@ -19,7 +19,9 @@ setopt checkjobs
 autoload -U colors
 colors
 
+# bindkey
 bindkey -e
+bindkey ' ' magic-space
 
 # zstyle
 zstyle ':completion:*' verbose yes
@@ -28,13 +30,21 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
-# set bindkey
-bindkey "^?" backward-delete-char
-
 # set prompts
-PROMPT="%B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
+precmd() {
+    local pwdsize=${#${(%):-%~}}
+    local fillsize=$(( ${COLUMNS} - $pwdsize - 2 ))
+    if [ $fillsize -ge 0 ]
+    then
+        pad=${(l.${fillsize}.. .)}
+    else
+        pad=""
+    fi
+    PROMPT="${pad} %~
+%B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
 "%m%{${reset_color}%}%B]%b%# "
-RPROMPT=' %~'
+    #RPROMPT=' %~'
+}
 
 # history
 HISTFILE=~/.histfile
