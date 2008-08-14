@@ -26,7 +26,7 @@ set ruler
 set shiftwidth=4
 set showmatch
 set tabstop=4
-set title
+set notitle
 set viminfo='10,\"10
 set visualbell
 set wrap
@@ -60,6 +60,7 @@ augroup encrypted
     autocmd BufReadPost,FileReadPost   *.gpg set nobin
     autocmd BufReadPost,FileReadPost   *.gpg let &ch = ch_save|unlet ch_save
     autocmd BufReadPost,FileReadPost   *.gpg execute ":doautocmd BufReadPost " . expand("%:r")
+    autocmd BufReadPost,FileReadPost   *.gpg redraw!
 
     " Convert all text to encrypted text before writing
     autocmd BufWritePre,FileWritePre   *.gpg '[,']!gpg --default-recipient-self -ae 2>/dev/null
