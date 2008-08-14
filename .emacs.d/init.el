@@ -115,19 +115,32 @@
             (define-key shell-mode-map "\C-n" 'comint-next-input)
             ))
 
+
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-style "k&r")
             (setq c-basic-offset 4)
             (setq indent-tabs-mode nil)
             (setq compilation-ask-about-save nil)
-            (setq compilation-window-height 8)
+            (setq compilation-window-height 6)
+            (setq compilation-scroll-output t)
             (c-toggle-auto-state -1)
             (c-toggle-hungry-state -1)
             (define-key c-mode-map "\C-c\C-m" 'manual-entry)
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
             (define-key c-mode-map "\C-c\C-f" 'ff-find-other-file)
+
+            ))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (setq compilation-window-height 6)
+            (setq compilation-scroll-output t)
+            (define-key c++-mode-map "\C-c\C-m" 'manual-entry)
+            (define-key c++-mode-map "\C-c\C-c" 'compile)
+            (define-key c++-mode-map "\C-c\C-n" 'next-error)
+            (define-key c++-mode-map "\C-c\C-f" 'ff-find-other-file)
             ))
 
 (add-hook 'emacs-lisp-mode-hook
