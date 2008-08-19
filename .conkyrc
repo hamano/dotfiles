@@ -39,7 +39,7 @@ xftalpha 0.8
 # out_to_console no
 
 # mail spool
-mail_spool $MAIL
+#mail_spool $MAIL
 
 # Update interval in seconds
 update_interval 5.0
@@ -106,8 +106,8 @@ alignment top_right
 
 # Gap between borders of screen and text
 # same thing as passing -x at command line
-gap_x 60
-gap_y 12
+gap_x 64
+gap_y 32
 
 maximum_width 350
 
@@ -129,7 +129,7 @@ net_avg_samples 2
 override_utf8_locale no
 
 # Add spaces to keep things from moving about?  This only affects certain objects.
-use_spacer no
+use_spacer none
 
 # Maximum size of buffer for user text, i.e. below TEXT line.
 #max_user_text 16384
