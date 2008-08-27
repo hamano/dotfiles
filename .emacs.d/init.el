@@ -130,7 +130,6 @@
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
             (define-key c-mode-map "\C-c\C-f" 'ff-find-other-file)
-
             ))
 
 (add-hook 'c++-mode-hook
@@ -157,6 +156,13 @@
 (add-hook 'sh-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
+            ))
+
+(add-hook 'java-mode-hook
+          (lambda ()
+            (define-key java-mode-map "\C-c\C-c" 'compile)
+            (define-key java-mode-map "\C-c\C-n" 'next-error)
+            (define-key java-mode-map "\C-c\C-f" 'ff-find-other-file)
             ))
 
 (add-hook 'perl-mode-hook
