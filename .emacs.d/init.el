@@ -5,9 +5,8 @@
 (setq load-path (cons "~/.emacs.d/site-lisp" load-path))
 
 ;; Language configuration
-;(require 'jisx0213)
-;(set-language-environment "Japanese")
-
+(set-language-environment "Japanese")
+(prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-buffer-file-coding-system 'utf-8)
@@ -67,7 +66,29 @@
 (set-face-foreground 'mode-line-inactive "white")
 (set-face-background 'mode-line-inactive "brightblack")
 
-;; X
+;; East Asian Width Problem
+(utf-translate-cjk-set-unicode-range
+ '((#x00a2 . #x00a3)                    ; ¢, £
+   (#x00a7 . #x00a8)                    ; §, ¨
+   (#x00ac . #x00ac)                    ; ¬
+   (#x00b0 . #x00b1)                    ; °, ±
+   (#x00b4 . #x00b4)                    ; ´
+   (#x00b6 . #x00b6)                    ; ¶
+   (#x00d7 . #x00d7)                    ; ×
+   (#X00f7 . #x00f7)                    ; ÷
+   (#x0370 . #x03ff)                    ; Greek and Coptic
+   (#x0400 . #x04FF)                    ; Cyrillic
+   (#x2000 . #x206F)                    ; General Punctuation
+   (#x2100 . #x214F)                    ; Letterlike Symbols
+   (#x2190 . #x21FF)                    ; Arrows
+   (#x2200 . #x22FF)                    ; Mathematical Operators
+   (#x2300 . #x23FF)                    ; Miscellaneous Technical
+   (#x2500 . #x257F)                    ; Box Drawing
+   (#x25A0 . #x25FF)                    ; Geometric Shapes
+   (#x2600 . #x26FF)                    ; Miscellaneous Symbols
+   (#x2e80 . #xd7a3) (#xff00 . #xffef)))
+
+;; X settings
 (if window-system
     (progn
       (tool-bar-mode nil)
@@ -130,6 +151,7 @@
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
             (define-key c-mode-map "\C-c\C-f" 'ff-find-other-file)
+
             ))
 
 (add-hook 'c++-mode-hook
@@ -156,13 +178,6 @@
 (add-hook 'sh-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
-            ))
-
-(add-hook 'java-mode-hook
-          (lambda ()
-            (define-key java-mode-map "\C-c\C-c" 'compile)
-            (define-key java-mode-map "\C-c\C-n" 'next-error)
-            (define-key java-mode-map "\C-c\C-f" 'ff-find-other-file)
             ))
 
 (add-hook 'perl-mode-hook
