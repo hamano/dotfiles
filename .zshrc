@@ -1,10 +1,15 @@
 # .zshrc
 # $Id: .zshrc,v 1.8 2007/12/11 05:09:19 hamano Exp $
 
+SYSNAME=`uname -s`
+if [ "${SYSNAME}" = "Linux" ]; then
+    GNU=1
+fi
+
 # autoload
 autoload run-help
 autoload -U compinit
-if [ `uname -s` = "CYGWIN_NT-5.1" ]; then
+if [ "${SYSNAME}" = "CYGWIN_NT-5.1" ]; then
     compinit -u
 else
     compinit
@@ -53,7 +58,6 @@ SAVEHIST=1000
 REPORTTIME=1
 
 # set alias
-#alias ls='ls --color=auto'
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
@@ -61,15 +65,17 @@ alias urxvtf='urxvt -g 40x20 \
 -fn "xft:vl.pgothic:size=20:antialias=true" \
 -fb "xft:vl.pgothic:weight=bold:size=20:antialias=true"'
 
-if [ `uname -s` = "SunOS" ]; then
+if [ "${SYSNAME}" = "SunOS" ]; then
     alias ec='emacs-clean \( -type d -a \! -name . -prune \) -o -type f'
     alias ecr='emacs-clean'
     function emacs-clean(){
         find . $@ \( -name "*~" -o -name ".*~" -o -name "*#" \)\
             -exec echo removed {} \; -exec rm -f {} \;
     }
-else
+fi
+if [ ${GNU} ]; then
     alias ls='ls --color=auto'
+    alias grep="grep --color=auto"
     alias ec='emacs-clean -maxdepth 1'
     alias ecr='emacs-clean'
     function emacs-clean(){
