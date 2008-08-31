@@ -30,8 +30,8 @@ urxvt*foreground:       black
 urxvt*cursorColor:      blue
 urxvt*saveLines:        10000
 urxvt*tripleclick-words:true
-!urxvt*imLocale:         ja_JP.EUC-JP
-urxvt*imLocale:         ja_JP.UTF-8
+urxvt*imLocale:         ja_JP.EUC-JP
+!urxvt*imLocale:         ja_JP.UTF-8
 urxvt*termName:         rxvt
 
 !!emacs
