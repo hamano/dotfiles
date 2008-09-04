@@ -136,7 +136,6 @@
             (define-key shell-mode-map "\C-n" 'comint-next-input)
             ))
 
-
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-style "k&r")
@@ -216,3 +215,45 @@
                 (make-mode . "templ.mk")
                 (html-mode . "strict.html")
                 )))
+
+;; w3m settings
+(if (file-directory-p "~/.emacs.d/site-lisp/emacs-w3m")
+    (progn
+      (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-w3m")
+      (require 'w3m-load)
+      (require 'mime-w3m)))
+
+;; lookup settings
+(if (file-directory-p "~/.emacs.d/site-lisp/lookup/lisp")
+    (progn
+      (add-to-list 'load-path "~/.emacs.d/site-lisp/lookup/lisp")
+      (autoload 'lookup "lookup" nil t)
+      (autoload 'lookup-region "lookup" nil t)
+      (autoload 'lookup-pattern "lookup" nil t)
+      (setq lookup-search-agents '((ndtp "dict") (ndspell)))))
+
+;; slime settings
+(if (file-directory-p "~/.emacs.d/site-lisp/slime2")
+    (progn
+      (add-to-list 'load-path "~/.emacs.d/site-lisp/slime")
+      (require 'slime)
+      (setq inferior-lisp-program "sbcl")
+      (setq slime-net-coding-system 'utf-8-unix)
+      (add-hook 'lisp-mode-hook
+                (lambda ()
+                  (slime-mode t)
+                  (show-paren-mode)))))
+
+;; erlang settings
+(if (file-directory-p "~/.emacs.d/site-lisp/erlang")
+    (progn
+      (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
+      (require 'erlang-start)))
+
+;; text-translator settings
+(if (file-directory-p "~/.emacs.d/site-lisp/text-translator")
+    (progn
+      (setq load-path (cons "~/.emacs.d/site-lisp/text-translator" load-path))
+      (require 'text-translator)
+      (global-set-key "\C-x\M-t" 'text-translator)
+      (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
