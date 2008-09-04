@@ -233,7 +233,7 @@
       (setq lookup-search-agents '((ndtp "dict") (ndspell)))))
 
 ;; slime settings
-(if (file-directory-p "~/.emacs.d/site-lisp/slime2")
+(if (file-directory-p "~/.emacs.d/site-lisp/slime")
     (progn
       (add-to-list 'load-path "~/.emacs.d/site-lisp/slime")
       (require 'slime)
