@@ -136,6 +136,13 @@
             (define-key shell-mode-map "\C-n" 'comint-next-input)
             ))
 
+(add-hook 'asm-mode-hook
+          (lambda ()
+            (setq tab-width 4)
+            (setq tab-stop-list
+                  '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76))
+            ))
+
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-style "k&r")
@@ -150,7 +157,6 @@
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
             (define-key c-mode-map "\C-c\C-f" 'ff-find-other-file)
-
             ))
 
 (add-hook 'c++-mode-hook
