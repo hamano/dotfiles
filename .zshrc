@@ -61,6 +61,8 @@ REPORTTIME=1
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias cal='cal -3'
+alias emacs='emacs -nw'
 alias urxvtf='urxvt -g 40x20 \
 -fn "xft:vl.pgothic:size=20:antialias=true" \
 -fb "xft:vl.pgothic:weight=bold:size=20:antialias=true"'
