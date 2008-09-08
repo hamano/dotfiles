@@ -170,6 +170,13 @@
             (define-key c++-mode-map "\C-c\C-f" 'ff-find-other-file)
             ))
 
+(add-hook 'java-mode-hook
+          (lambda ()
+            (setq compilation-window-height 6)
+            (setq compilation-scroll-output t)
+            (define-key java-mode-map "\C-c\C-c" 'compile)
+            (define-key java-mode-map "\C-c\C-n" 'next-error)))
+
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
