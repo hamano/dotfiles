@@ -79,6 +79,7 @@
    (#x0370 . #x03ff)                    ; Greek and Coptic
    (#x0400 . #x04FF)                    ; Cyrillic
    (#x2000 . #x206F)                    ; General Punctuation
+   (#x20AC . #x20AC)                    ; €
    (#x2100 . #x214F)                    ; Letterlike Symbols
    (#x2190 . #x21FF)                    ; Arrows
    (#x2200 . #x22FF)                    ; Mathematical Operators
