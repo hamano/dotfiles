@@ -76,6 +76,7 @@
    (#x00b6 . #x00b6)                    ; ¶
    (#x00d7 . #x00d7)                    ; ×
    (#X00f7 . #x00f7)                    ; ÷
+   (#X00fc . #x00fc)                    ; ü
    (#x0370 . #x03ff)                    ; Greek and Coptic
    (#x0400 . #x04FF)                    ; Cyrillic
    (#x2000 . #x206F)                    ; General Punctuation
@@ -271,3 +272,12 @@
       (require 'text-translator)
       (global-set-key "\C-x\M-t" 'text-translator)
       (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
+
+;; navi2ch settings
+(if (file-directory-p "~/.emacs.d/site-lisp/navi2ch")
+    (progn
+      (setq load-path (cons "~/.emacs.d/site-lisp/navi2ch" load-path))
+      (autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
+      (setq navi2ch-list-bbstable-url "http://menu.2ch.net/bbsmenu.html")
+      ;(eval-after-load "navi2ch" '(global-hl-line-mode))
+      (setq navi2ch-message-mail-address "sage")))
