@@ -232,52 +232,52 @@
                 )))
 
 ;; w3m settings
-(if (file-directory-p "~/.emacs.d/site-lisp/emacs-w3m")
-    (progn
-      (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-w3m")
-      (require 'w3m-load)
-      (require 'mime-w3m)))
+(when (file-directory-p "~/.emacs.d/site-lisp/emacs-w3m")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-w3m")
+    (require 'w3m-load)
+    (require 'mime-w3m)))
 
 ;; lookup settings
-(if (file-directory-p "~/.emacs.d/site-lisp/lookup/lisp")
-    (progn
-      (add-to-list 'load-path "~/.emacs.d/site-lisp/lookup/lisp")
-      (autoload 'lookup "lookup" nil t)
-      (autoload 'lookup-region "lookup" nil t)
-      (autoload 'lookup-pattern "lookup" nil t)
-      (setq lookup-search-agents '((ndtp "dict") (ndspell)))))
+(when (file-directory-p "~/.emacs.d/site-lisp/lookup/lisp")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/lookup/lisp")
+    (autoload 'lookup "lookup" nil t)
+    (autoload 'lookup-region "lookup" nil t)
+    (autoload 'lookup-pattern "lookup" nil t)
+    (setq lookup-search-agents '((ndtp "dict") (ndspell)))))
 
 ;; slime settings
-(if (file-directory-p "~/.emacs.d/site-lisp/slime")
-    (progn
-      (add-to-list 'load-path "~/.emacs.d/site-lisp/slime")
-      (require 'slime)
-      (setq inferior-lisp-program "sbcl")
-      (setq slime-net-coding-system 'utf-8-unix)
-      (add-hook 'lisp-mode-hook
-                (lambda ()
-                  (slime-mode t)
-                  (show-paren-mode)))))
+(when (file-directory-p "~/.emacs.d/site-lisp/slime")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/slime")
+    (require 'slime)
+    (setq inferior-lisp-program "sbcl")
+    (setq slime-net-coding-system 'utf-8-unix)
+    (add-hook 'lisp-mode-hook
+              (lambda ()
+                (slime-mode t)
+                (show-paren-mode)))))
 
 ;; erlang settings
-(if (file-directory-p "~/.emacs.d/site-lisp/erlang")
-    (progn
-      (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
-      (require 'erlang-start)))
+(when (file-directory-p "~/.emacs.d/site-lisp/erlang")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
+    (require 'erlang-start)))
 
 ;; text-translator settings
-(if (file-directory-p "~/.emacs.d/site-lisp/text-translator")
-    (progn
-      (setq load-path (cons "~/.emacs.d/site-lisp/text-translator" load-path))
-      (require 'text-translator)
-      (global-set-key "\C-x\M-t" 'text-translator)
-      (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
+(when (file-directory-p "~/.emacs.d/site-lisp/text-translator")
+  (progn
+    (setq load-path (cons "~/.emacs.d/site-lisp/text-translator" load-path))
+    (require 'text-translator)
+    (global-set-key "\C-x\M-t" 'text-translator)
+    (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
 
 ;; navi2ch settings
-(if (file-directory-p "~/.emacs.d/site-lisp/navi2ch")
-    (progn
-      (setq load-path (cons "~/.emacs.d/site-lisp/navi2ch" load-path))
-      (autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
-      (setq navi2ch-list-bbstable-url "http://menu.2ch.net/bbsmenu.html")
-      ;(eval-after-load "navi2ch" '(global-hl-line-mode))
-      (setq navi2ch-message-mail-address "sage")))
+(when (file-directory-p "~/.emacs.d/site-lisp/navi2ch")
+  (progn
+    (setq load-path (cons "~/.emacs.d/site-lisp/navi2ch" load-path))
+    (autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
+    (setq navi2ch-list-bbstable-url "http://menu.2ch.net/bbsmenu.html")
+    ;(eval-after-load "navi2ch" '(global-hl-line-mode))
+    (setq navi2ch-message-mail-address "sage")))
