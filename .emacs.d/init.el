@@ -215,6 +215,7 @@
                 ("\\.fo$"  . sgml-mode)
                 ("\\.cs$" . java-mode)
                 ("\\.xs$" . c-mode)
+                ("\\.tt$" . html-mode)
                 ("\\.t$" . perl-mode)
                 ) auto-mode-alist))
 
