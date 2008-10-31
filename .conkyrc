@@ -106,7 +106,7 @@ alignment top_right
 
 # Gap between borders of screen and text
 # same thing as passing -x at command line
-gap_x 64
+gap_x 80
 gap_y 32
 
 maximum_width 350
@@ -149,27 +149,27 @@ use_spacer none
 TEXT
 $nodename - $sysname $kernel on $machine
 $stippled_hr
-${color lightgrey}Uptime:$color $uptime ${color lightgrey}- Load:$color $loadavg
-${color lightgrey}CPU Usage:${color #cc2222} $cpu% ${cpubar}
+${color black}Uptime:$color $uptime ${color black}- Load:$color $loadavg
+${color black}CPU Usage:${color #cc2222} $cpu% ${cpubar}
 ${color red}${cpugraph 0000ff 00ff00}
-${color lightgrey}RAM Usage:$color $mem/$memmax - $memperc% ${membar}
-${color lightgrey}Swap Usage:$color $swap/$swapmax - $swapperc% ${swapbar}
-${color lightgrey}Processes:$color $processes  ${color grey}Running:$color $running_processes
+${color black}RAM Usage:$color $mem/$memmax - $memperc% ${membar}
+${color black}Swap Usage:$color $swap/$swapmax - $swapperc% ${swapbar}
+${color black}Processes:$color $processes  ${color grey}Running:$color $running_processes
 $color$stippled_hr
-${color lightgrey}Networking:
- Down:${color #8844ee} ${downspeed eth0} k/s${color lightgrey} ${offset 80}Up:${color #22ccff} ${upspeed eth0} k/s
+${color black}Networking:
+ Down:${color #8844ee} ${downspeed eth0} k/s${color black} ${offset 80}Up:${color #22ccff} ${upspeed eth0} k/s
 ${color #0000ff}${downspeedgraph eth0 32,150 ff0000 0000ff} ${color #22ccff}${upspeedgraph eth0 32,150 0000ff ff0000}
-${color lightgrey}File systems:
+${color black}File systems:
  / $color${fs_used /}/${fs_size /} ${fs_bar /}
 ${color}Name              PID     CPU%   MEM%
 ${color #ddaa00} ${top name 1} ${top pid 1} ${top cpu 1} ${top mem 1}
-${color lightgrey} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
-${color lightgrey} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
-${color lightgrey} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
+${color black} ${top name 2} ${top pid 2} ${top cpu 2} ${top mem 2}
+${color black} ${top name 3} ${top pid 3} ${top cpu 3} ${top mem 3}
+${color black} ${top name 4} ${top pid 4} ${top cpu 4} ${top mem 4}
 ${color}Mem usage
 ${color #ddaa00} ${top_mem name 1} ${top_mem pid 1} ${top_mem cpu 1} ${top_mem mem 1}
-${color lightgrey} ${top_mem name 2} ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
-${color lightgrey} ${top_mem name 3} ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
+${color black} ${top_mem name 2} ${top_mem pid 2} ${top_mem cpu 2} ${top_mem mem 2}
+${color black} ${top_mem name 3} ${top_mem pid 3} ${top_mem cpu 3} ${top_mem mem 3}
 ${tail /var/log/Xorg.0.log 3 30}
 $stippled_hr
 ${color #ddaa00}Port(s)${alignr}#Connections   
