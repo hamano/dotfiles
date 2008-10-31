@@ -267,6 +267,12 @@
     (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
     (require 'erlang-start)))
 
+;; php-mode settings
+(when (file-directory-p "~/.emacs.d/site-lisp/php-mode")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/php-mode")
+    (require 'php-mode)))
+
 ;; text-translator settings
 (when (file-directory-p "~/.emacs.d/site-lisp/text-translator")
   (progn
