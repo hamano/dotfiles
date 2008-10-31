@@ -24,14 +24,15 @@ urxvt*font:             r12, k12g
 urxvt*boldFont:         r12b, k12b
 urxvt*italicFont:       r12i, k12i
 urxvt*boldItalicFont:   r12bi, k12bi
-urxvt*imFont:           r12b, k12b
+!urxvt*imFont:           r12b, k12b
+urxvt*imFont:           -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*
 urxvt*background:       ivory
 urxvt*foreground:       black
 urxvt*cursorColor:      blue
 urxvt*saveLines:        10000
 urxvt*tripleclick-words:true
-urxvt*imLocale:         ja_JP.EUC-JP
-!urxvt*imLocale:         ja_JP.UTF-8
+!urxvt*imLocale:         ja_JP.EUC-JP
+urxvt*imLocale:         ja_JP.UTF-8
 urxvt*termName:         rxvt
 
 !!emacs
