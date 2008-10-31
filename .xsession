@@ -17,17 +17,19 @@ uim-xim &
 #uim-toolbar-gtk &
 #uim-toolbar-gtk-systray &
 
+sleep 2 && wmload -withdrawn &
 sleep 2 && wmclock -exe 'LANG=C cal -3 | xmessage -file -' &
-sleep 2 && wmuim &
 sleep 2 && wmacpi &
 sleep 2 && wmwifi -s &
+sleep 2 && wmix &
+sleep 2 && wmuim &
 
-notification-daemon &
+#notification-daemon &
 
 #sleep 1 && bbdock "/usr/share/xscreensaver/glade/screensaver-locking.png:xlock -mode blank:xlock" &
 #sleep 1 && bbpager &
 
-/usr/bin/conky &
+#/usr/bin/conky &
 urxvtd &
 
 exec fluxbox
