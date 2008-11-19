@@ -132,10 +132,16 @@
             (setq indent-tabs-mode t)
             ))
 
+;; ?
 (add-hook 'shell-mode-hook
           (lambda ()
             (define-key shell-mode-map "\C-p" 'comint-previous-input)
             (define-key shell-mode-map "\C-n" 'comint-next-input)
+            ))
+
+(add-hook 'sh-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
             ))
 
 (add-hook 'asm-mode-hook
@@ -190,9 +196,9 @@
             (setq indent-tabs-mode nil)
             ))
 
-(add-hook 'sh-mode-hook
+(add-hook 'scheme-mode-hook
           (lambda ()
-            (setq indent-tabs-mode nil)
+            (define-key scheme-mode-map "\C-c\C-r" 'scheme-other-window)
             ))
 
 (add-hook 'perl-mode-hook
@@ -260,6 +266,15 @@
               (lambda ()
                 (slime-mode t)
                 (show-paren-mode)))))
+
+;; gosh settings
+(setq scheme-program-name "gosh")
+(defun scheme-other-window ()
+  "Run scheme on other window"
+  (interactive)
+  (switch-to-buffer-other-window
+   (get-buffer-create "*scheme*"))
+  (run-scheme scheme-program-name))
 
 ;; erlang settings
 (when (file-directory-p "~/.emacs.d/site-lisp/erlang")
