@@ -20,9 +20,12 @@ uim-xim &
 sleep 2 && wmload -withdrawn &
 sleep 2 && wmclock -exe 'LANG=C cal -3 | xmessage -file -' &
 sleep 2 && wmacpi &
-sleep 2 && wmwifi -s &
 sleep 2 && wmix &
 sleep 2 && wmuim &
+
+if [ -f ~/.xsession.local ]; then
+    . ~/.xsession.local
+fi
 
 #notification-daemon &
 
