@@ -1,10 +1,5 @@
-!!krxvt
-krxvt*font:             -shinonome-gothic-medium-r-normal--12-*
-krxvt*mfont:            k12g
-krxvt*background:       ivory
-krxvt*foreground:       black
-krxvt*cursorColor:      blue
-krxvt*saveLines:        10000
+! .Xresources
+! % xrdb -merge ~/.Xresources
 
 !!xterm
 xterm*background:       ivory
@@ -12,6 +7,7 @@ xterm*foreground:       black
 xterm*cursorColor:      blue
 xterm*saveLines:        10000
 xterm*scrollbar:        left
+
 !!kterm
 kterm*background:       ivory
 kterm*foreground:       black
@@ -19,26 +15,43 @@ kterm*cursorColor:      blue
 kterm*saveLines:        10000
 kterm*vt100*ScrollBar:  true
 
+!!krxvt
+krxvt*mfont:            k12g
+krxvt*background:       ivory
+krxvt*foreground:       black
+krxvt*cursorColor:      blue
+krxvt*saveLines:        10000
+krxvt*font:             -shinonome-gothic-medium-r-normal--12-*
+
 !!urxvt
-urxvt*font:             r12, k12g
-urxvt*boldFont:         r12b, k12b
-urxvt*italicFont:       r12i, k12i
-urxvt*boldItalicFont:   r12bi, k12bi
-!urxvt*imFont:           r12b, k12b
-urxvt*imFont:           -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*
 urxvt*background:       ivory
 urxvt*foreground:       black
 urxvt*cursorColor:      blue
 urxvt*saveLines:        10000
 urxvt*tripleclick-words:true
-!urxvt*imLocale:         ja_JP.EUC-JP
 urxvt*imLocale:         ja_JP.UTF-8
 urxvt*termName:         rxvt
+urxvt*font:		-shinonome-gothic-medium-r-normal--12-110-75-75-c-60-*, \
+			-shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
+			r12, k12g
+urxvt*boldFont:		-shinonome-gothic-bold-r-normal--12-110-75-75-c-60-*, \
+			-shinonome-gothic-bold-r-normal--12-110-75-75-c-120-*, \
+			r12b, k12b
+urxvt*italicFont:	-shinonome-gothic-medium-i-normal--12-110-75-75-c-60-*, \
+			-shinonome-gothic-medium-i-normal--12-110-75-75-c-120-*, \
+			r12i, k12i
+urxvt*boldItalicFont:	-shinonome-gothic-bold-i-normal--12-110-75-75-c-60-*, \
+			-shinonome-gothic-bold-i-normal--12-110-75-75-c-120-*, \
+			r12bi, k12bi
+urxvt*imFont:	       -shinonome-gothic-medium-r-normal--12-110-75-75-c-60-*, \
+		       -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
+			r12, k12g
 
 !!emacs
+emacs.borderWidth: 20
 emacs.fontset-0: -shinonome-gothic-medium-r-normal--12-*
 emacs.font:      -shinonome-gothic-medium-r-normal--12-*
-emacs.borderWidth: 20
+
 
 !!tgif
 Tgif.InitialFont: Ryumin
