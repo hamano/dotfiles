@@ -26,4 +26,6 @@ Mod3 t   :ExecCommand urxvtc
 Mod3 b   :ExecCommand firefox
 Mod3 r   :ExecCommand fbrun
 Mod3 p   :ExecCommand pidgin
+None XF86AudioLowerVolume :ExecCommand amixer -q set PCM 1-
+None XF86AudioRaiseVolume :ExecCommand amixer -q set PCM 1+
 
