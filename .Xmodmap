@@ -5,3 +5,6 @@
 !add Lock = Caps_Lock
 !add Control = Control_L
 add mod3 = Muhenkan
+! for X61
+keycode 174 = XF86AudioLowerVolume
+keycode 176 = XF86AudioRaiseVolume
