@@ -10,8 +10,8 @@
 
 #   [exec] (urxvtc) {LANG=ja_JP.UTF-8 urxvtc -tn xterm-256color -imlocale ja_JP.EUC-JP}
 #   [exec] (urxvtc) {LANG=ja_JP.UTF-8 urxvtc -tn xterm-256color -imlocale ja_JP.UTF-8}
-   [exec] (urxvtc) {LANG=ja_JP.UTF-8 urxvtc -tn rxvt}
-   [exec] (urxvt) {LANG=ja_JP.UTF-8 urxvt -tn xterm-256color}
+   [exec] (urxvtc) {LANG=ja_JP.UTF-8 urxvtc}
+   [exec] (urxvt) {LANG=ja_JP.UTF-8 urxvt}
    [exec] (krxvt) {krxvt}
    [exec] (xterm) {xterm}
    [exec] (firefox) {LANG=ja_JP.UTF-8 firefox}
