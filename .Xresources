@@ -52,6 +52,9 @@ emacs.borderWidth: 20
 emacs.fontset-0: -shinonome-gothic-medium-r-normal--12-*
 emacs.font:      -shinonome-gothic-medium-r-normal--12-*
 
+!!xdvi
+xdvi.shrinkFactor: 0
+xdvi.noFileArgUseHistory: false
 
 !!tgif
 Tgif.InitialFont: Ryumin
