@@ -38,7 +38,7 @@
   (iswitchb-default-keybindings)
   (resize-minibuffer-mode t)
   (tool-bar-mode nil))
- ((= emacs-major-version 22)
+ ((>= emacs-major-version 22)
   (iswitchb-mode 1)
   ))
 
@@ -67,29 +67,29 @@
 (set-face-background 'mode-line-inactive "brightblack")
 
 ;; East Asian Width Problem
-(utf-translate-cjk-set-unicode-range
- '(
-;   (#x00a2 . #x00a3)                    ; ¢, £
-   (#x00a7 . #x00a8)                    ; §, ¨
-   (#x00b0 . #x00b1)                    ; °, ±
-   (#x00b4 . #x00b4)                    ; ´
-   (#x00b6 . #x00b6)                    ; ¶
-   (#x00d7 . #x00d7)                    ; ×
-   (#X00f7 . #x00f7)                    ; ÷
-   (#X00fc . #x00fc)                    ; ü
-   (#x0370 . #x03ff)                    ; Greek and Coptic
-   (#x0400 . #x04FF)                    ; Cyrillic
-   (#x2000 . #x206F)                    ; General Punctuation
-   (#x20AC . #x20AC)                    ; €
-   (#x2100 . #x214F)                    ; Letterlike Symbols
-   (#x2190 . #x21FF)                    ; Arrows
-   (#x2200 . #x22FF)                    ; Mathematical Operators
-   (#x2300 . #x23FF)                    ; Miscellaneous Technical
-   (#x2500 . #x257F)                    ; Box Drawing
-   (#x25A0 . #x25FF)                    ; Geometric Shapes
-   (#x2600 . #x26FF)                    ; Miscellaneous Symbols
-   (#x2e80 . #xd7a3) (#xff00 . #xffef)))
-
+(when (= emacs-major-version 22)
+  (utf-translate-cjk-set-unicode-range
+   '(
+;    (#x00a2 . #x00a3)                    ; ¢, £
+     (#x00a7 . #x00a8)                    ; §, ¨
+     (#x00b0 . #x00b1)                    ; °, ±
+     (#x00b4 . #x00b4)                    ; ´
+     (#x00b6 . #x00b6)                    ; ¶
+     (#x00d7 . #x00d7)                    ; ×
+     (#X00f7 . #x00f7)                    ; ÷
+     (#X00fc . #x00fc)                    ; ü
+     (#x0370 . #x03ff)                    ; Greek and Coptic
+     (#x0400 . #x04FF)                    ; Cyrillic
+     (#x2000 . #x206F)                    ; General Punctuation
+     (#x20AC . #x20AC)                    ; €
+     (#x2100 . #x214F)                    ; Letterlike Symbols
+     (#x2190 . #x21FF)                    ; Arrows
+     (#x2200 . #x22FF)                    ; Mathematical Operators
+     (#x2300 . #x23FF)                    ; Miscellaneous Technical
+     (#x2500 . #x257F)                    ; Box Drawing
+     (#x25A0 . #x25FF)                    ; Geometric Shapes
+     (#x2600 . #x26FF)                    ; Miscellaneous Symbols
+     (#x2e80 . #xd7a3) (#xff00 . #xffef))))
 ;; X settings
 (if window-system
     (progn
@@ -320,6 +320,18 @@
     (require 'text-translator)
     (global-set-key "\C-x\M-t" 'text-translator)
     (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
+
+;; wanderlust settings
+(when (file-directory-p "~/.emacs.d/site-lisp/wl")
+  (setq load-path (cons "~/.emacs.d/site-lisp/apel" load-path))
+  (setq load-path (cons "~/.emacs.d/site-lisp/flim" load-path))
+  (setq load-path (cons "~/.emacs.d/site-lisp/semi" load-path))
+  (setq load-path (cons "~/.emacs.d/site-lisp/wl/wl" load-path))
+  (setq load-path (cons "~/.emacs.d/site-lisp/wl/elmo" load-path))
+  (load "mime-setup")
+  (autoload 'wl "wl" "Wanderlust" t)
+  (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
+  (setq wl-icon-directory "~/.emacs.d/site-lisp/wl/etc/icons"))
 
 ;; navi2ch settings
 (when (file-directory-p "~/.emacs.d/site-lisp/navi2ch")
