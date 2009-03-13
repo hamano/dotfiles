@@ -68,9 +68,9 @@
 
 ;; East Asian Width Problem
 (utf-translate-cjk-set-unicode-range
- '((#x00a2 . #x00a3)                    ; ¢, £
+ '(
+;   (#x00a2 . #x00a3)                    ; ¢, £
    (#x00a7 . #x00a8)                    ; §, ¨
-   (#x00ac . #x00ac)                    ; ¬
    (#x00b0 . #x00b1)                    ; °, ±
    (#x00b4 . #x00b4)                    ; ´
    (#x00b6 . #x00b6)                    ; ¶
@@ -166,6 +166,7 @@
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
             (define-key c-mode-map "\C-c\C-f" 'ff-find-other-file)
+            (flymake-mode t)
             ))
 
 (add-hook 'c++-mode-hook
@@ -176,6 +177,7 @@
             (define-key c++-mode-map "\C-c\C-c" 'compile)
             (define-key c++-mode-map "\C-c\C-n" 'next-error)
             (define-key c++-mode-map "\C-c\C-f" 'ff-find-other-file)
+            (flymake-mode t)
             ))
 
 (add-hook 'java-mode-hook
@@ -224,6 +226,29 @@
                 ("\\.tt$" . html-mode)
                 ("\\.t$" . perl-mode)
                 ) auto-mode-alist))
+
+;; flymake
+(when (>= emacs-major-version 22)
+  (require 'flymake)
+  (defun flymake-c-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "gcc" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
+  (push '("\\.c$" flymake-c-init) flymake-allowed-file-name-masks)
+  (defun flymake-cc-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "g++" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
+  (push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
+  (push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
+  )
+
 
 ;; auto-insert
 (add-hook 'find-file-hooks 'auto-insert)
@@ -303,4 +328,5 @@
     (autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
     (setq navi2ch-list-bbstable-url "http://menu.2ch.net/bbsmenu.html")
     ;(eval-after-load "navi2ch" '(global-hl-line-mode))
+    (setq navi2ch-article-auto-range nil)
     (setq navi2ch-message-mail-address "sage")))
