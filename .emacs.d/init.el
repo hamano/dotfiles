@@ -63,8 +63,9 @@
 
 (set-face-foreground 'mode-line "white")
 (set-face-background 'mode-line "black")
-(set-face-foreground 'mode-line-inactive "white")
-(set-face-background 'mode-line-inactive "brightblack")
+(when (>= emacs-major-version 22)
+  (set-face-foreground 'mode-line-inactive "white")
+  (set-face-background 'mode-line-inactive "brightblack"))
 
 ;; East Asian Width Problem
 (when (= emacs-major-version 22)
@@ -114,12 +115,6 @@
 ;(setq fast-lock-cache-directories '("~/.emacs.d/flc"))
 ;(setq temporary-file-directory "~/.emacs.d/tmp")
 
-;; hl-line
-(require 'hl-line)
-(global-hl-line-mode)
-(set-face-background 'hl-line "cyan")
-;(setq hl-line-face 'underline)
-
 ;; mode-hook
 (add-hook 'text-mode-hook
           (lambda ()
@@ -132,7 +127,6 @@
             (setq indent-tabs-mode t)
             ))
 
-;; ?
 (add-hook 'shell-mode-hook
           (lambda ()
             (define-key shell-mode-map "\C-p" 'comint-previous-input)
@@ -227,6 +221,14 @@
                 ("\\.t$" . perl-mode)
                 ) auto-mode-alist))
 
+;; hl-line
+(when (>= emacs-major-version 22)
+  (require 'hl-line)
+  (global-hl-line-mode)
+  (set-face-background 'hl-line "cyan")
+  ;(setq hl-line-face 'underline)
+  )
+
 ;; flymake
 (when (>= emacs-major-version 22)
   (require 'flymake)
@@ -248,7 +250,6 @@
   (push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
   (push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
   )
-
 
 ;; auto-insert
 (add-hook 'find-file-hooks 'auto-insert)
