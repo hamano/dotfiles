@@ -322,6 +322,11 @@
     (global-set-key "\C-x\M-t" 'text-translator)
     (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
 
+;; gnus settings
+(when (file-directory-p "~/.emacs.d/site-lisp/gnus/lisp")
+  (setq load-path (cons "~/.emacs.d/site-lisp/gnus/lisp" load-path))
+  (autoload 'gnus "gnus" nil t))
+
 ;; wanderlust settings
 (when (file-directory-p "~/.emacs.d/site-lisp/wl")
   (setq load-path (cons "~/.emacs.d/site-lisp/apel" load-path))
@@ -333,6 +338,19 @@
   (autoload 'wl "wl" "Wanderlust" t)
   (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
   (setq wl-icon-directory "~/.emacs.d/site-lisp/wl/etc/icons"))
+
+;; mu-cite settings
+(when (file-directory-p "~/.emacs.d/site-lisp/mu-cite")
+  (setq load-path (cons "~/.emacs.d/site-lisp/mu-cite" load-path))
+  (autoload 'mu-cite-original "mu-cite" nil t)
+  (add-hook 'mail-citation-hook (function mu-cite-original))
+  (setq mu-cite-prefix-format '("> "))
+  (setq mu-cite-cited-prefix-regexp "\\(^[^ \t\n<>]+>+[ \t]*\\)")
+  (setq mu-cite-top-format
+        '(
+          "At " date ",\n"
+          from " wrote:\n"
+          "> \n")))
 
 ;; navi2ch settings
 (when (file-directory-p "~/.emacs.d/site-lisp/navi2ch")
