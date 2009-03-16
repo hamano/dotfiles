@@ -6,6 +6,8 @@
 
 ;; Language configuration
 (set-language-environment "Japanese")
+(if (<= emacs-major-version 21)
+    (require 'jisx0213))
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
@@ -24,6 +26,7 @@
 ;; Define key bind
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
+(global-set-key "\C-x\C-u" 'undo)
 
 ;;
 (display-time)
