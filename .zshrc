@@ -61,6 +61,7 @@ REPORTTIME=1
 alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
+alias j='jobs'
 alias SL=`which sl`
 alias sl='ls'
 alias cal='cal -3'
