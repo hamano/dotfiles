@@ -65,6 +65,9 @@ alias SL=`which sl`
 alias sl='ls'
 alias cal='cal -3'
 alias emacs='emacs -nw'
+alias w3m='w3m -no-mouse'
+UA_ZAURUS="Mozilla/4.08 (PDA; SL-C3000/1.0;Qtopia/1.4.9) NetFront/3.1 "
+alias w3m-zaurus="w3m -header \"User-Agent: $UA_ZAURUS\""
 alias urxvtf='urxvt -g 40x20 \
 -fn "xft:vl.pgothic:size=20:antialias=true" \
 -fb "xft:vl.pgothic:weight=bold:size=20:antialias=true"'
