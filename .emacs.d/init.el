@@ -48,7 +48,6 @@
 
 ;; Version dependent configration
 (cond
- ((>= emacs-major-version 19)
  ((= emacs-major-version 21)
   (iswitchb-default-keybindings)
   (resize-minibuffer-mode t)
