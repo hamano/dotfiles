@@ -27,25 +27,15 @@
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-x\C-u" 'undo)
+(global-unset-key "\C-t") ; reserve for screen
 
-;;
+;; Common configration
 (display-time)
 (line-number-mode t)
 (column-number-mode t)
 (menu-bar-mode t)
 (winner-mode t)
 
-(cond
- ((= emacs-major-version 21)
-  ;(require 'jisx0213)
-  (iswitchb-default-keybindings)
-  (resize-minibuffer-mode t)
-  (tool-bar-mode nil))
- ((>= emacs-major-version 22)
-  (iswitchb-mode 1)
-  ))
-
-;;
 (setq inhibit-startup-message nil)
 (setq visible-bell t)
 (setq frame-title-format "%b (%f)")
@@ -56,7 +46,18 @@
 (set-face-background 'show-paren-match-face "blue")
 (set-face-foreground 'show-paren-match-face "black")
 
-;; Face
+;; Version dependent configration
+(cond
+ ((>= emacs-major-version 19)
+ ((= emacs-major-version 21)
+  (iswitchb-default-keybindings)
+  (resize-minibuffer-mode t)
+  (tool-bar-mode nil))
+ ((>= emacs-major-version 22)
+  (iswitchb-mode 1)
+  ))
+
+;; Face settings
 (set-cursor-color "blue")
 (set-face-foreground 'default "black")
 (set-face-background 'default "white")
