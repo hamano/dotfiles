@@ -210,6 +210,13 @@
             (setq indent-tabs-mode nil)
             ))
 
+(add-hook 'lua-mode-hook
+          (lambda ()
+            (setq lua-indent-level 2)
+            (setq lua-electric-flag nil)
+;            (abbrev-mode 0)
+            ))
+
 ;; auto-mode
 (setq auto-mode-alist
       (append '(
@@ -305,11 +312,15 @@
    (get-buffer-create "*scheme*"))
   (run-scheme scheme-program-name))
 
-;; erlang settings
+;; erlang-mode settings
 (when (file-directory-p "~/.emacs.d/site-lisp/erlang")
   (progn
     (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
     (require 'erlang-start)))
+
+;; lua-mode settings
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
 
 ;; php-mode settings
 (when (file-directory-p "~/.emacs.d/site-lisp/php-mode")
