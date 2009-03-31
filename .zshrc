@@ -27,6 +27,7 @@ colors
 # bindkey
 bindkey -e
 bindkey ' ' magic-space
+bindkey '^t' ''
 
 # zstyle
 zstyle ':completion:*' verbose yes
