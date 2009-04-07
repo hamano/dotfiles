@@ -352,6 +352,7 @@
   (autoload 'wl "wl" "Wanderlust" t)
   (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
   (setq wl-icon-directory "~/.emacs.d/site-lisp/wl/etc/icons")
+  (setq mime-header-accept-quoted-encoded-words t)
   (defun wl-fetchmail()
     (interactive)
     (message "Getting by fetchmail...")
