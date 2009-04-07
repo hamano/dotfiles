@@ -351,7 +351,18 @@
   (load "mime-setup")
   (autoload 'wl "wl" "Wanderlust" t)
   (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
-  (setq wl-icon-directory "~/.emacs.d/site-lisp/wl/etc/icons"))
+  (setq wl-icon-directory "~/.emacs.d/site-lisp/wl/etc/icons")
+  (defun wl-fetchmail()
+    (interactive)
+    (message "Getting by fetchmail...")
+    (call-process "fetchmail" nil nil nil)
+    (message "Getting by fetchmail...done")
+    (wl-folder-check-all))
+  (add-hook 'wl-folder-mode-hook
+            (lambda ()
+              (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)
+              ))
+  )
 
 ;; mu-cite settings
 (when (file-directory-p "~/.emacs.d/site-lisp/mu-cite")
@@ -362,7 +373,7 @@
   (setq mu-cite-cited-prefix-regexp "\\(^[^ \t\n<>]+>+[ \t]*\\)")
   (setq mu-cite-top-format
         '(
-          "At " date ",\n"
+          "\nAt " date ",\n"
           from " wrote:\n"
           "> \n")))
 
