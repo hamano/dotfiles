@@ -27,7 +27,8 @@
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-x\C-u" 'undo) ; for continuous undo
-(global-set-key "\M-h" (lambda () (interactive) (kill-line 0))) ; backward kill line
+(global-set-key "\M-h"
+                (lambda () (interactive) (kill-line 0))) ; backward kill line
 (global-unset-key "\C-t") ; used by screen
 
 ;; Common configration
@@ -70,6 +71,15 @@
 (when (>= emacs-major-version 22)
   (set-face-foreground 'mode-line-inactive "white")
   (set-face-background 'mode-line-inactive "brightblack"))
+
+; highliting white space at EOL
+(defface ws-face-r-1 '((t (:background "cyan"))) nil)
+(defadvice font-lock-mode (before my-font-lock-mode ())
+  (defvar ws-face-r-1 'ws-face-r-1)
+  (font-lock-add-keywords
+   major-mode '(("[ 　\t\r]+$" 0 ws-face-r-1 append))))
+(ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
+(ad-activate 'font-lock-mode)
 
 ;; East Asian Width Problem
 (when (= emacs-major-version 22)
