@@ -26,8 +26,9 @@
 ;; Define key bind
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
-(global-set-key "\C-x\C-u" 'undo)
-(global-unset-key "\C-t") ; reserve for screen
+(global-set-key "\C-x\C-u" 'undo) ; for continuous undo
+(global-set-key "\M-h" (lambda () (interactive) (kill-line 0))) ; backward kill line
+(global-unset-key "\C-t") ; used by screen
 
 ;; Common configration
 (display-time)
@@ -214,7 +215,7 @@
           (lambda ()
             (setq lua-indent-level 2)
             (setq lua-electric-flag nil)
-;            (abbrev-mode 0)
+            (abbrev-mode 0)
             ))
 
 ;; auto-mode
