@@ -105,6 +105,7 @@
      (#x25A0 . #x25FF)                    ; Geometric Shapes
      (#x2600 . #x26FF)                    ; Miscellaneous Symbols
      (#x2e80 . #xd7a3) (#xff00 . #xffef))))
+
 ;; X settings
 (if window-system
     (progn
@@ -372,8 +373,21 @@
     (wl-folder-check-all))
   (add-hook 'wl-folder-mode-hook
             (lambda ()
-              (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)
-              ))
+              (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)))
+  (defun my-wl-set-face (face spec)
+    (make-face face)
+    (cond ((fboundp 'face-spec-set)
+           (face-spec-set face spec))
+          (t
+           (wl-declare-face face spec))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-2
+                  '((t (:foreground "darkblue"))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-3
+                  '((t (:foreground "dodgerblue"))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-6
+                  '((t (:foreground "darkred"))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-7
+                  '((t (:foreground "SaddleBrown"))))
   )
 
 ;; mu-cite settings
