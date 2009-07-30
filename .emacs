@@ -217,6 +217,12 @@
             (setq indent-tabs-mode nil)
             ))
 
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq ruby-deep-indent-paren-style nil)
+            ))
+
 (add-hook 'erlang-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
