@@ -21,8 +21,7 @@ Mod3 a   :ArrangeWindows
 Mod3 h   :MaximizeHorizontal
 Mod3 v   :MaximizeVertical
 Mod3 f   :Fullscreen
-!Mod3 t   :ExecCommand LANG=ja_JP.UTF-8 urxvtc
-Mod3 t   :ExecCommand urxvtc
+Mod3 t   :ExecCommand LANG=ja_JP.UTF-8 urxvtc
 Mod3 b   :ExecCommand firefox
 Mod3 r   :ExecCommand fbrun
 Mod3 p   :ExecCommand pidgin
