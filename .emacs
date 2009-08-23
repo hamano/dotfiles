@@ -373,6 +373,7 @@
   (setq mime-header-accept-quoted-encoded-words t)
   (setq wl-draft-buffer-style 'full)
   (setq wl-auto-select-first t)
+  ; execute fetchmail
   (defun wl-fetchmail()
     (interactive)
     (message "Getting by fetchmail...")
@@ -382,6 +383,7 @@
   (add-hook 'wl-folder-mode-hook
             (lambda ()
               (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)))
+  ; modified wl face
   (defun my-wl-set-face (face spec)
     (make-face face)
     (cond ((fboundp 'face-spec-set)
@@ -396,6 +398,13 @@
                   '((t (:foreground "darkred"))))
   (my-wl-set-face 'wl-highlight-message-cited-text-7
                   '((t (:foreground "SaddleBrown"))))
+  ; encode non-ASCII atatched filename
+  (eval-after-load "std11"
+  '(defadvice std11-wrap-as-quoted-string
+     (before encode-string activate)
+     "Encode a string."
+     (require 'eword-encode)
+     (ad-set-arg 0 (eword-encode-string (ad-get-arg 0)))))
   )
 
 ;; mu-cite settings
