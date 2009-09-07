@@ -19,7 +19,7 @@ setopt auto_pushd
 setopt no_flow_control
 setopt print_exit_value
 setopt hist_ignore_dups
-setopt no_share_history 
+setopt no_share_history
 setopt checkjobs
 autoload -U colors
 colors
@@ -63,10 +63,12 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias j='jobs'
-alias SL=`which sl`
+alias SL='env sl'
 alias sl='ls'
+alias u='uname -a'
 alias cal='cal -3'
 alias emacs='emacs -nw'
+alias screen='screen -xR'
 alias x509='openssl x509'
 alias s_client='openssl s_client'
 alias s_server='openssl s_server'
@@ -87,6 +89,7 @@ if [ "${SYSNAME}" = "SunOS" ]; then
             -exec echo removed {} \; -exec rm -f {} \;
     }
 fi
+
 if [ ${GNU} ]; then
     alias ls='ls --color=auto'
     alias grep="grep --color=auto"
@@ -98,7 +101,70 @@ if [ ${GNU} ]; then
     }
 fi
 
-function bak(){
-    mv $1{,.bak} && cp $1{.bak,};
+alias x='extract'
+function extract(){
+    if [ $# != 1 ]; then
+        echo "usage: x file";
+        return 2;
+    fi
+
+    local file=$1;
+    local ext=${file##*.};
+    local base=${file%.${ext}};
+
+    if [ ${ext:u} = "GZ" -o ${ext:u} = "BZ2" -o ${ext:u} = "LZMA" ]; then
+        local ext2=${base##*.};
+        if [ ${ext2:u} = "TAR" -o ${ext2:u} = "STAR" ]; then
+            ext=${ext2}.${ext};
+        fi
+    fi
+
+    case ${ext:u} in
+        "GZ")
+            gunzip -dc $file > ${base};
+            ;;
+        "BZ2")
+            bunzip2 -dk $file;
+            ;;
+        "LZMA")
+            lzma -dk $file;
+            ;;
+        "TAR")
+            tar xvf $file;
+            ;;
+        "TGZ"|"TAR.GZ")
+            tar xvzf $file;
+            ;;
+        "TAR.BZ2")
+            tar xvjf $file;
+            ;;
+        "TAR.LZMA")
+            # for old tar
+            lzma -dc $file | tar xv;
+            ;;
+        "ZIP")
+            unzip ${file} -d ${base}
+            ;;
+        "CPIO")
+            mkdir ${base}
+            cd ${base}
+            cpio -i < ../$file;
+            cd ../
+            ;;
+        "LZH")
+            mkdir ${base}
+            cd ${base}
+            lha x ../${file}
+            cd ../
+            ;;
+        *)
+            echo "unsupported archive."
+            ;;
+    esac
+    return 0;
 }
 
+alias b='backup'
+function backup(){
+    mv $1{,.bak} && cp $1{.bak,};
+}
