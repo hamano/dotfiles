@@ -14,12 +14,19 @@
 #
 # $Id: .zshenv,v 1.10 2008-02-19 08:55:42 hamano Exp $
 
+SYSNAME=`uname -s`
+
 if [[ -z "$PATH" || "$PATH" == "/bin:/usr/bin" ]]; then
 	PATH="/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games"
 fi
 
 if [ -d ~/bin ]; then
 	PATH=~/bin:"${PATH}"
+fi
+export PATH
+
+if [ "${SYSNAME}" = "SunOS" ]; then
+	export TERM=xterm
 fi
 
 case $TERM in
@@ -39,6 +46,8 @@ case $TERM in
         export LANG=C
         ;;
 esac
+
+
 
 export PATH
 export EDITOR=vi
