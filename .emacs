@@ -2,6 +2,7 @@
 ;;; $Id: init.el,v 1.20 2008-04-10 14:45:57 hamano Exp $
 ;;;
 
+;(setq load-path (cons "/usr/share/emacs/site-lisp" load-path))
 (setq load-path (cons "~/.emacs.d/site-lisp" load-path))
 
 ;; Language configuration
@@ -164,8 +165,9 @@
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-style "k&r")
+            (setq tab-width 4)
             (setq c-basic-offset 4)
-            (setq indent-tabs-mode nil)
+            (setq indent-tabs-mode t)
             (setq compilation-ask-about-save nil)
             (setq compilation-window-height 6)
             (setq compilation-scroll-output t)
@@ -277,6 +279,11 @@
       (list "g++" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
   (push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
   (push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
+  )
+
+;; cscope settings
+(when (>= emacs-major-version 22)
+  (require 'xcscope)
   )
 
 ;; auto-insert
