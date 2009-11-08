@@ -2,7 +2,7 @@
 ;;; $Id: init.el,v 1.20 2008-04-10 14:45:57 hamano Exp $
 ;;;
 
-;(setq load-path (cons "/usr/share/emacs/site-lisp" load-path))
+(setq load-path (cons "/usr/share/emacs/site-lisp" load-path))
 (setq load-path (cons "~/.emacs.d/site-lisp" load-path))
 
 ;; Language configuration
