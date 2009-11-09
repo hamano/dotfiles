@@ -9,7 +9,7 @@ else
     set encoding=utf-8
 endif
 set fileencodings=iso-2022-jp,utf-8,euc-jp
-set expandtab
+set noexpandtab
 set history=50
 set hlsearch
 set ignorecase
@@ -30,6 +30,7 @@ set notitle
 set viminfo='10,\"10
 set visualbell
 set wrap
+set scrolloff=4
 if exists('&ambw')
     set ambw=double
 endif

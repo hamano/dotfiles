@@ -13,15 +13,16 @@ xmodmap ~/.Xmodmap
 
 export XMODIFIERS=@im=uim
 export GTK_IM_MODULE=uim
-uim-xim &
+#uim-xim &
 #uim-toolbar-gtk &
 #uim-toolbar-gtk-systray &
 
-sleep 2 && wmload -withdrawn &
-sleep 2 && wmclock -exe 'LANG=C cal -3 | xmessage -file -' &
-sleep 2 && wmacpi &
-sleep 2 && wmix &
-sleep 2 && wmuim &
+wmclock -exe 'LANG=C cal -3 | xmessage -file -' &
+wmload -withdrawn &
+wmacpi &
+wmnd &
+wmix &
+wmuim &
 
 if [ -f ~/.xsession.local ]; then
     . ~/.xsession.local

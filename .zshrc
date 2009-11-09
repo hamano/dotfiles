@@ -46,10 +46,11 @@ precmd() {
     else
         pad=""
     fi
-    PROMPT="${pad} %~
+#    PROMPT="${pad} %~
+    PROMPT="%~
 %B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
 "%m%{${reset_color}%}%B]%b%# "
-    #RPROMPT=' %~'
+#    RPROMPT=""
 }
 
 # history

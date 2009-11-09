@@ -1,5 +1,6 @@
 [user]
     name = Tsukasa Hamano
+    email = code@cuspy.org
 
 [alias]
     ci = commit -a
