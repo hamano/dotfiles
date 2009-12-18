@@ -15,7 +15,7 @@ else
     compinit
 fi
 setopt auto_cd
-setopt auto_pushd
+setopt no_auto_pushd
 setopt no_flow_control
 setopt print_exit_value
 setopt hist_ignore_dups
@@ -52,6 +52,7 @@ precmd() {
 "%m%{${reset_color}%}%B]%b%# "
 #    RPROMPT=""
 }
+echo -n "\e]2;$USER@$HOST\a"
 
 # history
 HISTSIZE=1000
