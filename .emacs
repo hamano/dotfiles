@@ -241,6 +241,7 @@
       (append '(
                 ("^Makefile" . makefile-mode)
                 ("^Changes" . change-log-mode)
+                ("\\.mailfilter$" . c-mode)
                 ("\\.xsl$" . sgml-mode)
                 ("\\.css$" . sh-mode)
                 ("\\.fo$"  . sgml-mode)

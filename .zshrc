@@ -51,8 +51,8 @@ precmd() {
 %B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
 "%m%{${reset_color}%}%B]%b%# "
 #    RPROMPT=""
+    echo -n "\e]2;$USER@$HOST\a"
 }
-echo -n "\e]2;$USER@$HOST\a"
 
 # history
 HISTSIZE=1000
