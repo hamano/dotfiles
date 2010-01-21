@@ -1,6 +1,5 @@
 " Configuration file for vim
 " $Id: .vimrc,v 1.5 2008-01-17 05:44:30 hamano Exp $
-syntax on
 filetype on
 set backspace=indent,eol,start
 if $LANG == "ja_JP.eucJP"
@@ -31,6 +30,19 @@ set viminfo='10,\"10
 set visualbell
 set wrap
 set scrolloff=4
+
+if has("syntax")
+    syntax on
+    function! ActivateInvisibleIndicator()
+        syntax match TrailedWhiteSpace "[ \t\r　]\+$" display containedin=ALL
+        highlight TrailedWhiteSpace term=underline ctermbg=cyan guibg=cyan
+    endf
+    augroup invisible
+        autocmd! invisible
+        autocmd BufNew,BufRead * call ActivateInvisibleIndicator()
+    augroup END
+endif
+
 if exists('&ambw')
     set ambw=double
 endif
