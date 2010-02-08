@@ -407,6 +407,18 @@
      "Encode a string."
      (require 'eword-encode)
      (ad-set-arg 0 (eword-encode-string (ad-get-arg 0)))))
+
+  (add-hook 'wl-draft-reply-hook
+            (function
+             (lambda ()
+               (save-excursion
+                 (beginning-of-buffer)
+                 (re-search-forward "^Subject: " (point-max) t)
+                 (while (re-search-forward
+                         "\\(\\*\\*\\*SPAM\\*\\*\\*\\|\\*\\*\\*UNCHECKED\\*\\*\\*\\)"
+                         (save-excursion (end-of-line) (point)) t)
+                   (replace-match ""))
+                 ))))
   )
 
 ;; mu-cite settings
