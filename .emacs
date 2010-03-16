@@ -202,7 +202,7 @@
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (setq indent-tabs-mode t)
+            (setq indent-tabs-mode nil)
             (define-key emacs-lisp-mode-map "\C-c\C-d" 'checkdoc)
             ))
 
@@ -239,6 +239,12 @@
             (abbrev-mode 0)
             ))
 
+(add-hook 'python-mode-hook
+          (function (lambda ()
+                      (setq indent-tabs-mode nil)
+                      (setq tab-width 4)
+;                      (run-python)
+                      )))
 ;; auto-mode
 (setq auto-mode-alist
       (append '(
@@ -352,10 +358,10 @@
 ;    (require 'php-mode)))
 
 ;; python-mode settings
-(autoload 'python-mode "python-mode" "Python editing mode." t)
-(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-(setq interpreter-mode-alist (cons '("python" . python-mode)
-				   interpreter-mode-alist))
+;(autoload 'python-mode "python-mode" "Python editing mode." t)
+;(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+;(setq interpreter-mode-alist (cons '("python" . python-mode)
+;				   interpreter-mode-alist))
 
 ;; text-translator settings
 (when (file-directory-p "~/.emacs.d/site-lisp/text-translator")
