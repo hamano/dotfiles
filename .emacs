@@ -150,7 +150,8 @@
 
 (add-hook 'sh-mode-hook
           (lambda ()
-            (setq indent-tabs-mode nil)
+            (setq indent-tabs-mode t)
+            (setq tab-width 4)
             ))
 
 (add-hook 'asm-mode-hook
@@ -164,6 +165,7 @@
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-style "k&r")
+            (setq indent-tabs-mode t)
             (setq tab-width 4)
             (setq c-basic-offset 4)
             (setq indent-tabs-mode t)
@@ -192,6 +194,7 @@
 
 (add-hook 'java-mode-hook
           (lambda ()
+            (setq indent-tabs-mode nil)
             (setq compilation-window-height 6)
             (setq compilation-scroll-output t)
             (define-key java-mode-map "\C-c\C-c" 'compile)
@@ -199,7 +202,7 @@
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
-            (setq indent-tabs-mode nil)
+            (setq indent-tabs-mode t)
             (define-key emacs-lisp-mode-map "\C-c\C-d" 'checkdoc)
             ))
 
@@ -226,7 +229,7 @@
 
 (add-hook 'erlang-mode-hook
           (lambda ()
-            (setq indent-tabs-mode nil)
+            (setq indent-tabs-mode t)
             ))
 
 (add-hook 'lua-mode-hook
@@ -373,7 +376,7 @@
   (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
   (setq wl-icon-directory "~/.emacs.d/site-lisp/wl/etc/icons")
   (setq mime-header-accept-quoted-encoded-words t)
-  (setq wl-draft-buffer-style 'full)
+  (setq wl-draft-buffer-style 'split)
   (setq wl-auto-select-first t)
   ; execute fetchmail
   (defun wl-fetchmail()
@@ -415,7 +418,7 @@
                  (beginning-of-buffer)
                  (re-search-forward "^Subject: " (point-max) t)
                  (while (re-search-forward
-                         "\\(\\*\\*\\*SPAM\\*\\*\\*\\|\\*\\*\\*UNCHECKED\\*\\*\\*\\)"
+                         "\\*\\*\\*\\(SPAM\\|UNCHECKED\\)\\*\\*\\* *"
                          (save-excursion (end-of-line) (point)) t)
                    (replace-match ""))
                  ))))
