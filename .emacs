@@ -351,6 +351,12 @@
     (autoload 'php-mode "php-mode" "Major mode for editing php code." t)))
 ;    (require 'php-mode)))
 
+;; python-mode settings
+(autoload 'python-mode "python-mode" "Python editing mode." t)
+(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+(setq interpreter-mode-alist (cons '("python" . python-mode)
+				   interpreter-mode-alist))
+
 ;; text-translator settings
 (when (file-directory-p "~/.emacs.d/site-lisp/text-translator")
   (progn
