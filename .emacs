@@ -241,8 +241,11 @@
 
 (add-hook 'python-mode-hook
           (function (lambda ()
-                      (setq indent-tabs-mode nil)
+                      (setq indent-tabs-mode t)
                       (setq tab-width 4)
+                      (setq indent-level 4)
+                      (setq python-indent 4)
+;                      (setq py-indent-offset 4)
 ;                      (run-python)
                       )))
 ;; auto-mode
@@ -270,6 +273,7 @@
 ;; flymake
 (when (>= emacs-major-version 22)
   (require 'flymake)
+  (setenv "INCLUDE" "/mnt/usb/git/linux-2.6/include/")
   (defun flymake-c-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
                        'flymake-create-temp-inplace))
