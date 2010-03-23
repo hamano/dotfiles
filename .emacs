@@ -4,15 +4,13 @@
 
 (setq load-path (cons "~/.emacs.d/site-lisp" load-path))
 
-;; Language configuration
+;; User information
+(setq user-full-name "Tsukasa Hamano")
+
+;; Language settings
 (set-language-environment "Japanese")
 (if (<= emacs-major-version 21)
     (require 'jisx0213))
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-buffer-file-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
 
 (cond
  ((equal (getenv "LANG") "ja_JP.eucJP")
@@ -21,9 +19,15 @@
   (set-buffer-file-coding-system 'euc-japan)
   (set-keyboard-coding-system 'euc-japan)
   )
- )
+ (t
+  (prefer-coding-system 'utf-8)
+  (set-default-coding-systems 'utf-8)
+  (set-terminal-coding-system 'utf-8)
+  (set-buffer-file-coding-system 'utf-8)
+  (set-keyboard-coding-system 'utf-8)
+  ))
 
-;; Define key bind
+;; Keybind settings
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-x\C-u" 'undo) ; for continuous undo
@@ -31,14 +35,14 @@
                 (lambda () (interactive) (kill-line 0))) ; backward kill line
 (global-unset-key "\C-t") ; used by screen
 
-;; Common configration
+;; Common settings
 (display-time)
 (line-number-mode t)
 (column-number-mode t)
-(menu-bar-mode t)
+(menu-bar-mode nil)
 (winner-mode t)
 
-(setq inhibit-startup-message nil)
+(setq inhibit-startup-message t)
 (setq visible-bell t)
 (setq frame-title-format "%b (%f)")
 (setq-default indicate-empty-lines t)
@@ -85,7 +89,7 @@
 (when (= emacs-major-version 22)
   (utf-translate-cjk-set-unicode-range
    '(
-;    (#x00a2 . #x00a3)                    ; ¢, £
+;     (#x00a2 . #x00a3)                    ; ¢, £
      (#x00a7 . #x00a8)                    ; §, ¨
      (#x00b0 . #x00b1)                    ; °, ±
      (#x00b4 . #x00b4)                    ; ´
@@ -111,6 +115,7 @@
     (progn
       (tool-bar-mode nil)
       (mwheel-install)
+      (setq x-select-enable-clipboard t)
       (set-default-font "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
       (set-face-font 'default
                      "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
