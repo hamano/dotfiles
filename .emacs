@@ -245,9 +245,17 @@
                       (setq tab-width 4)
                       (setq indent-level 4)
                       (setq python-indent 4)
+                      (split-window-vertically)
 ;                      (setq py-indent-offset 4)
-;                      (run-python)
+                      (run-python nil t)
+                      (save-excursion
+                        (save-selected-window
+                          (select-window (next-window))
+                          (set-window-buffer (selected-window) python-buffer)
+                          (enlarge-window (- 10 (window-height)))
+                          ))
                       )))
+
 ;; auto-mode
 (setq auto-mode-alist
       (append '(
