@@ -52,7 +52,7 @@
 (set-face-background 'show-paren-match-face "blue")
 (set-face-foreground 'show-paren-match-face "black")
 
-;; Version dependent configration
+;; Version dependent settings
 (cond
  ((= emacs-major-version 21)
   (iswitchb-default-keybindings)
@@ -126,6 +126,18 @@
       (set-face-font 'bold-italic
                      "-shinonome-gothic-bold-i-normal--12-*-*-*-*-*-*-*")
       ))
+
+;; Clip board settings
+(setq interprogram-paste-function
+      (lambda ()
+        (shell-command-to-string "xsel -o")))
+
+(setq interprogram-cut-function
+      (lambda (text &optional rest)
+        (let* ((process-connection-type nil)
+               (proc (start-process "xsel" "*Messages*" "xsel" "-i")))
+          (process-send-string proc text)
+          (process-send-eof proc))))
 
 ;; font-lock-mode
 (global-font-lock-mode t)
