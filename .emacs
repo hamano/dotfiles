@@ -128,16 +128,18 @@
       ))
 
 ;; Clip board settings
-(setq interprogram-paste-function
-      (lambda ()
-        (shell-command-to-string "xsel -o")))
-
-(setq interprogram-cut-function
-      (lambda (text &optional rest)
-        (let* ((process-connection-type nil)
-               (proc (start-process "xsel" "*Messages*" "xsel" "-i")))
-          (process-send-string proc text)
-          (process-send-eof proc))))
+(if (file-exists-p "/usr/bin/xsel")
+    (progn
+      (setq interprogram-paste-function
+            (lambda ()
+              (shell-command-to-string "xsel -o")))
+      (setq interprogram-cut-function
+            (lambda (text &optional rest)
+              (let* ((process-connection-type nil)
+                     (proc (start-process "xsel" "*Messages*" "xsel" "-i")))
+                (process-send-string proc text)
+                (process-send-eof proc))))
+      ))
 
 ;; font-lock-mode
 (global-font-lock-mode t)
