@@ -259,21 +259,26 @@
             ))
 
 (add-hook 'python-mode-hook
-          (function (lambda ()
-                      (setq indent-tabs-mode t)
-                      (setq tab-width 4)
-                      (setq indent-level 4)
-                      (setq python-indent 4)
-                      (split-window-vertically)
-;                      (setq py-indent-offset 4)
-                      (run-python nil t)
-                      (save-excursion
-                        (save-selected-window
-                          (select-window (next-window))
-                          (set-window-buffer (selected-window) python-buffer)
-                          (enlarge-window (- 10 (window-height)))
-                          ))
-                      )))
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            (setq indent-level 4)
+            (setq python-indent 4)
+;            (split-window-vertically)
+;            (run-python nil t)
+;            (save-excursion
+;              (save-selected-window
+;                (select-window (next-window))
+;                (set-window-buffer (selected-window) python-buffer)
+;                (enlarge-window (- 10 (window-height)))
+;                ))
+            ))
+
+(add-hook 'css-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            (setq css-indent-offset 2)
+            ))
 
 ;; auto-mode
 (setq auto-mode-alist
@@ -281,7 +286,6 @@
                 ("^Makefile" . makefile-mode)
                 ("^Changes" . change-log-mode)
                 ("\\.xsl$" . sgml-mode)
-                ("\\.css$" . sh-mode)
                 ("\\.fo$"  . sgml-mode)
                 ("\\.cs$" . java-mode)
                 ("\\.xs$" . c-mode)
