@@ -104,6 +104,11 @@ if [ ${GNU} ]; then
     }
 fi
 
+alias b='backup'
+function backup(){
+    mv $1{,.bak} && cp $1{.bak,};
+}
+
 alias x='extract'
 function extract(){
     if [ $# != 1 ]; then
@@ -167,7 +172,10 @@ function extract(){
     return 0;
 }
 
-alias b='backup'
-function backup(){
-    mv $1{,.bak} && cp $1{.bak,};
+function errno(){
+    if [ $# != 1 ]; then
+        echo "usage: errno num";
+        return 2;
+    fi
+    python -c "import os, errno; print errno.errorcode[$1], os.strerror($1)"
 }
