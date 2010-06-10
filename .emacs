@@ -260,6 +260,12 @@
             (setq indent-tabs-mode t)
             ))
 
+(add-hook 'javascript-mode-hook
+          (lambda ()
+            (setq js-indent-level 2)
+            (setq indent-tabs-mode t)
+            ))
+
 (add-hook 'lua-mode-hook
           (lambda ()
             (setq lua-indent-level 2)
@@ -406,6 +412,21 @@
 ;(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
 ;(setq interpreter-mode-alist (cons '("python" . python-mode)
 ;				   interpreter-mode-alist))
+
+;; js2 settings
+(when (file-regular-p "~/.emacs.d/site-lisp/js2.el")
+  (progn
+    (autoload 'js2-mode "js2" nil t)
+    (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+    (add-hook 'js2-mode-hook
+              '(lambda ()
+;             (setq c-basic-offset 4)
+             (setq js2-basic-offset 4)
+             (setq tab-width 4)
+             (setq indent-tabs-mode t)
+;             (setq js2-cleanup-whitespace nil)
+             ))
+    ))
 
 ;; text-translator settings
 (when (file-directory-p "~/.emacs.d/site-lisp/text-translator")
