@@ -179,3 +179,11 @@ function errno(){
     fi
     python -c "import os, errno; print errno.errorcode[$1], os.strerror($1)"
 }
+
+function git-tar(){
+    if [ $# != 2 ]; then
+        echo "usage: git-tar prefix tag";
+        return 2;
+    fi
+    git archive --format=tar --prefix=$1/ $2 | gzip -9 > $1.tar.gz
+}
