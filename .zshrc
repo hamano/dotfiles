@@ -38,15 +38,6 @@ zstyle ':completion:*' group-name ''
 
 # set prompts
 precmd() {
-    local pwdsize=${#${(%):-%~}}
-    local fillsize=$(( ${COLUMNS} - $pwdsize - 2 ))
-    if [ $fillsize -ge 0 ]
-    then
-        pad=${(l.${fillsize}.. .)}
-    else
-        pad=""
-    fi
-#    PROMPT="${pad} %~
     PROMPT="%~
 %B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
 "%m%{${reset_color}%}%B]%b%# "
