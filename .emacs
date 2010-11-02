@@ -27,9 +27,18 @@
   (set-keyboard-coding-system 'utf-8)
   ))
 
+;; Define functions
+(defun delete-line ()
+  (interactive)
+  (delete-region (point)
+                 (save-excursion
+                   (end-of-line)
+                   (point))))
+
 ;; Keybind settings
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
+(global-set-key "\M-k" 'delete-line)
 (global-set-key "\C-x\C-u" 'undo) ; for continuous undo
 (global-set-key "\M-h"
                 (lambda () (interactive) (kill-line 0))) ; backward kill line
