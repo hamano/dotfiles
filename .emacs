@@ -115,7 +115,7 @@
     (progn
       (tool-bar-mode nil)
       (mwheel-install)
-      (setq x-select-enable-clipboard t)
+      ;; Font settings
       (set-default-font "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
       (set-face-font 'default
                      "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
@@ -125,20 +125,21 @@
                      "-shinonome-gothic-medium-i-normal--12-*-*-*-*-*-*-*")
       (set-face-font 'bold-italic
                      "-shinonome-gothic-bold-i-normal--12-*-*-*-*-*-*-*")
-      ))
 
-;; Clip board settings
-(if (file-exists-p "/usr/bin/xsel")
-    (progn
-      (setq interprogram-paste-function
-            (lambda ()
-              (shell-command-to-string "xsel -o")))
-      (setq interprogram-cut-function
-            (lambda (text &optional rest)
-              (let* ((process-connection-type nil)
-                     (proc (start-process "xsel" "*Messages*" "xsel" "-i")))
-                (process-send-string proc text)
-                (process-send-eof proc))))
+      ;; Clip board settings
+      (setq x-select-enable-clipboard t)
+      (if (file-exists-p "/usr/bin/xsel")
+          (progn
+            (setq interprogram-paste-function
+                  (lambda ()
+                    (shell-command-to-string "xsel -o")))
+            (setq interprogram-cut-function
+                  (lambda (text &optional rest)
+                    (let* ((process-connection-type nil)
+                           (proc
+                            (start-process "xsel" "*Messages*" "xsel" "-i")))
+                      (process-send-string proc text)
+                      (process-send-eof proc))))))
       ))
 
 ;; font-lock-mode
