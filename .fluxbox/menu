@@ -14,8 +14,8 @@
    [exec] (urxvt) {LANG=ja_JP.UTF-8 urxvt}
    [exec] (krxvt) {krxvt}
    [exec] (xterm) {xterm}
-   [exec] (firefox) {LANG=ja_JP.UTF-8 firefox}
-   [exec] (firefox -P) {LANG=ja_JP.UTF-8 firefox -P}
+   [exec] (firefox) {LANG=ja_JP.UTF-8 GDK_NATIVE_WINDOWS=1 firefox}
+   [exec] (firefox -P) {LANG=ja_JP.UTF-8 GDK_NATIVE_WINDOWS=1 firefox -P}
    [exec] (xvncviewer) {xvncviewer}
    [exec] (pidgin) {pidgin}
    [exec] (skype) {skype}
