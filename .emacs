@@ -290,6 +290,11 @@
 ;                ))
             ))
 
+(add-hook 'nxml-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            ))
+
 (add-hook 'css-mode-hook
           (lambda ()
             (setq indent-tabs-mode t)
@@ -321,6 +326,7 @@
 (when (>= emacs-major-version 22)
   (require 'flymake)
   (setenv "INCLUDE" "/mnt/usb/git/linux-2.6/include/")
+  (push '("\\.java$" nil) flymake-allowed-file-name-masks)
   (defun flymake-c-init ()
     (let* ((temp-file (flymake-init-create-temp-buffer-copy
                        'flymake-create-temp-inplace))
