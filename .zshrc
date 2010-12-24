@@ -41,7 +41,7 @@ precmd() {
     PROMPT="%~
 %B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
 "%m%{${reset_color}%}%B]%b%# "
-#    RPROMPT=""
+    RPROMPT=""
     echo -n "\e]2;$USER@$HOST\a"
 }
 
@@ -74,6 +74,8 @@ alias w3m-wzero3="w3m -header \"User-Agent: $UA_ZAURUS\""
 alias urxvtf='urxvt -g 40x20 \
 -fn "xft:vl.pgothic:size=20:antialias=true" \
 -fb "xft:vl.pgothic:weight=bold:size=20:antialias=true"'
+
+alias svn-eliminate='find ./ -type d -name .svn | xargs rm -rfv'
 
 if [ "${SYSNAME}" = "SunOS" ]; then
     alias ec='emacs-clean \( -type d -a \! -name . -prune \) -o -type f'
