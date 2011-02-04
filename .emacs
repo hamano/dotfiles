@@ -194,15 +194,15 @@
 (add-hook 'c-mode-common-hook
           (lambda ()
             (c-set-style "k&r")
-            (setq indent-tabs-mode t)
+            (c-toggle-auto-state -1)
+            (c-toggle-hungry-state 1)
+            (setq indent-tabs-mode nil)
             (setq tab-width 4)
             (setq c-basic-offset 4)
             (setq indent-tabs-mode t)
             (setq compilation-ask-about-save nil)
             (setq compilation-window-height 6)
             (setq compilation-scroll-output t)
-            (c-toggle-auto-state -1)
-            (c-toggle-hungry-state -1)
             (define-key c-mode-map "\C-c\C-m" 'manual-entry)
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
@@ -532,6 +532,6 @@
     (setq navi2ch-message-mail-address "sage")))
 
 ;; Load custom settings
-(condition-case nil
+;(condition-case nil
     (load (expand-file-name "~/.emacs.d/custom"))
-  (error nil))
+;  (error nil))
