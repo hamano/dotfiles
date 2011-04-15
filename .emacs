@@ -343,6 +343,7 @@
       (list "g++" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
   (push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
   (push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
+  (defun flymake-php-init () nil) ; disable flymake-php
   )
 
 ;; auto-insert
@@ -410,8 +411,9 @@
 (when (file-directory-p "~/.emacs.d/site-lisp/php-mode")
   (progn
     (add-to-list 'load-path "~/.emacs.d/site-lisp/php-mode")
-    (autoload 'php-mode "php-mode" "Major mode for editing php code." t)))
-;    (require 'php-mode)))
+    (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
+    (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+    ))
 
 ;; python-mode settings
 ;(autoload 'python-mode "python-mode" "Python editing mode." t)
@@ -531,6 +533,9 @@
     (setq navi2ch-message-mail-address "sage")))
 
 ;; Load custom settings
+(when (file-exists-p "~/.emacs.d/custom.el")
+  (load (expand-file-name "~/.emacs.d/custom")))
+
 ;(condition-case nil
-    (load (expand-file-name "~/.emacs.d/custom"))
+;    (load (expand-file-name "~/.emacs.d/custom"))
 ;  (error nil))
