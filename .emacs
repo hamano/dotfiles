@@ -311,6 +311,7 @@
                 ("\\.xs$" . c-mode)
                 ("\\.tt$" . html-mode)
                 ("\\.t$" . perl-mode)
+                ("\\.json$" . js-mode)
                 ) auto-mode-alist))
 
 ;; hl-line
