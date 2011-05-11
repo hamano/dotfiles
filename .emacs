@@ -266,6 +266,12 @@
             (setq indent-tabs-mode t)
             ))
 
+(add-hook 'js-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            (setq tab-width 4)
+            ))
+
 (add-hook 'lua-mode-hook
           (lambda ()
             (setq lua-indent-level 2)
