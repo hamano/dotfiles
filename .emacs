@@ -179,7 +179,7 @@
 
 (add-hook 'sh-mode-hook
           (lambda ()
-            (setq indent-tabs-mode t)
+            (setq indent-tabs-mode nil)
             (setq tab-width 4)
             ))
 
@@ -196,7 +196,7 @@
             (c-set-style "k&r")
             (c-toggle-auto-state -1)
             (c-toggle-hungry-state 1)
-            (setq indent-tabs-mode t)
+            (setq indent-tabs-mode nil)
             (setq tab-width 4)
             (setq c-basic-offset 4)
             (setq compilation-ask-about-save nil)
@@ -441,6 +441,13 @@
              (setq indent-tabs-mode t)
 ;             (setq js2-cleanup-whitespace nil)
              ))
+    ))
+
+(when (file-regular-p "~/.emacs.d/site-lisp/markdown-mode.el")
+  (progn
+    (autoload 'markdown-mode "markdown-mode.el"
+      "Major mode for editing Markdown files" t)
+    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
     ))
 
 ;; text-translator settings
