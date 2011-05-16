@@ -1,6 +1,6 @@
 " Configuration file for vim
 " $Id: .vimrc,v 1.5 2008-01-17 05:44:30 hamano Exp $
-filetype on
+"filetype on
 set backspace=indent,eol,start
 if $LANG == "ja_JP.eucJP"
     set encoding=euc-jp
@@ -8,19 +8,18 @@ else
     set encoding=utf-8
 endif
 set fileencodings=iso-2022-jp,utf-8,euc-jp
-set noexpandtab
+set expandtab
+set nocompatible
 set history=50
 set hlsearch
 set ignorecase
 set laststatus=1
-set noautoindent
 set nobackup
-set nocindent
-set nocompatible
+set autoindent
+set cindent
 set nolinebreak
 set nolist
 set nosmartindent
-set paste
 set ruler
 set shiftwidth=4
 set showmatch
@@ -30,6 +29,8 @@ set viminfo='10,\"10
 set visualbell
 set wrap
 set scrolloff=4
+
+"set paste
 
 if has("syntax")
     syntax on
