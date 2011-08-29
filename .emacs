@@ -410,6 +410,14 @@
     (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
     (require 'erlang-start)))
 
+;; go settings
+(when (file-directory-p "~/.emacs.d/site-lisp/go")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/go")
+    (require 'go-mode-load)
+    (setq default-tab-width 4)
+    ))
+
 ;; lua-mode settings
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
 (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
@@ -443,6 +451,7 @@
              ))
     ))
 
+;; markdown settings
 (when (file-regular-p "~/.emacs.d/site-lisp/markdown-mode.el")
   (progn
     (autoload 'markdown-mode "markdown-mode.el"
