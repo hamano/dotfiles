@@ -60,7 +60,8 @@ alias SL='env sl'
 alias sl='ls'
 alias u='uname -a'
 alias cal='cal -3'
-alias lh='last|head'
+#alias lh='last|head'
+alias lh='last -n 10 -a'
 alias emacs='emacs -nw'
 alias screen='screen -xR'
 alias x509='openssl x509'
@@ -75,7 +76,12 @@ alias urxvtf='urxvt -g 40x20 \
 -fn "xft:vl.pgothic:size=20:antialias=true" \
 -fb "xft:vl.pgothic:weight=bold:size=20:antialias=true"'
 
-alias svn-eliminate='find ./ -type d -name .svn | xargs rm -rfv'
+alias urxvts='urxvt \
+-fn "xft:vl.pgothic:size=6:antialias=true" \
+-fb "xft:vl.pgothic:weight=bold:size=20:antialias=true"'
+
+alias cvs-eliminate='test -d CVS && find ./ -type d -name CVS | xargs rm -rfv'
+alias svn-eliminate='test -d .svn && find ./ -type d -name .svn | xargs rm -rfv'
 
 if [ "${SYSNAME}" = "SunOS" ]; then
     alias ec='emacs-clean \( -type d -a \! -name . -prune \) -o -type f'
@@ -179,4 +185,26 @@ function git-tar(){
         return 2;
     fi
     git archive --format=tar --prefix=$1/ $2 | gzip -9 > $1.tar.gz
+}
+
+function unrpm(){
+    if [ $# != 1 ]; then
+        echo "usage: unrpm file";
+        return 2;
+    fi
+    BASE_DIR="${1%.*}"
+    echo $BASE_DIR
+    mkdir "$BASE_DIR"
+    pushd "$BASE_DIR"
+    rpm2cpio "../$1" | cpio -idv
+    popd
+}
+
+function ssh-rmkh(){
+    if [ $# != 1 ]; then
+        echo "usage: ssh-rmkh num";
+        return 2;
+    fi
+	echo .ssh/known_hosts
+	echo -ne "$1d\nw\n" | ed -s .ssh/known_hosts
 }
