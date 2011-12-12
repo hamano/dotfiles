@@ -2,7 +2,8 @@
 ! % xrdb -merge ~/.Xresources
 
 !!xterm
-xterm*background:       ivory
+!xterm*background:       ivory
+xterm*background:       ghostwhite
 xterm*foreground:       black
 xterm*cursorColor:      blue
 xterm*saveLines:        10000
@@ -31,6 +32,7 @@ urxvt*saveLines:        10000
 urxvt*tripleclick-words:true
 urxvt*imLocale:         ja_JP.UTF-8
 urxvt*termName:         rxvt
+urxvt*geometry:         80x25
 urxvt*font:		-shinonome-gothic-medium-r-normal--12-110-75-75-c-60-*, \
 			-shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
 			r12, k12g
