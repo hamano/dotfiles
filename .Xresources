@@ -29,10 +29,10 @@ urxvt*background:       ivory
 urxvt*foreground:       black
 urxvt*cursorColor:      blue
 urxvt*saveLines:        10000
-urxvt*tripleclick-words:true
 urxvt*imLocale:         ja_JP.UTF-8
 urxvt*termName:         rxvt
 urxvt*geometry:         80x25
+urxvt*tripleclick-words:true
 
 urxvt*font: \
  xft:Ricty:style=Regular:size=9:antialias=true, \
@@ -43,14 +43,46 @@ urxvt*boldFont:	\
  -shinonome-gothic-bold-r-normal--12-110-75-75-c-120-*, \
  r12b, k12b
 urxvt*italicFont: \
- xft:Ricty:style=Regular:size=9:antialias=true, \
+ xft:Ricty:style=Italic:size=9:antialias=true, \
  -shinonome-gothic-medium-i-normal--12-110-75-75-c-120-*, \
  r12i, k12i
 urxvt*boldItalicFont: \
- xft:Ricty:style=Bold:size=9:antialias=true, \
+ xft:Ricty:style=Bold Italic:size=9:antialias=true, \
  -shinonome-gothic-bold-i-normal--12-110-75-75-c-120-*, \
  r12bi, k12bi
 urxvt*imFont: \
+ xft:Ricty:style=Regular:size=9:antialias=true, \
+ -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
+ r12, k12g
+
+!!urxvt-i
+urxvt-i*background:       black
+urxvt-i*foreground:       white
+urxvt-i*cursorColor:      green
+urxvt-i*saveLines:        10000
+urxvt-i*imLocale:         ja_JP.UTF-8
+urxvt-i*termName:         rxvt
+urxvt-i*geometry:         80x25
+urxvt-i*tripleclick-words:true
+
+urxvt-i*font: \
+ xft:Ricty:style=Regular:size=9:antialias=true, \
+ -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
+ r12, k12g
+
+urxvt-i*boldFont:	\
+ xft:Ricty:style=Bold:size=9:antialias=true, \
+ -shinonome-gothic-bold-r-normal--12-110-75-75-c-120-*, \
+ r12b, k12b
+urxvt-i*italicFont: \
+ xft:Ricty:style=Italic:size=9:antialias=true, \
+ -shinonome-gothic-medium-i-normal--12-110-75-75-c-120-*, \
+ r12i, k12i
+urxvt-i*boldItalicFont: \
+ xft:Ricty:style=Bold Italic:size=9:antialias=true, \
+ -shinonome-gothic-bold-i-normal--12-110-75-75-c-120-*, \
+ r12bi, k12bi
+urxvt-i*imFont: \
  xft:Ricty:style=Regular:size=9:antialias=true, \
  -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
  r12, k12g
