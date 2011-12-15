@@ -60,7 +60,6 @@ alias SL='env sl'
 alias sl='ls'
 alias u='uname -a'
 alias cal='cal -3'
-#alias lh='last|head'
 alias lh='last -n 10 -a'
 alias emacs='emacs -nw'
 alias screen='screen -xR'
@@ -82,6 +81,12 @@ alias urxvts='urxvt \
 
 alias cvs-eliminate='test -d CVS && find ./ -type d -name CVS | xargs rm -rfv'
 alias svn-eliminate='test -d .svn && find ./ -type d -name .svn | xargs rm -rfv'
+
+#alias qwerty='setxkbmap -rules xorg -model jp106 -layout jp; xmodmap ~/.Xmodmap'
+#alias dvorak='setxkbmap -rules xorg -model jp106 -layout dvorak; xmodmap ~/.Xmodmap'
+alias qwerty='xmodmap ~/.Xmodmap.qwerty ~/.Xmodmap'
+alias dvorak='xmodmap ~/.Xmodmap.dvorak ~/.Xmodmap'
+alias aoeui=qwerty
 
 if [ "${SYSNAME}" = "SunOS" ]; then
     alias ec='emacs-clean \( -type d -a \! -name . -prune \) -o -type f'
