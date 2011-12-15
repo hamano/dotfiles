@@ -117,7 +117,9 @@
      (#x2500 . #x257F)                    ; Box Drawing
      (#x25A0 . #x25FF)                    ; Geometric Shapes
      (#x2600 . #x26FF)                    ; Miscellaneous Symbols
-     (#x2e80 . #xd7a3) (#xff00 . #xffef))))
+     (#x2e80 . #xd7a3)
+     (#xff00 . #xffef))))
+
 
 ;; X settings
 (if window-system
@@ -186,9 +188,9 @@
 (add-hook 'asm-mode-hook
           (lambda ()
             (local-unset-key ";")
-            (setq tab-width 4)
-            (setq tab-stop-list
-                  '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76))
+            (setq tab-width 8)
+;            (setq tab-stop-list
+;                  '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76))
             ))
 
 (add-hook 'c-mode-common-hook
@@ -196,7 +198,7 @@
             (c-set-style "k&r")
             (c-toggle-auto-state -1)
             (c-toggle-hungry-state 1)
-            (setq indent-tabs-mode t)
+            (setq indent-tabs-mode nil)
             (setq tab-width 4)
             (setq c-basic-offset 4)
             (setq compilation-ask-about-save nil)
