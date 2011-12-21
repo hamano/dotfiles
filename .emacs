@@ -35,6 +35,16 @@
                    (end-of-line)
                    (point))))
 
+(defun insert-date ()
+  (interactive)
+  (let ((system-time-locale "C"))
+    (insert (format-time-string "%a %_d %b %Y"))))
+
+(defun insert-time ()
+  (interactive)
+  (let ((system-time-locale "C"))
+    (insert (format-time-string "%a %_d %b %Y %H:%M:%S %z"))))
+
 ;; Keybind settings
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
