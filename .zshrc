@@ -213,3 +213,11 @@ function ssh-rmkh(){
 	echo .ssh/known_hosts
 	echo -ne "$1d\nw\n" | ed -s .ssh/known_hosts
 }
+
+function urlescape () {
+    perl -MURI::Escape -lne 'print uri_escape($_)' <<< "$1"
+}
+
+function urlunescape () {
+    perl -MURI::Escape -lne 'print uri_unescape($_)' <<< "$1";
+}
