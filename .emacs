@@ -325,9 +325,9 @@
                 ("^Changes" . change-log-mode)
                 ("\\.xsl$" . sgml-mode)
                 ("\\.fo$"  . sgml-mode)
-                ("\\.cs$" . java-mode)
                 ("\\.xs$" . c-mode)
                 ("\\.tt$" . html-mode)
+                ("\\.cst$" . html-mode)
                 ("\\.t$" . perl-mode)
                 ("\\.json$" . js-mode)
                 ) auto-mode-alist))
@@ -469,6 +469,7 @@
     (autoload 'markdown-mode "markdown-mode.el"
       "Major mode for editing Markdown files" t)
     (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
     ))
 
 ;; text-translator settings
