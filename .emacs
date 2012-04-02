@@ -472,6 +472,17 @@
     (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
     ))
 
+;; w3m-search settings
+(when (file-regular-p "~/.emacs.d/site-lisp/w3m-search.el")
+  (progn
+    (require 'w3m-search)
+    (add-to-list 'w3m-search-engine-alist
+                 '("alc"
+                   "http://eow.alc.co.jp/%s/UTF-8/"
+                   utf-8))
+    (add-to-list 'w3m-uri-replace-alist
+                 '("\`alc:" w3m-search-uri-replace "alc"))))
+
 ;; text-translator settings
 (when (file-directory-p "~/.emacs.d/site-lisp/text-translator")
   (progn
