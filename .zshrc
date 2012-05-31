@@ -184,6 +184,12 @@ function errno(){
     python -c "import os, errno; print errno.errorcode[$1], os.strerror($1)"
 }
 
+function git-ic(){
+    git init
+    git add .
+    git commit -a -m "initial commit"
+}
+
 function git-tar(){
     if [ $# != 2 ]; then
         echo "usage: git-tar prefix tag";
@@ -221,3 +227,12 @@ function urlescape () {
 function urlunescape () {
     perl -MURI::Escape -lne 'print uri_unescape($_)' <<< "$1";
 }
+
+function req() {
+    openssl req -new -days 365 -x509 -nodes -keyout key.pem -out cert.pem
+}
+
+if [ -f ~/.zshrc.local ]; then
+    . ~/.zshrc.local
+fi
+
