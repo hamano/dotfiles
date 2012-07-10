@@ -5,7 +5,7 @@
 (setq load-path (cons "~/.emacs.d/site-lisp" load-path))
 
 ;; User information
-(setq user-full-name "Tsukasa Hamano")
+(setq user-full-name "HAMANO Tsukasa")
 
 ;; Language settings
 (set-language-environment "Japanese")
