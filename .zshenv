@@ -55,6 +55,7 @@ export CVSEDITOR=vi
 export MALLOC_CHECK_=0
 #export MALLOC_TRACE=mtrace.log
 export GIT_PAGER=cat
+HOST=`hostname | sed 's/\..*//'`
 
 if [ -f ~/.zshenv.local ]; then
     . ~/.zshenv.local
