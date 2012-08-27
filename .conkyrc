@@ -48,7 +48,7 @@ own_window no
 own_window_class Conky
 own_window_type desktop
 stippled_borders 0
-update_interval 3.0
+update_interval 5.0
 uppercase no
 use_spacer none
 show_graph_scale no
@@ -68,7 +68,8 @@ ${color grey}CPU Usage:$color $cpu% ${cpubar 4}
 ${color grey}Processes:$color $processes  ${color grey}Running:$color $running_processes
 $hr
 ${color grey}File systems:
- / $color${fs_used /}/${fs_size /} ${fs_bar 6 /}
+ /    $color${fs_used /}/${fs_size /} ${fs_bar 6 /}
+ /srv $color${fs_used /srv}/${fs_size /srv} ${fs_bar 6 /srv}
 ${color grey}Networking:
 Up:$color ${upspeed eth0} ${color grey} - Down:$color ${downspeed eth0}
 $hr
