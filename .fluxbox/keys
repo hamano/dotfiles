@@ -98,44 +98,16 @@ Control Mod4 Right :TakeToNextWorkspace
 Control F1 :Workspace 1
 Control F2 :Workspace 2
 Control F3 :Workspace 3
-Control F4 :Workspace 4
-Control F5 :Workspace 5
-Control F6 :Workspace 6
-Control F7 :Workspace 7
-Control F8 :Workspace 8
-Control F9 :Workspace 9
-Control F10 :Workspace 10
-Control F11 :Workspace 11
-Control F12 :Workspace 12
-
-# send the current window to a specific workspace
-Mod4 F1 :SendToWorkspace 1
-Mod4 F2 :SendToWorkspace 2
-Mod4 F3 :SendToWorkspace 3
-Mod4 F4 :SendToWorkspace 4
-Mod4 F5 :SendToWorkspace 5
-Mod4 F6 :SendToWorkspace 6
-Mod4 F7 :SendToWorkspace 7
-Mod4 F8 :SendToWorkspace 8
-Mod4 F9 :SendToWorkspace 9
-Mod4 F10 :SendToWorkspace 10
-Mod4 F11 :SendToWorkspace 11
-Mod4 F12 :SendToWorkspace 12
-
-# send the current window and change to a specific workspace
-Control Mod4 F1 :TakeToWorkspace 1
-Control Mod4 F2 :TakeToWorkspace 2
-Control Mod4 F3 :TakeToWorkspace 3
-Control Mod4 F4 :TakeToWorkspace 4
-Control Mod4 F5 :TakeToWorkspace 5
-Control Mod4 F6 :TakeToWorkspace 6
-Control Mod4 F7 :TakeToWorkspace 7
-Control Mod4 F8 :TakeToWorkspace 8
-Control Mod4 F9 :TakeToWorkspace 9
-Control Mod4 F10 :TakeToWorkspace 10
-Control Mod4 F11 :TakeToWorkspace 11
-Control Mod4 F12 :TakeToWorkspace 12
 
 Mod3 v  :MaximizeVertical
 Mod3 f  :Fullscreen
+Mod3 h  :MoveTo 0 * Reft
+Mod3 j  :MoveTo * 0 Lower
+Mod3 k  :MoveTo * 0 Upper
+Mod3 l  :MoveTo 0 * Right
+
+
+Mod3 t  :ExecCommand LANG=ja_JP.UTF-8 urxvtc
+Mod3 w  :ExecCommand firefox
+Mod3 r  :ExecCommand fbrun
 
