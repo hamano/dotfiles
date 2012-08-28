@@ -9,7 +9,7 @@
 # Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
 
    [exec] (urxvtc) {LANG=ja_JP.UTF-8 urxvtc}
-   [exec] (urxvt) {urxvt}
+   [exec] (urxvt) {LANG=ja_JP.UTF-8 urxvt}
    [exec] (xterm) {xterm}
    [exec] (firefox) {firefox}
    [exec] (firefox -P) {firefox -P --no-remote}
