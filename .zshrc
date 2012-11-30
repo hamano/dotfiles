@@ -24,6 +24,8 @@ setopt checkjobs
 autoload -U colors
 colors
 
+stty -ixon -ixoff
+
 # bindkey
 bindkey -e
 bindkey ' ' magic-space
