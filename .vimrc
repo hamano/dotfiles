@@ -29,6 +29,7 @@ set viminfo='10,\"10
 set visualbell
 set wrap
 set scrolloff=4
+colorscheme pyte
 
 "set paste
 
@@ -49,13 +50,14 @@ if exists('&ambw')
 endif
 if exists('&cursorline')
     set cursorline
-"    hi cursorline cterm=none ctermbg=cyan
     hi cursorline cterm=none ctermbg=gray
 endif
 
 "highlight cursorline ctermbg=gray
 au BufEnter ?akefile* set noexpandtab
-"au BufEnter *.wiki setlocal nobomb
+au BufEnter *.mk set noexpandtab
+au BufEnter rules set noexpandtab
+
 " for git
 au BufEnter COMMIT_EDITMSG set fenc=utf-8
 
