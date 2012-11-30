@@ -1,6 +1,13 @@
 [user]
     name = HAMANO Tsukasa
 
+[color]
+    ui = auto
+
+[core]
+    pager = cat
+    editor = vi
+
 [alias]
     ci = commit -a
     co = checkout
