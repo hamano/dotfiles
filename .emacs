@@ -318,6 +318,11 @@
             (setq css-indent-offset 2)
             ))
 
+(add-hook 'dns-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            ))
+
 ;; auto-mode
 (setq auto-mode-alist
       (append '(
