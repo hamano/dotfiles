@@ -463,6 +463,31 @@
              ))
     ))
 
+
+;; jdee settings
+(when (file-directory-p "~/.emacs.d/site-lisp/jdee/lisp")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/cedet/common")
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/cedet/contrib")
+    (require 'cedet)
+    (setq load-path (cons "~/.emacs.d/site-lisp/jdee/lisp" load-path))
+    (autoload 'jde-mode "jde" "Java Development Environment for Emacs." t)
+    (setq jde-web-browser "firefox")
+    ;(setq jde-doc-dir "c:/jdk1.1/docs/")
+    ;(jde-db-set-source-paths "c:/jdk1.1/src/;c:/myjava/src/")
+    (jde-mode)
+    ;(jde-set-variables (jde-global-classpath
+    ;("/usr/local/android-sdk/platforms/android-4/android.jar")))
+
+    (defun jde-import-hoge()
+      (jde-import-all)
+      (jde-import-kill-extra-imports)
+      )
+    (add-hook 'jde-mode
+              (lambda ()
+                (local-set-key "\M-q" 'jde-import-hoge)))
+    ))
+
 ;; markdown settings
 (when (file-regular-p "~/.emacs.d/site-lisp/markdown-mode.el")
   (progn
