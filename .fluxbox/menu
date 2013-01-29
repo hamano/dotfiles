@@ -13,6 +13,7 @@
    [exec] (xterm) {xterm}
    [exec] (firefox) {firefox}
    [exec] (firefox -P) {firefox -P --no-remote}
+   [exec] (audacious) {audacious}
    [submenu] (Tools) {}
        [exec] (skype) {skype}
        [exec] (xvncviewer) {xvncviewer}
@@ -42,6 +43,7 @@
    [workspaces] (Workspaces)
    [reconfig] (Reconfigure)
    [restart] (Restart)
-   [exec] (xlock) {xlock -mode blank}
+   [exec] (Lock) {xscreensaver-command -lock}
+#   [exec] (Lock) {xlock -mode blank}
    [exit] (Exit)
 [end]

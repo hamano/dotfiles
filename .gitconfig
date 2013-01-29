@@ -1,5 +1,6 @@
 [user]
     name = HAMANO Tsukasa
+#    email = # move to .zshenv.local
 
 [color]
     ui = auto
