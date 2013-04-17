@@ -14,6 +14,7 @@
    [exec] (firefox) {firefox}
    [exec] (firefox -P) {firefox -P --no-remote}
    [exec] (pcmanfm) {pcmanfm}
+   [exec] (arandr) {arandr}
    [submenu] (Tools) {}
        [exec] (xvncviewer) {xvncviewer}
        [exec] (GDM flexiserver) {gdmflexiserver}

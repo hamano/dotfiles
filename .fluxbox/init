@@ -4,9 +4,16 @@
 session.menuFile:.fluxbox/menu
 session.keyFile: .fluxbox/keys
 session.styleFile: .fluxbox/styles/cuspy
+!session.styleOverlay: .fluxbox/overlay
 session.configVersion:	13
-session.screen0.toolbar.widthPercent: 100
+
 session.screen0.strftimeFormat: %b/%d(%a) %02k:%M
+session.screen0.workspaces: 3
+session.screen0.workspaceNames: 1,2,3
+
+session.screen0.toolbar.widthPercent: 100
 session.screen0.toolbar.tools: prevworkspace, workspacename, nextworkspace, iconbar, systemtray, clock
 session.screen0.toolbar.placement: TopCenter
-session.screen0.workspaceNames: 1,2,3,4
+
+session.screen0.titlebar.left: Stick Shade
+
