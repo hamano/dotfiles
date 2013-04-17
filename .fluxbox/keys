@@ -63,7 +63,7 @@ Mod3 2 :Workspace 2
 Mod3 3 :Workspace 3
 Mod3 4 :Workspace 4
 
-Mod3 space :RootMenu
+Mod3 space :ToggleCmd {RootMenu} {HideMenus}
 Mod3 r :Reconfigure
 Mod3 v :MaximizeVertical
 Mod3 f :Fullscreen
