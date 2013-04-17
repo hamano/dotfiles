@@ -13,9 +13,8 @@
    [exec] (xterm) {xterm}
    [exec] (firefox) {firefox}
    [exec] (firefox -P) {firefox -P --no-remote}
-   [exec] (audacious) {audacious}
+   [exec] (pcmanfm) {pcmanfm}
    [submenu] (Tools) {}
-       [exec] (skype) {skype}
        [exec] (xvncviewer) {xvncviewer}
        [exec] (GDM flexiserver) {gdmflexiserver}
        [exec] (GDM flexiserver in Xnest) {gdmflexiserver -n}
