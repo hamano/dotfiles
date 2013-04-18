@@ -24,10 +24,6 @@ OnTitlebar Mouse2 :Lower
 # right click on the titlebar for a menu of options
 OnTitlebar Mouse3 :WindowMenu
 
-# alt-tab
-Mod3 Tab :NextWindow {groups} (workspace=[current])
-Mod3 Shift Tab :PrevWindow {groups} (workspace=[current])
-
 # cycle through tabs in the current window
 Mod4 Tab :NextTab
 Mod4 Shift Tab :PrevTab
@@ -44,6 +40,10 @@ Mod1 space :WindowMenu
 
 # exit fluxbox
 #Control Mod1 Delete :Exit
+
+# change to previous/next window
+Mod3 Up :NextWindow {groups} (workspace=[current])
+Mod3 Down :PrevWindow {groups} (workspace=[current])
 
 # change to previous/next workspace
 Mod3 Left :PrevWorkspace
