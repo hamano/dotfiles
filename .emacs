@@ -564,6 +564,16 @@
                          (save-excursion (end-of-line) (point)) t)
                    (replace-match ""))
                  ))))
+
+  (add-hook 'mime-view-mode-hook
+            (lambda ()
+              (when (boundp 'show-trailing-whitespace)
+                (setq-default show-trailing-whitespace nil))))
+
+  (add-hook 'mime-edit-mode-hook
+            (lambda ()
+              (when (boundp 'show-trailing-whitespace)
+                (setq-default show-trailing-whitespace t))))
   )
 
 ;; mu-cite settings
