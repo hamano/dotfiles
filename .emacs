@@ -46,13 +46,14 @@
     (insert (format-time-string "%a %_d %b %Y %H:%M:%S %z"))))
 
 ;; Keybind settings
+(global-unset-key "\C-t") ; used by screen
+
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
-(global-set-key "\M-k" 'delete-line)
 (global-set-key "\C-x\C-u" 'undo) ; for continuous undo
-(global-set-key "\M-h"
+(global-set-key "\M-h" 'delete-trailing-whitespace)
+(global-set-key "\M-k"
                 (lambda () (interactive) (kill-line 0))) ; backward kill line
-(global-unset-key "\C-t") ; used by screen
 
 ;; Common settings
 (display-time)
@@ -96,13 +97,20 @@
   (set-face-background 'mode-line-inactive "brightblack"))
 
 ; highliting white space at EOL
-(defface ws-face-r-1 '((t (:background "cyan"))) nil)
-(defadvice font-lock-mode (before my-font-lock-mode ())
-  (defvar ws-face-r-1 'ws-face-r-1)
-  (font-lock-add-keywords
-   major-mode '(("[ 　\t\r]+$" 0 ws-face-r-1 append))))
-(ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
-(ad-activate 'font-lock-mode)
+(cond
+ ((= emacs-major-version 22)
+  (defface ws-face-r-1 '((t (:background "cyan"))) nil)
+  (defadvice font-lock-mode (before my-font-lock-mode ())
+    (defvar ws-face-r-1 'ws-face-r-1)
+    (font-lock-add-keywords
+     major-mode '(("[ 　\t\r]+$" 0 ws-face-r-1 append))))
+  (ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
+  (ad-activate 'font-lock-mode))
+ ((>= emacs-major-version 23)
+  (when (boundp 'show-trailing-whitespace)
+    (setq-default show-trailing-whitespace t)
+    (set-face-background 'trailing-whitespace "cyan"))))
+
 
 ;; Set East Asian Ambiguous Charactor Width
 (setq east-asian-ambiguous
@@ -1079,16 +1087,16 @@
     ))
 
 ;; markdown settings
-(when (file-regular-p "~/.emacs.d/site-lisp/markdown-mode.el")
+(when (locate-library "markdown-mode")
   (progn
-    (autoload 'markdown-mode "markdown-mode.el"
+    (autoload 'markdown-mode "markdown-mode"
       "Major mode for editing Markdown files" t)
     (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
     (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
     ))
 
 ;; w3m-search settings
-(when (file-regular-p "~/.emacs.d/site-lisp/w3m-search.el")
+(when (locate-library "w3m-search")
   (progn
     (require 'w3m-search)
     (add-to-list 'w3m-search-engine-alist
