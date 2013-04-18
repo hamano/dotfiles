@@ -706,7 +706,7 @@
 (when (= emacs-major-version 22)
   (utf-translate-cjk-set-unicode-range east-asian-ambiguous))
 
-(when (= emacs-major-version 23)
+(when (>= emacs-major-version 23)
   (while (char-table-parent char-width-table)
     (setq char-width-table (char-table-parent char-width-table)))
   (let ((table (make-char-table nil)))
