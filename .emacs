@@ -109,8 +109,485 @@
  ((>= emacs-major-version 23)
   (when (boundp 'show-trailing-whitespace)
     (setq-default show-trailing-whitespace t)
-    (set-face-background 'trailing-whitespace "cyan"))))
+    (set-face-background 'trailing-whitespace "gray"))))
 
+;; X settings
+(if window-system
+    (progn
+      (tool-bar-mode nil)
+      (mwheel-install)
+      ;; Font settings
+      (set-default-font "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
+      (set-face-font 'default
+                     "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
+      (set-face-font 'bold
+                     "-shinonome-gothic-bold-r-normal--12-*-*-*-*-*-*-*")
+      (set-face-font 'italic
+                     "-shinonome-gothic-medium-i-normal--12-*-*-*-*-*-*-*")
+      (set-face-font 'bold-italic
+                     "-shinonome-gothic-bold-i-normal--12-*-*-*-*-*-*-*")
+
+      ;; Clip board settings
+      (setq x-select-enable-clipboard t)
+      (if (file-exists-p "/usr/bin/xsel")
+          (progn
+            (setq interprogram-paste-function
+                  (lambda ()
+                    (shell-command-to-string "xsel -o")))
+            (setq interprogram-cut-function
+                  (lambda (text &optional rest)
+                    (let* ((process-connection-type nil)
+                           (proc
+                            (start-process "xsel" "*Messages*" "xsel" "-i")))
+                      (process-send-string proc text)
+                      (process-send-eof proc))))))
+      ))
+
+;; font-lock-mode
+(global-font-lock-mode t)
+
+;; fast-lock-mode
+;(setq font-lock-support-mode 'fast-lock-mode)
+;(setq fast-lock-cache-directories '("~/.emacs.d/flc"))
+;(setq temporary-file-directory "~/.emacs.d/tmp")
+
+;; mode-hook
+(add-hook 'text-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (outline-minor-mode 1)
+            ))
+
+(add-hook 'change-log-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            ))
+
+(add-hook 'shell-mode-hook
+          (lambda ()
+            (define-key shell-mode-map "\C-p" 'comint-previous-input)
+            (define-key shell-mode-map "\C-n" 'comint-next-input)
+            ))
+
+(add-hook 'sh-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            ))
+
+(add-hook 'asm-mode-hook
+          (lambda ()
+            (local-unset-key ";")
+            (setq tab-width 8)
+;            (setq tab-stop-list
+;                  '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76))
+            ))
+
+(add-hook 'c-mode-common-hook
+          (lambda ()
+            (c-set-style "k&r")
+            (c-toggle-auto-state -1)
+            (c-toggle-hungry-state 1)
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            (setq c-basic-offset 4)
+            (setq compilation-ask-about-save nil)
+            (setq compilation-window-height 6)
+            (setq compilation-scroll-output t)
+            (define-key c-mode-map "\C-c\C-m" 'manual-entry)
+            (define-key c-mode-map "\C-c\C-c" 'compile)
+            (define-key c-mode-map "\C-c\C-n" 'next-error)
+            (define-key c-mode-map "\C-c\C-f" 'ff-find-other-file)
+            (flymake-mode t)
+            ))
+
+(add-hook 'c++-mode-hook
+          (lambda ()
+            (setq compilation-window-height 6)
+            (setq compilation-scroll-output t)
+            (define-key c++-mode-map "\C-c\C-m" 'manual-entry)
+            (define-key c++-mode-map "\C-c\C-c" 'compile)
+            (define-key c++-mode-map "\C-c\C-n" 'next-error)
+            (define-key c++-mode-map "\C-c\C-f" 'ff-find-other-file)
+            (flymake-mode t)
+            ))
+
+(add-hook 'java-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq compilation-window-height 6)
+            (setq compilation-scroll-output t)
+            (define-key java-mode-map "\C-c\C-c" 'compile)
+            (define-key java-mode-map "\C-c\C-n" 'next-error)))
+
+(add-hook 'emacs-lisp-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (define-key emacs-lisp-mode-map "\C-c\C-d" 'checkdoc)
+            ))
+
+(add-hook 'lisp-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            ))
+
+(add-hook 'scheme-mode-hook
+          (lambda ()
+            (define-key scheme-mode-map "\C-c\C-r" 'scheme-other-window)
+            ))
+
+(add-hook 'perl-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            ))
+
+(add-hook 'ruby-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq ruby-deep-indent-paren-style nil)
+            ))
+
+(add-hook 'erlang-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            ))
+
+(add-hook 'javascript-mode-hook
+          (lambda ()
+            (setq js-indent-level 2)
+            (setq indent-tabs-mode t)
+            ))
+
+(add-hook 'js-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            (setq tab-width 4)
+            ))
+
+(add-hook 'lua-mode-hook
+          (lambda ()
+            (setq lua-indent-level 2)
+            (setq lua-electric-flag nil)
+            (abbrev-mode 0)
+            ))
+
+(add-hook 'python-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            (setq tab-width 4)
+            (setq indent-level 4)
+            (setq python-indent 4)
+;            (split-window-vertically)
+;            (run-python nil t)
+;            (save-excursion
+;              (save-selected-window
+;                (select-window (next-window))
+;                (set-window-buffer (selected-window) python-buffer)
+;                (enlarge-window (- 10 (window-height)))
+;                ))
+            ))
+
+(add-hook 'nxml-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            ))
+
+(add-hook 'css-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            (setq css-indent-offset 2)
+            ))
+
+(add-hook 'dns-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode t)
+            ))
+
+;; auto-mode
+(setq auto-mode-alist
+      (append '(
+                ("^Makefile" . makefile-mode)
+                ("^Changes" . change-log-mode)
+                ("\\.xsl$" . sgml-mode)
+                ("\\.fo$"  . sgml-mode)
+                ("\\.xs$" . c-mode)
+                ("\\.tt$" . html-mode)
+                ("\\.cst$" . html-mode)
+                ("\\.t$" . perl-mode)
+                ("\\.json$" . js-mode)
+                ) auto-mode-alist))
+
+;; hl-line
+(when (>= emacs-major-version 22)
+  (require 'hl-line)
+  (global-hl-line-mode)
+  (set-face-background 'hl-line "cyan")
+  ;(setq hl-line-face 'underline)
+  )
+
+;; flymake
+(when (>= emacs-major-version 22)
+  (require 'flymake)
+  (setenv "INCLUDE" "/mnt/usb/git/linux-2.6/include/")
+  (push '("\\.java$" nil) flymake-allowed-file-name-masks)
+  (defun flymake-c-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "gcc" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
+  (push '("\\.c$" flymake-c-init) flymake-allowed-file-name-masks)
+  (defun flymake-cc-init ()
+    (let* ((temp-file (flymake-init-create-temp-buffer-copy
+                       'flymake-create-temp-inplace))
+           (local-file (file-relative-name
+                        temp-file
+                        (file-name-directory buffer-file-name))))
+      (list "g++" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
+  (push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
+  (push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
+  (defun flymake-php-init () nil) ; disable flymake-php
+  )
+
+;; auto-insert
+(add-hook 'find-file-hooks 'auto-insert)
+(setq auto-insert-query t)
+(setq auto-insert-directory "~/.emacs.d/tmpl/")
+(setq auto-insert-alist
+      (append '(
+                (c-mode . "gpl.c")
+                (cc-mode . "gpl.c")
+                (sh-mode . "templ.sh")
+                (makefile-mode . "templ.mk")
+                (make-mode . "templ.mk")
+                (html-mode . "strict.html")
+                )))
+
+;; w3m settings
+(when (file-directory-p "~/.emacs.d/site-lisp/emacs-w3m")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-w3m")
+    (require 'w3m-load)
+    (require 'mime-w3m)))
+
+;; lookup settings
+(when (file-directory-p "~/.emacs.d/site-lisp/lookup/lisp")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/lookup/lisp")
+    (autoload 'lookup "lookup" nil t)
+    (autoload 'lookup-region "lookup" nil t)
+    (autoload 'lookup-pattern "lookup" nil t)
+    (setq lookup-search-agents '((ndtp "dict") (ndspell)))))
+
+;; slime settings
+(when (file-directory-p "~/.emacs.d/site-lisp/slime")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/slime")
+    (require 'slime)
+    (setq inferior-lisp-program "sbcl")
+    (setq slime-net-coding-system 'utf-8-unix)
+    (add-hook 'lisp-mode-hook
+              (lambda ()
+                (slime-mode t)
+                (show-paren-mode)))))
+
+;; gosh settings
+(setq scheme-program-name "gosh")
+(defun scheme-other-window ()
+  "Run scheme on other window"
+  (interactive)
+  (switch-to-buffer-other-window
+   (get-buffer-create "*scheme*"))
+  (run-scheme scheme-program-name))
+
+;; erlang-mode settings
+(when (file-directory-p "~/.emacs.d/site-lisp/erlang")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
+    (require 'erlang-start)))
+
+;; go settings
+(when (file-directory-p "~/.emacs.d/site-lisp/go")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/go")
+    (require 'go-mode-load)
+    (setq default-tab-width 4)
+    ))
+
+;; lua-mode settings
+(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+
+;; php-mode settings
+(when (file-directory-p "~/.emacs.d/site-lisp/php-mode")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/php-mode")
+    (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
+    (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
+    ))
+
+;; python-mode settings
+;(autoload 'python-mode "python-mode" "Python editing mode." t)
+;(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+;(setq interpreter-mode-alist (cons '("python" . python-mode)
+;				   interpreter-mode-alist))
+
+;; js2 settings
+(when (file-regular-p "~/.emacs.d/site-lisp/js2.el")
+  (progn
+    (autoload 'js2-mode "js2" nil t)
+    (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+    (add-hook 'js2-mode-hook
+              '(lambda ()
+;             (setq c-basic-offset 4)
+             (setq js2-basic-offset 4)
+             (setq tab-width 4)
+             (setq indent-tabs-mode t)
+;             (setq js2-cleanup-whitespace nil)
+             ))
+    ))
+
+
+;; jdee settings
+(when (file-directory-p "~/.emacs.d/site-lisp/jdee/lisp")
+  (progn
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/cedet/common")
+    (add-to-list 'load-path "~/.emacs.d/site-lisp/cedet/contrib")
+    (require 'cedet)
+    (setq load-path (cons "~/.emacs.d/site-lisp/jdee/lisp" load-path))
+    (autoload 'jde-mode "jde" "Java Development Environment for Emacs." t)
+    (setq jde-web-browser "firefox")
+    ;(setq jde-doc-dir "c:/jdk1.1/docs/")
+    ;(jde-db-set-source-paths "c:/jdk1.1/src/;c:/myjava/src/")
+;    (jde-mode)
+    ;(jde-set-variables (jde-global-classpath
+    ;("/usr/local/android-sdk/platforms/android-4/android.jar")))
+
+    (defun jde-import-hoge()
+      (jde-import-all)
+      (jde-import-kill-extra-imports)
+      )
+    (add-hook 'jde-mode
+              (lambda ()
+                (local-set-key "\M-q" 'jde-import-hoge)))
+    ))
+
+;; markdown settings
+(when (locate-library "markdown-mode")
+  (progn
+    (autoload 'markdown-mode "markdown-mode"
+      "Major mode for editing Markdown files" t)
+    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+    ))
+
+;; w3m-search settings
+(when (locate-library "w3m-search")
+  (progn
+    (require 'w3m-search)
+    (add-to-list 'w3m-search-engine-alist
+                 '("alc"
+                   "http://eow.alc.co.jp/%s/UTF-8/"
+                   utf-8))
+    (add-to-list 'w3m-uri-replace-alist
+                 '("\`alc:" w3m-search-uri-replace "alc"))))
+
+;; text-translator settings
+(when (file-directory-p "~/.emacs.d/site-lisp/text-translator")
+  (progn
+    (setq load-path (cons "~/.emacs.d/site-lisp/text-translator" load-path))
+    (require 'text-translator)
+    (global-set-key "\C-x\M-t" 'text-translator)
+    (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
+
+;; gnus settings
+(when (file-directory-p "~/.emacs.d/site-lisp/gnus/lisp")
+  (setq load-path (cons "~/.emacs.d/site-lisp/gnus/lisp" load-path))
+  (autoload 'gnus "gnus" nil t))
+
+;; wanderlust settings
+(when (file-directory-p "~/.emacs.d/site-lisp/wl")
+  (setq load-path (cons "~/.emacs.d/site-lisp/apel" load-path))
+  (setq load-path (cons "~/.emacs.d/site-lisp/flim" load-path))
+  (setq load-path (cons "~/.emacs.d/site-lisp/semi" load-path))
+  (setq load-path (cons "~/.emacs.d/site-lisp/wl/wl" load-path))
+  (setq load-path (cons "~/.emacs.d/site-lisp/wl/elmo" load-path))
+  (load "mime-setup")
+  (autoload 'wl "wl" "Wanderlust" t)
+  (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
+  (setq wl-icon-directory "~/.emacs.d/site-lisp/wl/etc/icons")
+  (setq mime-header-accept-quoted-encoded-words t)
+  (setq wl-draft-buffer-style 'split)
+  (setq wl-auto-select-first t)
+  ; execute fetchmail
+  (defun wl-fetchmail()
+    (interactive)
+    (message "Getting by fetchmail...")
+    (call-process "fetchmail" nil nil nil)
+    (message "Getting by fetchmail...done")
+    (wl-folder-check-all))
+  (add-hook 'wl-folder-mode-hook
+            (lambda ()
+              (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)))
+  ; modified wl face
+  (defun my-wl-set-face (face spec)
+    (make-face face)
+    (cond ((fboundp 'face-spec-set)
+           (face-spec-set face spec))
+          (t
+           (wl-declare-face face spec))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-2
+                  '((t (:foreground "darkblue"))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-3
+                  '((t (:foreground "dodgerblue"))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-6
+                  '((t (:foreground "darkred"))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-7
+                  '((t (:foreground "SaddleBrown"))))
+  ; encode non-ASCII atatched filename
+  (eval-after-load "std11"
+  '(defadvice std11-wrap-as-quoted-string
+     (before encode-string activate)
+     "Encode a string."
+     (require 'eword-encode)
+     (ad-set-arg 0 (eword-encode-string (ad-get-arg 0)))))
+
+  (add-hook 'wl-draft-reply-hook
+            (function
+             (lambda ()
+               (save-excursion
+                 (beginning-of-buffer)
+                 (re-search-forward "^Subject: " (point-max) t)
+                 (while (re-search-forward
+                         "\\*\\*\\*\\(SPAM\\|UNCHECKED\\)\\*\\*\\* *"
+                         (save-excursion (end-of-line) (point)) t)
+                   (replace-match ""))
+                 ))))
+  )
+
+;; mu-cite settings
+(when (file-directory-p "~/.emacs.d/site-lisp/mu-cite")
+  (setq load-path (cons "~/.emacs.d/site-lisp/mu-cite" load-path))
+  (autoload 'mu-cite-original "mu-cite" nil t)
+  (add-hook 'mail-citation-hook (function mu-cite-original))
+  (setq mu-cite-prefix-format '("> "))
+  (setq mu-cite-cited-prefix-regexp "\\(^[^ \t\n<>]+>+[ \t]*\\)")
+  (setq mu-cite-top-format
+        '(
+          "\nAt " date ",\n"
+          from " wrote:\n"
+          "> \n")))
+
+;; navi2ch settings
+(when (file-directory-p "~/.emacs.d/site-lisp/navi2ch")
+  (progn
+    (setq load-path (cons "~/.emacs.d/site-lisp/navi2ch" load-path))
+    (autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
+    (setq navi2ch-list-bbstable-url "http://menu.2ch.net/bbsmenu.html")
+    ;(eval-after-load "navi2ch" '(global-hl-line-mode))
+    (setq navi2ch-article-auto-range nil)
+    (setq navi2ch-message-mail-address "sage")))
 
 ;; Set East Asian Ambiguous Charactor Width
 (setq east-asian-ambiguous
@@ -723,484 +1200,6 @@
     (optimize-char-table table)
     (set-char-table-parent table char-width-table)
     (setq char-width-table table)))
-
-;; X settings
-(if window-system
-    (progn
-      (tool-bar-mode nil)
-      (mwheel-install)
-      ;; Font settings
-      (set-default-font "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
-      (set-face-font 'default
-                     "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
-      (set-face-font 'bold
-                     "-shinonome-gothic-bold-r-normal--12-*-*-*-*-*-*-*")
-      (set-face-font 'italic
-                     "-shinonome-gothic-medium-i-normal--12-*-*-*-*-*-*-*")
-      (set-face-font 'bold-italic
-                     "-shinonome-gothic-bold-i-normal--12-*-*-*-*-*-*-*")
-
-      ;; Clip board settings
-      (setq x-select-enable-clipboard t)
-      (if (file-exists-p "/usr/bin/xsel")
-          (progn
-            (setq interprogram-paste-function
-                  (lambda ()
-                    (shell-command-to-string "xsel -o")))
-            (setq interprogram-cut-function
-                  (lambda (text &optional rest)
-                    (let* ((process-connection-type nil)
-                           (proc
-                            (start-process "xsel" "*Messages*" "xsel" "-i")))
-                      (process-send-string proc text)
-                      (process-send-eof proc))))))
-      ))
-
-;; font-lock-mode
-(global-font-lock-mode t)
-
-;; fast-lock-mode
-;(setq font-lock-support-mode 'fast-lock-mode)
-;(setq fast-lock-cache-directories '("~/.emacs.d/flc"))
-;(setq temporary-file-directory "~/.emacs.d/tmp")
-
-;; mode-hook
-(add-hook 'text-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            (outline-minor-mode 1)
-            ))
-
-(add-hook 'change-log-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode t)
-            ))
-
-(add-hook 'shell-mode-hook
-          (lambda ()
-            (define-key shell-mode-map "\C-p" 'comint-previous-input)
-            (define-key shell-mode-map "\C-n" 'comint-next-input)
-            ))
-
-(add-hook 'sh-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            (setq tab-width 4)
-            ))
-
-(add-hook 'asm-mode-hook
-          (lambda ()
-            (local-unset-key ";")
-            (setq tab-width 8)
-;            (setq tab-stop-list
-;                  '(4 8 12 16 20 24 28 32 36 40 44 48 52 56 60 64 68 72 76))
-            ))
-
-(add-hook 'c-mode-common-hook
-          (lambda ()
-            (c-set-style "k&r")
-            (c-toggle-auto-state -1)
-            (c-toggle-hungry-state 1)
-            (setq indent-tabs-mode nil)
-            (setq tab-width 4)
-            (setq c-basic-offset 4)
-            (setq compilation-ask-about-save nil)
-            (setq compilation-window-height 6)
-            (setq compilation-scroll-output t)
-            (define-key c-mode-map "\C-c\C-m" 'manual-entry)
-            (define-key c-mode-map "\C-c\C-c" 'compile)
-            (define-key c-mode-map "\C-c\C-n" 'next-error)
-            (define-key c-mode-map "\C-c\C-f" 'ff-find-other-file)
-            (flymake-mode t)
-            ))
-
-(add-hook 'c++-mode-hook
-          (lambda ()
-            (setq compilation-window-height 6)
-            (setq compilation-scroll-output t)
-            (define-key c++-mode-map "\C-c\C-m" 'manual-entry)
-            (define-key c++-mode-map "\C-c\C-c" 'compile)
-            (define-key c++-mode-map "\C-c\C-n" 'next-error)
-            (define-key c++-mode-map "\C-c\C-f" 'ff-find-other-file)
-            (flymake-mode t)
-            ))
-
-(add-hook 'java-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            (setq compilation-window-height 6)
-            (setq compilation-scroll-output t)
-            (define-key java-mode-map "\C-c\C-c" 'compile)
-            (define-key java-mode-map "\C-c\C-n" 'next-error)))
-
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            (define-key emacs-lisp-mode-map "\C-c\C-d" 'checkdoc)
-            ))
-
-(add-hook 'lisp-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            ))
-
-(add-hook 'scheme-mode-hook
-          (lambda ()
-            (define-key scheme-mode-map "\C-c\C-r" 'scheme-other-window)
-            ))
-
-(add-hook 'perl-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            ))
-
-(add-hook 'ruby-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            (setq ruby-deep-indent-paren-style nil)
-            ))
-
-(add-hook 'erlang-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode t)
-            ))
-
-(add-hook 'javascript-mode-hook
-          (lambda ()
-            (setq js-indent-level 2)
-            (setq indent-tabs-mode t)
-            ))
-
-(add-hook 'js-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode t)
-            (setq tab-width 4)
-            ))
-
-(add-hook 'lua-mode-hook
-          (lambda ()
-            (setq lua-indent-level 2)
-            (setq lua-electric-flag nil)
-            (abbrev-mode 0)
-            ))
-
-(add-hook 'python-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            (setq tab-width 4)
-            (setq indent-level 4)
-            (setq python-indent 4)
-;            (split-window-vertically)
-;            (run-python nil t)
-;            (save-excursion
-;              (save-selected-window
-;                (select-window (next-window))
-;                (set-window-buffer (selected-window) python-buffer)
-;                (enlarge-window (- 10 (window-height)))
-;                ))
-            ))
-
-(add-hook 'nxml-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            ))
-
-(add-hook 'css-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode t)
-            (setq css-indent-offset 2)
-            ))
-
-(add-hook 'dns-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode t)
-            ))
-
-;; auto-mode
-(setq auto-mode-alist
-      (append '(
-                ("^Makefile" . makefile-mode)
-                ("^Changes" . change-log-mode)
-                ("\\.xsl$" . sgml-mode)
-                ("\\.fo$"  . sgml-mode)
-                ("\\.xs$" . c-mode)
-                ("\\.tt$" . html-mode)
-                ("\\.cst$" . html-mode)
-                ("\\.t$" . perl-mode)
-                ("\\.json$" . js-mode)
-                ) auto-mode-alist))
-
-;; hl-line
-(when (>= emacs-major-version 22)
-  (require 'hl-line)
-  (global-hl-line-mode)
-  (set-face-background 'hl-line "cyan")
-  ;(setq hl-line-face 'underline)
-  )
-
-;; flymake
-(when (>= emacs-major-version 22)
-  (require 'flymake)
-  (setenv "INCLUDE" "/mnt/usb/git/linux-2.6/include/")
-  (push '("\\.java$" nil) flymake-allowed-file-name-masks)
-  (defun flymake-c-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "gcc" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
-  (push '("\\.c$" flymake-c-init) flymake-allowed-file-name-masks)
-  (defun flymake-cc-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "g++" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
-  (push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
-  (push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
-  (defun flymake-php-init () nil) ; disable flymake-php
-  )
-
-;; auto-insert
-(add-hook 'find-file-hooks 'auto-insert)
-(setq auto-insert-query t)
-(setq auto-insert-directory "~/.emacs.d/tmpl/")
-(setq auto-insert-alist
-      (append '(
-                (c-mode . "gpl.c")
-                (cc-mode . "gpl.c")
-                (sh-mode . "templ.sh")
-                (makefile-mode . "templ.mk")
-                (make-mode . "templ.mk")
-                (html-mode . "strict.html")
-                )))
-
-;; w3m settings
-(when (file-directory-p "~/.emacs.d/site-lisp/emacs-w3m")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-w3m")
-    (require 'w3m-load)
-    (require 'mime-w3m)))
-
-;; lookup settings
-(when (file-directory-p "~/.emacs.d/site-lisp/lookup/lisp")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/lookup/lisp")
-    (autoload 'lookup "lookup" nil t)
-    (autoload 'lookup-region "lookup" nil t)
-    (autoload 'lookup-pattern "lookup" nil t)
-    (setq lookup-search-agents '((ndtp "dict") (ndspell)))))
-
-;; slime settings
-(when (file-directory-p "~/.emacs.d/site-lisp/slime")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/slime")
-    (require 'slime)
-    (setq inferior-lisp-program "sbcl")
-    (setq slime-net-coding-system 'utf-8-unix)
-    (add-hook 'lisp-mode-hook
-              (lambda ()
-                (slime-mode t)
-                (show-paren-mode)))))
-
-;; gosh settings
-(setq scheme-program-name "gosh")
-(defun scheme-other-window ()
-  "Run scheme on other window"
-  (interactive)
-  (switch-to-buffer-other-window
-   (get-buffer-create "*scheme*"))
-  (run-scheme scheme-program-name))
-
-;; erlang-mode settings
-(when (file-directory-p "~/.emacs.d/site-lisp/erlang")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
-    (require 'erlang-start)))
-
-;; go settings
-(when (file-directory-p "~/.emacs.d/site-lisp/go")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/go")
-    (require 'go-mode-load)
-    (setq default-tab-width 4)
-    ))
-
-;; lua-mode settings
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
-
-;; php-mode settings
-(when (file-directory-p "~/.emacs.d/site-lisp/php-mode")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/php-mode")
-    (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
-    (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-    ))
-
-;; python-mode settings
-;(autoload 'python-mode "python-mode" "Python editing mode." t)
-;(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-;(setq interpreter-mode-alist (cons '("python" . python-mode)
-;				   interpreter-mode-alist))
-
-;; js2 settings
-(when (file-regular-p "~/.emacs.d/site-lisp/js2.el")
-  (progn
-    (autoload 'js2-mode "js2" nil t)
-    (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-    (add-hook 'js2-mode-hook
-              '(lambda ()
-;             (setq c-basic-offset 4)
-             (setq js2-basic-offset 4)
-             (setq tab-width 4)
-             (setq indent-tabs-mode t)
-;             (setq js2-cleanup-whitespace nil)
-             ))
-    ))
-
-
-;; jdee settings
-(when (file-directory-p "~/.emacs.d/site-lisp/jdee/lisp")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/cedet/common")
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/cedet/contrib")
-    (require 'cedet)
-    (setq load-path (cons "~/.emacs.d/site-lisp/jdee/lisp" load-path))
-    (autoload 'jde-mode "jde" "Java Development Environment for Emacs." t)
-    (setq jde-web-browser "firefox")
-    ;(setq jde-doc-dir "c:/jdk1.1/docs/")
-    ;(jde-db-set-source-paths "c:/jdk1.1/src/;c:/myjava/src/")
-;    (jde-mode)
-    ;(jde-set-variables (jde-global-classpath
-    ;("/usr/local/android-sdk/platforms/android-4/android.jar")))
-
-    (defun jde-import-hoge()
-      (jde-import-all)
-      (jde-import-kill-extra-imports)
-      )
-    (add-hook 'jde-mode
-              (lambda ()
-                (local-set-key "\M-q" 'jde-import-hoge)))
-    ))
-
-;; markdown settings
-(when (locate-library "markdown-mode")
-  (progn
-    (autoload 'markdown-mode "markdown-mode"
-      "Major mode for editing Markdown files" t)
-    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-    (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
-    ))
-
-;; w3m-search settings
-(when (locate-library "w3m-search")
-  (progn
-    (require 'w3m-search)
-    (add-to-list 'w3m-search-engine-alist
-                 '("alc"
-                   "http://eow.alc.co.jp/%s/UTF-8/"
-                   utf-8))
-    (add-to-list 'w3m-uri-replace-alist
-                 '("\`alc:" w3m-search-uri-replace "alc"))))
-
-;; text-translator settings
-(when (file-directory-p "~/.emacs.d/site-lisp/text-translator")
-  (progn
-    (setq load-path (cons "~/.emacs.d/site-lisp/text-translator" load-path))
-    (require 'text-translator)
-    (global-set-key "\C-x\M-t" 'text-translator)
-    (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
-
-;; gnus settings
-(when (file-directory-p "~/.emacs.d/site-lisp/gnus/lisp")
-  (setq load-path (cons "~/.emacs.d/site-lisp/gnus/lisp" load-path))
-  (autoload 'gnus "gnus" nil t))
-
-;; wanderlust settings
-(when (file-directory-p "~/.emacs.d/site-lisp/wl")
-  (setq load-path (cons "~/.emacs.d/site-lisp/apel" load-path))
-  (setq load-path (cons "~/.emacs.d/site-lisp/flim" load-path))
-  (setq load-path (cons "~/.emacs.d/site-lisp/semi" load-path))
-  (setq load-path (cons "~/.emacs.d/site-lisp/wl/wl" load-path))
-  (setq load-path (cons "~/.emacs.d/site-lisp/wl/elmo" load-path))
-  (load "mime-setup")
-  (autoload 'wl "wl" "Wanderlust" t)
-  (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
-  (setq wl-icon-directory "~/.emacs.d/site-lisp/wl/etc/icons")
-  (setq mime-header-accept-quoted-encoded-words t)
-  (setq wl-draft-buffer-style 'split)
-  (setq wl-auto-select-first t)
-  ; execute fetchmail
-  (defun wl-fetchmail()
-    (interactive)
-    (message "Getting by fetchmail...")
-    (call-process "fetchmail" nil nil nil)
-    (message "Getting by fetchmail...done")
-    (wl-folder-check-all))
-  (add-hook 'wl-folder-mode-hook
-            (lambda ()
-              (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)))
-  ; modified wl face
-  (defun my-wl-set-face (face spec)
-    (make-face face)
-    (cond ((fboundp 'face-spec-set)
-           (face-spec-set face spec))
-          (t
-           (wl-declare-face face spec))))
-  (my-wl-set-face 'wl-highlight-message-cited-text-2
-                  '((t (:foreground "darkblue"))))
-  (my-wl-set-face 'wl-highlight-message-cited-text-3
-                  '((t (:foreground "dodgerblue"))))
-  (my-wl-set-face 'wl-highlight-message-cited-text-6
-                  '((t (:foreground "darkred"))))
-  (my-wl-set-face 'wl-highlight-message-cited-text-7
-                  '((t (:foreground "SaddleBrown"))))
-  ; encode non-ASCII atatched filename
-  (eval-after-load "std11"
-  '(defadvice std11-wrap-as-quoted-string
-     (before encode-string activate)
-     "Encode a string."
-     (require 'eword-encode)
-     (ad-set-arg 0 (eword-encode-string (ad-get-arg 0)))))
-
-  (add-hook 'wl-draft-reply-hook
-            (function
-             (lambda ()
-               (save-excursion
-                 (beginning-of-buffer)
-                 (re-search-forward "^Subject: " (point-max) t)
-                 (while (re-search-forward
-                         "\\*\\*\\*\\(SPAM\\|UNCHECKED\\)\\*\\*\\* *"
-                         (save-excursion (end-of-line) (point)) t)
-                   (replace-match ""))
-                 ))))
-  )
-
-;; mu-cite settings
-(when (file-directory-p "~/.emacs.d/site-lisp/mu-cite")
-  (setq load-path (cons "~/.emacs.d/site-lisp/mu-cite" load-path))
-  (autoload 'mu-cite-original "mu-cite" nil t)
-  (add-hook 'mail-citation-hook (function mu-cite-original))
-  (setq mu-cite-prefix-format '("> "))
-  (setq mu-cite-cited-prefix-regexp "\\(^[^ \t\n<>]+>+[ \t]*\\)")
-  (setq mu-cite-top-format
-        '(
-          "\nAt " date ",\n"
-          from " wrote:\n"
-          "> \n")))
-
-;; navi2ch settings
-(when (file-directory-p "~/.emacs.d/site-lisp/navi2ch")
-  (progn
-    (setq load-path (cons "~/.emacs.d/site-lisp/navi2ch" load-path))
-    (autoload 'navi2ch "navi2ch" "Navigator for 2ch for Emacs" t)
-    (setq navi2ch-list-bbstable-url "http://menu.2ch.net/bbsmenu.html")
-    ;(eval-after-load "navi2ch" '(global-hl-line-mode))
-    (setq navi2ch-article-auto-range nil)
-    (setq navi2ch-message-mail-address "sage")))
 
 ;; Load custom settings
 (when (file-exists-p "~/.emacs.d/custom.el")
