@@ -58,6 +58,7 @@ alias ll='ls -l'
 alias la='ls -A'
 alias l='ls -CF'
 alias j='jobs'
+alias f='find'
 alias SL='env sl'
 alias sl='ls'
 alias u='uname -a'
@@ -68,11 +69,12 @@ alias screen='screen -xR'
 alias x509='openssl x509'
 alias s_client='openssl s_client'
 alias s_server='openssl s_server'
-alias w3m='w3m -no-mouse'
-UA_ZAURUS="Mozilla/4.08 (PDA; SL-C3000/1.0;Qtopia/1.4.9) NetFront/3.1 "
+alias w3m='w3m-android -no-mouse'
+UA_ZAURUS="Mozilla/4.08 (PDA; SL-C3000/1.0;Qtopia/1.4.9) NetFront/3.1"
 alias w3m-zaurus="w3m -header \"User-Agent: $UA_ZAURUS\""
-UA_WS003="Opera/8.50 (Windows CE; U) [SHARP/WS003SH; PPC; 480x640]"
-alias w3m-wzero3="w3m -header \"User-Agent: $UA_ZAURUS\""
+UA_ANDROID="Mozilla/5.0 (Linux; U; Android 4.0.1)"
+alias w3m-android="w3m -header \"User-Agent: $UA_ANDROID\""
+
 alias urxvtf='urxvt -g 40x20 \
 -fn "xft:vl.pgothic:size=20:antialias=true" \
 -fb "xft:vl.pgothic:weight=bold:size=20:antialias=true"'
@@ -89,6 +91,7 @@ alias svn-eliminate='test -d .svn && find ./ -type d -name .svn | xargs rm -rfv'
 alias qwerty='xmodmap ~/.Xmodmap.qwerty ~/.Xmodmap'
 alias dvorak='xmodmap ~/.Xmodmap.dvorak ~/.Xmodmap'
 alias aoeui=qwerty
+alias webarchive="wget -rkpN"
 
 if [ "${SYSNAME}" = "SunOS" ]; then
     alias ec='emacs-clean \( -type d -a \! -name . -prune \) -o -type f'
