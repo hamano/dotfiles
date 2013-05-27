@@ -501,6 +501,10 @@
     (global-set-key "\C-x\M-t" 'text-translator)
     (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
 
+;; google-translate settings
+(when (locate-library "google-translate")
+  (require 'google-translate))
+
 ;; gnus settings
 (when (file-directory-p "~/.emacs.d/site-lisp/gnus/lisp")
   (setq load-path (cons "~/.emacs.d/site-lisp/gnus/lisp" load-path))
@@ -527,9 +531,12 @@
     (call-process "fetchmail" nil nil nil)
     (message "Getting by fetchmail...done")
     (wl-folder-check-all))
+
   (add-hook 'wl-folder-mode-hook
             (lambda ()
-              (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)))
+              (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)
+              (define-key wl-summary-mode-map "\M-t" nil)))
+
   ; modified wl face
   (defun my-wl-set-face (face spec)
     (make-face face)
@@ -554,16 +561,15 @@
      (ad-set-arg 0 (eword-encode-string (ad-get-arg 0)))))
 
   (add-hook 'wl-draft-reply-hook
-            (function
-             (lambda ()
-               (save-excursion
-                 (beginning-of-buffer)
-                 (re-search-forward "^Subject: " (point-max) t)
-                 (while (re-search-forward
-                         "\\*\\*\\*\\(SPAM\\|UNCHECKED\\)\\*\\*\\* *"
-                         (save-excursion (end-of-line) (point)) t)
-                   (replace-match ""))
-                 ))))
+            (lambda ()
+              (save-excursion
+                (beginning-of-buffer)
+                (re-search-forward "^Subject: " (point-max) t)
+                (while (re-search-forward
+                        "\\*\\*\\*\\(SPAM\\|UNCHECKED\\)\\*\\*\\* *"
+                        (save-excursion (end-of-line) (point)) t)
+                  (replace-match ""))
+                )))
 
   (add-hook 'mime-view-mode-hook
             (lambda ()
