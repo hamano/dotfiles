@@ -1,0 +1,40 @@
+#!/bin/sh
+#
+# fluxbox startup-script:
+#
+# Lines starting with a '#' are ignored.
+
+# Change your keymap:
+#xmodmap "/home/hamano/.Xmodmap"
+
+# Applications you want to run with fluxbox.
+# MAKE SURE THAT APPS THAT KEEP RUNNING HAVE AN ''&'' AT THE END.
+#
+# unclutter -idle 2 &
+# wmnd &
+# wmsmixer -w &
+# idesk &
+#/usr/bin/fbpanel &
+/usr/bin/xscreensaver -no-splash &
+/usr/bin/xfce4-power-manager
+/usr/bin/volumeicon &
+/usr/bin/nm-applet &
+/usr/lib/notification-daemon/notification-daemon &
+/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
+/usr/bin/dropbox start
+/usr/bin/urxvtd &
+/usr/bin/conky &
+
+#
+# Debian-local change:
+#   - fbautostart has been added with a quick hack to check to see if it
+#     exists. If it does, we'll start it up by default.
+which fbautostart > /dev/null
+if [ $? -eq 0 ]; then
+    fbautostart
+fi
+
+# And last but not least we start fluxbox.
+# Because it is the last app you have to run it with ''exec'' before it.
+
+exec fluxbox -log .fluxbox/log

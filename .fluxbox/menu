@@ -10,7 +10,7 @@
 
    [exec] (urxvtc) {LANG=ja_JP.UTF-8 urxvtc}
    [exec] (urxvt) {LANG=ja_JP.UTF-8 urxvt}
-   [exec] (xterm) {xterm}
+   [exec] (xterm) {LANG=ja_JP.UTF-8 xterm}
    [exec] (firefox) {firefox}
    [exec] (firefox -P) {firefox -P --no-remote}
    [exec] (pcmanfm) {pcmanfm}
