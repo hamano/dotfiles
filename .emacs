@@ -579,7 +579,7 @@
   (add-hook 'mime-edit-mode-hook
             (lambda ()
               (when (boundp 'show-trailing-whitespace)
-                (setq-default show-trailing-whitespace t))))
+                (setq-default show-trailing-whitespace nil))))
   )
 
 ;; mu-cite settings
