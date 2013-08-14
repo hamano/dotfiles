@@ -535,6 +535,7 @@
   (add-hook 'wl-folder-mode-hook
             (lambda ()
               (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)
+              (define-key wl-folder-mode-map "\M-t" nil)
               (define-key wl-summary-mode-map "\M-t" nil)))
 
   ; modified wl face
