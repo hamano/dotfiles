@@ -532,6 +532,12 @@
     (message "Getting by fetchmail...done")
     (wl-folder-check-all))
 
+  (eval-after-load "mcharset"
+    '(setq charsets-mime-charset-alist
+           (delq
+            (rassq 'iso-2022-jp-2 charsets-mime-charset-alist)
+            charsets-mime-charset-alist)))
+
   (add-hook 'wl-folder-mode-hook
             (lambda ()
               (define-key wl-folder-mode-map "\M-i" 'wl-fetchmail)
