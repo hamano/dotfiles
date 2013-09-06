@@ -566,7 +566,7 @@
      (before encode-string activate)
      "Encode a string."
      (require 'eword-encode)
-     (ad-set-arg 0 (eword-encode-string (ad-get-arg 0)))))
+     (ad-set-arg 0 (or (eword-encode-string (ad-get-arg 0)) "" ))))
 
   (add-hook 'wl-draft-reply-hook
             (lambda ()
