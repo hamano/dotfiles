@@ -313,6 +313,7 @@
                 ("\\.xs$" . c-mode)
                 ("\\.tt$" . html-mode)
                 ("\\.cst$" . html-mode)
+                ("\\.mak$" . html-mode)
                 ("\\.t$" . perl-mode)
                 ("\\.json$" . js-mode)
                 ) auto-mode-alist))
