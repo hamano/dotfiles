@@ -534,11 +534,12 @@
     (message "Getting by fetchmail...done")
     (wl-folder-check-all))
 
-  (eval-after-load "mcharset"
-    '(setq charsets-mime-charset-alist
-           (delq
-            (rassq 'iso-2022-jp-2 charsets-mime-charset-alist)
-            charsets-mime-charset-alist)))
+  (setq-default mime-charset-for-write 'utf-8)
+  (setq-default mime-transfer-level 8)
+  (setq charsets-mime-charset-alist
+        '(((ascii) . us-ascii)
+          ((unicode) . utf-8)
+          ))
 
   (add-hook 'wl-folder-mode-hook
             (lambda ()
