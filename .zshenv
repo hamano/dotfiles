@@ -32,6 +32,7 @@ fi
 case $TERM in
     'rxvt')
         export LANG=ja_JP.UTF-8;
+        export LC_CTYPE=ja_JP.UTF-8;
         ;;
     'rxvt-unicode')
         export LANG=ja_JP.UTF-8;
