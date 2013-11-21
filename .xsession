@@ -3,6 +3,9 @@
 #export LANG="C"
 export LANG="ja_JP.UTF-8"
 
+# for xdg-settings
+export DE=xfce
+
 #setxkbmap -option terminate:ctrl_alt_bksp
 xmodmap ~/.Xmodmap
 
