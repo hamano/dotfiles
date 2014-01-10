@@ -51,8 +51,9 @@
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-x\C-u" 'undo) ; for continuous undo
-(global-set-key "\M-h" 'delete-trailing-whitespace)
-(global-set-key "\M-k"
+;(global-set-key "\M-h" 'delete-trailing-whitespace)
+(global-set-key "\M-k" 'delete-horizontal-space)
+(global-set-key "\M-h"
                 (lambda () (interactive) (kill-line 0))) ; backward kill line
 
 ;; Common settings
@@ -505,7 +506,11 @@
 
 ;; google-translate settings
 (when (locate-library "google-translate")
-  (require 'google-translate))
+  (require 'google-translate)
+  (global-set-key [(C x) (C x)] 'google-translate-at-point)
+  (custom-set-variables
+   '(google-translate-default-source-language "en")
+   '(google-translate-default-target-language "ja")))
 
 ;; gnus settings
 (when (file-directory-p "~/.emacs.d/site-lisp/gnus/lisp")
