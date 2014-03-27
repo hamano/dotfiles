@@ -1,3 +1,6 @@
+[include]
+    path = .gitconfig.local
+
 [user]
     name = HAMANO Tsukasa
 #    email = # move to .zshenv.local
@@ -20,8 +23,10 @@
     rename = copy 
 
 [pager]
-    color = true 
+    color = true
 
 [status]
     color = auto
 
+[push]
+	default = simple
