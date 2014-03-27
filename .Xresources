@@ -36,6 +36,8 @@ urxvt*imLocale: ja_JP.UTF-8
 urxvt*termName: rxvt
 urxvt*geometry: 80x25
 urxvt*tripleclick-words: true
+!urxvt*letterSpace: -1
+!urxvt*lineSpace: 0
 
 urxvt*font: \
  xft:Ricty:style=Regular:size=10:antialias=true, \
