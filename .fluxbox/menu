@@ -11,10 +11,13 @@
    [exec] (urxvtc) {LANG=ja_JP.UTF-8 urxvtc}
    [exec] (urxvt) {LANG=ja_JP.UTF-8 urxvt}
    [exec] (xterm) {LANG=ja_JP.UTF-8 xterm}
-   [exec] (firefox) {firefox}
-   [exec] (firefox -P) {firefox -P --no-remote}
+   [exec] (firefox) {LANG=ja_JP.UTF-8 firefox}
    [exec] (pcmanfm) {pcmanfm}
-   [exec] (arandr) {arandr}
+   [exec] (hotot) {/usr/local/hotot/bin/hotot-qt}
+   [submenu] (Apps) {}
+       [exec] (firefox -P) {LANG=ja_JP.UTF-8 firefox -P --no-remote}
+       [exec] (arandr) {arandr}
+   [end]
    [submenu] (Tools) {}
        [exec] (xvncviewer) {xvncviewer}
        [exec] (GDM flexiserver) {gdmflexiserver}
@@ -22,18 +25,11 @@
        [exec] (GDM Photo Setup) {gdmphotosetup}
        [exec] (GDM Setup) {gksu gdmsetup}
        [exec] (Editres) {editres}
-       [exec] (Oclock) {oclock}
        [exec] (X Window Snapshot) {xwd | xwud}
        [exec] (Xclipboard) {xclipboard}
-       [exec] (Xclock (analog\)) {xclock -analog}
-       [exec] (Xclock (digital\)) {xclock -digital -update 1}
        [exec] (Xcutsel) {xcutsel}
-       [exec] (Xev) {x-terminal-emulator -e xev}
-       [exec] (Xfontsel) {xfontsel}
        [exec] (Xkill) {xkill}
-       [exec] (Xmag) {xmag}
        [exec] (Xrefresh) {xrefresh}
-       [exec] (Xditview) {xditview}
    [end]
    [config] (Configuration)
    [submenu] (Styles) {}
