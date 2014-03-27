@@ -1,2 +1,4 @@
+!keycode 64 = Super_L
 keycode 133 = Alt_L
 add mod3 = Hangul_Hanja
+keycode 130 = Zenkaku_Hankaku
