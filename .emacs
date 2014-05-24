@@ -278,6 +278,9 @@
             (setq tab-width 4)
             (setq indent-level 4)
             (setq python-indent 4)
+            (define-key python-mode-map (kbd "C-c C-c")
+              (lambda () (interactive) (python-shell-send-buffer t)))
+
 ;            (split-window-vertically)
 ;            (run-python nil t)
 ;            (save-excursion
