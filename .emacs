@@ -157,6 +157,7 @@
           (lambda ()
             (setq indent-tabs-mode nil)
             (outline-minor-mode 1)
+            (define-key text-mode-map "\C-c\C-c" 'compile)
             ))
 
 (add-hook 'change-log-mode-hook
