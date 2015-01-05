@@ -71,15 +71,12 @@ alias ta='tmux attach || tmux new'
 alias x509='openssl x509'
 alias s_client='openssl s_client'
 alias s_server='openssl s_server'
-alias w3m='w3m-android -no-mouse'
-UA_ZAURUS="Mozilla/4.08 (PDA; SL-C3000/1.0;Qtopia/1.4.9) NetFront/3.1"
-alias w3m-zaurus="w3m -header \"User-Agent: $UA_ZAURUS\""
-UA_ANDROID="Mozilla/5.0 (Linux; U; Android 4.0.1)"
-alias w3m-android="w3m -header \"User-Agent: $UA_ANDROID\""
+alias bc="bc -l"
+alias fm="thunar"
 
 alias urxvtf='urxvt -g 40x20 \
--fn "xft:vl.pgothic:size=20:antialias=true" \
--fb "xft:vl.pgothic:weight=bold:size=20:antialias=true"'
+-fn "xft:Ricty:size=22:antialias=true" \
+-fb "xft:Ricty:weight=bold:size=22:antialias=true"'
 
 alias urxvts='urxvt \
 -fn "xft:vl.pgothic:size=6:antialias=true" \
