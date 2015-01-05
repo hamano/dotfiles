@@ -29,27 +29,6 @@ if [ "${SYSNAME}" = "SunOS" ]; then
 	export TERM=xterm
 fi
 
-case $TERM in
-    'rxvt')
-        export LANG=ja_JP.UTF-8;
-        export LC_CTYPE=ja_JP.UTF-8;
-        ;;
-    'rxvt-unicode')
-        export LANG=ja_JP.UTF-8;
-        ;;
-    'xterm-256color')
-        export LANG=ja_JP.UTF-8;
-        ;;
-    'krxvt')
-        export LANG=ja_JP.eucJP;
-        ;;
-    *)
-        export LANG=C
-        ;;
-esac
-
-
-
 export PATH
 export EDITOR=vi
 export CVSEDITOR=vi
