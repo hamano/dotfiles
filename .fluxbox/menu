@@ -8,14 +8,18 @@
 
 # Automatically generated file. Do not edit (see /usr/share/doc/menu/html/index.html)
 
-   [exec] (urxvtc) {LANG=ja_JP.UTF-8 urxvtc}
-   [exec] (urxvt) {LANG=ja_JP.UTF-8 urxvt}
-   [exec] (xterm) {LANG=ja_JP.UTF-8 xterm}
-   [exec] (firefox) {LANG=ja_JP.UTF-8 firefox}
+   [exec] (urxvtc) {urxvtc}
+   [exec] (urxvt) {urxvt}
+   [exec] (urxvt-i) {urxvt -name urxvt-i}
+   [exec] (xterm) {xterm}
+   [exec] (firefox) {firefox}
+   [exec] (chrome) {google-chrome}
+   [exec] (thunar) {thunar}
    [exec] (pcmanfm) {pcmanfm}
    [exec] (hotot) {/usr/local/hotot/bin/hotot-qt}
+   [exec] (psi) {psi}
    [submenu] (Apps) {}
-       [exec] (firefox -P) {LANG=ja_JP.UTF-8 firefox -P --no-remote}
+       [exec] (firefox -P) {firefox -P --no-remote}
        [exec] (arandr) {arandr}
    [end]
    [submenu] (Tools) {}
