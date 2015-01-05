@@ -42,40 +42,43 @@ Mod1 space :WindowMenu
 #Control Mod1 Delete :Exit
 
 # change to previous/next window
-Mod3 Up :NextWindow {groups} (workspace=[current])
-Mod3 Down :PrevWindow {groups} (workspace=[current])
+Mod4 n :NextWindow {groups} (workspace=[current])
+Mod4 p :PrevWindow {groups} (workspace=[current])
+
+Mod4 Up :NextWindow {groups} (workspace=[current])
+Mod4 Down :PrevWindow {groups} (workspace=[current])
 
 # change to previous/next workspace
-Mod3 Left :PrevWorkspace
-Mod3 Right :NextWorkspace
+Mod4 Left :PrevWorkspace
+Mod4 Right :NextWorkspace
 
 # send the current window to previous/next workspace
 #Mod4 Left :SendToPrevWorkspace
 #Mod4 Right :SendToNextWorkspace
 
 # send the current window and follow it to previous/next workspace
-Control Mod3 Left :TakeToPrevWorkspace
-Control Mod3 Right :TakeToNextWorkspace
+Control Mod4 Left :TakeToPrevWorkspace
+Control Mod4 Right :TakeToNextWorkspace
 
 # change to a specific workspace
-Mod3 1 :Workspace 1
-Mod3 2 :Workspace 2
-Mod3 3 :Workspace 3
-Mod3 4 :Workspace 4
+Mod4 1 :Workspace 1
+Mod4 2 :Workspace 2
+Mod4 3 :Workspace 3
+Mod4 4 :Workspace 4
 
-Mod3 space :ToggleCmd {RootMenu} {HideMenus}
-Mod3 r :Reconfigure
-Mod3 v :MaximizeVertical
-Mod3 f :Fullscreen
-Mod3 r :Reconfigure
-Mod3 h :MoveTo 0 * Reft
-Mod3 j :MoveTo * 0 Lower
-Mod3 k :MoveTo * 0 Upper
-Mod3 l :MoveTo 0 * Right
+Mod4 space :ToggleCmd {RootMenu} {HideMenus}
+Mod4 v :MaximizeVertical
+Mod4 f :Fullscreen
+Mod4 c :Reconfigure
+Mod4 h :MoveTo 0 * Reft
+Mod4 j :MoveTo * 0 Lower
+Mod4 k :MoveTo * 0 Upper
+Mod4 l :MoveTo 0 * Right
 
-Mod3 t :Exec LANG=ja_JP.UTF-8 urxvtc
-Mod3 b :Exec firefox
-Mod3 x :Exec fbrun
+Mod4 r :Exec fbrun
+#Mod4 t :Exec LANG=ja_JP.UTF-8 urxvtc
+Mod4 Return :Exec LANG=ja_JP.UTF-8 urxvtc
+Mod4 b :Exec LANG=ja_JP.UTF-8 google-chrome
 
 # volume settings, using common keycodes
 # if these don't work, use xev to find out your real keycodes
