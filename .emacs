@@ -79,9 +79,11 @@
   (iswitchb-default-keybindings)
   (resize-minibuffer-mode t)
   (tool-bar-mode nil))
- ((>= emacs-major-version 22)
-  (iswitchb-mode 1)
-  ))
+ ((= emacs-major-version 22)
+  (iswitchb-mode 1))
+ ((= emacs-major-version 23)
+  (iswitchb-mode 1))
+  )
 
 ;; Face settings
 (set-cursor-color "blue")
