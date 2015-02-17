@@ -411,9 +411,11 @@
   (run-scheme scheme-program-name))
 
 ;; erlang-mode settings
-(when (file-directory-p "~/.emacs.d/site-lisp/erlang")
+(when (file-directory-p "/usr/lib/erlang/lib/tools-2.7/emacs")
   (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
+    (add-to-list 'load-path "/usr/lib/erlang/lib/tools-2.7/emacs")
+    (setq erlang-root-dir "/usr/lib/erlang")
+    (setq exec-path (cons "/usr/lib/erlang/bin" exec-path))
     (require 'erlang-start)))
 
 ;; go settings
