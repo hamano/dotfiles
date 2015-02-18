@@ -413,13 +413,15 @@ function run_once(prg,arg_string,pname,screen)
     end
 end
 
+-- for java ui
+run_once("wmname LG3D")
+
 run_once("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 run_once("urxvtd")
 --run_once("xscreensaver","-no-splash")
 run_once("xfce4-power-manager")
 run_once("volumeicon")
 run_once("nm-applet")
-run_once("wicd-gtk", "-t")
 run_once("conky")
 run_once("dropbox", "start")
 run_once("parcellite")
