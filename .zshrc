@@ -24,7 +24,7 @@ setopt checkjobs
 autoload -U colors
 colors
 
-stty -ixon -ixoff
+stty ixon
 
 # bindkey
 bindkey -e
@@ -73,6 +73,7 @@ alias s_client='openssl s_client'
 alias s_server='openssl s_server'
 alias bc="bc -l"
 alias fm="thunar"
+alias open="xdg-open"
 
 alias urxvtf='urxvt -g 40x20 \
 -fn "xft:Ricty:size=22:antialias=true" \
