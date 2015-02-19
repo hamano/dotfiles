@@ -84,21 +84,35 @@ end
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
+   { "lock", "slock" },
    { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   { "quit", awesome.quit }
+   { "quit", awesome.quit },
 }
+
+function mkitem(label, command, path)
+  if awful.util.file_readable(path) then
+    return {label, command, path}
+  else
+    return {label, command}
+  end
+end
 
 mymainmenu = awful.menu(
   { items = {
-      { "urxvt", terminal },
-      { "chrome", "google-chrome" },
-      { "thunar", "thunar" },
-      { "psi", "psi" },
-      { "Debian", debian.menu.Debian_menu.Debian },
-      { "awesome", myawesomemenu, beautiful.awesome_icon },
-      { "lock", "slock" },
+      mkitem("urxvt", terminal,
+	     "/usr/share/pixmaps/urxvt_48x48.xpm"),
+      mkitem("chrome", "google-chrome",
+	     "/opt/google/chrome/product_logo_32.xpm"),
+      mkitem("thunar", "thunar",
+	     "/usr/share/icons/hicolor/64x64/apps/Thunar.png"),
+      mkitem("psi", "psi",
+	     "/usr/share/icons/hicolor/64x64/apps/psi.png"),
+      mkitem("clementine", "clementine",
+	     "/usr/share/icons/hicolor/64x64/apps/application-x-clementine.png"),
+      mkitem("Debian", debian.menu.Debian_menu.Debian,
+	     "/usr/share/pixmaps/debian-logo.png"),
+      mkitem("awesome", myawesomemenu, beautiful.awesome_icon),
   }
 })
 
@@ -416,6 +430,5 @@ run_once("volumeicon")
 run_once("nm-applet")
 run_once("conky")
 run_once("dropbox", "start")
-run_once("parcellite")
 
 --naughty.notify({ text = "loaded rc.lua" })
