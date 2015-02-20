@@ -10,6 +10,8 @@ xterm*scrollbar: left
 xterm*faceName: Liberation Mono
 xterm*faceNameDoublesize: Ricty:style=Regular
 xterm*faceSize: 9
+xterm*utf8: 1
+xterm*locale: true
 xterm*cjkWidth: true
 
 !!kterm
@@ -37,7 +39,12 @@ urxvt*termName: rxvt
 urxvt*geometry: 80x25
 urxvt*tripleclick-words: true
 urxvt*letterSpace: -1
-!urxvt*lineSpace: 0
+urxvt*lineSpace: 0
+urxvt*scrollBar_right: true
+urxvt*perl-ext-common: default,matcher
+urxvt*url-launcher: /usr/bin/xdg-open
+urxvt*matcher.button: 3
+urxvt*url-select.underline: true
 
 urxvt*font: \
  xft:Ricty:style=Regular:size=10:antialias=true, \
