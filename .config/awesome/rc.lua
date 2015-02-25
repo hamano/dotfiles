@@ -85,6 +85,7 @@ end
 -- Create a laucher widget and a main menu
 myawesomemenu = {
    { "lock", "slock" },
+   { "arandr", "arandr" },
    { "manual", terminal .. " -e man awesome" },
    { "restart", awesome.restart },
    { "quit", awesome.quit },
