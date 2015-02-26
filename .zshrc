@@ -54,9 +54,9 @@ HISTSIZE=1000
 REPORTTIME=1
 
 # set alias
+alias l='ls -l'
 alias ll='ls -l'
 alias la='ls -A'
-alias l='ls -CF'
 alias j='jobs'
 alias f='find'
 alias SL='env sl'
@@ -64,7 +64,6 @@ alias sl='ls'
 alias u='uname -a'
 alias cal='cal -3'
 alias lh='last -n 10 -a'
-alias emacs='emacs -nw'
 #alias screen='screen -xR'
 alias screen='echo use tmux'
 alias ta='tmux attach || tmux new'
@@ -91,7 +90,15 @@ alias svn-eliminate='test -d .svn && find ./ -type d -name .svn | xargs rm -rfv'
 alias qwerty='xmodmap ~/.Xmodmap.qwerty ~/.Xmodmap'
 alias dvorak='xmodmap ~/.Xmodmap.dvorak ~/.Xmodmap'
 alias aoeui=qwerty
-alias webarchive="wget -rkpN"
+alias warchive="wget -rkpN"
+
+alias st='git status'
+alias co='git checkout'
+alias ci='git commit'
+alias rebase='git pull --rebase'
+
+alias emacs='emacs -nw'
+alias elc='emacs --batch -Q -f batch-byte-compile'
 
 if [ "${SYSNAME}" = "SunOS" ]; then
     alias ec='emacs-clean \( -type d -a \! -name . -prune \) -o -type f'
@@ -225,11 +232,11 @@ function ssh-rmkh(){
 	echo -ne "$1d\nw\n" | ed -s .ssh/known_hosts
 }
 
-function urlescape () {
+function urlencode () {
     perl -MURI::Escape -lne 'print uri_escape($_)' <<< "$1"
 }
 
-function urlunescape () {
+function urldecode () {
     perl -MURI::Escape -lne 'print uri_unescape($_)' <<< "$1";
 }
 
