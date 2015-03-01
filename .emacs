@@ -316,6 +316,11 @@
             (setq indent-tabs-mode t)
             ))
 
+(add-hook 'org-mode-hook
+          (lambda ()
+            (visual-line-mode)
+            ))
+
 ;; auto-mode
 (setq auto-mode-alist
       (append '(
@@ -488,15 +493,6 @@
                 (local-set-key "\M-q" 'jde-import-hoge)))
     ))
 
-;; markdown settings
-(when (locate-library "markdown-mode")
-  (progn
-    (autoload 'markdown-mode "markdown-mode"
-      "Major mode for editing Markdown files" t)
-    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-    (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
-    ))
-
 ;; w3m-search settings
 (when (locate-library "w3m-search")
   (progn
@@ -662,11 +658,6 @@
     )
   )
 
-;; East Asian Width settings
-(when (locate-library "eaw")
-  (require 'eaw)
-  (eaw-fullwidth))
-
 ;; auto-install settings
 (add-to-list 'load-path "~/.emacs.d/auto-install/")
 (when (locate-library "auto-install")
@@ -674,7 +665,21 @@
   ;;(auto-install-update-emacswiki-package-name t)
   (auto-install-compatibility-setup)
   (setq ediff-window-setup-function 'ediff-setup-windows-plain)
-)
+  )
+
+;; markdown settings
+(when (locate-library "markdown-mode")
+  (progn
+    (autoload 'markdown-mode "markdown-mode"
+      "Major mode for editing Markdown files" t)
+    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+    (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+    ))
+
+;; East Asian Width settings
+(when (locate-library "eaw")
+  (require 'eaw)
+  (eaw-fullwidth))
 
 (when (locate-library "open-junk-file")
   (require 'open-junk-file)
