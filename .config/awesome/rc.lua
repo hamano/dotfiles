@@ -39,13 +39,12 @@ end
 -- Themes define colours, icons, and wallpapers
 -- beautiful.init("/usr/share/awesome/themes/sky/theme.lua")
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-awful.util.spawn_with_shell("awsetbg Dropbox/resource/wallpaper/andromeda.jpg")
+wallpaper = awful.util.getdir("config") .. "/andromeda.jpg"
+awful.util.spawn_with_shell("awsetbg " .. wallpaper)
 
 -- This is used later as the default terminal and editor to run.
 --terminal = "x-terminal-emulator"
 terminal = "urxvt"
-editor = os.getenv("EDITOR") or "editor"
-editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -66,7 +65,7 @@ layouts =
 --    awful.layout.suit.fair.horizontal,
     awful.layout.suit.spiral,
 --    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
+--    awful.layout.suit.max,
 --    awful.layout.suit.max.fullscreen,
 --    awful.layout.suit.magnifier
 }
@@ -411,7 +410,7 @@ function run_once(prg,arg_string,pname,screen)
        pname = prg
     end
 
-    if not arg_string then 
+    if not arg_string then
         awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
     else
         awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. " ".. arg_string .."' || (" .. prg .. " " .. arg_string .. ")",screen)
