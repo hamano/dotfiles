@@ -658,6 +658,16 @@
     )
   )
 
+;; package settings
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives
+               '("marmalade" . "http://marmalade-repo.org/packages/"))
+  (package-initialize)
+)
+
 ;; auto-install settings
 (add-to-list 'load-path "~/.emacs.d/auto-install/")
 (when (locate-library "auto-install")
