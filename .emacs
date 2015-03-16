@@ -208,7 +208,6 @@
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
             (define-key c-mode-map "\C-c\C-f" 'ff-find-other-file)
-            (flycheck-mode t)
             ))
 
 (add-hook 'c++-mode-hook
@@ -219,7 +218,6 @@
             (define-key c++-mode-map "\C-c\C-c" 'compile)
             (define-key c++-mode-map "\C-c\C-n" 'next-error)
             (define-key c++-mode-map "\C-c\C-f" 'ff-find-other-file)
-            (flycheck-mode t)
             ))
 
 (add-hook 'java-mode-hook
@@ -666,7 +664,12 @@
   (add-to-list 'package-archives
                '("marmalade" . "http://marmalade-repo.org/packages/"))
   (package-initialize)
-)
+  )
+
+;; flycheck settings
+(when (locate-library "flycheck")
+  (add-hook 'after-init-hook #'global-flycheck-mode)
+  )
 
 ;; auto-install settings
 (add-to-list 'load-path "~/.emacs.d/auto-install/")
