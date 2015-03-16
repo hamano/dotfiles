@@ -208,7 +208,7 @@
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
             (define-key c-mode-map "\C-c\C-f" 'ff-find-other-file)
-            (flymake-mode t)
+            (flycheck-mode t)
             ))
 
 (add-hook 'c++-mode-hook
@@ -219,7 +219,7 @@
             (define-key c++-mode-map "\C-c\C-c" 'compile)
             (define-key c++-mode-map "\C-c\C-n" 'next-error)
             (define-key c++-mode-map "\C-c\C-f" 'ff-find-other-file)
-            (flymake-mode t)
+            (flycheck-mode t)
             ))
 
 (add-hook 'java-mode-hook
