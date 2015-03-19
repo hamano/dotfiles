@@ -287,7 +287,9 @@ globalkeys = awful.util.table.join(
                   awful.util.getdir("cache") .. "/history_eval")
               end),
     -- Menubar
-    awful.key({ modkey }, "p", function() menubar.show() end)
+    awful.key({ modkey }, "p", function() menubar.show() end),
+    -- Toggle touchpad
+    awful.key({ modkey }, "t", function() toggle_touchpad() end)
 )
 
 clientkeys = awful.util.table.join(
@@ -462,6 +464,22 @@ client.connect_signal("focus", function(c) c.border_color = beautiful.border_foc
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
 
+-- Toggle TouchPad for MBP
+touchpad_off = 0
+function toggle_touchpad()
+  if touchpad_off == 0 then
+    naughty.notify({ text = "Disable Touchpad" })
+    awful.util.spawn_with_shell('synclient TouchpadOff=1')
+    touchpad_off = 1
+  else
+    naughty.notify({ text = "Enable Touchpad" })
+    awful.util.spawn_with_shell('synclient TouchpadOff=0')
+    touchpad_off = 0
+  end
+end
+-- default off
+toggle_touchpad()
+
 function run_once(prg,arg_string,pname,screen)
     if not prg then
         do return nil end
@@ -498,4 +516,4 @@ run_once("conky")
 run_dropbox()
 
 print("loaded rc.lua")
---naughty.notify({ text = "loaded rc.lua" })
+
