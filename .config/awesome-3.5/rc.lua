@@ -11,6 +11,14 @@ local beautiful = require("beautiful")
 local naughty = require("naughty")
 local menubar = require("menubar")
 
+print_stdout = print
+print = function(...)
+  for i,v in ipairs({...}) do
+    io.stderr:write(v)
+  end
+  io.stderr:write('\n')
+end
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -470,8 +478,15 @@ function run_once(prg,arg_string,pname,screen)
     end
 end
 
+function run_dropbox()
+  rc = os.execute('dropbox running')
+  if rc == 0 then
+    awful.util.spawn_with_shell("dropbox start")
+  end
+end
+
 -- for java ui
-run_once("wmname LG3D")
+awful.util.spawn_with_shell("wmname LG3D")
 
 run_once("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 run_once("urxvtd")
@@ -479,6 +494,8 @@ run_once("xfce4-power-manager")
 run_once("volumeicon")
 run_once("nm-applet")
 run_once("conky")
-run_once("dropbox", "start")
 
+run_dropbox()
+
+print("loaded rc.lua")
 --naughty.notify({ text = "loaded rc.lua" })
