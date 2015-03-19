@@ -38,12 +38,14 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
-beautiful.init("/usr/local/share/awesome/themes/default/theme.lua")
+--beautiful.init("/usr/local/share/awesome/themes/default/theme.lua")
+beautiful.init("/usr/local/share/awesome/themes/zenburn/theme.lua")
+beautiful.border_width = 1
+wallpaper = awful.util.getdir("config") .. "/andromeda.jpg"
+awful.util.spawn_with_shell("awsetbg " .. wallpaper)
 
 -- This is used later as the default terminal and editor to run.
-terminal = "xterm"
-editor = os.getenv("EDITOR") or "nano"
-editor_cmd = terminal .. " -e " .. editor
+terminal = "urxvt"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -57,16 +59,16 @@ local layouts =
 {
     awful.layout.suit.floating,
     awful.layout.suit.tile,
-    awful.layout.suit.tile.left,
-    awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
-    awful.layout.suit.fair,
-    awful.layout.suit.fair.horizontal,
-    awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,
-    awful.layout.suit.max,
-    awful.layout.suit.max.fullscreen,
-    awful.layout.suit.magnifier
+--    awful.layout.suit.tile.left,
+--    awful.layout.suit.tile.bottom,
+--    awful.layout.suit.tile.top,
+--    awful.layout.suit.fair,
+--    awful.layout.suit.fair.horizontal,
+--    awful.layout.suit.spiral,
+--    awful.layout.suit.spiral.dwindle,
+--    awful.layout.suit.max,
+--    awful.layout.suit.max.fullscreen,
+--    awful.layout.suit.magnifier
 }
 -- }}}
 
@@ -83,23 +85,31 @@ end
 tags = {}
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag({ 1, 2, 3, 4, 5, 6, 7, 8, 9 }, s, layouts[1])
+    tags[s] = awful.tag({ 1, 2, 3, 4 }, s, layouts[1])
 end
 -- }}}
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
 myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", awesome.quit }
+  { "lock", "slock" },
+  { "arandr", "arandr" },
+  { "xterm", "xterm" },
+  { "manual", terminal .. " -e man awesome" },
+  { "restart", awesome.restart },
+  { "quit", awesome.quit },
 }
 
-mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+mymainmenu = awful.menu(
+  { items = {
+      {"urxvt", "urxvt", "/usr/share/pixmaps/urxvt_48x48.xpm"},
+      {"chrome", "google-chrome", "/opt/google/chrome/product_logo_32.xpm"},
+      {"thunar", "thunar", "/usr/share/icons/hicolor/64x64/apps/Thunar.png"},
+      {"psi", "psi", "/usr/share/icons/hicolor/64x64/apps/psi.png"},
+      {"clementine", "clementine", "/usr/share/icons/hicolor/64x64/apps/application-x-clementine.png"},
+      {"awesome", myawesomemenu, beautiful.awesome_icon}
+  }
+})
 
 mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
                                      menu = mymainmenu })
@@ -206,9 +216,7 @@ end
 
 -- {{{ Mouse bindings
 root.buttons(awful.util.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 3, function () mymainmenu:toggle() end)
 ))
 -- }}}
 
@@ -341,8 +349,17 @@ end
 
 clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
-    awful.button({ modkey }, 1, awful.mouse.client.move),
-    awful.button({ modkey }, 3, awful.mouse.client.resize))
+    awful.button({ modkey }, 3, awful.mouse.client.move),
+    awful.button({ modkey }, 1, awful.mouse.client.resize))
+
+-- add keybind
+clientkeys = awful.util.table.join(
+  clientkeys,
+  awful.key({ modkey }, "v",
+    function (c)
+      c.maximized_vertical   = not c.maximized_vertical
+  end)
+)
 
 -- Set keys
 root.keys(globalkeys)
@@ -374,13 +391,6 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
-    -- Enable sloppy focus
-    c:connect_signal("mouse::enter", function(c)
-        if awful.layout.get(c.screen) ~= awful.layout.suit.magnifier
-            and awful.client.focus.filter(c) then
-            client.focus = c
-        end
-    end)
 
     if not startup then
         -- Set the windows at the slave,
@@ -394,7 +404,7 @@ client.connect_signal("manage", function (c, startup)
         end
     end
 
-    local titlebars_enabled = false
+    local titlebars_enabled = true
     if titlebars_enabled and (c.type == "normal" or c.type == "dialog") then
         -- buttons for the titlebar
         local buttons = awful.util.table.join(
@@ -422,7 +432,7 @@ client.connect_signal("manage", function (c, startup)
         right_layout:add(awful.titlebar.widget.stickybutton(c))
         right_layout:add(awful.titlebar.widget.ontopbutton(c))
         right_layout:add(awful.titlebar.widget.closebutton(c))
-
+	
         -- The title goes in the middle
         local middle_layout = wibox.layout.flex.horizontal()
         local title = awful.titlebar.widget.titlewidget(c)
@@ -443,3 +453,32 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+
+function run_once(prg,arg_string,pname,screen)
+    if not prg then
+        do return nil end
+    end
+
+    if not pname then
+       pname = prg
+    end
+
+    if not arg_string then
+        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. "' || (" .. prg .. ")",screen)
+    else
+        awful.util.spawn_with_shell("pgrep -f -u $USER -x '" .. pname .. " ".. arg_string .."' || (" .. prg .. " " .. arg_string .. ")",screen)
+    end
+end
+
+-- for java ui
+run_once("wmname LG3D")
+
+run_once("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
+run_once("urxvtd")
+run_once("xfce4-power-manager")
+run_once("volumeicon")
+run_once("nm-applet")
+run_once("conky")
+run_once("dropbox", "start")
+
+--naughty.notify({ text = "loaded rc.lua" })
