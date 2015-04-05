@@ -13,9 +13,12 @@
     editor = vi
 
 [alias]
+    st = status --short --branch
     ci = commit -a
     co = checkout
-    st = status
+    br = branch
+    sl = stash list
+    ls = log --stat
     praise = blame 
 
 [diff]
@@ -28,5 +31,5 @@
 [status]
     color = auto
 
-#[push]
-#	default = simple
+[push]
+	default = current
