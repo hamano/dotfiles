@@ -502,22 +502,6 @@
     (add-to-list 'w3m-uri-replace-alist
                  '("\`alc:" w3m-search-uri-replace "alc"))))
 
-;; text-translator settings
-(when (file-directory-p "~/.emacs.d/site-lisp/text-translator")
-  (progn
-    (setq load-path (cons "~/.emacs.d/site-lisp/text-translator" load-path))
-    (require 'text-translator)
-    (global-set-key "\C-x\M-t" 'text-translator)
-    (global-set-key "\C-x\M-T" 'text-translator-translate-last-string)))
-
-;; google-translate settings
-(when (locate-library "google-translate")
-  (require 'google-translate)
-  (global-set-key [(C x) (C x)] 'google-translate-at-point)
-  (custom-set-variables
-   '(google-translate-default-source-language "en")
-   '(google-translate-default-target-language "ja")))
-
 ;; gnus settings
 (when (file-directory-p "~/.emacs.d/site-lisp/gnus/lisp")
   (setq load-path (cons "~/.emacs.d/site-lisp/gnus/lisp" load-path))
@@ -670,6 +654,14 @@
 (when (locate-library "flycheck")
   (add-hook 'after-init-hook #'global-flycheck-mode)
   )
+
+;; google-translate settings
+(when (locate-library "google-translate")
+  (require 'google-translate)
+  (global-set-key [(C x) (C x)] 'google-translate-at-point)
+  (custom-set-variables
+   '(google-translate-default-source-language "auto")
+   '(google-translate-default-target-language "ja")))
 
 ;; auto-install settings
 (add-to-list 'load-path "~/.emacs.d/auto-install/")
