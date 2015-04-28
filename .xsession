@@ -14,6 +14,5 @@ setxkbmap jp
 xmodmap ~/.Xmodmap
 
 #exec /usr/bin/startfluxbox
-#exec /usr/bin/awesome
-exec /usr/local/bin/awesome -c ~/.config/awesome-3.5/rc.lua
+exec /usr/bin/awesome
 
