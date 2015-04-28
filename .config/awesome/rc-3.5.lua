@@ -49,8 +49,7 @@ end
 --beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 beautiful.border_width = 1
-wallpaper = awful.util.getdir("config") .. "/andromeda.jpg"
-awful.util.spawn_with_shell("awsetbg " .. wallpaper)
+beautiful.wallpaper = awful.util.getdir("config") .. "/wallpaper.jpg"
 
 -- This is used later as the default terminal and editor to run.
 terminal = "urxvt"
