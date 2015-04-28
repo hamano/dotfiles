@@ -46,8 +46,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
---beautiful.init("/usr/local/share/awesome/themes/default/theme.lua")
-beautiful.init("/usr/local/share/awesome/themes/zenburn/theme.lua")
+--beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 beautiful.border_width = 1
 wallpaper = awful.util.getdir("config") .. "/andromeda.jpg"
 awful.util.spawn_with_shell("awsetbg " .. wallpaper)
