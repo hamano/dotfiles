@@ -513,7 +513,7 @@ run_once("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 run_once("urxvtd")
 run_once("xfce4-power-manager")
 run_once("volumeicon")
-run_once("nm-applet")
+run_once("wicd-client", "-t", '/usr/bin/python -O /usr/share/wicd/gtk/wicd-client.py')
 run_once("conky")
 
 run_dropbox()
