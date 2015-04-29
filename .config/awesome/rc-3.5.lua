@@ -47,12 +47,16 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/default/theme.lua")
-beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-beautiful.border_width = 1
+--beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/retina.lua")
 beautiful.wallpaper = awful.util.getdir("config") .. "/wallpaper.jpg"
 
 -- This is used later as the default terminal and editor to run.
-terminal = "urxvt"
+if os.execute('which urxvt') then
+    terminal = "urxvt"
+else
+    terminal = "xterm"
+end
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
