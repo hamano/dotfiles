@@ -10,9 +10,8 @@ export LANG="ja_JP.UTF-8"
 export ACRO_DISABLE_FONT_CONFIG=1
 
 setxkbmap jp
-#setxkbmap -option terminate:ctrl_alt_bksp
+setxkbmap -option terminate:ctrl_alt_bksp
 xmodmap ~/.Xmodmap
 
-#exec /usr/bin/startfluxbox
 exec /usr/bin/awesome
 
