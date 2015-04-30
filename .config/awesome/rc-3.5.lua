@@ -52,7 +52,6 @@ if screen[1].workarea.width > 2000 then
 else
   beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
 end
-beautiful.wallpaper = awful.util.getdir("config") .. "/wallpaper.jpg"
 
 -- This is used later as the default terminal and editor to run.
 if os.execute('which urxvt') then
@@ -87,11 +86,24 @@ local layouts =
 -- }}}
 
 -- {{{ Wallpaper
-if beautiful.wallpaper then
-    for s = 1, screen.count() do
-        gears.wallpaper.maximized(beautiful.wallpaper, s, true)
-    end
+local f = io.popen("find ~/.wallpaper/ -name '*.jpg'")
+wallpapers = {}
+for line in f:lines() do
+  table.insert(wallpapers, line)
 end
+
+function random_wallpaper()
+  if #wallpapers == 0 then
+    return
+  end
+  wallpaper = wallpapers[math.random(1, #wallpapers)]
+  for s = 1, screen.count() do
+    gears.wallpaper.maximized(wallpaper, s, true)
+  end
+end
+
+random_wallpaper()
+
 -- }}}
 
 -- {{{ Tags
@@ -269,6 +281,7 @@ globalkeys = awful.util.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
+    awful.key({ modkey, "Control" }, "t", random_wallpaper),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
