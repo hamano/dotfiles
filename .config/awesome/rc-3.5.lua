@@ -47,8 +47,11 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/default/theme.lua")
---beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
-beautiful.init(awful.util.getdir("config") .. "/retina.lua")
+if screen[1].workarea.width > 2000 then
+  beautiful.init(awful.util.getdir("config") .. "/retina.lua")
+else
+  beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+end
 beautiful.wallpaper = awful.util.getdir("config") .. "/wallpaper.jpg"
 
 -- This is used later as the default terminal and editor to run.
