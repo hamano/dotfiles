@@ -1,5 +1,12 @@
 ! .Xresources
-! % xrdb -merge ~/.Xresources
+! % xrdb ~/.Xresources
+
+Xft.dpi: 113.5
+Xft.antialias: true
+Xft.rgba: none
+Xft.hinting: true
+Xft.hintstyle: hinthull
+Xft.autohint: true
 
 !!xterm
 xterm*background: ghostwhite
@@ -45,13 +52,6 @@ urxvt*perl-ext-common: default,matcher
 urxvt*url-launcher: /usr/bin/xdg-open
 urxvt*matcher.button: 3
 urxvt*url-select.underline: true
-
-Xft.dpi: 116
-Xft.antialias: true
-Xft.rgba: none
-Xft.hinting: true
-Xft.hintstyle: hinthull
-Xft.autohint: true
 
 urxvt*font: \
  xft:Ricty:style=Regular:size=9,antialias=true, \
