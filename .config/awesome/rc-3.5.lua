@@ -48,9 +48,12 @@ end
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init("/usr/share/awesome/themes/default/theme.lua")
 if screen[1].workarea.width > 2000 then
+  -- for retina display
   beautiful.init(awful.util.getdir("config") .. "/retina.lua")
 else
+  -- for normal display
   beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
+  beautiful.border_width  = 1
 end
 
 -- This is used later as the default terminal and editor to run.
