@@ -1,6 +1,13 @@
 ! .Xresources
 ! % xrdb -merge ~/.Xresources
 
+Xft.dpi: 227
+Xft.antialias: true
+Xft.rgba: none
+Xft.hinting: true
+Xft.hintstyle: hinthull
+Xft.autohint: true
+
 !!xterm
 xterm*background: ghostwhite
 xterm*foreground: black
@@ -33,23 +40,23 @@ urxvt*url-select.underline: true
 urxvt*preeditType: Root
 
 urxvt*font: \
- xft:Ricty:style=Regular:size=20, \
+ xft:Ricty:style=Regular:size=9, \
  -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
  r12, k12g
 urxvt*boldFont:	\
- xft:Ricty:style=Bold:size=20, \
+ xft:Ricty:style=Bold:size=9, \
  -shinonome-gothic-bold-r-normal--12-110-75-75-c-120-*, \
  r12b, k12b
 urxvt*italicFont: \
- xft:Ricty:style=Italic:size=20, \
+ xft:Ricty:style=Italic:size=9, \
  -shinonome-gothic-medium-i-normal--12-110-75-75-c-120-*, \
  r12i, k12i
 urxvt*boldItalicFont: \
- xft:Ricty:style=Bold Italic:size=20, \
+ xft:Ricty:style=Bold Italic:size=9, \
  -shinonome-gothic-bold-i-normal--12-110-75-75-c-120-*, \
  r12bi, k12bi
 urxvt*imFont: \
- xft:Ricty:style=Regular:size=20, \
+ xft:Ricty:style=Regular:size=9, \
  -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
  r12, k12g
 
