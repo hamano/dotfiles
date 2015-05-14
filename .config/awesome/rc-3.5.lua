@@ -10,6 +10,7 @@ local beautiful = require("beautiful")
 -- Notification library
 local naughty = require("naughty")
 local menubar = require("menubar")
+local assault = require('assault')
 
 print_stdout = print
 print = function(...)
@@ -151,6 +152,13 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- Create a textclock widget
 mytextclock = awful.widget.textclock()
 
+-- Create a assault widget
+myassault = assault({
+    critical_level = 0.15,
+    critical_color = "#ff0000",
+    charging_color = "#00ff00"
+})
+
 -- Create a wibox for each screen and add it
 mywibox = {}
 mypromptbox = {}
@@ -232,6 +240,7 @@ for s = 1, screen.count() do
     if s == 1 then right_layout:add(wibox.widget.systray()) end
     right_layout:add(mytextclock)
     right_layout:add(mylayoutbox[s])
+    right_layout:add(myassault)
 
     -- Now bring it all together (with the tasklist in the middle)
     local layout = wibox.layout.align.horizontal()
@@ -530,7 +539,6 @@ awful.util.spawn_with_shell("wmname LG3D")
 
 run_once("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 run_once("urxvtd")
-run_once("xfce4-power-manager")
 run_once("volumeicon")
 run_once("wicd-client", "-t", '/usr/bin/python -O /usr/share/wicd/gtk/wicd-client.py')
 run_once("conky")
@@ -538,4 +546,3 @@ run_once("conky")
 run_dropbox()
 
 print("loaded rc.lua")
-
