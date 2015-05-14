@@ -154,6 +154,7 @@ mytextclock = awful.widget.textclock()
 
 -- Create a assault widget
 myassault = assault({
+    adapter = "ADP1",
     critical_level = 0.15,
     critical_color = "#ff0000",
     charging_color = "#00ff00"
