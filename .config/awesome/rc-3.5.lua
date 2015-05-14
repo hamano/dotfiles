@@ -90,7 +90,7 @@ local layouts =
 -- }}}
 
 -- {{{ Wallpaper
-local f = io.popen("find ~/.wallpaper/ -name '*.jpg'")
+local f = io.popen("find ~/.wallpaper/ -name '*.jpg' -not -path '*/\.thumbnails/*'")
 wallpapers = {}
 for line in f:lines() do
   table.insert(wallpapers, line)
@@ -104,6 +104,7 @@ function random_wallpaper()
   for s = 1, screen.count() do
     gears.wallpaper.maximized(wallpaper, s, true)
   end
+  --awful.util.spawn_with_shell('feh --bg-scale "' .. wallpaper .. '"')
 end
 
 random_wallpaper()
