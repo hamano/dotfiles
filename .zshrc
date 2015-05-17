@@ -54,7 +54,7 @@ HISTSIZE=1000
 REPORTTIME=1
 
 # set alias
-alias l='ls -l'
+alias l='ls -lh'
 alias ll='ls -l'
 alias la='ls -A'
 alias j='jobs'
@@ -242,6 +242,16 @@ function urldecode () {
 
 function req() {
     openssl req -new -days 365 -x509 -nodes -keyout key.pem -out cert.pem
+}
+
+function click() {
+    if [ $# != 1 ]; then
+        echo "usage: click msec";
+        return 2;
+    fi
+    while true; do
+        echo -ne "mouseclick 1\nusleep ${1}000\n";
+    done | xte
 }
 
 if [ -f ~/.zshrc.local ]; then
