@@ -71,8 +71,8 @@ alias x509='openssl x509'
 alias s_client='openssl s_client'
 alias s_server='openssl s_server'
 alias bc="bc -l"
-alias fm="thunar"
 alias open="xdg-open"
+alias fm="pcmanfm"
 
 alias urxvtf='urxvt -g 40x20 \
 -fn "xft:Ricty:size=22:antialias=true" \
@@ -252,6 +252,13 @@ function click() {
     while true; do
         echo -ne "mouseclick 1\nusleep ${1}000\n";
     done | xte
+}
+
+function xdg-init() {
+    xdg-mime default pcmanfm.desktop inode/directory
+    xdg-mime default gpicview.desktop image/jpeg
+    xdg-mime default gpicview.desktop image/png
+    xdg-mime default evince.desktop application/pdf
 }
 
 if [ -f ~/.zshrc.local ]; then
