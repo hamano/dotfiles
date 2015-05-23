@@ -152,3 +152,4 @@ bind ^] paste [.]
 #
 # attrcolor u "-u b"
 # attrcolor b "R"
+cjkwidth on
