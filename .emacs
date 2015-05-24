@@ -426,12 +426,12 @@
     (require 'erlang-start)))
 
 ;; go settings
-(when (file-directory-p "~/.emacs.d/site-lisp/go")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/go")
-    (require 'go-mode-load)
-    (setq default-tab-width 4)
-    ))
+(autoload 'go-mode "go-mode" nil t)
+(add-hook 'go-mode-hook
+          '(lambda()
+             (setq default-tab-width 4)
+             (setq indent-tabs-mode t)
+             ))
 
 ;; lua-mode settings
 (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
