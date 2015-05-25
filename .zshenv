@@ -20,9 +20,14 @@ if [[ -z "$PATH" || "$PATH" == "/bin:/usr/bin" ]]; then
 	PATH="/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games"
 fi
 
+if [ -d ~/.cabal/bin ]; then
+	PATH=~/.cabal/bin:"${PATH}"
+fi
+
 if [ -d ~/bin ]; then
 	PATH=~/bin:"${PATH}"
 fi
+
 export PATH
 
 if [ "${SYSNAME}" = "SunOS" ]; then
