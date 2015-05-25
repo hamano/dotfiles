@@ -24,6 +24,11 @@ if [ -d ~/.cabal/bin ]; then
 	PATH=~/.cabal/bin:"${PATH}"
 fi
 
+export GOPATH=~/go
+if [ -d "${GOPATH}" ]; then
+	PATH=${GOPATH}/bin:"${PATH}"
+fi
+
 if [ -d ~/bin ]; then
 	PATH=~/bin:"${PATH}"
 fi
