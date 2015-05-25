@@ -135,7 +135,8 @@ mymainmenu = awful.menu(
   { items = {
       {"urxvt", "urxvt", "/usr/share/pixmaps/urxvt_48x48.xpm"},
       {"chrome", "google-chrome", "/opt/google/chrome/product_logo_32.xpm"},
-      {"thunar", "thunar", "/usr/share/icons/hicolor/64x64/apps/Thunar.png"},
+--    {"thunar", "thunar", "/usr/share/icons/hicolor/64x64/apps/Thunar.png"},
+      {"pcmanfm", "pcmanfm", "/usr/share/icons/Tango/32x32/places/folder.png"},
       {"psi", "psi", "/usr/share/icons/hicolor/64x64/apps/psi.png"},
       {"clementine", "clementine", "/usr/share/icons/hicolor/64x64/apps/application-x-clementine.png"},
       {"awesome", myawesomemenu, beautiful.awesome_icon}
