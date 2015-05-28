@@ -63,6 +63,7 @@ if os.execute('which urxvt') then
 else
     terminal = "xterm"
 end
+filemanager = "pcmanfm"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -295,6 +296,7 @@ globalkeys = awful.util.table.join(
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
+    awful.key({ modkey,           }, "/", function () awful.util.spawn(filemanager) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Control" }, "t", random_wallpaper),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
