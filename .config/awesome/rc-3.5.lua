@@ -123,8 +123,7 @@ end
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
-myawesomemenu = {
-  { "lock", "slock" },
+awesomemenu = {
   { "arandr", "arandr" },
   { "xterm", "xterm" },
   { "manual", terminal .. " -e man awesome" },
@@ -132,15 +131,24 @@ myawesomemenu = {
   { "quit", awesome.quit },
 }
 
+systemmenu = {
+  { "lock", "slock" },
+  { "logout", awesome.quit },
+  { "shutdown", function(t) awful.util.spawn("systemctl poweroff") end },
+  { "reboot", function(t) awful.util.spawn("systemctl reboot") end },
+  { "suspend", function(t) awful.util.spawn("systemctl suspend") end },
+}
+
 mymainmenu = awful.menu(
   { items = {
       {"urxvt", "urxvt", "/usr/share/pixmaps/urxvt_48x48.xpm"},
       {"chrome", "google-chrome", "/opt/google/chrome/product_logo_32.xpm"},
 --    {"thunar", "thunar", "/usr/share/icons/hicolor/64x64/apps/Thunar.png"},
-      {"pcmanfm", "pcmanfm", "/usr/share/icons/Tango/32x32/places/folder.png"},
+      {"pcmanfm", "pcmanfm", "/usr/share/icons/Adwaita/scalable/mimetypes/inode-directory-symbolic.svg"},
       {"psi", "psi", "/usr/share/icons/hicolor/64x64/apps/psi.png"},
       {"clementine", "clementine", "/usr/share/icons/hicolor/64x64/apps/application-x-clementine.png"},
-      {"awesome", myawesomemenu, beautiful.awesome_icon}
+      {"awesome", awesomemenu, beautiful.awesome_icon},
+      {"system", systemmenu, "/usr/share/icons/Adwaita/scalable/actions/system-shutdown-symbolic.svg"},
   }
 })
 
