@@ -681,6 +681,9 @@
     (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
     ))
 
+(when (locate-library "elixir-mode")
+  (require 'elixir-mode))
+
 ;; East Asian Width settings
 (when (locate-library "eaw")
   (require 'eaw)
