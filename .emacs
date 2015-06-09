@@ -682,7 +682,8 @@
     ))
 
 (when (locate-library "elixir-mode")
-  (require 'elixir-mode))
+  (autoload 'elixir-mode "elixir-mode"
+    "Major mode for editing Elixir files" t))
 
 ;; East Asian Width settings
 (when (locate-library "eaw")
