@@ -29,6 +29,11 @@ if [ -d "${GOPATH}" ]; then
 	PATH=${GOPATH}/bin:"${PATH}"
 fi
 
+export NODEPATH=~/.node
+if [ -d "${NODEPATH}" ]; then
+	PATH=${NODEPATH}/bin:"${PATH}"
+fi
+
 if [ -d ~/bin ]; then
 	PATH=~/bin:"${PATH}"
 fi
