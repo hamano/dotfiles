@@ -674,12 +674,14 @@
 
 ;; markdown settings
 (when (locate-library "markdown-mode")
-  (progn
-    (autoload 'markdown-mode "markdown-mode"
-      "Major mode for editing Markdown files" t)
-    (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-    (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
-    ))
+  (autoload 'markdown-mode "markdown-mode"
+    "Major mode for editing Markdown files" t)
+  (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
+  (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+  (add-hook 'markdown-mode-hook
+            (lambda ()
+              (define-key markdown-mode-map "\C-c\C-c" 'compile)
+              )))
 
 (when (locate-library "elixir-mode")
   (autoload 'elixir-mode "elixir-mode"
