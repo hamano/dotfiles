@@ -24,12 +24,17 @@ if [ -d ~/.cabal/bin ]; then
 	PATH=~/.cabal/bin:"${PATH}"
 fi
 
-export GOPATH=~/go
+export GEM_HOME=~/lib/gem
+if [ -d "${GEM_HOME}" ]; then
+	PATH=${GEM_HOME}/bin:"${PATH}"
+fi
+
+export GOPATH=~/lib/go
 if [ -d "${GOPATH}" ]; then
 	PATH=${GOPATH}/bin:"${PATH}"
 fi
 
-export NODEPATH=~/.node
+export NODEPATH=~/lib/node
 if [ -d "${NODEPATH}" ]; then
 	PATH=${NODEPATH}/bin:"${PATH}"
 fi
