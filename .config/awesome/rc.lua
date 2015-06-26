@@ -146,6 +146,7 @@ mymainmenu = awful.menu(
 --    {"thunar", "thunar", "/usr/share/icons/hicolor/64x64/apps/Thunar.png"},
       {"pcmanfm", "pcmanfm", "/usr/share/icons/Adwaita/scalable/mimetypes/inode-directory-symbolic.svg"},
       {"psi", "psi", "/usr/share/icons/hicolor/64x64/apps/psi.png"},
+      {"psi+", "psi-plus", "/usr/share/icons/hicolor/128x128/apps/psi-plus.png"},
       {"clementine", "clementine", "/usr/share/icons/hicolor/64x64/apps/application-x-clementine.png"},
       {"awesome", awesomemenu, beautiful.awesome_icon},
       {"system", systemmenu, "/usr/share/icons/Adwaita/scalable/actions/system-shutdown-symbolic.svg"},
