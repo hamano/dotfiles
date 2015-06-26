@@ -20,7 +20,9 @@ if [[ -z "$PATH" || "$PATH" == "/bin:/usr/bin" ]]; then
 	PATH="/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games"
 fi
 
-if [ -d ~/.cabal/bin ]; then
+export JAVA_HOME=/usr/lib/jvm/default-java
+
+if [ -d "~/.cabal" ]; then
 	PATH=~/.cabal/bin:"${PATH}"
 fi
 
