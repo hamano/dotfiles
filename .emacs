@@ -272,13 +272,6 @@
             (setq tab-width 4)
             ))
 
-(add-hook 'lua-mode-hook
-          (lambda ()
-            (setq lua-indent-level 2)
-            (setq lua-electric-flag nil)
-            (abbrev-mode 0)
-            ))
-
 (add-hook 'python-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
@@ -420,30 +413,35 @@
   (run-scheme scheme-program-name))
 
 ;; erlang-mode settings
-(when (file-directory-p "~/.emacs.d/site-lisp/erlang")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
-    (require 'erlang-start)))
+(when (locate-library "erlang-mode")
+  (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
+  (require 'erlang-start))
 
 ;; go settings
-(autoload 'go-mode "go-mode" nil t)
-(add-hook 'go-mode-hook
-          '(lambda()
-             (setq default-tab-width 4)
-             (setq indent-tabs-mode t)
-             ))
+(when (locate-library "go-mode")
+  (autoload 'go-mode "go-mode" nil t)
+  (add-hook 'go-mode-hook
+            '(lambda()
+               (setq default-tab-width 4)
+               (setq indent-tabs-mode t)
+               )))
 
 ;; lua-mode settings
-(autoload 'lua-mode "lua-mode" "Lua editing mode." t)
-(add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+(when (locate-library "lua-mode")
+  (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+  (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
+  (add-hook 'lua-mode-hook
+            (lambda ()
+              (setq lua-indent-level 2)
+              (setq lua-electric-flag nil)
+              (abbrev-mode 0)
+              )))
 
 ;; php-mode settings
-(when (file-directory-p "~/.emacs.d/site-lisp/php-mode")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/php-mode")
-    (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
-    (add-to-list 'auto-mode-alist '("\\.php$" . php-mode))
-    ))
+(when (locate-library "php-mode")
+  (add-to-list 'load-path "~/.emacs.d/site-lisp/php-mode")
+  (autoload 'php-mode "php-mode" "Major mode for editing php code." t)
+  (add-to-list 'auto-mode-alist '("\\.php$" . php-mode)))
 
 ;; python-mode settings
 ;(autoload 'python-mode "python-mode" "Python editing mode." t)
