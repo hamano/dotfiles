@@ -413,6 +413,10 @@ clientkeys = awful.util.table.join(
   awful.key({ modkey }, "v", function (c)
 	c.maximized_vertical   = not c.maximized_vertical
   end),
+  awful.key({ }, "XF86MonBrightnessDown", function ()
+	awful.util.spawn("xbacklight -dec 10") end),
+  awful.key({ }, "XF86MonBrightnessUp", function ()
+	awful.util.spawn("xbacklight -inc 10") end),
   awful.key({ }, "XF86AudioRaiseVolume", function ()
 	awful.util.spawn("amixer set Master 10%+") end),
   awful.key({ }, "XF86AudioLowerVolume", function ()
