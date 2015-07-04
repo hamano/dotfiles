@@ -59,6 +59,9 @@ export MALLOC_CHECK_=0
 export GIT_PAGER=cat
 HOST=`hostname | sed 's/\..*//'`
 
+# for cocos2d-x
+export ANT_ROOT=/usr/share/ant/bin
+
 if [ -f ~/.zshenv.local ]; then
     . ~/.zshenv.local
 fi
