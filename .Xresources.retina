@@ -16,7 +16,7 @@ xterm*saveLines: 10000
 xterm*scrollbar: left
 xterm*faceName: Liberation Mono
 xterm*faceNameDoublesize: Ricty:style=Regular
-xterm*faceSize: 20
+xterm*faceSize: 9
 xterm*utf8: 1
 xterm*locale: true
 xterm*cjkWidth: true
