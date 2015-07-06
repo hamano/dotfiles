@@ -22,6 +22,11 @@ fi
 
 export JAVA_HOME=/usr/lib/jvm/default-java
 
+DEFAULT_VENV=~/lib/venv/default/
+if [ -f "${DEFAULT_VENV}/bin/activate" ]; then
+    . "${DEFAULT_VENV}/bin/activate"
+fi
+
 if [ -d "~/.cabal" ]; then
 	PATH=~/.cabal/bin:"${PATH}"
 fi
