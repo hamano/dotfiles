@@ -562,11 +562,11 @@ end
 -- for java ui
 awful.util.spawn_with_shell("wmname LG3D")
 
-#run_once("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
+--run_once("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
 run_once("urxvtd")
 run_once("volumeicon")
-run_once("nm-applet')
-#run_once("wicd-client", "-t", '/usr/bin/python -O /usr/share/wicd/gtk/wicd-client.py')
+run_once("nm-applet")
+--run_once("wicd-client", "-t", '/usr/bin/python -O /usr/share/wicd/gtk/wicd-client.py')
 run_once("conky")
 
 run_dropbox()
