@@ -256,6 +256,8 @@ function click() {
 
 function xdg-init() {
     xdg-mime default pcmanfm.desktop inode/directory
+    xdg-mime default atom.desktop text/plain
+    xdg-mime default atom.desktop text/x-markdown
     xdg-mime default gpicview.desktop image/jpeg
     xdg-mime default gpicview.desktop image/png
     xdg-mime default evince.desktop application/pdf
