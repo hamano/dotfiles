@@ -261,6 +261,7 @@ function xdg-init() {
     xdg-mime default gpicview.desktop image/jpeg
     xdg-mime default gpicview.desktop image/png
     xdg-mime default evince.desktop application/pdf
+    xdg-mime default xarchive.desktop application/zip
 }
 
 if [ -f ~/.zshrc.local ]; then
