@@ -73,6 +73,7 @@ alias s_server='openssl s_server'
 alias bc="bc -l"
 alias open="xdg-open"
 alias fm="pcmanfm"
+alias xdg-filetype="xdg-mime query filetype"
 
 alias urxvtf='urxvt -g 40x20 \
 -fn "xft:Ricty:size=22:antialias=true" \
@@ -262,6 +263,8 @@ function xdg-init() {
     xdg-mime default gpicview.desktop image/png
     xdg-mime default evince.desktop application/pdf
     xdg-mime default xarchive.desktop application/zip
+    xdg-mime default xarchive.desktop application/x-compressed-tar
+    xdg-mime default xarchive.desktop application/x-bzip-compressed-tar
 }
 
 if [ -f ~/.zshrc.local ]; then
