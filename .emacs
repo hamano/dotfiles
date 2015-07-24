@@ -120,6 +120,15 @@
     (setq-default show-trailing-whitespace t)
     (set-face-background 'trailing-whitespace "gray"))))
 
+;; Package settings
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.milkbox.net/packages/") t)
+  (add-to-list 'package-archives
+               '("marmalade" . "http://marmalade-repo.org/packages/"))
+  (package-initialize))
+
 ;; X settings
 (if window-system
     (progn
@@ -375,13 +384,6 @@
                 (python-mode . "python.py")
                 )))
 
-;; w3m settings
-(when (file-directory-p "~/.emacs.d/site-lisp/emacs-w3m")
-  (progn
-    (add-to-list 'load-path "~/.emacs.d/site-lisp/emacs-w3m")
-    (require 'w3m-load)
-    (require 'mime-w3m)))
-
 ;; lookup settings
 (when (file-directory-p "~/.emacs.d/site-lisp/lookup/lisp")
   (progn
@@ -519,6 +521,11 @@
   (setq mime-header-accept-quoted-encoded-words t)
   (setq wl-draft-buffer-style 'split)
   (setq wl-auto-select-first t)
+
+  ; for reading HTML mail
+  (when (locate-library "w3m")
+    (require 'mime-w3m))
+
   ; execute fetchmail
   (defun wl-fetchmail()
     (interactive)
@@ -636,16 +643,6 @@
                                  (verify . mc-wl-verify-signature))))
               mc-modes-alist)))
     )
-  )
-
-;; package settings
-(when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.milkbox.net/packages/") t)
-  (add-to-list 'package-archives
-               '("marmalade" . "http://marmalade-repo.org/packages/"))
-  (package-initialize)
   )
 
 ;; flycheck settings
