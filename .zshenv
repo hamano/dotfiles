@@ -23,8 +23,11 @@ fi
 export JAVA_HOME=/usr/lib/jvm/default-java
 
 DEFAULT_VENV=~/lib/venv/default/
-if [ -f "${DEFAULT_VENV}/bin/activate" ]; then
-    . "${DEFAULT_VENV}/bin/activate"
+
+VIRTUALENVWRAPPER=/usr/share/virtualenvwrapper/virtualenvwrapper.sh
+if [ -f ${VIRTUALENVWRAPPER} ]; then
+    export WORKON_HOME=~/lib/venv
+    . ${VIRTUALENVWRAPPER}
 fi
 
 if [ -d "~/.cabal" ]; then
