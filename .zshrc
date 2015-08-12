@@ -19,6 +19,10 @@ setopt no_auto_pushd
 setopt no_flow_control
 setopt print_exit_value
 setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_reduce_blanks 
+setopt hist_no_store
+setopt hist_expand
 setopt no_share_history
 setopt checkjobs
 autoload -U colors
