@@ -30,7 +30,8 @@ if [ -f ${VIRTUALENVWRAPPER} ]; then
     . ${VIRTUALENVWRAPPER}
 fi
 
-if [ -d "~/.cabal" ]; then
+export CABAL_HOME=~/.cabal
+if [ -d "${CABAL_HOME}" ]; then
 	PATH=~/.cabal/bin:"${PATH}"
 fi
 
