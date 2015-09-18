@@ -20,6 +20,11 @@ if [[ -z "$PATH" || "$PATH" == "/bin:/usr/bin" ]]; then
 	PATH="/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games"
 fi
 
+case "${SYSNAME}" in
+    'SunOS'|'AIX')
+        export TERM=xterm
+esac
+
 export JAVA_HOME=/usr/lib/jvm/default-java
 
 DEFAULT_VENV=~/lib/venv/default/
