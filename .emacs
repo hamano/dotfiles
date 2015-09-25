@@ -78,11 +78,6 @@
 (setq compilation-scroll-output t)
 (setq compilation-ask-about-save nil)
 
-;(global-highlight-changes 'active)
-(show-paren-mode 1)
-(set-face-background 'show-paren-match-face "blue")
-(set-face-foreground 'show-paren-match-face "black")
-
 ;; Version dependent settings
 (cond
  ((= emacs-major-version 21)
@@ -96,7 +91,7 @@
   )
 
 ;; Face settings
-(set-cursor-color "blue")
+(set-cursor-color "green")
 (set-face-foreground 'default "black")
 (set-face-background 'default "white")
 (setq transient-mark-mode t)
@@ -108,6 +103,10 @@
 (when (>= emacs-major-version 22)
   (set-face-foreground 'mode-line-inactive "white")
   (set-face-background 'mode-line-inactive "brightblack"))
+
+(show-paren-mode 1)
+(set-face-background 'show-paren-match-face "yellow")
+(set-face-foreground 'show-paren-match-face "black")
 
 ; highliting white space at EOL
 (cond
