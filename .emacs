@@ -73,6 +73,10 @@
 (setq-default indicate-empty-lines t)
 (setq case-fold-search t)
 
+;; Compilation settings
+(setq compilation-window-height 8)
+(setq compilation-scroll-output t)
+(setq compilation-ask-about-save nil)
 
 ;(global-highlight-changes 'active)
 (show-paren-mode 1)
@@ -210,9 +214,6 @@
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
             (setq c-basic-offset 4)
-            (setq compilation-ask-about-save nil)
-            (setq compilation-window-height 6)
-            (setq compilation-scroll-output t)
             (define-key c-mode-map "\C-c\C-m" 'manual-entry)
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
@@ -221,8 +222,6 @@
 
 (add-hook 'c++-mode-hook
           (lambda ()
-            (setq compilation-window-height 6)
-            (setq compilation-scroll-output t)
             (define-key c++-mode-map "\C-c\C-m" 'manual-entry)
             (define-key c++-mode-map "\C-c\C-c" 'compile)
             (define-key c++-mode-map "\C-c\C-n" 'next-error)
@@ -232,8 +231,6 @@
 (add-hook 'java-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
-            (setq compilation-window-height 6)
-            (setq compilation-scroll-output t)
             (define-key java-mode-map "\C-c\C-c" 'compile)
             (define-key java-mode-map "\C-c\C-n" 'next-error)))
 
@@ -298,6 +295,11 @@
 ;                (set-window-buffer (selected-window) python-buffer)
 ;                (enlarge-window (- 10 (window-height)))
 ;                ))
+            ))
+
+(add-hook 'latex-mode-hook
+          (lambda ()
+            (define-key latex-mode-map "\C-c\C-c" 'compile)
             ))
 
 (add-hook 'nxml-mode-hook
