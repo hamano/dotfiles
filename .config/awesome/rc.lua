@@ -142,7 +142,9 @@ systemmenu = {
 mymainmenu = awful.menu(
   { items = {
       {"urxvt", "urxvt", "/usr/share/pixmaps/urxvt_48x48.xpm"},
-      {"chrome", "google-chrome", "/opt/google/chrome/product_logo_32.xpm"},
+      {"chrome",
+       "google-chrome --restore-last-session",
+       "/opt/google/chrome/product_logo_32.xpm"},
 --    {"thunar", "thunar", "/usr/share/icons/hicolor/64x64/apps/Thunar.png"},
       {"pcmanfm", "pcmanfm", "/usr/share/icons/Adwaita/scalable/mimetypes/inode-directory-symbolic.svg"},
       {"psi", "psi", "/usr/share/icons/hicolor/64x64/apps/psi.png"},
