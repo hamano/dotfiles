@@ -55,6 +55,7 @@ endif
 "highlight cursorline ctermbg=gray
 au BufEnter ?akefile* set noexpandtab
 au BufEnter *.mk set noexpandtab
+au BufEnter *.makefile set noexpandtab
 au BufEnter rules set noexpandtab
 
 " for git
