@@ -265,6 +265,7 @@ function xdg-init() {
     xdg-mime default atom.desktop text/x-markdown
     xdg-mime default gpicview.desktop image/jpeg
     xdg-mime default gpicview.desktop image/png
+    xdg-mime default gpicview.desktop image/gif
     xdg-mime default evince.desktop application/pdf
     xdg-mime default xarchive.desktop application/zip
     xdg-mime default xarchive.desktop application/x-compressed-tar
