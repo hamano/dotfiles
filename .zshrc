@@ -259,6 +259,23 @@ function click() {
     done | xte
 }
 
+function disp() {
+    case ${HOST} in
+        retina)
+        DP=eDP1
+        OUT=DP1
+        MODE=1280x800
+        SCALE=2x2
+        ;;
+        *)
+            echo "unknown laptop"
+            return 1
+        ;;
+    esac
+    set -x
+    xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE}
+}
+
 function xdg-init() {
     xdg-mime default pcmanfm.desktop inode/directory
     xdg-mime default atom.desktop text/plain
