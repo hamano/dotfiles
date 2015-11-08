@@ -272,8 +272,17 @@ function disp() {
             return 1
         ;;
     esac
-    set -x
-    xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE}
+    
+    case "$1" in
+        off)
+            set -x
+            xrandr --output ${OUT} --off
+            ;;
+        *)
+            set -x
+            xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE}
+            ;;
+    esac
 }
 
 function xdg-init() {
