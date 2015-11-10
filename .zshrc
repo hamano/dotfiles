@@ -280,7 +280,7 @@ function disp() {
             ;;
         *)
             set -x
-            xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE}
+            xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --same-as ${DP}
             ;;
     esac
 }
