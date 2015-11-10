@@ -278,6 +278,14 @@ function disp() {
             set -x
             xrandr --output ${OUT} --off
             ;;
+        right)
+            set -x
+            xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --right-of ${DP}
+            ;;
+        left)
+            set -x
+            xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --left-of ${DP}
+            ;;
         *)
             set -x
             xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --same-as ${DP}
