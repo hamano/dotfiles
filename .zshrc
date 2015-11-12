@@ -228,13 +228,13 @@ function unrpm(){
     popd
 }
 
-function ssh-rmkh(){
+function ssh-rm(){
     if [ $# != 1 ]; then
-        echo "usage: ssh-rmkh num";
+        echo "usage: ssh-rm host";
         return 2;
     fi
-	echo .ssh/known_hosts
-	echo -ne "$1d\nw\n" | ed -s .ssh/known_hosts
+#	echo -ne "$1d\nw\n" | ed -s ~/.ssh/known_hosts
+    ssh-keygen -f ~/.ssh/known_hosts -R "$1"
 }
 
 function urlencode () {
