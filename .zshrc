@@ -267,8 +267,14 @@ function disp() {
         MODE=1280x800
         SCALE=2x2
         ;;
+        mbp)
+        DP=LVDS1
+        OUT=DP1
+        MODE=1280x800
+        SCALE=1x1
+        ;;
         *)
-            echo "unknown laptop"
+            echo "unknown laptop: ${HOST}"
             return 1
         ;;
     esac
