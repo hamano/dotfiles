@@ -97,11 +97,6 @@ alias dvorak='xmodmap ~/.Xmodmap.dvorak ~/.Xmodmap'
 alias aoeui=qwerty
 alias warchive="wget -rkpN"
 
-alias st='git status'
-alias co='git checkout'
-alias ci='git commit'
-alias rebase='git pull --rebase'
-
 alias emacs='emacs -nw'
 alias elc='emacs --batch -Q -f batch-byte-compile'
 
@@ -278,7 +273,7 @@ function disp() {
             return 1
         ;;
     esac
-    
+
     case "$1" in
         off)
             set -x
