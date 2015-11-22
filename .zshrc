@@ -143,43 +143,49 @@ function extract(){
         fi
     fi
 
-    case ${ext:u} in
+    case "${ext:u}" in
         "GZ")
-            gunzip -dc $file > ${base};
+            gunzip -dc "$file" > "${base}";
             ;;
         "BZ2")
-            bunzip2 -dk $file;
+            bunzip2 -dk "$file"
             ;;
         "LZMA")
-            lzma -dk $file;
+            lzma -dk "$file"
             ;;
         "TAR")
-            tar xvf $file;
+            tar xvf "$file"
             ;;
         "TGZ"|"TAR.GZ")
-            tar xvzf $file;
+            tar xvzf "$file"
             ;;
         "TAR.BZ2")
-            tar xvjf $file;
+            tar xvjf "$file"
             ;;
         "TAR.LZMA")
             # for old tar
-            lzma -dc $file | tar xv;
+            lzma -dc "$file" | tar xv;
             ;;
         "ZIP")
-            unzip ${file} -d ${base}
+            unzip "${file}" -d "${base}"
             ;;
         "CPIO")
-            mkdir ${base}
-            cd ${base}
-            cpio -i < ../$file;
-            cd ../
+            mkdir "${base}"
+            pushd "${base}"
+            cpio -i < "../$file"
+            popd
             ;;
         "LZH")
-            mkdir ${base}
-            cd ${base}
-            lha x ../${file}
-            cd ../
+            mkdir "${base}"
+            pushd "${base}"
+            lha x "../${file}"
+            popd
+            ;;
+        "RPM")
+            mkdir "${base}"
+            pushd "${base}"
+            rpm2cpio "../${file}" | cpio -idv
+            popd
             ;;
         *)
             echo "unsupported archive."
