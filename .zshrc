@@ -196,7 +196,7 @@ function extract(){
             popd
             ;;
         *)
-            echo "unsupported archive."
+            echo "unsupported archive: ${ext:u}"
             ;;
     esac
     return 0;
@@ -270,21 +270,21 @@ function click() {
 
 function disp() {
     case ${HOST} in
-        retina)
+    retina)
         DP=eDP1
         OUT=DP1
         MODE=1280x800
         SCALE=2x2
         ;;
-        mbp)
+    mbp)
         DP=LVDS1
         OUT=DP1
         MODE=1280x800
         SCALE=1x1
         ;;
-        *)
-            echo "unknown laptop: ${HOST}"
-            return 1
+    *)
+        echo "unknown laptop: ${HOST}"
+        return 1
         ;;
     esac
 
