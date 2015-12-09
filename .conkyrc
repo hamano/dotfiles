@@ -58,14 +58,17 @@ double_buffer yes
 
 TEXT
 $nodename - $sysname $kernel on $machine
-$hr
 ${color white}Uptime:$color $uptime
-${color white}Frequency (in MHz):$color $freq
+$hr
+${color white}CPU Usage:
 ${color white}Frequency (in GHz):$color $freq_g
+$color $cpu% ${cpubar 6}
+$alignc${color white}${cpugraph cpu0 32,300 0000ff ff0000}
+${color white}Processes:$color $processes  ${color grey}Running:$color $running_processes
+$hr
+${color white}Memory Usage:
 ${color white}RAM Usage:$color $mem/$memmax - $memperc% ${membar 4}
 ${color white}Swap Usage:$color $swap/$swapmax - $swapperc% ${swapbar 4}
-${color white}CPU Usage:$color $cpu% ${cpubar 4}
-${color white}Processes:$color $processes  ${color grey}Running:$color $running_processes
 $hr
 ${color white}File systems:
  ${color white}/    $color${fs_used /}/${fs_size /} ${fs_bar 6 /}
