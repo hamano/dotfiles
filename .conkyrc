@@ -53,6 +53,7 @@ uppercase no
 use_spacer none
 show_graph_scale no
 show_graph_range no
+default_graph_size 0 30
 
 double_buffer yes
 
@@ -60,15 +61,16 @@ TEXT
 $nodename - $sysname $kernel on $machine
 ${color white}Uptime:$color $uptime
 $hr
-${color white}CPU Usage:
+${color white}CPU:
 ${color white}Frequency (in GHz):$color $freq_g
 $color $cpu% ${cpubar 6}
-$alignc${color white}${cpugraph cpu0 32,300 0000ff ff0000}
+${cpugraph}
 ${color white}Processes:$color $processes  ${color grey}Running:$color $running_processes
 $hr
-${color white}Memory Usage:
+${color white}Memory:
 ${color white}RAM Usage:$color $mem/$memmax - $memperc% ${membar 4}
 ${color white}Swap Usage:$color $swap/$swapmax - $swapperc% ${swapbar 4}
+${memgraph}
 $hr
 ${color white}File systems:
  ${color white}/    $color${fs_used /}/${fs_size /} ${fs_bar 6 /}
