@@ -258,6 +258,18 @@ function req() {
     openssl req -new -days 365 -x509 -nodes -keyout key.pem -out cert.pem
 }
 
+function echod() {
+    if [ $# != 1 ]; then
+        echo "usage: echod port";
+        return 2;
+    fi
+    echo "Listning ${1}"
+    while true; do
+        nc -l -p ${1} -c 'xargs -n1 echo'
+        test $? -ne 0 && break;
+    done
+}
+
 function click() {
     if [ $# != 1 ]; then
         echo "usage: click msec";
