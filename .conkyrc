@@ -65,7 +65,7 @@ ${color white}CPU:
 ${color white}Frequency (in GHz):$color $freq_g
 $color $cpu% ${cpubar 6}
 ${cpugraph}
-${color white}Processes:$color $processes  ${color grey}Running:$color $running_processes
+${color white}Processes:$color $processes  ${color white}Running:$color $running_processes
 $hr
 ${color white}Memory:
 ${color white}RAM Usage:$color $mem/$memmax - $memperc% ${membar 4}
