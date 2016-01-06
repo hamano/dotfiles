@@ -116,7 +116,12 @@ if [ ${GNU} ]; then
     alias ecr='emacs-clean'
     function emacs-clean(){
         find . $@ \( -name "*~" -o -name ".*~" -o -name "*#" \)\
-            -exec rm -fv {} \;
+             -exec rm -fv {} \;
+    }
+    alias pyc='python-clean'
+    function python-clean(){
+        find . $@ \( -name "*.pyc" \)\
+             -exec rm -fv {} \;
     }
 fi
 
