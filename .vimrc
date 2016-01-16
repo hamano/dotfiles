@@ -29,6 +29,7 @@ set viminfo='10,\"10
 set visualbell
 set wrap
 set scrolloff=4
+set nofoldenable
 
 "set paste
 
