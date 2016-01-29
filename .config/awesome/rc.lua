@@ -273,43 +273,50 @@ root.buttons(awful.util.table.join(
 ))
 -- }}}
 
+
+function next_window()
+  awful.client.focus.byidx(1)
+  if client.focus then
+    client.focus:raise()
+  end
+end
+
+function prev_window()
+  awful.client.focus.byidx(-1)
+  if client.focus then
+    client.focus:raise()
+  end
+end
+
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
-    awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
-    awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
-
-    awful.key({ modkey,           }, "j",
-        function ()
-            awful.client.focus.byidx( 1)
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey,           }, "k",
-        function ()
-            awful.client.focus.byidx(-1)
-            if client.focus then client.focus:raise() end
-        end),
-    awful.key({ modkey,           }, "w", function () mymainmenu:show() end),
-
-    -- Layout manipulation
-    awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-    awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-    awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
-    awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
-    awful.key({ modkey,           }, "Tab",
-        function ()
-            awful.client.focus.history.previous()
-            if client.focus then
-                client.focus:raise()
-            end
-        end),
+  awful.key({modkey}, "Left", next_window),
+  awful.key({modkey}, "Right", prev_window),
+  awful.key({modkey}, "Up",   awful.tag.viewprev),
+  awful.key({modkey}, "Down",  awful.tag.viewnext),
+  awful.key({modkey}, "u", awful.tag.history.restore),
+  awful.key({modkey}, "w", random_wallpaper),
+  awful.key({modkey}, "Escape", function () mymainmenu:show() end),
+  
+  -- awful.key({modkey}, "j", next_window),
+  -- awful.key({modkey}, "k", prev_window),
+  -- Layout manipulation
+  awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
+  awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
+  awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
+  awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
+  awful.key({ modkey,           }, "Tab",
+    function ()
+      awful.client.focus.history.previous()
+      if client.focus then
+	client.focus:raise()
+      end
+  end),
 
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
     awful.key({ modkey,           }, "/", function () awful.util.spawn(filemanager) end),
     awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Control" }, "t", random_wallpaper),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
