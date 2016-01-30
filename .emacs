@@ -232,6 +232,7 @@
 (add-hook 'java-mode-hook
           (lambda ()
             (setq indent-tabs-mode nil)
+            (setq compile-command "ant")
             (define-key java-mode-map "\C-c\C-c" 'compile)
             (define-key java-mode-map "\C-c\C-n" 'next-error)))
 
