@@ -229,12 +229,22 @@
             (define-key c++-mode-map "\C-c\C-f" 'ff-find-other-file)
             ))
 
-(add-hook 'java-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            (setq compile-command "ant")
-            (define-key java-mode-map "\C-c\C-c" 'compile)
-            (define-key java-mode-map "\C-c\C-n" 'next-error)))
+(defun compile-ant()
+  (interactive)
+  (let ((build-dir (locate-dominating-file default-directory "build.xml")))
+    (when build-dir
+      (with-temp-buffer
+        (cd build-dir)
+        (call-interactively 'compile)
+        ))))
+
+(add-hook
+ 'java-mode-hook
+ (lambda ()
+   (setq indent-tabs-mode nil)
+   (setq compile-command "ant -emacs ")
+   (define-key java-mode-map "\C-c\C-c" 'compile-ant)
+   (define-key java-mode-map "\C-c\C-n" 'next-error)))
 
 (add-hook 'emacs-lisp-mode-hook
           (lambda ()
