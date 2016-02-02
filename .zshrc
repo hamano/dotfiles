@@ -16,7 +16,6 @@ else
 fi
 setopt auto_cd
 setopt no_auto_pushd
-setopt no_flow_control
 setopt print_exit_value
 setopt hist_ignore_dups
 setopt hist_ignore_space
@@ -28,11 +27,10 @@ setopt checkjobs
 autoload -U colors
 colors
 
-stty ixon
+stty -ixon
 
 # bindkey
 bindkey -e
-bindkey ' ' magic-space
 bindkey '^t' ''
 
 # zstyle
@@ -75,9 +73,10 @@ alias x509='openssl x509'
 alias s_client='openssl s_client'
 alias s_server='openssl s_server'
 alias bc="bc -l"
+alias ixon="stty ixon"
+alias ixoff="stty -ixon"
 alias open="xdg-open"
 alias fm="pcmanfm"
-alias xdg-filetype="xdg-mime query filetype"
 
 alias urxvtf='urxvt -g 40x20 \
 -fn "xft:Ricty:size=22:antialias=true" \
