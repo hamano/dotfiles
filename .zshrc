@@ -337,6 +337,16 @@ function xdg-init() {
     xdg-mime default xarchive.desktop application/x-bzip-compressed-tar
 }
 
+alias sw="split-window"
+function split-window(){
+    tmux split-window -h "exec $*"
+}
+
+alias nw="new-window"
+function new-window(){
+    tmux new-window -n "$*" "exec $*"
+}
+
 if [ -f ~/.zshrc.local ]; then
     . ~/.zshrc.local
 fi
