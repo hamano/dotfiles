@@ -339,12 +339,26 @@ function xdg-init() {
 
 alias sw="split-window"
 function split-window(){
-    tmux split-window -h "exec $*"
+    if [ -z "$TMUX" ]; then
+        tmux
+    fi
+    if [ $# -eq 0 ]; then
+        tmux split-window -v "$SHELL"
+    else
+        tmux split-window -v "exec $*"
+    fi
 }
 
 alias nw="new-window"
 function new-window(){
-    tmux new-window -n "$*" "exec $*"
+    if [ -z "$TMUX" ]; then
+        tmux
+    fi
+    if [ $# -eq 0 ]; then
+        tmux new-window "$SHELL"
+    else
+        tmux new-window -n "$*" "exec $*"
+    fi
 }
 
 if [ -f ~/.zshrc.local ]; then
