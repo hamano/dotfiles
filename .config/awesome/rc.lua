@@ -288,6 +288,17 @@ function prev_window()
   end
 end
 
+function max_window(c)
+  c.maximized_horizontal = not c.maximized_horizontal
+  c.maximized_vertical   = not c.maximized_vertical
+end
+
+function min_window(c)
+  -- The client currently has the input focus, so it cannot be
+  -- minimized, since minimized clients can't have the focus.
+  c.minimized = true
+end
+
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
   awful.key({modkey}, "Left", next_window),
@@ -319,8 +330,6 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
-    awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)    end),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)    end),
     awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
     awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
@@ -346,24 +355,38 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "t", function() toggle_touchpad() end)
 )
 
+function print_geometry(c)
+  pos = c.geometry(c)
+  print("geometry: ")
+  print("x: " .. pos.x .. ", y: " .. pos.y)
+  print("w: " .. pos.width .. ", h: " .. pos.height)
+end
+
+function move_left(c)
+  pos = c.geometry(c)
+  awful.client.moveresize(-pos.x, 0, 0, 0)
+end
+
+function move_right(c)
+  pos = c.geometry(c)
+  awful.client.moveresize(screen[1].workarea.width - pos.x - pos.width, 0, 0, 0)
+end
+
 clientkeys = awful.util.table.join(
-    awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
-    awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
-    awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
-    awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
-    awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
-    awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey,           }, "n",
-        function (c)
-            -- The client currently has the input focus, so it cannot be
-            -- minimized, since minimized clients can't have the focus.
-            c.minimized = true
-        end),
-    awful.key({ modkey,           }, "m",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
-        end)
+  awful.key({modkey}, "d", print_geometry),
+  awful.key({modkey}, "h", move_left),
+  awful.key({modkey}, "l", move_right),
+  -- tile operation
+  -- awful.key({modkey}, "h", function () awful.client.incwfact( 0.05) end),
+  -- awful.key({modkey}, "l", function () awful.client.incwfact(-0.05) end),
+
+  awful.key({modkey}, "n", min_window),
+  awful.key({modkey}, "m", max_window),
+  awful.key({modkey}, "f", function (c) c.fullscreen = not c.fullscreen  end),
+  awful.key({modkey}, "[", function (c) c.ontop = not c.ontop end),
+
+  awful.key({modkey, "Control"}, "q", function (c) c:kill() end),
+  awful.key({modkey, "Control"}, "space",  awful.client.floating.toggle)
 )
 
 -- Bind all key numbers to tags.
@@ -466,7 +489,6 @@ awful.rules.rules = {
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
 client.connect_signal("manage", function (c, startup)
-
     if not startup then
         -- Set the windows at the slave,
         -- i.e. put it at the end of others instead of setting it master.
