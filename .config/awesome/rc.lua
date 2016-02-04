@@ -288,19 +288,58 @@ function prev_window()
   end
 end
 
-function max_window(c)
+function max_vertical()
+  c = client.focus
+  c.maximized_vertical   = not c.maximized_vertical
+end
+
+function max_window()
+  c = client.focus
   c.maximized_horizontal = not c.maximized_horizontal
   c.maximized_vertical   = not c.maximized_vertical
 end
 
-function min_window(c)
-  -- The client currently has the input focus, so it cannot be
-  -- minimized, since minimized clients can't have the focus.
+function min_window()
+  c = client.focus
   c.minimized = true
+end
+
+function debug_print()
+  c = client.focus
+  pos = c.geometry(c)
+  print("geometry: ")
+  print("x: " .. pos.x .. ", y: " .. pos.y)
+  print("w: " .. pos.width .. ", h: " .. pos.height)
+end
+
+function move_left()
+  c = client.focus
+  pos = c.geometry(c)
+  awful.client.moveresize(-pos.x, 0, 0, 0)
+end
+
+function move_right()
+  c = client.focus
+  pos = c.geometry(c)
+  awful.client.moveresize(screen[1].workarea.width - pos.x - pos.width, 0, 0, 0)
+end
+
+function inc_width()
+  c = client.focus
+  pos = c.geometry(c)
+  fact = screen[1].workarea.width / 100
+  awful.client.moveresize(0, 0, fact*5, 0)
+end
+function dec_width()
+  c = client.focus
+  pos = c.geometry(c)
+  fact = screen[1].workarea.width / 100
+  awful.client.moveresize(0, 0, -fact*5, 0)
 end
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
+  awful.key({modkey}, "d", debug_print),
   awful.key({modkey}, "Left", next_window),
   awful.key({modkey}, "Right", prev_window),
   awful.key({modkey}, "Up",   awful.tag.viewprev),
@@ -308,14 +347,35 @@ globalkeys = awful.util.table.join(
   awful.key({modkey}, "u", awful.tag.history.restore),
   awful.key({modkey}, "w", random_wallpaper),
   awful.key({modkey}, "Escape", function () mymainmenu:show() end),
-  
+
+  awful.key({modkey}, "n", min_window),
+  awful.key({modkey}, "m", max_window),
+  awful.key({modkey}, "h", move_left),
+  awful.key({modkey}, "l", move_right),
+  awful.key({modkey, "Control"}, "h", dec_width),
+  awful.key({modkey, "Control"}, "l", inc_width),
+  awful.key({modkey}, "v", max_vertical),
+
+  awful.key({ }, "XF86MonBrightnessDown", function ()
+      awful.util.spawn("xbacklight -dec 10") end),
+  awful.key({ }, "XF86MonBrightnessUp", function ()
+      awful.util.spawn("xbacklight -inc 10") end),
+  awful.key({ }, "XF86AudioRaiseVolume", function ()
+      awful.util.spawn("amixer set Master 5%+") end),
+  awful.key({ }, "XF86AudioLowerVolume", function ()
+      awful.util.spawn("amixer set Master 5%-") end),
+  awful.key({ }, "XF86AudioMute", function ()
+      awful.util.spawn("amixer sset Master toggle") end),
+  awful.key({ }, "XF86Eject", function ()
+      awful.util.spawn("eject") end),
+
   -- awful.key({modkey}, "j", next_window),
   -- awful.key({modkey}, "k", prev_window),
   -- Layout manipulation
-  awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
-  awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
-  awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
-  awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
+  -- awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
+  -- awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
+  -- awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
+  -- awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
   awful.key({ modkey,           }, "Tab",
     function ()
       awful.client.focus.history.previous()
@@ -330,10 +390,10 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Control" }, "r", awesome.restart),
     awful.key({ modkey, "Shift"   }, "q", awesome.quit),
 
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
-    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
-    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
-    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
+--    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
+--    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
+--    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
+--    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
     awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
     awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
 
@@ -355,33 +415,11 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey }, "t", function() toggle_touchpad() end)
 )
 
-function print_geometry(c)
-  pos = c.geometry(c)
-  print("geometry: ")
-  print("x: " .. pos.x .. ", y: " .. pos.y)
-  print("w: " .. pos.width .. ", h: " .. pos.height)
-end
-
-function move_left(c)
-  pos = c.geometry(c)
-  awful.client.moveresize(-pos.x, 0, 0, 0)
-end
-
-function move_right(c)
-  pos = c.geometry(c)
-  awful.client.moveresize(screen[1].workarea.width - pos.x - pos.width, 0, 0, 0)
-end
-
 clientkeys = awful.util.table.join(
-  awful.key({modkey}, "d", print_geometry),
-  awful.key({modkey}, "h", move_left),
-  awful.key({modkey}, "l", move_right),
   -- tile operation
   -- awful.key({modkey}, "h", function () awful.client.incwfact( 0.05) end),
   -- awful.key({modkey}, "l", function () awful.client.incwfact(-0.05) end),
 
-  awful.key({modkey}, "n", min_window),
-  awful.key({modkey}, "m", max_window),
   awful.key({modkey}, "f", function (c) c.fullscreen = not c.fullscreen  end),
   awful.key({modkey}, "[", function (c) c.ontop = not c.ontop end),
 
@@ -438,26 +476,6 @@ clientbuttons = awful.util.table.join(
     awful.button({ }, 1, function (c) client.focus = c; c:raise() end),
     awful.button({ modkey }, 3, awful.mouse.client.move),
     awful.button({ modkey }, 1, awful.mouse.client.resize))
-
--- add keybind
-clientkeys = awful.util.table.join(
-  clientkeys,
-  awful.key({ modkey }, "v", function (c)
-	c.maximized_vertical   = not c.maximized_vertical
-  end),
-  awful.key({ }, "XF86MonBrightnessDown", function ()
-	awful.util.spawn("xbacklight -dec 10") end),
-  awful.key({ }, "XF86MonBrightnessUp", function ()
-	awful.util.spawn("xbacklight -inc 10") end),
-  awful.key({ }, "XF86AudioRaiseVolume", function ()
-	awful.util.spawn("amixer set Master 5%+") end),
-  awful.key({ }, "XF86AudioLowerVolume", function ()
-	awful.util.spawn("amixer set Master 5%-") end),
-  awful.key({ }, "XF86AudioMute", function ()
-	awful.util.spawn("amixer sset Master toggle") end),
-  awful.key({ }, "XF86Eject", function ()
-	awful.util.spawn("eject") end)
-)
 
 -- Set keys
 root.keys(globalkeys)
