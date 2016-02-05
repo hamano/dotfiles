@@ -337,6 +337,19 @@ function dec_width()
   awful.client.moveresize(0, 0, -fact*5, 0)
 end
 
+function move_down()
+  c = client.focus
+  pos = c.geometry(c)
+  awful.client.moveresize(0, screen[c.screen].geometry.height - pos.y - pos.height, 0, 0)
+end
+
+function move_up()
+  c = client.focus
+  pos = c.geometry(c)
+  top = screen[c.screen].geometry.height - screen[c.screen].workarea.height
+  awful.client.moveresize(0, top - pos.y, 0, 0)
+end
+
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
   awful.key({modkey}, "d", debug_print),
@@ -347,15 +360,25 @@ globalkeys = awful.util.table.join(
   awful.key({modkey}, "u", awful.tag.history.restore),
   awful.key({modkey}, "w", random_wallpaper),
   awful.key({modkey}, "Escape", function () mymainmenu:show() end),
-
+  
+  awful.key({modkey}, "v", max_vertical),
   awful.key({modkey}, "n", min_window),
   awful.key({modkey}, "m", max_window),
   awful.key({modkey}, "h", move_left),
   awful.key({modkey}, "l", move_right),
   awful.key({modkey, "Control"}, "h", dec_width),
   awful.key({modkey, "Control"}, "l", inc_width),
-  awful.key({modkey}, "v", max_vertical),
-
+  awful.key({modkey}, "j", move_down),
+  awful.key({modkey}, "k", move_up),
+  awful.key({modkey}, "f", function ()
+      c = client.focus
+      c.fullscreen = not c.fullscreen
+  end),
+  awful.key({modkey}, "[", function ()
+      c = client.focus
+      c.ontop = not c.ontop
+  end),
+  
   awful.key({ }, "XF86MonBrightnessDown", function ()
       awful.util.spawn("xbacklight -dec 10") end),
   awful.key({ }, "XF86MonBrightnessUp", function ()
@@ -369,8 +392,6 @@ globalkeys = awful.util.table.join(
   awful.key({ }, "XF86Eject", function ()
       awful.util.spawn("eject") end),
 
-  -- awful.key({modkey}, "j", next_window),
-  -- awful.key({modkey}, "k", prev_window),
   -- Layout manipulation
   -- awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end),
   -- awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
@@ -416,13 +437,6 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-  -- tile operation
-  -- awful.key({modkey}, "h", function () awful.client.incwfact( 0.05) end),
-  -- awful.key({modkey}, "l", function () awful.client.incwfact(-0.05) end),
-
-  awful.key({modkey}, "f", function (c) c.fullscreen = not c.fullscreen  end),
-  awful.key({modkey}, "[", function (c) c.ontop = not c.ontop end),
-
   awful.key({modkey, "Control"}, "q", function (c) c:kill() end),
   awful.key({modkey, "Control"}, "space",  awful.client.floating.toggle)
 )
