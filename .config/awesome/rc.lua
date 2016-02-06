@@ -328,8 +328,14 @@ function inc_width()
   c = client.focus
   pos = c.geometry(c)
   fact = screen[1].workarea.width / 100
-  awful.client.moveresize(0, 0, fact*5, 0)
+  inc = fact * 5
+  x = screen[1].workarea.width - (pos.x + pos.width + inc)
+  if x > 0 then
+    x = 0
+  end
+  awful.client.moveresize(x, 0, inc, 0)
 end
+
 function dec_width()
   c = client.focus
   pos = c.geometry(c)
