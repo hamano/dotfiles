@@ -145,7 +145,6 @@ mymainmenu = awful.menu(
       {"chrome",
        "google-chrome --restore-last-session",
        "/opt/google/chrome/product_logo_32.xpm"},
---    {"thunar", "thunar", "/usr/share/icons/hicolor/64x64/apps/Thunar.png"},
       {"pcmanfm", "pcmanfm", "/usr/share/icons/Adwaita/scalable/mimetypes/inode-directory-symbolic.svg"},
       {"psi", "psi", "/usr/share/icons/hicolor/64x64/apps/psi.png"},
       {"psi+", "psi-plus", "/usr/share/icons/hicolor/128x128/apps/psi-plus.png"},
@@ -293,6 +292,11 @@ function max_vertical()
   c.maximized_vertical   = not c.maximized_vertical
 end
 
+function max_horizontal()
+  c = client.focus
+  c.maximized_horizontal   = not c.maximized_horizontal
+end
+
 function max_window()
   c = client.focus
   c.maximized_horizontal = not c.maximized_horizontal
@@ -368,6 +372,7 @@ globalkeys = awful.util.table.join(
   awful.key({modkey}, "Escape", function () mymainmenu:show() end),
   
   awful.key({modkey}, "v", max_vertical),
+  awful.key({modkey, "Control"}, "v", max_horizontal),
   awful.key({modkey}, "n", min_window),
   awful.key({modkey}, "m", max_window),
   awful.key({modkey}, "h", move_left),
@@ -383,6 +388,10 @@ globalkeys = awful.util.table.join(
   awful.key({modkey}, "[", function ()
       c = client.focus
       c.ontop = not c.ontop
+  end),
+  awful.key({modkey, "Control"}, "q", function ()
+      c = client.focus
+      c:kill()
   end),
   
   awful.key({ }, "XF86MonBrightnessDown", function ()
@@ -403,7 +412,7 @@ globalkeys = awful.util.table.join(
   -- awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
   -- awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
   -- awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-  awful.key({ modkey,           }, "Tab",
+  awful.key({modkey}, "Tab",
     function ()
       awful.client.focus.history.previous()
       if client.focus then
@@ -443,7 +452,6 @@ globalkeys = awful.util.table.join(
 )
 
 clientkeys = awful.util.table.join(
-  awful.key({modkey, "Control"}, "q", function (c) c:kill() end),
   awful.key({modkey, "Control"}, "space",  awful.client.floating.toggle)
 )
 
