@@ -361,6 +361,10 @@ function new-window(){
     fi
 }
 
+if [ -f ~/.zgen/zgen.zsh ]; then
+    . ~/.zgen/zgen.zsh
+fi
+
 if [ -f ~/.zshrc.local ]; then
     . ~/.zshrc.local
 fi
