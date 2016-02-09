@@ -361,8 +361,12 @@ function new-window(){
     fi
 }
 
-if [ -f ~/.zgen/zgen.zsh ]; then
-    . ~/.zgen/zgen.zsh
+if [ -f ~/.zgen.zsh ]; then
+    . ~/.zgen.zsh
+    if ! zgen saved; then
+        zgen load zsh-users/zsh-syntax-highlighting
+        zgen save
+    fi
 fi
 
 if [ -f ~/.zshrc.local ]; then
