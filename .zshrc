@@ -367,7 +367,8 @@ if [ -f ~/.zgen.zsh ]; then
     zgen load zsh-users/zsh-syntax-highlighting
     #zgen load mafredri/zsh-async
     #zgen load sindresorhus/pure
-    zgen load b4b4r07/emoji-cli
+    zgen load mrowa44/emojify
+    alias emojify=~/.zgen/mrowa44/emojify-master/emojify
 #    if ! zgen saved; then
 #    fi
     # style change
