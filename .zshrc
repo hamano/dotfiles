@@ -363,10 +363,13 @@ function new-window(){
 
 if [ -f ~/.zgen.zsh ]; then
     . ~/.zgen.zsh
-    if ! zgen saved; then
-        zgen load zsh-users/zsh-syntax-highlighting
-        zgen save
-    fi
+    zgen load zsh-users/zsh-completions
+    zgen load zsh-users/zsh-syntax-highlighting
+    #zgen load mafredri/zsh-async
+    #zgen load sindresorhus/pure
+    zgen load b4b4r07/emoji-cli
+#    if ! zgen saved; then
+#    fi
     # style change
     typeset -A ZSH_HIGHLIGHT_STYLES
     ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
