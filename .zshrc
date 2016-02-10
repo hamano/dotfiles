@@ -367,6 +367,11 @@ if [ -f ~/.zgen.zsh ]; then
         zgen load zsh-users/zsh-syntax-highlighting
         zgen save
     fi
+    # style change
+    typeset -A ZSH_HIGHLIGHT_STYLES
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
 fi
 
 if [ -f ~/.zshrc.local ]; then
