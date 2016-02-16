@@ -6,14 +6,26 @@ if [ "${SYSNAME}" = "Linux" ]; then
     GNU=1
 fi
 
+if [ -f ~/.zgen.zsh ]; then
+    . ~/.zgen.zsh
+    zgen load zsh-users/zsh-completions
+    zgen load zsh-users/zsh-syntax-highlighting
+    #zgen load mafredri/zsh-async
+    #zgen load sindresorhus/pure
+    zgen load mrowa44/emojify
+    alias emojify=~/.zgen/mrowa44/emojify-master/emojify
+#    if ! zgen saved; then
+#    fi
+    # style change
+    typeset -A ZSH_HIGHLIGHT_STYLES
+    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
+    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
+    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
+fi
+
 # autoload
 autoload run-help
-autoload -U compinit
-if [ "${SYSNAME}" = "CYGWIN_NT-5.1" ]; then
-    compinit -u
-else
-    compinit
-fi
+autoload -U compinit; compinit -u
 setopt auto_cd
 setopt no_auto_pushd
 setopt print_exit_value
@@ -24,8 +36,7 @@ setopt hist_no_store
 setopt hist_expand
 setopt no_share_history
 setopt checkjobs
-autoload -U colors
-colors
+autoload -U colors; colors
 
 stty -ixon
 
@@ -360,23 +371,6 @@ function new-window(){
         tmux new-window -n "$*" "exec $*"
     fi
 }
-
-if [ -f ~/.zgen.zsh ]; then
-    . ~/.zgen.zsh
-    zgen load zsh-users/zsh-completions
-    zgen load zsh-users/zsh-syntax-highlighting
-    #zgen load mafredri/zsh-async
-    #zgen load sindresorhus/pure
-    zgen load mrowa44/emojify
-    alias emojify=~/.zgen/mrowa44/emojify-master/emojify
-#    if ! zgen saved; then
-#    fi
-    # style change
-    typeset -A ZSH_HIGHLIGHT_STYLES
-    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
-    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
-    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
-fi
 
 if [ -f ~/.zshrc.local ]; then
     . ~/.zshrc.local
