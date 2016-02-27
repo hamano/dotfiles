@@ -77,6 +77,9 @@ HOST=`hostname | sed 's/\..*//'`
 # for cocos2d-x
 export ANT_ROOT=/usr/share/ant/bin
 
+# for virsh
+export LIBVIRT_DEFAULT_URI="qemu:///system"
+
 if [ -f ~/.zshenv.local ]; then
     . ~/.zshenv.local
 fi
