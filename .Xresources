@@ -4,64 +4,86 @@
 #include ".Xresources.local"
 
 !!xterm
-xterm*background: ghostwhite
-xterm*foreground: black
-xterm*cursorColor: blue
-xterm*saveLines: 10000
-xterm*scrollbar: left
-xterm*faceName: Liberation Mono
-xterm*faceNameDoublesize: Ricty:style=Regular
-xterm*faceSize: 9
-xterm*utf8: 1
-xterm*locale: true
-xterm*cjkWidth: true
+xterm.background: ghostwhite
+xterm.foreground: black
+xterm.cursorColor: blue
+xterm.saveLines: 10000
+xterm.scrollbar: left
+xterm.faceName: Liberation Mono
+xterm.faceNameDoublesize: Ricty:style=Regular
+xterm.faceSize: 9
+xterm.utf8: 1
+xterm.locale: true
+xterm.cjkWidth: true
 
 !!urxvt
-urxvt*background: honeydew
-urxvt*foreground: black
-urxvt*cursorColor: blue
-urxvt*saveLines: 10000
-urxvt*imLocale: ja_JP.UTF-8
-urxvt*termName: rxvt
-urxvt*geometry: 80x25
-urxvt*tripleclick-words: true
-urxvt*letterSpace: -1
-urxvt*lineSpace: 0
-urxvt*scrollBar_right: true
-urxvt*perl-lib: .urxvt/perl/
-!urxvt*perl-ext-common: default,matcher
-urxvt*perl-ext-common: default,url-select
-urxvt*keysym.M-u: perl:url-select:select_next
-urxvt*url-launcher: /usr/bin/xdg-open
-urxvt*matcher.button: 3
-urxvt*url-select.underline: true
-urxvt*preeditType: Root
 
-urxvt*font: \
+!! tango color palette
+*color0:  #2E3436
+*color1:  #a40000
+*color2:  #4E9A06
+*color3:  #C4A000
+*color4:  #3465A4
+*color5:  #75507B
+*color6:  #ce5c00
+*color7:  #babdb9
+*color8:  #555753
+*color9:  #EF2929
+*color10: #8AE234
+*color11: #FCE94F
+*color12: #729FCF
+*color13: #AD7FA8
+*color14: #fcaf3e
+*color15: #EEEEEC
+
+!! atom dark-ui
+!urxvt.background: #333
+!urxvt.foreground: #aaa
+
+urxvt.background: #2E3436
+urxvt.foreground: #EEEEEC
+urxvt.cursorColor: #729FCF
+urxvt.saveLines: 10000
+urxvt.imLocale: ja_JP.UTF-8
+urxvt.termName: rxvt
+urxvt.geometry: 80x25
+urxvt.tripleclick-words: true
+urxvt.letterSpace: -1
+urxvt.lineSpace: 0
+urxvt.scrollBar_right: true
+urxvt.perl-lib: .urxvt/perl/
+!urxvt.perl-ext-common: default,matcher
+urxvt.perl-ext-common: default,url-select
+urxvt.keysym.M-u: perl:url-select:select_next
+urxvt.url-launcher: /usr/bin/xdg-open
+urxvt.matcher.button: 3
+urxvt.url-select.underline: true
+urxvt.preeditType: Root
+
+urxvt.font: \
  xft:Ricty:style=Regular:size=9, \
  -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
  r12, k12g
-urxvt*boldFont:	\
+urxvt.boldFont:	\
  xft:Ricty:style=Bold:size=9, \
  -shinonome-gothic-bold-r-normal--12-110-75-75-c-120-*, \
  r12b, k12b
-urxvt*italicFont: \
+urxvt.italicFont: \
  xft:Ricty:style=Italic:size=9, \
  -shinonome-gothic-medium-i-normal--12-110-75-75-c-120-*, \
  r12i, k12i
-urxvt*boldItalicFont: \
+urxvt.boldItalicFont: \
  xft:Ricty:style=Bold Italic:size=9, \
  -shinonome-gothic-bold-i-normal--12-110-75-75-c-120-*, \
  r12bi, k12bi
-urxvt*imFont: \
+urxvt.imFont: \
  xft:Ricty:style=Regular:size=9, \
  -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
  r12, k12g
 
-!!urxvt-i
-urxvt-i*background:       black
-urxvt-i*foreground:       white
-urxvt-i*cursorColor:      green
+!!urxvt-light
+urxvt-light.background: honeydew
+urxvt-light.foreground: black
 
 !!emacs
 emacs.borderWidth: 20
