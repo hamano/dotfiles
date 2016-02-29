@@ -25,7 +25,7 @@ xterm.cjkWidth: true
 *color3:  #C4A000
 *color4:  #3465A4
 *color5:  #75507B
-*color6:  #ce5c00
+*color6:  #0099cc
 *color7:  #babdb9
 *color8:  #555753
 *color9:  #EF2929
@@ -33,7 +33,7 @@ xterm.cjkWidth: true
 *color11: #FCE94F
 *color12: #729FCF
 *color13: #AD7FA8
-*color14: #fcaf3e
+*color14: #33b5e5
 *color15: #EEEEEC
 
 !! atom dark-ui
