@@ -92,17 +92,14 @@
 
 ;; Face settings
 (set-cursor-color "green")
-(set-face-foreground 'default "black")
-(set-face-background 'default "white")
+(set-face-foreground 'default "white")
+(set-face-background 'default "black")
 (setq transient-mark-mode t)
-(set-face-foreground 'region "black")
-(set-face-background 'region "green")
+(set-face-foreground 'region "white")
+(set-face-background 'region "brightblack")
 
-(set-face-foreground 'mode-line "white")
-(set-face-background 'mode-line "black")
-(when (>= emacs-major-version 22)
-  (set-face-foreground 'mode-line-inactive "white")
-  (set-face-background 'mode-line-inactive "brightblack"))
+(set-face-foreground 'mode-line "black")
+(set-face-background 'mode-line "white")
 
 (show-paren-mode 1)
 (set-face-background 'show-paren-match-face "yellow")
@@ -355,8 +352,7 @@
 (when (>= emacs-major-version 22)
   (require 'hl-line)
   (global-hl-line-mode)
-  (set-face-background 'hl-line "cyan")
-  ;(setq hl-line-face 'underline)
+  (setq hl-line-face 'underline)
   )
 
 ;; flymake

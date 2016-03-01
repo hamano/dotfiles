@@ -50,7 +50,7 @@ if exists('&ambw')
 endif
 if exists('&cursorline')
     set cursorline
-    hi cursorline cterm=none ctermbg=gray
+    hi cursorline term=underline cterm=underline
 endif
 
 "highlight cursorline ctermbg=gray

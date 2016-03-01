@@ -16,10 +16,10 @@ if [ -f ~/.zgen.zsh ]; then
     alias emojify=~/.zgen/mrowa44/emojify-master/emojify
 #    if ! zgen saved; then
 #    fi
-    # style change
-    typeset -A ZSH_HIGHLIGHT_STYLES
-    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
-    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
+    # change color for highlight style
+#    typeset -A ZSH_HIGHLIGHT_STYLES
+#    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
+#    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
     ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
 fi
 
