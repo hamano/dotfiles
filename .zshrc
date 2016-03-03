@@ -10,8 +10,8 @@ if [ -f ~/.zgen.zsh ]; then
     . ~/.zgen.zsh
     zgen load zsh-users/zsh-completions
     zgen load zsh-users/zsh-syntax-highlighting
-    #zgen load mafredri/zsh-async
-    #zgen load sindresorhus/pure
+    zgen load mafredri/zsh-async
+    zgen load hamano/pure . machine
     zgen load mrowa44/emojify
     alias emojify=~/.zgen/mrowa44/emojify-master/emojify
 #    if ! zgen saved; then
@@ -20,7 +20,7 @@ if [ -f ~/.zgen.zsh ]; then
 #    typeset -A ZSH_HIGHLIGHT_STYLES
 #    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
 #    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
-    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
+#    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
 fi
 
 # autoload
@@ -53,11 +53,10 @@ zstyle ':completion:*' group-name ''
 
 # set prompts
 precmd() {
-    PROMPT="%~
-%B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
-"%m%{${reset_color}%}%B]%b%# "
+#    PROMPT="%~
+#%B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
+#"%m%{${reset_color}%}%B]%b%# "
     RPROMPT=""
-    echo -n "\e]2;$USER@$HOST\a"
 }
 
 # history
