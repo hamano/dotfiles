@@ -564,14 +564,22 @@
            (face-spec-set face spec))
           (t
            (wl-declare-face face spec))))
+
   (my-wl-set-face 'wl-highlight-message-cited-text-2
-                  '((t (:foreground "darkblue"))))
+                  '((t (:foreground "brightblue"))))
   (my-wl-set-face 'wl-highlight-message-cited-text-3
-                  '((t (:foreground "dodgerblue"))))
+                  '((t (:foreground "brightgreen"))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-4
+                  '((t (:foreground "brightmagenta"))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-5
+                  '((t (:foreground "brightcyan"))))
   (my-wl-set-face 'wl-highlight-message-cited-text-6
-                  '((t (:foreground "darkred"))))
+                  '((t (:foreground "brightyellow"))))
   (my-wl-set-face 'wl-highlight-message-cited-text-7
-                  '((t (:foreground "SaddleBrown"))))
+                  '((t (:foreground "brightred"))))
+  (my-wl-set-face 'wl-highlight-message-cited-text-8
+                  '((t (:foreground "brightwhite"))))
+
   ; encode non-ASCII atatched filename
   (eval-after-load "std11"
   '(defadvice std11-wrap-as-quoted-string
