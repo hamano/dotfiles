@@ -6,22 +6,29 @@ if [ "${SYSNAME}" = "Linux" ]; then
     GNU=1
 fi
 
-if [ -f ~/.zgen.zsh ]; then
-    . ~/.zgen.zsh
-    zgen load zsh-users/zsh-completions
-    zgen load zsh-users/zsh-syntax-highlighting
-    zgen load mafredri/zsh-async
-    zgen load hamano/pure . machine
-    zgen load mrowa44/emojify
-    alias emojify=~/.zgen/mrowa44/emojify-master/emojify
-#    if ! zgen saved; then
-#    fi
-    # change color for highlight style
-#    typeset -A ZSH_HIGHLIGHT_STYLES
-#    ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
-#    ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
-#    ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
-fi
+function zgen_load(){
+    if [[ "$ZSH_VERSION" < "4.3" ]]; then
+        echo "too old zsh version"
+        return
+    fi
+    if [ -f ~/.zgen.zsh ]; then
+        . ~/.zgen.zsh
+        if ! zgen saved; then
+            zgen load zsh-users/zsh-completions
+            zgen load zsh-users/zsh-syntax-highlighting
+            zgen load mafredri/zsh-async
+            zgen load hamano/pure . machine
+            zgen load mrowa44/emojify
+        fi
+        alias emojify=~/.zgen/mrowa44/emojify-master/emojify
+        # change color for highlight style
+        #typeset -A ZSH_HIGHLIGHT_STYLES
+        #ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
+        #ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
+        #ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
+    fi
+}
+zgen_load
 
 # autoload
 autoload run-help
@@ -52,12 +59,12 @@ zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
 # set prompts
-precmd() {
+#precmd() {
 #    PROMPT="%~
 #%B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
 #"%m%{${reset_color}%}%B]%b%# "
-    RPROMPT=""
-}
+#    RPROMPT=""
+#}
 
 # history
 HISTSIZE=1000
