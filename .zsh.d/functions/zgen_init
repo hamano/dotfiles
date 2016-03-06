@@ -1,0 +1,27 @@
+if [[ "$ZSH_VERSION" < "4.3" ]]; then
+    echo "too old zsh version"
+    return
+fi
+
+if [[ ! -f ~/.zgen.zsh ]]; then
+    return
+fi
+
+. ~/.zgen.zsh
+if ! zgen saved; then
+    zgen load zsh-users/zsh-completions
+    zgen load zsh-users/zsh-syntax-highlighting
+    zgen load mafredri/zsh-async
+    zgen load hamano/pure . machine
+    zgen load mrowa44/emojify
+fi
+alias emojify=~/.zgen/mrowa44/emojify-master/emojify
+# change color for highlight style
+#typeset -A ZSH_HIGHLIGHT_STYLES
+#ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
+#ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
+#ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
+
+# Local Variables:
+# mode: sh
+# End:

@@ -14,7 +14,7 @@
 #
 # $Id: .zshenv,v 1.10 2008-02-19 08:55:42 hamano Exp $
 
-SYSNAME=`uname -s`
+export SYSNAME=`uname -s`
 
 if [[ -z "$PATH" || "$PATH" == "/bin:/usr/bin" ]]; then
 	PATH="/usr/local/bin:/usr/bin:/bin:/usr/bin/X11:/usr/games"

@@ -1,34 +1,17 @@
 # .zshrc
 # $Id: .zshrc,v 1.8 2007/12/11 05:09:19 hamano Exp $
 
-SYSNAME=`uname -s`
 if [ "${SYSNAME}" = "Linux" ]; then
     GNU=1
 fi
 
-function zgen_load(){
-    if [[ "$ZSH_VERSION" < "4.3" ]]; then
-        echo "too old zsh version"
-        return
-    fi
-    if [ -f ~/.zgen.zsh ]; then
-        . ~/.zgen.zsh
-        if ! zgen saved; then
-            zgen load zsh-users/zsh-completions
-            zgen load zsh-users/zsh-syntax-highlighting
-            zgen load mafredri/zsh-async
-            zgen load hamano/pure . machine
-            zgen load mrowa44/emojify
-        fi
-        alias emojify=~/.zgen/mrowa44/emojify-master/emojify
-        # change color for highlight style
-        #typeset -A ZSH_HIGHLIGHT_STYLES
-        #ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
-        #ZSH_HIGHLIGHT_STYLES[double-quoted-argument]='fg=magenta'
-        #ZSH_HIGHLIGHT_STYLES[dollar-quoted-argument]='fg=magenta'
-    fi
-}
-zgen_load
+if [[ -d ~/.zsh.d/functions/ ]]; then
+    fpath=(~/.zsh.d/functions/ $fpath)
+elif [[ -d ~/git/dotfiles/.zsh.d/functions/ ]]; then
+    fpath=(~/git/dotfiles/.zsh.d/functions/ $fpath)
+fi
+
+autoload -U zgen_init; zgen_init
 
 # autoload
 autoload run-help
