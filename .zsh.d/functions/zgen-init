@@ -13,8 +13,8 @@ fi
 if ! zgen saved; then
     zgen load zsh-users/zsh-completions
     zgen load zsh-users/zsh-syntax-highlighting
-    zgen load mafredri/zsh-async
-    zgen load hamano/pure . machine
+#    zgen load mafredri/zsh-async
+#    zgen load hamano/pure . machine
     zgen load mrowa44/emojify
 fi
 alias emojify=~/.zgen/mrowa44/emojify-master/emojify

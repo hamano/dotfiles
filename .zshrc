@@ -47,6 +47,7 @@ zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
 # set prompts
+prompt pure
 #precmd() {
 #    PROMPT="%~
 #%B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
