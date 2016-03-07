@@ -11,7 +11,7 @@ elif [[ -d ~/git/dotfiles/.zsh.d/functions/ ]]; then
     fpath=(~/git/dotfiles/.zsh.d/functions/ $fpath)
 fi
 
-autoload -U zgen_init; zgen_init
+autoload -U zgen-init; zgen-init
 
 # autoload
 autoload run-help
@@ -27,6 +27,8 @@ setopt hist_expand
 setopt no_share_history
 setopt checkjobs
 autoload -U colors; colors
+
+autoload -U xdg-init
 
 stty -ixon
 
@@ -322,19 +324,6 @@ function disp() {
             xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --same-as ${DP}
             ;;
     esac
-}
-
-function xdg-init() {
-    xdg-mime default pcmanfm.desktop inode/directory
-    xdg-mime default leafpad.desktop text/plain
-    xdg-mime default leafpad.desktop text/x-markdown
-    xdg-mime default gpicview.desktop image/jpeg
-    xdg-mime default gpicview.desktop image/png
-    xdg-mime default gpicview.desktop image/gif
-    xdg-mime default evince.desktop application/pdf
-    xdg-mime default xarchive.desktop application/zip
-    xdg-mime default xarchive.desktop application/x-compressed-tar
-    xdg-mime default xarchive.desktop application/x-bzip-compressed-tar
 }
 
 alias sw="split-window"

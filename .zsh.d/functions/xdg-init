@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+echo setup xgd-mime
+xdg-mime default pcmanfm.desktop inode/directory
+xdg-mime default leafpad.desktop text/plain
+xdg-mime default leafpad.desktop text/x-markdown
+xdg-mime default gpicview.desktop image/jpeg
+xdg-mime default gpicview.desktop image/png
+xdg-mime default gpicview.desktop image/gif
+xdg-mime default evince.desktop application/pdf
+xdg-mime default xarchive.desktop application/zip
+xdg-mime default xarchive.desktop application/x-compressed-tar
+xdg-mime default xarchive.desktop application/x-bzip-compressed-tar
+
+# Local Variables:
+# mode: sh
+# End:

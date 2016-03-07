@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 if [[ "$ZSH_VERSION" < "4.3" ]]; then
     echo "too old zsh version"
     return
