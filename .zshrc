@@ -11,11 +11,17 @@ elif [[ -d ~/git/dotfiles/.zsh.d/functions/ ]]; then
     fpath=(~/git/dotfiles/.zsh.d/functions/ $fpath)
 fi
 
-autoload -U zgen-init; zgen-init
+# autoload & call
+autoload -U zgen-init && zgen-init
+autoload -U compinit && compinit
+autoload -U promptinit && promptinit
+autoload -U colors && colors
 
 # autoload
 autoload run-help
-autoload -U compinit; compinit -u
+autoload -U xdg-init
+
+# setopt
 setopt auto_cd
 setopt no_auto_pushd
 setopt print_exit_value
@@ -26,9 +32,6 @@ setopt hist_no_store
 setopt hist_expand
 setopt no_share_history
 setopt checkjobs
-autoload -U colors; colors
-
-autoload -U xdg-init
 
 stty -ixon
 
