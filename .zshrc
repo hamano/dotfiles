@@ -15,7 +15,7 @@ autoload -U zgen-init; zgen-init
 
 # autoload
 autoload run-help
-autoload -U compinit; compinit -u
+autoload -U compinit; compinit
 setopt auto_cd
 setopt no_auto_pushd
 setopt print_exit_value
