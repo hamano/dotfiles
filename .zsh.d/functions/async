@@ -214,7 +214,7 @@ async_register_callback() {
 	ASYNC_CALLBACKS[$worker]="$*"
 
 	if (( ! ASYNC_USE_ZLE_HANDLER )); then
-		trap '_async_notify_trap' WINCH
+#		trap '_async_notify_trap' WINCH
 	fi
 }
 
