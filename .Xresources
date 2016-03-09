@@ -3,43 +3,69 @@
 
 #include ".Xresources.local"
 
-!!xterm
-xterm.background: ghostwhite
-xterm.foreground: black
-xterm.cursorColor: blue
-xterm.saveLines: 10000
-xterm.scrollbar: left
-xterm.faceName: Liberation Mono
-xterm.faceNameDoublesize: Ricty:style=Regular
-xterm.faceSize: 9
-xterm.utf8: 1
-xterm.locale: true
-xterm.cjkWidth: true
+! my color pallete
+#define C_red           #a54242
+#define C_brightred     #cc6666
 
-!!urxvt
+!#define C_blue          #5f819d
+!#define C_brightblue    #81a2be
+
+#define C_cyan          #5e8f87
+#define C_brightcyan    #8abeb7
+
+! tango color pallete
+#define T_black	        #2e3436
+#define T_red           #a40000
+#define T_green	        #4e9a06
+#define T_yellow        #c4a000
+#define T_blue          #204a87
+#define T_magenta       #85678f
+#define T_cyan          C_cyan
+#define T_white         #babdb9
+#define T_brightblack   #888a85
+#define T_brightred     #ef2929
+#define T_brightgreen   #8ae234
+#define T_brightyellow  #fce94f
+#define T_brightblue    #729fcf
+#define T_brightmagenta #b294bb
+#define T_brightcyan    C_brightcyan
+#define T_brightwhite   #eeeeec
+
+!!xterm
+xterm*background: T_black
+xterm*foreground: T_white
+xterm*cursorColor: blue
+xterm*saveLines: 10000
+xterm*scrollbar: left
+xterm*faceName: Ricty
+xterm*faceNameDoublesize: Ricty:style=Regular
+xterm*faceSize: 9
+xterm*utf8: 1
+xterm*locale: true
+xterm*cjkWidth: true
 
 !! tango color palette
-*color0:  #2E3436
-*color1:  #a40000
-*color2:  #4E9A06
-*color3:  #C4A000
-*color4:  #3465A4
-*color5:  #75507B
-*color6:  #0099cc
-*color7:  #babdb9
-*color8:  #555753
-*color9:  #EF2929
-*color10: #8AE234
-*color11: #FCE94F
-*color12: #729FCF
-*color13: #AD7FA8
-*color14: #33b5e5
-*color15: #EEEEEC
+*color0:  T_black
+*color1:  C_red
+*color2:  T_green
+*color3:  T_yellow
+*color4:  T_blue
+*color5:  T_magenta
+*color6:  C_cyan
+*color7:  T_white
+*color8:  T_brightblack
+*color9:  C_brightred
+*color10: T_brightgreen
+*color11: T_brightyellow
+*color12: T_brightblue
+*color13: T_brightmagenta
+*color14: C_brightcyan
+*color15: T_brightwhite
 
+!!urxvt
 !! atom dark-ui
 !urxvt.background: #333
 !urxvt.foreground: #aaa
-
 urxvt.background: #2E3436
 urxvt.foreground: #EEEEEC
 urxvt.cursorColor: #729FCF
