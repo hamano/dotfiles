@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+if [ $# != 1 ]; then
+    echo "usage: errno num";
+    return 1;
+fi
+python -c "import os, errno; print errno.errorcode[$1], os.strerror($1)"
+
+# Local Variables:
+# mode: zsh
+# End:

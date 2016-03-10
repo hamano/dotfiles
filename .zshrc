@@ -20,6 +20,7 @@ autoload -U colors && colors
 # autoload
 autoload run-help
 autoload -U xdg-init
+autoload -U errno
 
 # setopt
 setopt auto_cd
@@ -210,14 +211,6 @@ function extract(){
             ;;
     esac
     return 0;
-}
-
-function errno(){
-    if [ $# != 1 ]; then
-        echo "usage: errno num";
-        return 2;
-    fi
-    python -c "import os, errno; print errno.errorcode[$1], os.strerror($1)"
 }
 
 function git-ic(){

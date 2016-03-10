@@ -13,5 +13,5 @@ xdg-mime default xarchive.desktop application/x-compressed-tar
 xdg-mime default xarchive.desktop application/x-bzip-compressed-tar
 
 # Local Variables:
-# mode: sh
+# mode: zsh
 # End:
