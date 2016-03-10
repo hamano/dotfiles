@@ -43,6 +43,8 @@ xterm*faceSize: 9
 xterm*utf8: 1
 xterm*locale: true
 xterm*cjkWidth: true
+xterm*eightBitInput: false
+xterm*eightBitOutput: true
 
 !! tango color palette
 *color0:  T_black
