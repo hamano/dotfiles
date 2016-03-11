@@ -21,6 +21,7 @@ autoload -U colors && colors
 autoload run-help
 autoload -U xdg-init
 autoload -U errno
+autoload -U disp
 
 # setopt
 setopt auto_cd
@@ -271,56 +272,6 @@ function echod() {
         nc -l -p ${1} -c 'xargs -n1 echo'
         test $? -ne 0 && break;
     done
-}
-
-function click() {
-    if [ $# != 1 ]; then
-        echo "usage: click msec";
-        return 2;
-    fi
-    while true; do
-        echo -ne "mouseclick 1\nusleep ${1}000\n";
-    done | xte
-}
-
-function disp() {
-    case ${HOST} in
-    retina)
-        DP=eDP1
-        OUT=DP1
-        MODE=1280x800
-        SCALE=2x2
-        ;;
-    mbp)
-        DP=LVDS1
-        OUT=DP1
-        MODE=1280x800
-        SCALE=1x1
-        ;;
-    *)
-        echo "unknown laptop: ${HOST}"
-        return 1
-        ;;
-    esac
-
-    case "$1" in
-        off)
-            set -x
-            xrandr --output ${OUT} --off
-            ;;
-        right)
-            set -x
-            xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --right-of ${DP}
-            ;;
-        left)
-            set -x
-            xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --left-of ${DP}
-            ;;
-        *)
-            set -x
-            xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --same-as ${DP}
-            ;;
-    esac
 }
 
 alias sw="split-window"
