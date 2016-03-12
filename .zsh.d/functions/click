@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+if [ $# != 1 ]; then
+    echo "usage: click <msec>";
+    return 1;
+fi
+
+while true; do
+    echo -ne "mouseclick 1\nusleep ${1}000\n";
+done | xte
+
+# Local Variables:
+# mode: sh
+# End:

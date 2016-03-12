@@ -22,6 +22,7 @@ autoload run-help
 autoload -U xdg-init
 autoload -U errno
 autoload -U disp
+autoload -U click
 
 # setopt
 setopt auto_cd
