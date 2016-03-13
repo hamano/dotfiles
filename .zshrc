@@ -23,6 +23,7 @@ autoload -U xdg-init
 autoload -U errno
 autoload -U disp
 autoload -U click
+autoload -U unrpm
 
 # setopt
 setopt auto_cd
@@ -227,19 +228,6 @@ function git-tar(){
         return 2;
     fi
     git archive --format=tar --prefix=$1/ $2 | gzip -9 > $1.tar.gz
-}
-
-function unrpm(){
-    if [ $# != 1 ]; then
-        echo "usage: unrpm file";
-        return 2;
-    fi
-    BASE_DIR="${1%.*}"
-    echo $BASE_DIR
-    mkdir "$BASE_DIR"
-    pushd "$BASE_DIR"
-    rpm2cpio "../$1" | cpio -idv
-    popd
 }
 
 function ssh-rm(){

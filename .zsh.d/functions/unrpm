@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+if [ $# != 1 ]; then
+    echo "usage: unrpm file";
+    return 1;
+fi
+
+BASE_DIR="${1%.*}"
+echo $BASE_DIR
+mkdir "$BASE_DIR"
+pushd "$BASE_DIR"
+rpm2cpio "../$1" | cpio -idv
+popd
+
+# Local Variables:
+# mode: sh
+# End:
