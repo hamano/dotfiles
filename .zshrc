@@ -24,6 +24,8 @@ autoload -U errno
 autoload -U disp
 autoload -U click
 autoload -U unrpm
+autoload -U python-clean
+alias pyc='python-clean'
 
 # setopt
 setopt auto_cd
@@ -125,11 +127,6 @@ if [ ${GNU} ]; then
     alias ecr='emacs-clean'
     function emacs-clean(){
         find . $@ \( -name "*~" -o -name ".*~" -o -name "*#" \)\
-             -exec rm -fv {} \;
-    }
-    alias pyc='python-clean'
-    function python-clean(){
-        find . $@ \( -name "*.pyc" \)\
              -exec rm -fv {} \;
     }
 fi

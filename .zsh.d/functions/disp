@@ -39,5 +39,5 @@ case "$1" in
 esac
 
 # Local Variables:
-# mode: zsh
+# mode: sh
 # End:

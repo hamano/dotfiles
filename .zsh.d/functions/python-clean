@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+find $1 \( -name "*.pyc" \) -exec rm -fv {} \;
+
+# Local Variables:
+# mode: sh
+# End:
