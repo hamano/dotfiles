@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+autoload -U colors && colors
+
+COLOR_NAMES=(
+    black
+    red
+    green
+    yellow
+    blue
+    magenta
+    cyan
+    brightblack
+    brightred
+    brightgreen
+    brightyellow
+    brightblue
+    brightmagenta
+    brightcyan
+    brightwhite
+)
+
+for i in {0..16}; do
+    echo -ne "\x1b[48;5;${i}m"
+    echo -ne "${COLOR_NAMES[$i]}"
+    for j in {0..$(( 22 - ${#COLOR_NAMES[$i]} ))}; do
+        echo -ne " "
+    done
+    echo -ne "\x1b[0m"
+    echo
+done
+
+# Local Variables:
+# mode: sh
+# End:

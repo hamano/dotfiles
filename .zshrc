@@ -26,6 +26,7 @@ autoload -U click
 autoload -U unrpm
 autoload -U python-clean
 alias pyc='python-clean'
+autoload -U list-colors
 
 # setopt
 setopt auto_cd
