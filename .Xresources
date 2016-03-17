@@ -3,17 +3,17 @@
 
 #include ".Xresources.local"
 
-! my color pallete
+!! custom color pallete
 #define C_red           #a54242
 #define C_brightred     #cc6666
 
-!#define C_blue          #5f819d
-!#define C_brightblue    #81a2be
+#define C_blue          #5f819d
+#define C_brightblue    #81a2be
 
 #define C_cyan          #5e8f87
 #define C_brightcyan    #8abeb7
 
-! tango color pallete
+!! tango color pallete
 #define T_black	        #2e3436
 #define T_red           #a40000
 #define T_green	        #4e9a06
@@ -31,10 +31,57 @@
 #define T_brightcyan    C_brightcyan
 #define T_brightwhite   #eeeeec
 
+!! solarized color pallete
+#define S_base03        #002b36
+#define S_base02        #073642
+#define S_base01        #586e75
+#define S_base00        #657b83
+#define S_base0         #839496
+#define S_base1         #93a1a1
+#define S_base2         #eee8d5
+#define S_base3         #fdf6e3
+
+#define S_black         S_base03
+#define S_brightblack   S_base02
+#define S_white         S_base2
+#define S_brightwhite   S_base3
+
+#define S_yellow        #b58900
+#define S_orange        #cb4b16
+#define S_red           #dc322f
+#define S_magenta       #d33682
+#define S_violet        #6c71c4
+#define S_blue          #268bd2
+#define S_cyan          #2aa198
+#define S_green         #859900
+
+!! common terminal
+*background: S_base03
+*foreground: S_base1
+*fading:     40
+*fadeColor:               S_base03
+*cursorColor:             S_base1
+*pointerColorBackground:  S_base01
+*pointerColorForeground:  S_base1
+
+*color0:     S_black
+*color1:     C_red
+*color2:     S_green
+*color3:     S_yellow
+*color4:     S_blue
+*color5:     S_violet
+*color6:     S_cyan
+*color7:     S_white
+*color8:     S_brightblack
+*color9:     S_orange
+*color10:    T_brightgreen
+*color11:    T_brightyellow
+*color12:    C_brightblue
+*color13:    S_magenta
+*color14:    C_brightcyan
+*color15:    S_brightwhite
+
 !!xterm
-xterm*background: T_black
-xterm*foreground: T_white
-xterm*cursorColor: blue
 xterm*saveLines: 10000
 xterm*scrollbar: left
 xterm*faceName: Ricty
@@ -46,31 +93,8 @@ xterm*cjkWidth: true
 xterm*eightBitInput: false
 xterm*eightBitOutput: true
 
-!! tango color palette
-*color0:  T_black
-*color1:  C_red
-*color2:  T_green
-*color3:  T_yellow
-*color4:  T_blue
-*color5:  T_magenta
-*color6:  C_cyan
-*color7:  T_white
-*color8:  T_brightblack
-*color9:  C_brightred
-*color10: T_brightgreen
-*color11: T_brightyellow
-*color12: T_brightblue
-*color13: T_brightmagenta
-*color14: C_brightcyan
-*color15: T_brightwhite
-
 !!urxvt
 !! atom dark-ui
-!urxvt.background: #333
-!urxvt.foreground: #aaa
-urxvt.background: #2E3436
-urxvt.foreground: #EEEEEC
-urxvt.cursorColor: #729FCF
 urxvt.saveLines: 10000
 urxvt.imLocale: ja_JP.UTF-8
 urxvt.termName: rxvt
