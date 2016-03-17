@@ -10,6 +10,7 @@ COLOR_NAMES=(
     blue
     magenta
     cyan
+    white
     brightblack
     brightred
     brightgreen
@@ -20,10 +21,16 @@ COLOR_NAMES=(
     brightwhite
 )
 
-for i in {0..16}; do
+for i in {0..7}; do
     echo -ne "\x1b[48;5;${i}m"
-    echo -ne "${COLOR_NAMES[$i]}"
-    for j in {0..$(( 22 - ${#COLOR_NAMES[$i]} ))}; do
+    echo -ne "${COLOR_NAMES[$i + 1]}"
+    for s in {0..$(( 22 - ${#COLOR_NAMES[$i + 1]} ))}; do
+        echo -ne " "
+    done
+    j=$((${i} + 8))
+    echo -ne "\x1b[48;5;${j}m"
+    echo -ne "${COLOR_NAMES[$j + 1]}"
+    for s in {0..$(( 22 - ${#COLOR_NAMES[$j + 1]} ))}; do
         echo -ne " "
     done
     echo -ne "\x1b[0m"
