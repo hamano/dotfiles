@@ -31,7 +31,7 @@
 #define T_brightcyan    C_brightcyan
 #define T_brightwhite   #eeeeec
 
-!! solarized color pallete
+!! solarized color theme
 #define S_base03        #002b36
 #define S_base02        #073642
 #define S_base01        #586e75
@@ -55,17 +55,25 @@
 #define S_cyan          #2aa198
 #define S_green         #859900
 
+!! tomorrow night color theme
+#define TNE_background  #2d2d2d
+#define TNE_currentline #393939
+#define TNE_selection   #515151
+#define TNE_foreground  #cccccc
+#define TNE_comment     #999999
+#define TNE_red         #f2777a
+
 !! common terminal
 *background: S_base03
 *foreground: S_base1
-*fading:     40
+*fading:     50
 *fadeColor:               S_base03
 *cursorColor:             S_base1
 *pointerColorBackground:  S_base01
 *pointerColorForeground:  S_base1
 
 *color0:     S_black
-*color1:     C_red
+*color1:     S_red
 *color2:     S_green
 *color3:     S_yellow
 *color4:     S_blue
