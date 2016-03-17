@@ -54,6 +54,7 @@ zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
 
 # set prompts
+PURE_PROMPT_SYMBOL='%%'
 prompt pure
 #precmd() {
 #    PROMPT="%~
