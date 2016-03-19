@@ -71,8 +71,11 @@ export EDITOR=vi
 export CVSEDITOR=vi
 export MALLOC_CHECK_=0
 #export MALLOC_TRACE=mtrace.log
-export GIT_PAGER=cat
 HOST=`hostname | sed 's/\..*//'`
+
+# git settings
+export GIT_PAGER=cat
+export GIT_EXEC_PATH="$HOME/git/dotfiles/.git-exec"
 
 # for cocos2d-x
 export ANT_ROOT=/usr/share/ant/bin
