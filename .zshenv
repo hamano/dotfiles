@@ -75,7 +75,7 @@ HOST=`hostname | sed 's/\..*//'`
 
 # git settings
 export GIT_PAGER=cat
-export GIT_EXEC_PATH="$HOME/git/dotfiles/.git-exec"
+export GIT_EXEC_PATH="$HOME/git/dotfiles/.git-exec:/usr/lib/git-core"
 
 # for cocos2d-x
 export ANT_ROOT=/usr/share/ant/bin
