@@ -63,15 +63,7 @@
 #define TNE_comment     #999999
 #define TNE_red         #f2777a
 
-!! common terminal
-*background: S_base03
-*foreground: S_base2
-*fading:     20
-*fadeColor:               S_base03
-*cursorColor:             S_base1
-*pointerColorBackground:  S_base01
-*pointerColorForeground:  S_base1
-
+!! system color
 *color0:     S_black
 *color1:     S_red
 *color2:     S_green
@@ -102,7 +94,14 @@ xterm*eightBitInput: false
 xterm*eightBitOutput: true
 
 !!urxvt
-!! atom dark-ui
+urxvt.background: S_base03
+urxvt.foreground: S_base2
+urxvt.fading:     20
+urxvt.fadeColor:               S_base03
+urxvt.cursorColor:             S_base1
+urxvt.pointerColorBackground:  S_base01
+urxvt.pointerColorForeground:  S_base1
+
 urxvt.saveLines: 10000
 urxvt.imLocale: ja_JP.UTF-8
 urxvt.termName: rxvt
