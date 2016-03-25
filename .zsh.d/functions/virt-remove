@@ -1,0 +1,24 @@
+#!/usr/bin/env zsh
+
+if [ $# != 1 ]; then
+    echo "usage: $0 <domain>";
+    return 1;
+fi
+DOMAIN=$1
+while true; do
+  STATE=`virsh domstate "${DOMAIN}"`
+  if [[ "${STATE}" == "running" ]]; then
+    virsh destroy "${DOMAIN}"
+  fi
+  if [[ "${STATE}" == "shut off" ]]; then
+    break
+  fi
+  echo domstate: $STATE
+  sleep 1
+done
+
+virsh undefine --remove-all-storage "${DOMAIN}"
+
+# Local Variables:
+# mode: sh
+# End:
