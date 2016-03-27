@@ -27,6 +27,7 @@ autoload -U unrpm
 autoload -U python-clean
 alias pyc='python-clean'
 autoload -U list-colors
+autoload -U virt-remove
 
 # setopt
 setopt auto_cd
@@ -213,20 +214,6 @@ function extract(){
             ;;
     esac
     return 0;
-}
-
-function git-ic(){
-    git init
-    git add .
-    git commit -a -m "initial commit"
-}
-
-function git-tar(){
-    if [ $# != 2 ]; then
-        echo "usage: git-tar prefix tag";
-        return 2;
-    fi
-    git archive --format=tar --prefix=$1/ $2 | gzip -9 > $1.tar.gz
 }
 
 function ssh-rm(){
