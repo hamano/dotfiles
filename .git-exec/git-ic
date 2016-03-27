@@ -4,3 +4,6 @@ git init
 git add .
 git commit -a -m "initial commit"
 
+# Local Variables:
+# mode: sh
+# End:
