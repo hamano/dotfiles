@@ -5,11 +5,11 @@ if [[ "$ZSH_VERSION" < "4.3" ]]; then
     return
 fi
 
-if [[ ! -f ~/.zgen.zsh ]]; then
+if [[ ! -f ~/git/dotfiles/.zsh.d/zgen.zsh ]]; then
     return
 fi
 
-. ~/.zgen.zsh
+. ~/git/dotfiles/.zsh.d/zgen.zsh
 if ! zgen saved; then
     zgen load zsh-users/zsh-completions
     zgen load zsh-users/zsh-syntax-highlighting
