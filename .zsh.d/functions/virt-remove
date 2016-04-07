@@ -17,7 +17,7 @@ while true; do
   sleep 1
 done
 
-virsh undefine --remove-all-storage "${DOMAIN}"
+virsh undefine --storage vda "${DOMAIN}"
 
 # Local Variables:
 # mode: sh
