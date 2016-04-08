@@ -31,6 +31,7 @@ autoload -U virt-remove
 autoload -U echod
 autoload -U urlencode
 autoload -U urldecode
+autoload -U virt-cp
 
 # setopt
 setopt auto_cd

@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+if [ $# != 2 ]; then
+    echo "usage: $0 <origdomain> <newdomain>";
+    return 1;
+fi
+ORIGDOMAIN=$1
+NEWDOMAIN=$2
+
+virsh-clone -o "${ORIGDOMAIN}" -n "${NEWDOMAIN}" --auto-clone
+
+# Local Variables:
+# mode: sh
+# End:
