@@ -29,6 +29,8 @@ alias pyc='python-clean'
 autoload -U list-colors
 autoload -U virt-remove
 autoload -U echod
+autoload -U urlencode
+autoload -U urldecode
 
 # setopt
 setopt auto_cd
@@ -224,14 +226,6 @@ function ssh-rm(){
     fi
 #	echo -ne "$1d\nw\n" | ed -s ~/.ssh/known_hosts
     ssh-keygen -f ~/.ssh/known_hosts -R "$1"
-}
-
-function urlencode () {
-    perl -MURI::Escape -lne 'print uri_escape($_)' <<< "$1"
-}
-
-function urldecode () {
-    perl -MURI::Escape -lne 'print uri_unescape($_)' <<< "$1";
 }
 
 function req() {

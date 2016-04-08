@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+perl -MURI::Escape -lne 'print uri_escape($_)' <<< "$1"
+
+# Local Variables:
+# mode: zsh
+# End:
