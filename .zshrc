@@ -32,6 +32,8 @@ autoload -U echod
 autoload -U urlencode
 autoload -U urldecode
 autoload -U virt-cp
+autoload -U tmux-new-window
+alias nw='tmux-new-window'
 
 # setopt
 setopt auto_cd
@@ -233,29 +235,6 @@ function req() {
     openssl req -new -days 365 -x509 -nodes -keyout key.pem -out cert.pem
 }
 
-alias sw="split-window"
-function split-window(){
-    if [ -z "$TMUX" ]; then
-        tmux
-    fi
-    if [ $# -eq 0 ]; then
-        tmux split-window -v "$SHELL"
-    else
-        tmux split-window -v "exec $*"
-    fi
-}
-
-alias nw="new-window"
-function new-window(){
-    if [ -z "$TMUX" ]; then
-        tmux
-    fi
-    if [ $# -eq 0 ]; then
-        tmux new-window "$SHELL"
-    else
-        tmux new-window -n "$*" "exec $*"
-    fi
-}
 
 if [ -f ~/.zshrc.local ]; then
     . ~/.zshrc.local

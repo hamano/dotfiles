@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+if [ -z "$TMUX" ]; then
+    tmux
+fi
+if [ $# -eq 0 ]; then
+    tmux new-window "$SHELL"
+else
+    tmux new-window -n "$*" "exec $*"
+fi
+
+# Local Variables:
+# mode: sh
+# End:
