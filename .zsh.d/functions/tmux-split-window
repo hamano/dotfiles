@@ -1,0 +1,14 @@
+#!/usr/bin/env zsh
+
+if [ -z "$TMUX" ]; then
+    tmux
+fi
+if [ $# -eq 0 ]; then
+    tmux split-window -v "$SHELL"
+else
+    tmux split-window -v "exec $*"
+fi
+
+# Local Variables:
+# mode: sh
+# End:

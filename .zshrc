@@ -34,6 +34,8 @@ autoload -U urldecode
 autoload -U virt-cp
 autoload -U tmux-new-window
 alias nw='tmux-new-window'
+autoload -U tmux-split-window
+alias sw='split-window'
 
 # setopt
 setopt auto_cd
