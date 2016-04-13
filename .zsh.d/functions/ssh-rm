@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+if [ $# != 1 ]; then
+    echo "usage: ssh-rm <host>";
+    return 1;
+fi
+#echo -ne "$1d\nw\n" | ed -s ~/.ssh/known_hosts
+ssh-keygen -f ~/.ssh/known_hosts -R "$1"
+IP=`host $1 | awk '{print $4}'`
+if [ $? -eq 0 ]; then
+    echo $IP
+    ssh-keygen -f ~/.ssh/known_hosts -R "$IP"
+fi
+
+# Local Variables:
+# mode: sh
+# End:

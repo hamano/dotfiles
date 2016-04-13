@@ -38,6 +38,7 @@ autoload -U tmux-split-window
 alias sw='split-window'
 autoload -U extract
 alias x='extract'
+autoload -U ssh-rm
 
 # setopt
 setopt auto_cd
@@ -147,15 +148,6 @@ fi
 alias b='backup'
 function backup(){
     mv $1{,.bak} && cp $1{.bak,};
-}
-
-function ssh-rm(){
-    if [ $# != 1 ]; then
-        echo "usage: ssh-rm host";
-        return 2;
-    fi
-#	echo -ne "$1d\nw\n" | ed -s ~/.ssh/known_hosts
-    ssh-keygen -f ~/.ssh/known_hosts -R "$1"
 }
 
 function req() {
