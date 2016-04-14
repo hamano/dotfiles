@@ -7,7 +7,7 @@ fi
 ORIGDOMAIN=$1
 NEWDOMAIN=$2
 
-virsh-clone -o "${ORIGDOMAIN}" -n "${NEWDOMAIN}" --auto-clone
+virt-clone -o "${ORIGDOMAIN}" -n "${NEWDOMAIN}" --auto-clone
 
 # Local Variables:
 # mode: sh
