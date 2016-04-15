@@ -35,7 +35,7 @@ autoload -U virt-cp
 autoload -U tmux-new-window
 alias nw='tmux-new-window'
 autoload -U tmux-split-window
-alias sw='split-window'
+alias sw='tmux-split-window'
 autoload -U extract
 alias x='extract'
 autoload -U ssh-rm
