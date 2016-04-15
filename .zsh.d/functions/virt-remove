@@ -7,6 +7,9 @@ fi
 DOMAIN=$1
 while true; do
   STATE=`virsh domstate "${DOMAIN}"`
+  if [[ $? -ne 0 ]]; then
+    exit 1
+  fi
   if [[ "${STATE}" == "running" ]]; then
     virsh destroy "${DOMAIN}"
   fi
