@@ -27,7 +27,7 @@ autoload -U unrpm
 autoload -U python-clean
 alias pyc='python-clean'
 autoload -U list-colors
-autoload -U virt-remove
+autoload -U virt-rm
 autoload -U echod
 autoload -U urlencode
 autoload -U urldecode
