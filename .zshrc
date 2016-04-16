@@ -19,6 +19,7 @@ autoload -U colors && colors
 
 # autoload
 autoload run-help
+autoload -U dot-init
 autoload -U xdg-init
 autoload -U errno
 autoload -U disp

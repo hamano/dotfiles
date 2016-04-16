@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+echo initialize dotfiles
+DOTFILES=`dirname $0`/../../
+DOTFILES=`readlink -e $DOTFILES`
+ln -sf $DOTFILES/.zshrc ~/
+ln -sf $DOTFILES/.zshenv ~/
+ln -sf $DOTFILES/.gitconfig ~/
+
+# Local Variables:
+# mode: zsh
+# End:
