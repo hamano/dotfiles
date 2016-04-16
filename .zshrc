@@ -69,12 +69,6 @@ zstyle ':completion:*' group-name ''
 # set prompts
 PURE_PROMPT_SYMBOL='%%'
 prompt pure
-#precmd() {
-#    PROMPT="%~
-#%B[%b%n@%{[${color[$HOSTATTR]}m%}%{[${color[$HOSTCOLOR]}m%}"\
-#"%m%{${reset_color}%}%B]%b%# "
-#    RPROMPT=""
-#}
 
 # history
 HISTSIZE=1000
