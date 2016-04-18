@@ -68,6 +68,12 @@ case "${ext:u}" in
         rpm2cpio "../${file}" | cpio -idv
         popd
         ;;
+    "ISO")
+        mkdir "${base}"
+        pushd "${base}"
+        7z x "../${file}"
+        popd
+        ;;
     *)
         echo "unsupported archive: ${ext:u}"
         ;;
