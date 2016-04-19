@@ -119,6 +119,7 @@ alias warchive="wget -rkpN"
 
 alias emacs='emacs -nw'
 alias elc='emacs --batch -Q -f batch-byte-compile'
+alias xrdb-reload='xrdb ~/.Xresources'
 
 if [ "${SYSNAME}" = "SunOS" ]; then
     alias ec='emacs-clean \( -type d -a \! -name . -prune \) -o -type f'
