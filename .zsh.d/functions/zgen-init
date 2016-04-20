@@ -16,8 +16,11 @@ if ! zgen saved; then
 #    zgen load mafredri/zsh-async
 #    zgen load hamano/pure . machine
     zgen load mrowa44/emojify
+    zgen load rupa/z
 fi
 alias emojify=~/.zgen/mrowa44/emojify-master/emojify
+. ~/.zgen/rupa/z-master/z.sh
+
 # change color for highlight style
 #typeset -A ZSH_HIGHLIGHT_STYLES
 #ZSH_HIGHLIGHT_STYLES[single-quoted-argument]='fg=magenta'
