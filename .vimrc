@@ -31,6 +31,9 @@ set wrap
 set scrolloff=4
 set nofoldenable
 
+"keybind
+nnoremap tp :pop<CR>
+
 "set paste
 
 if has("syntax")
