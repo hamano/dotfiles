@@ -6,6 +6,7 @@ DOTFILES=`readlink -e $DOTFILES`
 ln -sf $DOTFILES/.zshrc ~/
 ln -sf $DOTFILES/.zshenv ~/
 ln -sf $DOTFILES/.gitconfig ~/
+ln -sf $DOTFILES/.tmux.conf ~/
 
 # Local Variables:
 # mode: zsh
