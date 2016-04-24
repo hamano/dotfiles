@@ -295,7 +295,10 @@
             (setq python-indent 4)
             (define-key python-mode-map (kbd "C-c C-c")
               (lambda () (interactive) (python-shell-send-buffer t)))
-
+            (defun python-shell-parse-command ()
+              "Return the string used to execute the inferior Python process."
+              "python3 -i"
+              )
 ;            (split-window-vertically)
 ;            (run-python nil t)
 ;            (save-excursion
