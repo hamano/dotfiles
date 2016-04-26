@@ -294,19 +294,13 @@
             (setq indent-level 4)
             (setq python-indent 4)
             (define-key python-mode-map (kbd "C-c C-c")
-              (lambda () (interactive) (python-shell-send-buffer t)))
-            (defun python-shell-parse-command ()
-              "Return the string used to execute the inferior Python process."
-              "python3 -i"
-              )
-;            (split-window-vertically)
-;            (run-python nil t)
-;            (save-excursion
-;              (save-selected-window
-;                (select-window (next-window))
-;                (set-window-buffer (selected-window) python-buffer)
-;                (enlarge-window (- 10 (window-height)))
-;                ))
+              (lambda ()
+                (interactive)
+                (python-shell-get-or-create-process "python3 -i" nil t)
+                (python-shell-send-buffer)
+                ))
+;            (call-interactively 'run-python)
+;            (enlarge-window (/ (window-height) 2))
             ))
 
 (add-hook 'latex-mode-hook
