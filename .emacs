@@ -299,8 +299,11 @@
                 (python-shell-get-or-create-process "python3 -i" nil t)
                 (python-shell-send-buffer)
                 ))
-;            (call-interactively 'run-python)
-;            (enlarge-window (/ (window-height) 2))
+;;            (call-interactively 'run-python)
+;;            (enlarge-window (/ (window-height) 2))
+            (when (locate-library "company")
+              (company-mode)
+              (define-key python-mode-map (kbd "M-/") 'company-complete))
             ))
 
 (add-hook 'latex-mode-hook
