@@ -304,8 +304,10 @@
             (when (locate-library "company")
               (company-mode)
               (define-key python-mode-map (kbd "M-/") 'company-complete))
+            (when (locate-library "jedi")
+              (jedi:setup)
+              (setq jedi:complete-on-dot t))
             ))
-
 (add-hook 'latex-mode-hook
           (lambda ()
             (define-key latex-mode-map "\C-c\C-c" 'compile)
