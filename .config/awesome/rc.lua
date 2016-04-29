@@ -303,6 +303,22 @@ function max_window()
   c.maximized_vertical   = not c.maximized_vertical
 end
 
+function max_full_normal_window()
+  c = client.focus
+  if c.fullscreen then
+    c.fullscreen = false
+    c.maximized_horizontal = false
+    c.maximized_vertical   = false
+    return
+  end
+  if c.maximized_horizontal and c.maximized_vertical then
+    c.fullscreen = true
+    return
+  end
+  c.maximized_horizontal = true
+  c.maximized_vertical   = true
+end
+
 function min_window()
   c = client.focus
   c.minimized = true
@@ -374,17 +390,14 @@ globalkeys = awful.util.table.join(
   awful.key({modkey}, "v", max_vertical),
   awful.key({modkey, "Control"}, "v", max_horizontal),
   awful.key({modkey}, "n", min_window),
-  awful.key({modkey}, "m", max_window),
+  --awful.key({modkey}, "m", max_full_normal_window),
   awful.key({modkey}, "h", move_left),
   awful.key({modkey}, "l", move_right),
   awful.key({modkey, "Control"}, "h", dec_width),
   awful.key({modkey, "Control"}, "l", inc_width),
   awful.key({modkey}, "j", move_down),
   awful.key({modkey}, "k", move_up),
-  awful.key({modkey}, "f", function ()
-      c = client.focus
-      c.fullscreen = not c.fullscreen
-  end),
+  awful.key({modkey}, "f", max_full_normal_window),
   awful.key({modkey}, "[", function ()
       c = client.focus
       c.ontop = not c.ontop
