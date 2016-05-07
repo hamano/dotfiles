@@ -308,7 +308,6 @@
               (jedi:setup)
               (setq jedi:complete-on-dot t)
               (define-key python-mode-map (kbd "M-/") 'jedi:complete))
-              )
             ))
 (add-hook 'latex-mode-hook
           (lambda ()
