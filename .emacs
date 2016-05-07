@@ -306,7 +306,9 @@
               (define-key python-mode-map (kbd "M-/") 'company-complete))
             (when (locate-library "jedi")
               (jedi:setup)
-              (setq jedi:complete-on-dot t))
+              (setq jedi:complete-on-dot t)
+              (define-key python-mode-map (kbd "M-/") 'jedi:complete))
+              )
             ))
 (add-hook 'latex-mode-hook
           (lambda ()
