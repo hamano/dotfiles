@@ -1,1 +1,4 @@
-SUBSYSTEM=="usb", ATTR{0fce}=="612e", GROUP="plugdev", MODE="0660"
+#
+SUBSYSTEM=="usb", ATTR{idVendor}=="0fce", ATTR{idProduct}=="612e", GROUP="plugdev", MODE="0660", SYMLINK+="android"
+# SO-02G
+SUBSYSTEM=="usb", ATTR{idVendor}=="0fce", ATTR{idProduct}=="51bb", GROUP="plugdev", MODE="0660", SYMLINK+="android"

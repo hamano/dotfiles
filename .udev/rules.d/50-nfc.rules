@@ -1,2 +1,2 @@
 # ACR122U
-SUBSYSTEM=="usb", ATTR{072f}=="2200", GROUP="plugdev", MODE="0660"
+SUBSYSTEM=="usb", ATTR{idVendor}="072f", ATTR{idProduct}=="2200", GROUP="plugdev", MODE="0660"
