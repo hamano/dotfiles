@@ -1,1 +1,1 @@
-SUBSYSTEM=="usb", ATTR{0fce}=="612e", MODE="0666", GROUP="plugdev"
+SUBSYSTEM=="usb", ATTR{0fce}=="612e", GROUP="plugdev", MODE="0660"

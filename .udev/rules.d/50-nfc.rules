@@ -1,0 +1,2 @@
+# ACR122U
+SUBSYSTEM=="usb", ATTR{072f}=="2200", GROUP="plugdev", MODE="0660"
