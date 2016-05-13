@@ -296,7 +296,9 @@
             (define-key python-mode-map (kbd "C-c C-c")
               (lambda ()
                 (interactive)
-                (python-shell-get-or-create-process "python3 -i" nil t)
+                (python-shell-get-or-create-process
+                 (if (getenv "VIRTUAL_ENV") "python -i" "python3 -i")
+                 nil t)
                 (python-shell-send-buffer)
                 ))
             ;;(call-interactively 'run-python)
