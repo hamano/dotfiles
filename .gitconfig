@@ -11,6 +11,7 @@
 [core]
     pager = cat
     editor = vi
+    quotepath = false
 
 [alias]
     st = status --short --branch
