@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-find $1 \( -name "*.pyc" \) -exec rm -fv {} \;
+find $1 \( -name "*.pyc" -o -name "__pycache__" \) -exec rm -frv {} +
 
 # Local Variables:
 # mode: sh
