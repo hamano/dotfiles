@@ -209,7 +209,7 @@
             (c-set-style "k&r")
             (c-toggle-auto-state -1)
             (c-toggle-hungry-state 1)
-            (setq indent-tabs-mode nil)
+            (setq indent-tabs-mode t)
             (setq tab-width 4)
             (setq c-basic-offset 4)
             (define-key c-mode-map "\C-c\C-m" 'manual-entry)
