@@ -101,11 +101,11 @@
 (set-face-foreground 'mode-line "black")
 (set-face-background 'mode-line "white")
 
-(show-paren-mode 1)
+(show-paren-mode t)
 (set-face-background 'show-paren-match-face "yellow")
-(set-face-foreground 'show-paren-match-face "black")
+;;(set-face-foreground 'show-paren-match-face "black")
 
-; highliting white space at EOL
+;; highliting white space at EOL
 (cond
  ((= emacs-major-version 22)
   (defface ws-face-r-1 '((t (:background "cyan"))) nil)
@@ -206,12 +206,12 @@
 
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (c-set-style "k&r")
+            (c-set-style "linux")
             (c-toggle-auto-state -1)
             (c-toggle-hungry-state 1)
-            (setq indent-tabs-mode t)
-            (setq tab-width 4)
-            (setq c-basic-offset 4)
+;            (setq indent-tabs-mode t)
+;            (setq tab-width 4)
+;            (setq c-basic-offset 4)
             (define-key c-mode-map "\C-c\C-m" 'manual-entry)
             (define-key c-mode-map "\C-c\C-c" 'compile)
             (define-key c-mode-map "\C-c\C-n" 'next-error)
