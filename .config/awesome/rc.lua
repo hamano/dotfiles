@@ -102,9 +102,10 @@ function random_wallpaper()
     return
   end
   wallpaper = wallpapers[math.random(1, #wallpapers)]
-  for s = 1, screen.count() do
-    gears.wallpaper.maximized(wallpaper, s, true)
-  end
+  gears.wallpaper.maximized(wallpaper, s, true)
+--  for s = 1, screen.count() do
+--    gears.wallpaper.maximized(wallpaper, s, true)
+--  end
   --awful.util.spawn_with_shell('feh --bg-scale "' .. wallpaper .. '"')
 end
 
