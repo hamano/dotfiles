@@ -711,6 +711,12 @@
   (require 'eaw)
   (eaw-fullwidth))
 
+(when (locate-library "etags-table")
+  (require 'etags-table)
+  (setq etags-table-search-up-depth 5)
+  )
+(global-set-key (kbd "C-]") 'find-tag)
+
 (when (locate-library "open-junk-file")
   (require 'open-junk-file)
   (global-set-key (kbd "C-x C-j") 'open-junk-file))
