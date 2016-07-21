@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+
+docker rm `docker ps -a -q`
+
+# Local Variables:
+# mode: zsh
+# End:
