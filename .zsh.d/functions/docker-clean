@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+
+docker rm -v $(docker ps -a -q -f status=exited)
+docker rmi $(docker images -f "dangling=true" -q)
+
+# Local Variables:
+# mode: sh
+# End:
