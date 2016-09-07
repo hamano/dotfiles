@@ -24,17 +24,17 @@ case "$1" in
         set -x
         xrandr --output ${OUT} --off
         ;;
-    right)
+    same)
         set -x
-        xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --right-of ${DP}
+        xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --same-as ${DP}
         ;;
     left)
         set -x
-        xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --left-of ${DP}
+        xrandr --output ${OUT} --mode ${MODE} --left-of ${DP}
         ;;
     *)
         set -x
-        xrandr --output ${OUT} --mode ${MODE} --scale ${SCALE} --same-as ${DP}
+        xrandr --output ${OUT} --mode ${MODE} --right-of ${DP}
         ;;
 esac
 
