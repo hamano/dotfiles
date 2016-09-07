@@ -40,6 +40,7 @@ alias sw='tmux-split-window'
 autoload -U extract
 alias x='extract'
 autoload -U ssh-rm
+autoload -U docker-clean
 
 # setopt
 setopt auto_cd
