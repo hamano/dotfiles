@@ -7,6 +7,7 @@ ln -sf $DOTFILES/.zshrc ~/
 ln -sf $DOTFILES/.zshenv ~/
 ln -sf $DOTFILES/.gitconfig ~/
 ln -sf $DOTFILES/.tmux.conf ~/
+ln -sf $DOTFILES/.zsh.d/ ~/
 
 # Local Variables:
 # mode: zsh

@@ -82,16 +82,27 @@
 *color15:    S_brightwhite
 
 !!xterm
+xterm*background: S_base03
+xterm*foreground: S_base2
+xterm*cursorColor:             S_base1
+xterm*pointerColorBackground:  S_base01
+xterm*pointerColorForeground:  S_base1
+
 xterm*saveLines: 10000
 xterm*scrollbar: left
 xterm*faceName: Ricty
-xterm*faceNameDoublesize: Ricty:style=Regular
+xterm*faceNameDoublesize: Ricty
+xterm*fontDoublesize: true
+xterm*ximFont: -misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0
+!xterm*ximFont: -jis-fixed-medium-r-normal--24-170-100-100-c-240-jisx0208.1983-0
 xterm*faceSize: 9
 xterm*utf8: 1
 xterm*locale: true
 xterm*cjkWidth: true
+XTerm*forcePackedFont: false
 xterm*eightBitInput: false
 xterm*eightBitOutput: true
+xterm*metaSendsEscape: true
 
 !!urxvt
 urxvt.background: S_base03
