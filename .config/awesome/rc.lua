@@ -59,6 +59,8 @@ end
 
 -- This is used later as the default terminal and editor to run.
 if os.execute('which urxvt') then
+    terminal = "mlterm"
+elseif os.execute('which urxvt') then
     terminal = "urxvt"
 else
     terminal = "xterm"
@@ -142,6 +144,7 @@ systemmenu = {
 
 mymainmenu = awful.menu(
   { items = {
+      {"mlterm", "mlterm", "/usr/share/pixmaps/mlterm-icon-gnome.png"},
       {"urxvt", "urxvt", "/usr/share/pixmaps/urxvt_48x48.xpm"},
       {"chrome",
        "google-chrome --restore-last-session",
@@ -654,7 +657,7 @@ end
 awful.util.spawn_with_shell("wmname LG3D")
 
 --run_once("/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1")
-run_once("urxvtd")
+--run_once("urxvtd")
 run_once("volumeicon")
 run_once("nm-applet")
 --run_once("wicd-client", "-t", '/usr/bin/python -O /usr/share/wicd/gtk/wicd-client.py')
