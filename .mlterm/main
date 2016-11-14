@@ -1,0 +1,9 @@
+bg_color = black
+fg_color = white
+#fontsize = # fontsize write to /etc/mlterm/main
+mod_meta_mode = esc
+scrollbar_mode=right
+col_size_of_width_a = 2
+word_separators=\ "
+letter_space=1
+input_method = uim
