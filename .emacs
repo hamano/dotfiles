@@ -122,14 +122,19 @@
 
 ;; Package settings
 (when (>= emacs-major-version 24)
-  (require 'package)
-  (add-to-list 'package-archives
-               '("melpa-stable" . "http://melpa-stable.milkbox.net/packages/"))
-  (add-to-list 'package-archives
-               '("melpa" . "https://melpa.org/packages/") t)
-  (add-to-list 'package-archives
-               '("marmalade" . "http://marmalade-repo.org/packages/"))
-  (package-initialize))
+  (package-initialize)
+  (setq package-archives
+        '(("gnu" . "http://elpa.gnu.org/packages/")
+          ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
+          ("melpa" . "http://melpa.org/packages/")
+          ("org" . "http://orgmode.org/elpa/")
+          ("marmalade" . "http://marmalade-repo.org/packages/")
+          ))
+  )
+
+;; Theme settings
+(when (locate-library "flatland-theme")
+  (load-theme 'flatland t))
 
 ;; X settings
 (if window-system
