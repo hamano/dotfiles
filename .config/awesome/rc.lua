@@ -65,7 +65,8 @@ elseif os.execute('which urxvt') then
 else
     terminal = "xterm"
 end
-filemanager = "pcmanfm"
+--filemanager = "pcmanfm"
+filemanager = "thunar"
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -150,6 +151,7 @@ mymainmenu = awful.menu(
        "google-chrome --restore-last-session",
        "/opt/google/chrome/product_logo_32.xpm"},
       {"pcmanfm", "pcmanfm", "/usr/share/icons/Adwaita/scalable/mimetypes/inode-directory-symbolic.svg"},
+      {"thunar", "thunar", "/usr/share/icons/Adwaita/scalable/mimetypes/inode-directory-symbolic.svg"},
       {"psi", "psi", "/usr/share/icons/hicolor/64x64/apps/psi.png"},
       {"psi+", "psi-plus", "/usr/share/icons/hicolor/128x128/apps/psi-plus.png"},
       {"clementine", "clementine", "/usr/share/icons/hicolor/64x64/apps/application-x-clementine.png"},
