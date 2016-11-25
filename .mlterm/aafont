@@ -1,0 +1,12 @@
+DEFAULT = Ricty
+U+2100-214F = Symbola # Letterlike Symbols
+U+2150-218F = Symbola # Number Forms
+U+2190-21FF = Symbola # Arrows
+U+2200-22FF = Symbola # Mathematical Operators
+U+2300-23FF = Symbola # Miscellaneous Technical
+U+2400-243F = Symbola # Control Pictures
+U+2440-245F = Symbola # Optical Character Recognition
+U+2460-24FF = Symbola # Enclosed Alphanumerics
+U+2500-257F = Symbola # Box Drawing
+U+2580-2DFF = Symbola # Others
+U+1F000-1F77F = Symbola
