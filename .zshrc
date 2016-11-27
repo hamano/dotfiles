@@ -75,7 +75,7 @@ prompt pure
 HISTSIZE=1000
 #SAVEHIST=1000
 #HISTFILE=~/.histfile
-REPORTTIME=1
+REPORTTIME=3
 
 # set alias
 alias l='ls -lh'
