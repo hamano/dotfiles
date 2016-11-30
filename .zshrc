@@ -5,17 +5,55 @@ if [ "${SYSNAME}" = "Linux" ]; then
     GNU=1
 fi
 
-if [[ -d ~/.zsh.d/functions/ ]]; then
-    fpath=(~/.zsh.d/functions/ $fpath)
-elif [[ -d ~/git/dotfiles/.zsh.d/functions/ ]]; then
-    fpath=(~/git/dotfiles/.zsh.d/functions/ $fpath)
+if [[ ! -e ~/.zplug ]]; then
+    echo "zplug not found."
+    read ans\?"install zplug? [Y/n]"
+    case $ans in
+        '' | [Yy]* )
+            echo installing zplug...
+            curl -sL zplug.sh/installer | zsh
+            ;;
+        [Nn]* )
+            ;;
+        * )
+            echo Please answer YES or NO.
+            ;;
+    esac
 fi
 
+if [[ -f ~/.zplug/init.zsh ]]; then
+    source ~/.zplug/init.zsh
+    zplug "zsh-users/zsh-completions"
+    zplug "zsh-users/zsh-history-substring-search"
+    zplug "zsh-users/zsh-syntax-highlighting", nice:10
+    zplug "mrowa44/emojify", as:command, use:emojify
+    zplug "rupa/z", use:z.sh
+    zplug "mafredri/zsh-async"
+    zplug "sindresorhus/pure"
+#    zplug "~/etc/.zsh.d", from:local
+    if ! zplug check; then
+        zplug install
+    fi
+
+    # prompt settings
+    PURE_PROMPT_SYMBOL='%%'
+    prompt_pure_username=' %F{white}%n@%m%f'
+
+    # load plugin
+    zplug load
+fi
+
+#if [[ -d ~/etc/.zsh.d/functions/ ]]; then
+#    fpath=(~/etc/.zsh.d/functions/ $fpath)
+#elif [[ -d ~/git/dotfiles/.zsh.d/functions/ ]]; then
+#    fpath=(~/git/dotfiles/.zsh.d/functions/ $fpath)
+#fi
+
 # autoload & call
-autoload -U zgen-init && zgen-init
-autoload -U compinit && compinit
-autoload -U promptinit && promptinit
-autoload -U colors && colors
+#autoload -U zgen-init && zgen-init
+#autoload -U compinit && compinit
+#autoload -U colors && colors
+#autoload -U promptinit && promptinit
 
 # autoload
 autoload run-help
@@ -66,10 +104,6 @@ zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name ''
-
-# set prompts
-PURE_PROMPT_SYMBOL='%%'
-prompt pure
 
 # history
 HISTSIZE=1000
