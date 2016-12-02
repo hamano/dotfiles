@@ -37,6 +37,7 @@ nnoremap tp :pop<CR>
 "set paste
 
 if has("syntax")
+    colorscheme torte
     syntax on
     function! ActivateInvisibleIndicator()
         syntax match TrailedWhiteSpace "[ \t\r　]\+$" display containedin=ALL
