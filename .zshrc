@@ -30,7 +30,7 @@ if [[ -f ~/.zplug/init.zsh ]]; then
     zplug "rupa/z", use:z.sh
     zplug "mafredri/zsh-async"
     zplug "sindresorhus/pure"
-#    zplug "~/etc/.zsh.d", from:local
+    zplug "hamano/ame.sh", as:command, use:ame.sh
     if ! zplug check; then
         zplug install
     fi
