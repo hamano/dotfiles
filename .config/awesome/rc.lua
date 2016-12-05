@@ -114,6 +114,10 @@ end
 
 random_wallpaper()
 
+function screen_lock()
+  awful.util.spawn("slock")
+end
+
 -- }}}
 
 -- {{{ Tags
@@ -136,7 +140,7 @@ awesomemenu = {
 }
 
 systemmenu = {
-  { "lock", "slock" },
+  { "lock", screen_lock },
   { "logout", awesome.quit },
   { "shutdown", function(t) awful.util.spawn("systemctl poweroff") end },
   { "reboot", function(t) awful.util.spawn("systemctl reboot") end },
@@ -150,7 +154,6 @@ mymainmenu = awful.menu(
       {"chrome",
        "google-chrome --restore-last-session",
        "/opt/google/chrome/product_logo_32.xpm"},
-      {"pcmanfm", "pcmanfm", "/usr/share/icons/Adwaita/scalable/mimetypes/inode-directory-symbolic.svg"},
       {"thunar", "thunar", "/usr/share/icons/Adwaita/scalable/mimetypes/inode-directory-symbolic.svg"},
       {"psi", "psi", "/usr/share/icons/hicolor/64x64/apps/psi.png"},
       {"psi+", "psi-plus", "/usr/share/icons/hicolor/128x128/apps/psi-plus.png"},
@@ -385,25 +388,34 @@ end
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(
   awful.key({modkey}, "d", debug_print),
+  awful.key({modkey}, "Tab", next_window),
   awful.key({modkey}, "Left", next_window),
   awful.key({modkey}, "Right", prev_window),
   awful.key({modkey}, "Up",   awful.tag.viewprev),
   awful.key({modkey}, "Down",  awful.tag.viewnext),
   awful.key({modkey}, "u", awful.tag.history.restore),
   awful.key({modkey}, "w", random_wallpaper),
-  awful.key({modkey}, "Escape", function () mymainmenu:show() end),
-  
+  awful.key({modkey}, "Escape", screen_lock),
+  awful.key({modkey}, "space", function () mymainmenu:show() end),
   awful.key({modkey}, "v", max_vertical),
   awful.key({modkey, "Control"}, "v", max_horizontal),
   awful.key({modkey}, "n", min_window),
   --awful.key({modkey}, "m", max_full_normal_window),
   awful.key({modkey}, "h", move_left),
   awful.key({modkey}, "l", move_right),
-  awful.key({modkey, "Control"}, "h", dec_width),
-  awful.key({modkey, "Control"}, "l", inc_width),
+  awful.key({modkey}, "-", dec_width),
+  awful.key({modkey}, ";", inc_width),
   awful.key({modkey}, "j", move_down),
   awful.key({modkey}, "k", move_up),
   awful.key({modkey}, "f", max_full_normal_window),
+  awful.key({modkey}, "Return", function () awful.util.spawn(terminal) end),
+  awful.key({modkey}, "/", function () awful.util.spawn(filemanager) end),
+  awful.key({modkey, "Control"}, "Tab", function () awful.layout.inc(layouts,  1) end),
+  awful.key({modkey, "Control" }, "r", awesome.restart),
+  awful.key({modkey, "Shift" }, "q", awesome.quit),
+  awful.key({modkey, "Control"}, "n", awful.client.restore),
+
+  --
   awful.key({modkey}, "[", function ()
       c = client.focus
       c.ontop = not c.ontop
@@ -412,7 +424,7 @@ globalkeys = awful.util.table.join(
       c = client.focus
       c:kill()
   end),
-  
+
   awful.key({ }, "XF86MonBrightnessDown", function ()
       awful.util.spawn("xbacklight -dec 10") end),
   awful.key({ }, "XF86MonBrightnessUp", function ()
@@ -431,31 +443,16 @@ globalkeys = awful.util.table.join(
   -- awful.key({ modkey, "Shift"   }, "k", function () awful.client.swap.byidx( -1)    end),
   -- awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
   -- awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
-  awful.key({modkey}, "Tab",
-    function ()
-      awful.client.focus.history.previous()
-      if client.focus then
-	client.focus:raise()
-      end
-  end),
-
-    -- Standard program
-    awful.key({ modkey,           }, "Return", function () awful.util.spawn(terminal) end),
-    awful.key({ modkey,           }, "/", function () awful.util.spawn(filemanager) end),
-    awful.key({ modkey, "Control" }, "r", awesome.restart),
-    awful.key({ modkey, "Shift"   }, "q", awesome.quit),
-
---    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1)      end),
---    awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1)      end),
---    awful.key({ modkey, "Control" }, "h",     function () awful.tag.incncol( 1)         end),
---    awful.key({ modkey, "Control" }, "l",     function () awful.tag.incncol(-1)         end),
-    awful.key({ modkey,           }, "space", function () awful.layout.inc(layouts,  1) end),
-    awful.key({ modkey, "Shift"   }, "space", function () awful.layout.inc(layouts, -1) end),
-
-    awful.key({ modkey, "Control" }, "n", awful.client.restore),
+--  awful.key({modkey}, "Tab",
+--    function ()
+--      awful.client.focus.history.previous()
+--      if client.focus then
+--	    client.focus:raise()
+--      end
+--  end),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
+    awful.key({ modkey }, "r", function () mypromptbox[mouse.screen]:run() end),
 
     awful.key({ modkey }, "x",
               function ()
