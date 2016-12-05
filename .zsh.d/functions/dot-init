@@ -1,13 +1,13 @@
 #!/usr/bin/env zsh
+#set -x
 
 echo initialize dotfiles
-DOTFILES=`dirname $0`/../../
-DOTFILES=`readlink -e $DOTFILES`
-ln -sf $DOTFILES/.zshrc ~/
-ln -sf $DOTFILES/.zshenv ~/
-ln -sf $DOTFILES/.gitconfig ~/
-ln -sf $DOTFILES/.tmux.conf ~/
-ln -sf $DOTFILES/.zsh.d/ ~/
+DOTDIR=~/etc
+DOTFILES=(.zshrc .zshenv .gitconfig .tmux.conf)
+for f in $DOTFILES; do
+    echo creating link $f
+    ln -sf ${DOTDIR}/$f ~/
+done
 
 # Local Variables:
 # mode: zsh
