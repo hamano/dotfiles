@@ -7,8 +7,8 @@ if $LANG == "ja_JP.eucJP"
 else
     set encoding=utf-8
 endif
-set fileencodings=iso-2022-jp,utf-8,euc-jp
-set expandtab
+set fileencodings=iso-2022-jp,eucjp,cp932,utf-8
+set noexpandtab
 set nocompatible
 set history=50
 set hlsearch
@@ -30,6 +30,7 @@ set visualbell
 set wrap
 set scrolloff=4
 set nofoldenable
+set mouse=
 
 "keybind
 nnoremap tp :pop<CR>
