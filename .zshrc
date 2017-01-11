@@ -11,7 +11,7 @@ if [[ ! -e ~/.zplug ]]; then
     case $ans in
         '' | [Yy]* )
             echo installing zplug...
-            curl -sL zplug.sh/installer | zsh
+            curl -sL https://zplug.sh/installer | zsh
             ;;
         [Nn]* )
             ;;
@@ -23,11 +23,11 @@ fi
 
 if [[ -f ~/.zplug/init.zsh ]]; then
     source ~/.zplug/init.zsh
+    zplug 'zplug/zplug', hook-build:'zplug --self-manage'
     zplug "zsh-users/zsh-completions"
     zplug "zsh-users/zsh-history-substring-search"
-    zplug "zsh-users/zsh-syntax-highlighting", nice:10
+    zplug "zsh-users/zsh-syntax-highlighting", defer:2
     zplug "mrowa44/emojify", as:command, use:emojify
-    zplug "rupa/z", use:z.sh
     zplug "mafredri/zsh-async"
     zplug "sindresorhus/pure"
     zplug "hamano/ame.sh", as:command, use:ame.sh
