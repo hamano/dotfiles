@@ -43,42 +43,11 @@ if [[ -f ~/.zplug/init.zsh ]]; then
     zplug load
 fi
 
-#if [[ -d ~/etc/.zsh.d/functions/ ]]; then
-#    fpath=(~/etc/.zsh.d/functions/ $fpath)
-#elif [[ -d ~/git/dotfiles/.zsh.d/functions/ ]]; then
-#    fpath=(~/git/dotfiles/.zsh.d/functions/ $fpath)
-#fi
-
-# autoload & call
-#autoload -U zgen-init && zgen-init
-#autoload -U compinit && compinit
-#autoload -U colors && colors
-#autoload -U promptinit && promptinit
-
-# autoload
-autoload run-help
-autoload -U dot-init
-autoload -U xdg-init
-autoload -U errno
-autoload -U disp
-autoload -U click
-autoload -U unrpm
-autoload -U python-clean
+# aliases
 alias pyc='python-clean'
-autoload -U list-colors
-autoload -U virt-rm
-autoload -U echod
-autoload -U urlencode
-autoload -U urldecode
-autoload -U virt-cp
-autoload -U tmux-new-window
 alias nw='tmux-new-window'
-autoload -U tmux-split-window
 alias sw='tmux-split-window'
-autoload -U extract
 alias x='extract'
-autoload -U ssh-rm
-autoload -U docker-clean
 
 # setopt
 setopt auto_cd

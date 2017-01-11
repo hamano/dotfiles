@@ -56,11 +56,13 @@ if [ -d "${NODEPATH}" ]; then
 	PATH=${NODEPATH}/bin:"${PATH}"
 fi
 
+if [ -d ~/etc/bin ]; then
+	PATH=~/etc/bin:"${PATH}"
+fi
+
 if [ -d ~/bin ]; then
 	PATH=~/bin:"${PATH}"
 fi
-
-export PATH
 
 if [ "${SYSNAME}" = "SunOS" ]; then
 	export TERM=xterm
