@@ -1,0 +1,22 @@
+# GDD Phone
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0bb4", GROUP="plugdev", MODE="0666", SYMLINK+="android"
+
+# Sony
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0fce", GROUP="plugdev", MODE="0666", SYMLINK+="android"
+
+# IS01
+SUBSYSTEM=="usb", SYSFS{idVendor}=="04dd", GROUP="plugdev", MODE="0666", SYMLINK+="android"
+
+# A81E
+SUBSYSTEM=="usb", SYSFS{idVendor}=="18d1", GROUP="plugdev", MODE="0666", SYMLINK+="android"
+
+# Optimus
+SUBSYSTEM=="usb", SYSFS{idVendor}=="1004", GROUP="plugdev", MODE="0666", SYMLINK+="android"
+
+# Kindle Fire
+SUBSYSTEM=="usb", SYSFS{idVendor}=="044e", GROUP="plugdev", MODE="0666", SYMLINK+="android"
+
+# LifeTouch NOTE
+SUBSYSTEM=="usb", SYSFS{idVendor}=="0409", GROUP="plugdev", MODE="0666", SYMLINK+="android"
+
+SUBSYSTEM=="usb", SYSFS{idVendor}=="18d1", SYSFS{idProduct}=="4ee7", GROUP="plugdev", MODE="0666", SYMLINK+="android"
