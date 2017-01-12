@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+#set -x
+ETCDIR=~/etc
+
+# dependency check
+deps=(zsh git curl)
+for d in $deps; do
+    if ! type $d > /dev/null 2>&1; then
+        echo "$d not found"
+        exit 1
+    fi
+done
+
+# initialize repository
+if [ ! -e "${ETCDIR}" ]; then
+    git clone git@github.com:hamano/dotfiles.git ~/etc || \
+    git clone https://github.com/hamano/dotfiles.git ${ETCDIR}
+else
+    echo updating etc repo...
+    cd ${ETCDIR} && git pull
+fi
+
+# initialize dotfiles
+DOTFILES=(
+    .zshrc
+    .zshenv
+    .vimrc
+    .gitconfig
+    .tmux.conf)
+for f in ${DOTFILES[@]}; do
+    echo creating link $f
+    ln -sf ${ETCDIR}/$f ~/
+done
+
+if [ -d ~/.mlterm ]; then
+    echo creating mlterm link
+	ln -sf ${ETCDIR}/.mlterm/main ~/.mlterm/
+	ln -sf ${ETCDIR}/.mlterm/aafont ~/.mlterm/
+	ln -sf ${ETCDIR}/.mlterm/color ~/.mlterm/
+fi
+
+# Local Variables:
+# mode: bash
+# End:
