@@ -25,6 +25,7 @@ DOTFILES=(
     .zshrc
     .zshenv
     .vimrc
+    .emacs
     .gitconfig
     .tmux.conf)
 for f in ${DOTFILES[@]}; do
