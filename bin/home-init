@@ -27,7 +27,9 @@ DOTFILES=(
     .vimrc
     .emacs
     .gitconfig
-    .tmux.conf)
+    .tmux.conf
+    .terminfo
+)
 for f in ${DOTFILES[@]}; do
     echo creating link $f
     ln -sf ${ETCDIR}/$f ~/

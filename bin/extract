@@ -74,6 +74,9 @@ case "${ext:u}" in
         7z x "../${file}"
         popd
         ;;
+    "XZ")
+        xz -dk "${file}"
+		;;
     *)
         echo "unsupported archive: ${ext:u}"
         ;;
