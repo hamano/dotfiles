@@ -29,7 +29,8 @@ set viminfo='10,\"10
 set visualbell
 set wrap
 set scrolloff=4
-set nofoldenable
+if has("folding")
+    set nofoldenable
 set mouse=
 
 "keybind

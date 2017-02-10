@@ -76,7 +76,7 @@ case "${ext:u}" in
         ;;
     "XZ")
         xz -dk "${file}"
-		;;
+        ;;
     *)
         echo "unsupported archive: ${ext:u}"
         ;;
