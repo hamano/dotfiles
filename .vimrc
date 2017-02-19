@@ -12,6 +12,7 @@ set noexpandtab
 set nocompatible
 set history=50
 set hlsearch
+nmap <Esc><Esc> :nohlsearch<CR><Esc>
 set ignorecase
 set laststatus=1
 set nobackup
@@ -31,6 +32,7 @@ set wrap
 set scrolloff=4
 if has("folding")
     set nofoldenable
+endif
 set mouse=
 
 "keybind
