@@ -103,7 +103,7 @@ alias bc="bc -l"
 alias ixon="stty ixon"
 alias ixoff="stty -ixon"
 alias open="xdg-open"
-alias fm="thunar"
+alias fm="nemo ./"
 
 alias urxvtf='urxvt -g 40x20 \
 -fn "xft:Ricty:size=22:antialias=true" \
