@@ -1,14 +1,17 @@
 #!/usr/bin/env zsh
+#set -x
 
-IDS=`docker ps -a -q -f status=exited`
-if [[ ! -z ${IDS} ]]; then
-	docker rm -v ${IDS}
-fi
+echo delete unused containers
+docker ps -a -q -f status=exited |\
+    while read line; do
+        docker rm -v $line
+    done
 
-IMAGES=`docker images -f "dangling=true" -q`
-if [[ ! -z ${IMAGES} ]]; then
-	docker rmi `${IMAGES}`
-fi
+echo delete unused images
+docker images -f "dangling=true" -q |\
+    while read line; do
+        docker rmi $line
+    done
 
 # Local Variables:
 # mode: sh
