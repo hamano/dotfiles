@@ -41,6 +41,8 @@ if [[ -f ~/.zplug/init.zsh ]]; then
 
     # load plugin
     zplug load
+    # add path
+    PATH=~/.zplug/bin:"${PATH}"
 fi
 
 # aliases
