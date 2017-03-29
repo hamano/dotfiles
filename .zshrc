@@ -1,27 +1,17 @@
 # .zshrc
 # $Id: .zshrc,v 1.8 2007/12/11 05:09:19 hamano Exp $
 
-if [ "${SYSNAME}" = "Linux" ]; then
+if [[ ${SYSNAME} = Linux ]]; then
     GNU=1
 fi
 
-if [[ ! -e ~/.zplug ]]; then
-    echo "zplug not found."
-    read ans\?"install zplug? [Y/n]"
-    case $ans in
-        '' | [Yy]* )
-            echo installing zplug...
-            curl -sL https://zplug.sh/installer | zsh
-            ;;
-        [Nn]* )
-            ;;
-        * )
-            echo Please answer YES or NO.
-            ;;
-    esac
+if [[ ${ZSH_VERSION} < 4.3 ]]; then
+    echo "zsh ${ZSH_VERSION} is too legacy"
+else
+    LOAD_ZPLUG=1
 fi
 
-if [[ -f ~/.zplug/init.zsh ]]; then
+if [[ -n ${LOAD_ZPLUG} && -f ~/.zplug/init.zsh ]]; then
     source ~/.zplug/init.zsh
     zplug 'zplug/zplug', hook-build:'zplug --self-manage'
     zplug "zsh-users/zsh-completions"
@@ -161,4 +151,3 @@ function req() {
 if [ -f ~/.zshrc.local ]; then
     . ~/.zshrc.local
 fi
-
