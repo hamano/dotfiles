@@ -447,7 +447,9 @@
             '(lambda()
                (setq default-tab-width 4)
                (setq indent-tabs-mode t)
-               )))
+               ))
+  (add-hook 'before-save-hook 'gofmt-before-save)
+  )
 
 ;; lua-mode settings
 (when (locate-library "lua-mode")
