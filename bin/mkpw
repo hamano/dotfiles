@@ -1,6 +1,12 @@
 #!/usr/bin/env zsh
 
-< /dev/urandom tr -dc _A-Z-a-z-0-9 | head -c${1:-16};echo;
+if [[ -z $1 ]]; then
+  LEN=32
+else
+  LEN=$1
+fi
+
+< /dev/urandom tr -dc A-Za-z0-9 | head -c${1:-$LEN};echo;
 
 # Local Variables:
 # mode: sh
