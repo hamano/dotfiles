@@ -394,7 +394,7 @@
 ;; auto-insert
 (add-hook 'find-file-hooks 'auto-insert)
 (setq auto-insert-query t)
-(setq auto-insert-directory "~/.emacs.d/templates/")
+(setq auto-insert-directory "~/etc/templates/")
 (setq auto-insert-alist
       (append '(
                 (c-mode . "gpl.c")
