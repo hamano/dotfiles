@@ -273,6 +273,7 @@
           (lambda ()
             (setq indent-tabs-mode nil)
             (setq ruby-deep-indent-paren-style nil)
+            (define-key ruby-mode-map "\C-c\C-c" 'quickrun)
             ))
 
 (add-hook 'erlang-mode-hook
@@ -703,6 +704,11 @@
 
 (when (locate-library "init-loader")
   (require 'init-loader))
+
+(when (locate-library "quickrun")
+  (require 'quickrun)
+  (setq quickrun-focus-p nil)
+  )
 
 ;; Load custom settings
 (when (file-exists-p "~/.emacs.d/custom.el")
