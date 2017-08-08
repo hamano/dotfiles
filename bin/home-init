@@ -45,11 +45,11 @@ fi
 # install zplug
 if [[ ! -e ~/.zplug ]]; then
     echo "zplug not found."
-    read ans\?"install zplug? [Y/n]"
+    read -p "install zplug? [Y/n]" ans
     case $ans in
         '' | [Yy]* )
             echo installing zplug...
-            curl -sL https://zplug.sh/installer | zsh
+            curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
             ;;
         [Nn]* )
             ;;
