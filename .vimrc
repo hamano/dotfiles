@@ -30,6 +30,10 @@ set viminfo='10,\"10
 set visualbell
 set wrap
 set scrolloff=4
+
+"break for vim-tiny
+if !1 | finish | endif
+
 if has("folding")
     set nofoldenable
 endif
