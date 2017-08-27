@@ -72,6 +72,8 @@
 (setq frame-title-format "%b (%f)")
 (setq-default indicate-empty-lines t)
 (setq case-fold-search t)
+(setq transient-mark-mode t)
+(show-paren-mode t)
 
 ;; Compilation settings
 (setq compilation-window-height 8)
@@ -88,21 +90,22 @@
   (iswitchb-mode 1))
  ((= emacs-major-version 23)
   (iswitchb-mode 1))
-  )
+ )
+
+;; Theme settings
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;;(load-theme 'flatland t)
+(load-theme 'misterioso t)
 
 ;; Face settings
 (set-cursor-color "green")
-(set-face-foreground 'default "white")
-(set-face-background 'default "black")
-(setq transient-mark-mode t)
-(set-face-foreground 'region "white")
-(set-face-background 'region "brightblack")
-
-(set-face-foreground 'mode-line "black")
-(set-face-background 'mode-line "white")
-
-(show-paren-mode t)
-(set-face-background 'show-paren-match-face "yellow")
+;;(set-face-foreground 'default "white")
+;;(set-face-background 'default "black")
+;;(set-face-foreground 'region "white")
+;;(set-face-background 'region "brightblack")
+;;(set-face-foreground 'mode-line "black")
+;;(set-face-background 'mode-line "white")
+;;(set-face-background 'show-paren-match-face "yellow")
 ;;(set-face-foreground 'show-paren-match-face "black")
 
 ;; highliting white space at EOL
@@ -131,10 +134,6 @@
           ("marmalade" . "http://marmalade-repo.org/packages/")
           ))
   )
-
-;; Theme settings
-(when (locate-library "flatland-theme")
-  (load-theme 'flatland t))
 
 ;; X settings
 (if window-system
