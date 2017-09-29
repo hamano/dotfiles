@@ -1,14 +1,14 @@
-termtype = xterm-256color
+#termtype = xterm-256color
 #fontsize = # fontsize write to /etc/mlterm/main
 bg_color = black
 fg_color = white
 mod_meta_mode = esc
 scrollbar_mode=right
 col_size_of_width_a = 2
+unicode_full_width_areas = U+1F000-1FFFF
 word_separators=\ "
 letter_space=1
-input_method = uim
+input_method = fcitx
 use_clipboard = true
 static_backscroll_mode = true
 logsize=10240
-unicode_full_width_areas = U+1F000-1FFFF
