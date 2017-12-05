@@ -183,6 +183,11 @@
             (define-key text-mode-map "\C-c\C-c" 'compile)
             ))
 
+(add-hook 'conf-mode-hook
+          (lambda ()
+            (setq indent-tabs-mode nil)
+            ))
+
 (add-hook 'change-log-mode-hook
           (lambda ()
             (setq indent-tabs-mode t)
@@ -345,19 +350,21 @@
 
 ;; auto-mode
 (setq auto-mode-alist
-      (append '(
-                ("^Makefile" . makefile-mode)
-                ("^Changes" . change-log-mode)
-                ("\\.xsl$" . sgml-mode)
-                ("\\.fo$"  . sgml-mode)
-                ("\\.xs$" . c-mode)
-                ("\\.tt$" . html-mode)
-                ("\\.cst$" . html-mode)
-                ("\\.mak$" . html-mode)
-                ("\\.jinja2$" . html-mode)
-                ("\\.t$" . perl-mode)
-                ("\\.json$" . js-mode)
-                ) auto-mode-alist))
+      (append
+       '(
+;         ("Makefile" . makefile-mode)
+         ("Changes" . change-log-mode)
+         ("Corefile" . shell-script-mode)
+         ("\\.xsl$" . sgml-mode)
+         ("\\.fo$"  . sgml-mode)
+         ("\\.xs$" . c-mode)
+         ("\\.tt$" . html-mode)
+         ("\\.cst$" . html-mode)
+         ("\\.mak$" . html-mode)
+         ("\\.jinja2$" . html-mode)
+         ("\\.t$" . perl-mode)
+         ("\\.json$" . js-mode)
+         ) auto-mode-alist))
 
 ;; hl-line
 (when (>= emacs-major-version 22)
