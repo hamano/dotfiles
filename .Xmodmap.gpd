@@ -1,0 +1,8 @@
+!swap ctrl and capslock
+keycode 37 = Caps_Lock
+keycode 66 = Control_L
+
+!swap del and backspace
+keycode 22 = Delete
+keycode 119 = BackSpace
+
