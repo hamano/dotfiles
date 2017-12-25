@@ -1,7 +1,6 @@
 ;;; .emacs
 ;;; $Id: init.el,v 1.20 2008-04-10 14:45:57 hamano Exp $
 ;;;
-
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 ;; User information
@@ -134,6 +133,12 @@
           ("marmalade" . "http://marmalade-repo.org/packages/")
           ))
   )
+
+;; mlterm color settings
+(defun terminal-init-mlterm ()
+  (load "term/xterm")
+  (xterm-register-default-colors xterm-standard-colors)
+  (tty-set-up-initial-frame-faces))
 
 ;; X settings
 (if window-system

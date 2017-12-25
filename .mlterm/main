@@ -1,4 +1,4 @@
-#termtype = xterm-256color
+termtype = mlterm
 #fontsize = # fontsize write to /etc/mlterm/main
 bg_color = black
 fg_color = white
