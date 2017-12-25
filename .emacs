@@ -137,7 +137,11 @@
 ;; mlterm color settings
 (defun terminal-init-mlterm ()
   (load "term/xterm")
-  (xterm-register-default-colors xterm-standard-colors)
+  (cond ((>= emacs-major-version 25)
+         (xterm-register-default-colors xterm-standard-colors))
+        (t
+         (xterm-register-default-colors))
+        )
   (tty-set-up-initial-frame-faces))
 
 ;; X settings
