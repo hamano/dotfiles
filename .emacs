@@ -553,6 +553,7 @@
   (setq load-path (cons "~/.emacs.d/site-lisp/semi" load-path))
   (setq load-path (cons "~/.emacs.d/site-lisp/wl/wl" load-path))
   (setq load-path (cons "~/.emacs.d/site-lisp/wl/elmo" load-path))
+  (setq mime-setup-enable-inline-html nil)
   (load "mime-setup")
   (autoload 'wl "wl" "Wanderlust" t)
   (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
