@@ -257,6 +257,7 @@
  'java-mode-hook
  (lambda ()
    (setq indent-tabs-mode nil)
+   (setq c-basic-offset 4)
    (setq compile-command "ant -emacs ")
    (define-key java-mode-map "\C-c\C-c" 'compile-ant)
    (define-key java-mode-map "\C-c\C-n" 'next-error)))
