@@ -374,6 +374,7 @@
          ("\\.jinja2$" . html-mode)
          ("\\.t$" . perl-mode)
          ("\\.json$" . js-mode)
+         ("\\.gradle$" . js-mode)
          ) auto-mode-alist))
 
 ;; hl-line
