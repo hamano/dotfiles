@@ -298,12 +298,12 @@
 (add-hook 'javascript-mode-hook
           (lambda ()
             (setq js-indent-level 2)
-            (setq indent-tabs-mode t)
+            (setq indent-tabs-mode nil)
             ))
 
 (add-hook 'js-mode-hook
           (lambda ()
-            (setq indent-tabs-mode t)
+            (setq indent-tabs-mode nil)
             (setq tab-width 4)
             ))
 
