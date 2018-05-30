@@ -11,6 +11,10 @@ xdg-mime default evince.desktop application/pdf
 xdg-mime default xarchive.desktop application/zip
 xdg-mime default xarchive.desktop application/x-compressed-tar
 xdg-mime default xarchive.desktop application/x-bzip-compressed-tar
+xdg-mime default google-chrome.desktop x-scheme-handler/http
+xdg-mime default google-chrome.desktop x-scheme-handler/https
+xdg-mime default google-chrome.desktop text/html
+xdg-settings set default-web-browser google-chrome.desktop
 
 # Local Variables:
 # mode: zsh
