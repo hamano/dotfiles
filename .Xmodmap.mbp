@@ -1,11 +1,10 @@
 
-! swap alt and command lkey
-keycode 64 = Super_L
-keycode 133 = Alt_L
-! set kana key
+! kana
 keycode 130 = Zenkaku_Hankaku
+! eisu
+keycode 131 = Alt_L
 
-clear mod3
-add mod3 = Super_R
-clear mod4
-add mod4 = Hangul_Hanja
+!clear mod3
+!add mod3 = Super_R
+!clear mod4
+!add mod4 = Hangul_Hanja
