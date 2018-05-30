@@ -47,8 +47,7 @@ fi
 
 export GOPATH=~/lib/go
 if [ -d "${GOPATH}" ]; then
-    export GOBIN="${GOPATH}/bin"
-    PATH=${GOBIN}:"${PATH}"
+    PATH=${GOPATH}/bin:"${PATH}"
 fi
 
 export NODEPATH=~/lib/node
