@@ -555,8 +555,14 @@
   (setq load-path (cons "~/.emacs.d/site-lisp/semi" load-path))
   (setq load-path (cons "~/.emacs.d/site-lisp/wl/wl" load-path))
   (setq load-path (cons "~/.emacs.d/site-lisp/wl/elmo" load-path))
-  (setq mime-setup-enable-inline-html nil)
-  (load "mime-setup")
+  ;(load "mime-setup")
+  (setq mime-setup-enable-inline-html 'shr)
+  (setq mime-view-text/html-previewer 'shr)
+  (setq mime-view-type-subtype-score-alist
+        '(((text . plain) . 4)
+          ((text . enriched) . 3)
+          ((text . html) . 2)
+          ((text . richtext) . 1)))
   (autoload 'wl "wl" "Wanderlust" t)
   (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
   (setq wl-icon-directory "~/.emacs.d/site-lisp/wl/etc/icons")
@@ -565,8 +571,8 @@
   (setq wl-auto-select-first t)
 
   ; for reading HTML mail
-  (when (locate-library "w3m")
-    (require 'mime-w3m))
+  ;(when (locate-library "w3m")
+  ;  (require 'mime-w3m))
 
   ; execute fetchmail
   (defun wl-fetchmail()
