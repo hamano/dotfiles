@@ -25,8 +25,6 @@ case "${SYSNAME}" in
         export TERM=xterm
 esac
 
-export JAVA_HOME=/usr/lib/jvm/default-java
-
 DEFAULT_VENV=~/lib/venv/default/
 
 VIRTUALENVWRAPPER=/usr/share/virtualenvwrapper/virtualenvwrapper.sh
@@ -53,6 +51,11 @@ fi
 export NODEPATH=~/lib/node
 if [ -d "${NODEPATH}" ]; then
 	PATH=${NODEPATH}/bin:"${PATH}"
+fi
+
+# default pip
+if [ -d ~/.local/bin ]; then
+	PATH=~/.local/bin:"${PATH}"
 fi
 
 if [ -d ~/etc/bin ]; then
