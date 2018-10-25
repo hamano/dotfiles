@@ -295,16 +295,11 @@
             (setq indent-tabs-mode t)
             ))
 
-(add-hook 'javascript-mode-hook
+(add-hook 'js-mode-hook
           (lambda ()
             (setq js-indent-level 2)
             (setq indent-tabs-mode nil)
-            ))
-
-(add-hook 'js-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode nil)
-            (setq tab-width 4)
+            (setq tab-width 2)
             ))
 
 (add-hook 'python-mode-hook
@@ -319,7 +314,7 @@
                 (python-shell-get-or-create-process
                  (if (getenv "VIRTUAL_ENV") "python -i" "python3 -i")
                  nil t)
-                (python-shell-send-buffer)
+                (python-shell-send-buffer t)
                 ))
             ;;(call-interactively 'run-python)
             ;;(enlarge-window (/ (window-height) 2))
@@ -331,6 +326,7 @@
               (setq jedi:complete-on-dot t)
               (jedi:setup)
               (define-key python-mode-map (kbd "M-/") 'jedi:complete))
+            (setq python-shell-completion-native-enable nil)
             ))
 (add-hook 'latex-mode-hook
           (lambda ()
