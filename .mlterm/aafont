@@ -1,5 +1,4 @@
 DEFAULT = Ricty
-#UNICODE = Ricty
 ISO10646_UCS4_1 = Ricty
 ISO10646_UCS4_1_BIWIDTH = Ricty
 U+2100-214F = Symbola # Letterlike Symbols
