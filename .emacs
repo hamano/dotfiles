@@ -297,7 +297,7 @@
 
 (add-hook 'js-mode-hook
           (lambda ()
-            (setq js-indent-level 4)
+            (setq js-indent-level 2)
             (setq indent-tabs-mode nil)
             (setq tab-width 8)
             ))
