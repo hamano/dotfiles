@@ -18,14 +18,14 @@ if [[ -n ${LOAD_ZPLUG} && -f ~/.zplug/init.zsh ]]; then
     zplug "zsh-users/zsh-history-substring-search"
     zplug "zsh-users/zsh-syntax-highlighting", defer:2
     zplug "mrowa44/emojify", as:command, use:emojify
-    zplug "mafredri/zsh-async"
-    zplug "sindresorhus/pure"
+    zplug "mafredri/zsh-async", from:github
+    zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
     zplug "hamano/ame.sh", as:command, use:ame.sh
     if ! zplug check; then
         zplug install
     fi
 
-    # prompt settings
+    # pure settings
     PURE_PROMPT_SYMBOL='%%'
     prompt_pure_username=' %F{white}%n@%m%f'
 
@@ -116,7 +116,7 @@ alias svn-eliminate='test -d .svn && find ./ -type d -name .svn | xargs rm -rfv'
 alias qwerty='xmodmap ~/.Xmodmap.qwerty ~/.Xmodmap'
 alias dvorak='xmodmap ~/.Xmodmap.dvorak ~/.Xmodmap'
 alias aoeui=qwerty
-alias warchive="wget -rkpN"
+alias warchive="wget -r -k -p -n -np"
 
 alias elc='emacs --batch -Q -f batch-byte-compile'
 alias xrdb-reload='xrdb ~/.Xresources'

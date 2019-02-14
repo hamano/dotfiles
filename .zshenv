@@ -48,9 +48,9 @@ if [ -d "${GOPATH}" ]; then
     PATH=${GOPATH}/bin:"${PATH}"
 fi
 
-export NODEPATH=~/lib/node
-if [ -d "${NODEPATH}" ]; then
-	PATH=${NODEPATH}/bin:"${PATH}"
+export NODE_PATH=~/lib/node
+if [ -d "${NODE_PATH}" ]; then
+	PATH=${NODE_PATH}/bin:"${PATH}"
 fi
 
 # default pip
