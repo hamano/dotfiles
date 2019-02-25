@@ -370,7 +370,6 @@
          ("\\.jinja2$" . html-mode)
          ("\\.t$" . perl-mode)
          ("\\.json$" . js-mode)
-         ("\\.gradle$" . js-mode)
          ) auto-mode-alist))
 
 ;; hl-line
@@ -503,6 +502,15 @@
              ))
     ))
 
+;; groovy-mode settings
+(when (locate-library "groovy-mode")
+  (autoload 'groovy-mode "groovy-mode" "Groovy mode." t)
+  (add-to-list 'auto-mode-alist '("\\.gradle$" . groovy-mode))
+  (add-hook 'groovy-mode-hook
+            (lambda ()
+              (setq indent-tabs-mode nil)
+              (setq c-basic-offset 4)
+              )))
 
 ;; jdee settings
 (when (file-directory-p "~/.emacs.d/site-lisp/jdee/lisp")
