@@ -133,6 +133,19 @@
           ;("marmalade" . "http://marmalade-repo.org/packages/")
           ))
   (package-initialize)
+  (setq package-list
+        '(
+          auto-complete
+          markdown-mode
+          go-mode
+          groovy-mode
+          multi-term
+          yaml-mode
+          ))
+  (unless package-archive-contents (package-refresh-contents))
+  (dolist (pkg package-list)
+    (unless (package-installed-p pkg)
+      (package-install pkg)))
   )
 
 ;; mlterm color settings
