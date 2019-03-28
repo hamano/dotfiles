@@ -124,14 +124,15 @@
 
 ;; Package settings
 (when (>= emacs-major-version 24)
-  (package-initialize)
   (setq package-archives
-        '(("gnu" . "http://elpa.gnu.org/packages/")
-          ("melpa-stable" . "http://melpa-stable.milkbox.net/packages/")
-          ("melpa" . "http://melpa.org/packages/")
-          ("org" . "http://orgmode.org/elpa/")
-          ("marmalade" . "http://marmalade-repo.org/packages/")
+        '(
+          ;("gnu" . "http://elpa.gnu.org/packages/")
+          ("melpa-stable" . "https://stable.melpa.org/packages/")
+          ;("melpa-latest" . "https://melpa.org/packages/")
+          ;("org" . "http://orgmode.org/elpa/")
+          ;("marmalade" . "http://marmalade-repo.org/packages/")
           ))
+  (package-initialize)
   )
 
 ;; mlterm color settings
