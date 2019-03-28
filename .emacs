@@ -462,6 +462,17 @@
    (get-buffer-create "*scheme*"))
   (run-scheme scheme-program-name))
 
+;; auto-complete settings
+(when (locate-library "auto-complete")
+  (require 'auto-complete-config)
+  (ac-config-default)
+  (add-to-list 'ac-modes 'text-mode)
+  (add-to-list 'ac-modes 'markdown-mode)
+  (add-to-list 'ac-modes 'java-mode)
+  (setq ac-use-menu-map t)
+  (setq ac-use-fuzzy t)
+  )
+
 ;; erlang-mode settings
 (when (locate-library "erlang-mode")
   (add-to-list 'load-path "~/.emacs.d/site-lisp/erlang")
