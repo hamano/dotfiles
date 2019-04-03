@@ -224,6 +224,7 @@
           (lambda ()
             (setq indent-tabs-mode nil)
             (setq tab-width 4)
+            (define-key sh-mode-map "\C-c\C-c" 'executable-interpret)
             ))
 
 (add-hook 'asm-mode-hook
@@ -340,6 +341,7 @@
               (define-key python-mode-map (kbd "M-/") 'jedi:complete))
             (setq python-shell-completion-native-enable nil)
             ))
+
 (add-hook 'latex-mode-hook
           (lambda ()
             (define-key latex-mode-map "\C-c\C-c" 'compile)
