@@ -1,6 +1,6 @@
 ;;; .emacs
-;;; $Id: init.el,v 1.20 2008-04-10 14:45:57 hamano Exp $
-;;;
+;;; Commentary: initialization for Emacs
+;;; Code:
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
 
 ;; User information
@@ -135,12 +135,10 @@
   (package-initialize)
   (setq package-list
         '(
-          auto-complete
-          markdown-mode
-          go-mode
-          groovy-mode
+          use-package
           multi-term
           yaml-mode
+          jedi
           ))
   (unless package-archive-contents (package-refresh-contents))
   (dolist (pkg package-list)
@@ -386,11 +384,26 @@
          ("\\.json$" . js-mode)
          ) auto-mode-alist))
 
-;; hl-line
-(when (>= emacs-major-version 22)
-  (require 'hl-line)
+; packages
+;; hl-line settings
+(use-package hl-line
+  :config
   (global-hl-line-mode)
-  (setq hl-line-face 'underline)
+  (setq hl-line-face 'underline))
+
+;; ido-mode settings
+(use-package ido
+  :config
+  (ido-mode 1)
+  (ido-everywhere t)
+  (setq ido-enable-flex-matching t)
+  (use-package ido-vertical-mode
+    :ensure
+    :config
+    (ido-vertical-mode 1)
+    (setq ido-vertical-define-keys 'C-n-and-C-p-only)
+    (setq ido-vertical-show-count t)
+    )
   )
 
 ;; flymake
@@ -463,8 +476,9 @@
   (run-scheme scheme-program-name))
 
 ;; auto-complete settings
-(when (locate-library "auto-complete")
-  (require 'auto-complete-config)
+(use-package auto-complete
+  :ensure
+  :config
   (ac-config-default)
   (add-to-list 'ac-modes 'text-mode)
   (add-to-list 'ac-modes 'markdown-mode)
@@ -479,7 +493,9 @@
   (require 'erlang-start))
 
 ;; go settings
-(when (locate-library "go-mode")
+(use-package go-mode
+  :ensure
+  :config
   (autoload 'go-mode "go-mode" nil t)
   (add-hook 'go-mode-hook
             '(lambda()
@@ -528,7 +544,9 @@
     ))
 
 ;; groovy-mode settings
-(when (locate-library "groovy-mode")
+(use-package groovy-mode
+  :ensure
+  :config
   (autoload 'groovy-mode "groovy-mode" "Groovy mode." t)
   (add-to-list 'auto-mode-alist '("\\.gradle$" . groovy-mode))
   (add-hook 'groovy-mode-hook
@@ -701,17 +719,19 @@
     (setq navi2ch-message-mail-address "sage")))
 
 ;; flycheck settings
-(when (locate-library "flycheck")
-  (add-hook 'after-init-hook #'global-flycheck-mode)
+(use-package flycheck
+  :ensure
+  :init (global-flycheck-mode)
   )
 
 ;; google-translate settings
-(when (locate-library "google-translate")
-  (require 'google-translate)
+(use-package google-translate
+  :ensure
+  :config
   (global-set-key [(C x) (C x)] 'google-translate-at-point)
-  (custom-set-variables
-   '(google-translate-default-source-language "auto")
-   '(google-translate-default-target-language "ja")))
+  (setq google-translate-default-source-language "auto")
+  (setq google-translate-default-target-language "ja")
+  )
 
 ;; auto-install settings
 (add-to-list 'load-path "~/.emacs.d/auto-install/")
@@ -722,16 +742,26 @@
   (setq ediff-window-setup-function 'ediff-setup-windows-plain)
   )
 
-;; markdown settings
-(when (locate-library "markdown-mode")
-  (autoload 'markdown-mode "markdown-mode"
-    "Major mode for editing Markdown files" t)
-  (add-to-list 'auto-mode-alist '("\\.md$" . markdown-mode))
-  (add-to-list 'auto-mode-alist '("\\.markdown$" . markdown-mode))
+;; markdown-mode
+(use-package markdown-mode
+  :ensure
+  :commands (markdown-mode gfm-mode)
+  :mode (("README\\.md\\'" . gfm-mode)
+         ("\\.md\\'" . markdown-mode)
+         ("\\.markdown\\'" . markdown-mode))
+  :config
+  (setq markdown-command "multimarkdown")
   (add-hook 'markdown-mode-hook
             (lambda ()
               (define-key markdown-mode-map "\C-c\C-c" 'compile)
-              )))
+              ))
+  )
+
+;; dockerfile-mode
+(use-package dockerfile-mode
+  :ensure
+  :mode (("Dockerfile\\'" . dockerfile-mode))
+  )
 
 (when (locate-library "elixir-mode")
   (autoload 'elixir-mode "elixir-mode"
