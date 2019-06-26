@@ -2,7 +2,11 @@
 # $Id: .zshrc,v 1.8 2007/12/11 05:09:19 hamano Exp $
 
 if [[ ${SYSNAME} = Linux ]]; then
-    GNU=1
+    GNU=true
+fi
+
+if [[ ${SYSNAME} = Darwin ]]; then
+    BSD=true
 fi
 
 if [[ ${ZSH_VERSION} < 4.3 ]]; then
@@ -121,7 +125,7 @@ alias warchive="wget -r -k -p -n -np"
 alias elc='emacs --batch -Q -f batch-byte-compile'
 alias xrdb-reload='xrdb ~/.Xresources'
 
-if [ "${SYSNAME}" = "SunOS" ]; then
+if [[ ${SYSNAME} = SunOS ]]; then
     alias ec='emacs-clean \( -type d -a \! -name . -prune \) -o -type f'
     alias ecr='emacs-clean'
     function emacs-clean(){
@@ -130,9 +134,12 @@ if [ "${SYSNAME}" = "SunOS" ]; then
     }
 fi
 
-if [ ${GNU} ]; then
+if [[ ${GNU} = true ]]; then
     alias ls='ls --color=auto'
     alias grep="grep --color=auto"
+fi
+
+if [[ $GNU = true || $BSD = true ]]; then
     alias ec='emacs-clean -maxdepth 1'
     alias ecr='emacs-clean'
     function emacs-clean(){
