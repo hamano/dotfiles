@@ -134,8 +134,15 @@ if [[ ${SYSNAME} = SunOS ]]; then
     }
 fi
 
-if [[ ${GNU} = true ]]; then
+# settings for exa
+if [[ -x /usr/local/bin/exa ]]; then
+    alias ls=exa
+elif [[ $GNU ]]; then
     alias ls='ls --color=auto'
+fi
+
+# settings for grep
+if [[ ${GNU} ]]; then
     alias grep="grep --color=auto"
 fi
 
