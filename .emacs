@@ -92,9 +92,10 @@
  )
 
 ;; Theme settings
+(add-to-list 'load-path "~/.emacs.d/themes")
 (add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;;(load-theme 'flatland t)
-(load-theme 'misterioso t)
+;;(load-theme 'misterioso t)
+(load-theme 'tomorrow-night-eighties t)
 
 ;; Face settings
 (set-cursor-color "green")
