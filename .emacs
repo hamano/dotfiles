@@ -392,7 +392,9 @@
 (use-package hl-line
   :config
   (global-hl-line-mode)
-  (setq hl-line-face 'underline))
+  ;;(setq hl-line-face 'underline)
+  (set-face-background 'hl-line "#393939")
+  )
 
 ;; ido-mode settings
 (use-package ido
