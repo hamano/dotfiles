@@ -45,8 +45,9 @@ nnoremap tp :pop<CR>
 "set paste
 
 if has("syntax")
-    colorscheme torte
     syntax on
+    "colorscheme torte
+    colorscheme Tomorrow-Night-Eighties
     function! ActivateInvisibleIndicator()
         syntax match TrailedWhiteSpace "[ \t\r　]\+$" display containedin=ALL
         highlight TrailedWhiteSpace term=underline ctermbg=cyan guibg=cyan
@@ -62,7 +63,8 @@ if exists('&ambw')
 endif
 if exists('&cursorline')
     set cursorline
-    hi cursorline term=underline cterm=underline
+"    hi cursorline term=underline cterm=underline
+"hi cursorline ctermbg=8
 endif
 
 "highlight cursorline ctermbg=gray
