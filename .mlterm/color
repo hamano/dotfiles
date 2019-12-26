@@ -1,12 +1,12 @@
-black=#333333
+black=#2d2d2d
 red=#cc9999
 green=#99e699
 yellow=#cccc66
 blue=#9999e6
 magenta=#e666e6
 cyan=#99cce6
-white=#e6e6e6
-hl_black=#808080
+white=#cccccc
+hl_black=#393939
 hl_red=#e68686
 hl_green=#66e666
 hl_yellow=#e6e666
