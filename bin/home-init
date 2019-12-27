@@ -32,15 +32,20 @@ DOTFILES=(
     .terminfo
 )
 for f in ${DOTFILES[@]}; do
-    echo creating link $f
+    echo creating links $f
     ln -sf ${ETCDIR}/$f ~/
 done
 
 if [ -d ~/.mlterm ]; then
-    echo creating mlterm link
+    echo creating mlterm links
 	ln -sf ${ETCDIR}/.mlterm/main ~/.mlterm/
 	ln -sf ${ETCDIR}/.mlterm/aafont ~/.mlterm/
 	ln -sf ${ETCDIR}/.mlterm/color ~/.mlterm/
+fi
+
+if [[ -d ~/.emacs.d ]]; then
+    echo creating .emacs.d links
+    ln -sf ${ETCDIR}/.emacs.d/themes ~/.emacs.d/
 fi
 
 # install zplug
