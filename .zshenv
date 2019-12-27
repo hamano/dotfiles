@@ -25,13 +25,7 @@ case "${SYSNAME}" in
         export TERM=xterm
 esac
 
-DEFAULT_VENV=~/lib/venv/default/
-
-VIRTUALENVWRAPPER=/usr/share/virtualenvwrapper/virtualenvwrapper.sh
-if [ -f ${VIRTUALENVWRAPPER} ]; then
-    export WORKON_HOME=~/lib/venv
-    . ${VIRTUALENVWRAPPER}
-fi
+export WORKON_HOME=~/lib/venv
 
 export CABAL_HOME=~/.cabal
 if [ -d "${CABAL_HOME}" ]; then
