@@ -1,6 +1,6 @@
 termtype = mlterm
 #fontsize = # fontsize write to /etc/mlterm/main
-bg_color = #1B1B1B
+bg_color = #242424
 fg_color = hl_white
 mod_meta_mode = esc
 col_size_of_width_a = 2
