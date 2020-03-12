@@ -7,7 +7,7 @@ if $LANG == "ja_JP.eucJP"
 else
     set encoding=utf-8
 endif
-set fileencodings=iso-2022-jp,eucjp,cp932,utf-8
+set fileencodings=utf-8,iso-2022-jp,eucjp,cp932
 set noexpandtab
 set nocompatible
 set history=50
