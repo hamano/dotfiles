@@ -195,7 +195,7 @@
 ;; fast-lock-mode
 ;(setq font-lock-support-mode 'fast-lock-mode)
 ;(setq fast-lock-cache-directories '("~/.emacs.d/flc"))
-;(setq temporary-file-directory "~/.emacs.d/tmp")
+(setq temporary-file-directory "~/.emacs.d/tmp")
 
 ;; mode-hook
 (add-hook 'text-mode-hook
@@ -385,6 +385,7 @@
          ("\\.jinja2$" . html-mode)
          ("\\.t$" . perl-mode)
          ("\\.json$" . js-mode)
+         ("\\.ts$" . js-mode)
          ) auto-mode-alist))
 
 ; packages
