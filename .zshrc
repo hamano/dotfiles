@@ -135,7 +135,7 @@ if [[ ${SYSNAME} = SunOS ]]; then
 fi
 
 # settings for exa
-if [[ -x /usr/local/bin/exa ]]; then
+if [[ -x ~/bin/exa ]]; then
     alias ls=exa
 elif [[ $GNU ]]; then
     alias ls='ls --color=auto'
