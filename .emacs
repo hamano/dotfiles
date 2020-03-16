@@ -91,23 +91,6 @@
   (iswitchb-mode 1))
  )
 
-;; Theme settings
-(add-to-list 'load-path "~/.emacs.d/themes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-;;(load-theme 'misterioso t)
-(load-theme 'tomorrow-night-eighties t)
-
-;; Face settings
-(set-cursor-color "green")
-;;(set-face-foreground 'default "white")
-;;(set-face-background 'default "black")
-;;(set-face-foreground 'region "white")
-;;(set-face-background 'region "brightblack")
-;;(set-face-foreground 'mode-line "black")
-;;(set-face-background 'mode-line "white")
-;;(set-face-background 'show-paren-match-face "yellow")
-;;(set-face-foreground 'show-paren-match-face "black")
-
 ;; highliting white space at EOL
 (cond
  ((= emacs-major-version 22)
@@ -127,11 +110,11 @@
 (when (>= emacs-major-version 24)
   (setq package-archives
         '(
-          ;("gnu" . "http://elpa.gnu.org/packages/")
+          ;;("gnu" . "http://elpa.gnu.org/packages/")
           ("melpa-stable" . "https://stable.melpa.org/packages/")
-          ;("melpa-latest" . "https://melpa.org/packages/")
-          ;("org" . "http://orgmode.org/elpa/")
-          ;("marmalade" . "http://marmalade-repo.org/packages/")
+          ;;("melpa" . "https://melpa.org/packages/")
+          ;;("org" . "http://orgmode.org/elpa/")
+          ;;("marmalade" . "http://marmalade-repo.org/packages/")
           ))
   (package-initialize)
   (setq package-list
@@ -156,6 +139,16 @@
          (xterm-register-default-colors))
         )
   (tty-set-up-initial-frame-faces))
+
+;; Theme settings
+;(add-to-list 'load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+;;(load-theme 'misterioso t)
+
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-gruvbox16 t))
 
 ;; X settings
 (if window-system
@@ -512,8 +505,9 @@
   )
 
 ;; lua-mode settings
-(when (locate-library "lua-mode")
-  (autoload 'lua-mode "lua-mode" "Lua editing mode." t)
+(use-package lua-mode
+  :ensure
+  :config
   (add-to-list 'auto-mode-alist '("\\.lua$" . lua-mode))
   (add-hook 'lua-mode-hook
             (lambda ()
