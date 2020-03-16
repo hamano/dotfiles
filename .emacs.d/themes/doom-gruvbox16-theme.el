@@ -49,7 +49,7 @@ determine the exact padding."
    (yellow     '("#fabd2f" "brightyellow" "brightyellow"))
    (dark-green '("#689d6a" "green" "green"))
    (green      '("#8ec07c" "brightgreen" "brightgreen"))
-   (teal       'cyan)
+   (teal       '("#727280" "blue" "blue"))
    (olive      '("#d79921" "yellow"      "yellow"))
    (blue       '("#268bd2" "brightblue" "brightblue"))
    (dark-blue  '("#727280" "blue" "blue"))
