@@ -47,8 +47,9 @@ nnoremap tp :pop<CR>
 if has("syntax")
     syntax on
     "colorscheme torte
-    "colorscheme Tomorrow-Night-Eighties
-    colorscheme monokai
+    "colorscheme monokai
+    colorscheme gruvbox
+    set background=dark
     function! ActivateInvisibleIndicator()
         syntax match TrailedWhiteSpace "[ \t\r　]\+$" display containedin=ALL
         highlight TrailedWhiteSpace term=underline ctermbg=cyan guibg=cyan
