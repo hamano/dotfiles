@@ -23,5 +23,7 @@ step_in_changing_font_size = 8
 font_size_range = 12-80
 scrollbar_mode = right
 scrollbar_view_name = athena
+sb_bg_color=#282828
+sb_fg_color=#ebdbb2
 static_backscroll_mode = true
 use_extended_scroll_shortcut = true
