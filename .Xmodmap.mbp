@@ -2,12 +2,11 @@
 ! kana
 keycode 130 = Zenkaku_Hankaku
 ! eisu
-!keycode 131 = Alt_L
+keycode 131 = Alt_L
 ! super_r
 keycode 134 = Zenkaku_Hankaku
-remove mod4 = Zenkaku_Hankaku
 
-!clear mod3
-!add mod3 = Super_R
-!clear mod4
-!add mod4 = Hangul_Hanja
+! remove Super_R from mod4
+clear mod4
+add mod4 = Super_L
+
