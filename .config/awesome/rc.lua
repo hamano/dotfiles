@@ -5,7 +5,6 @@ pcall(require, "luarocks.loader")
 -- Standard awesome library
 local gears = require("gears")
 local awful = require("awful")
-require("awful.autofocus")
 -- Widget and layout library
 local wibox = require("wibox")
 -- Theme handling library
@@ -51,7 +50,8 @@ end
 -- {{{ Variable definitions
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
-beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+--beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/gruvbox.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "mlterm"
@@ -91,45 +91,46 @@ awful.layout.layouts = {
 -- {{{ Menu
 -- Create a launcher widget and a main menu
 myawesomemenu = {
-   { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "quit", function() awesome.quit() end },
+  { "logout", "dm-tool switch-to-greeter" },
+  { "lock", "dm-tool lock" },
+  { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+  { "manual", terminal .. " -e man awesome" },
+  { "edit config", editor_cmd .. " " .. awesome.conffile },
+  { "restart", awesome.restart },
+  { "quit", function() awesome.quit() end },
 }
 
-local menu_awesome = { "awesome", myawesomemenu, beautiful.awesome_icon }
-local menu_terminal = { "open terminal", terminal }
+local conf_dir = gears.filesystem.get_configuration_dir()
+local icon_dir = string.format("%s/icon/", conf_dir)
+local awesome_icon = icon_dir .. "awesome-icon.png"
+local terminal_icon = icon_dir .. "terminal-outline.svg"
+local browser_icon = icon_dir .. "logo-chrome.svg"
+local filer_icon = icon_dir .. "folder-open-outline.svg"
+local debian_icon = icon_dir .. "debian.svg"
 
-
-
---pprint(fdomenu)
 mymainmenu = awful.menu({
     items = {
-      {"mlterm", "mlterm",
-       "/usr/share/icons/Tango/scalable/apps/utilities-terminal.svg"},
-      {"chrome", "google-chrome --restore-last-session",
-       "/opt/google/chrome/product_logo_64.png"},
-      {"file", "nemo",
-       "/usr/share/icons/Tango/scalable/apps/system-file-manager.svg"},
-      {"apps", debian.menu.Debian_menu.Debian },
-      menu_awesome,
+      {"mlterm", "mlterm", terminal_icon},
+      {"file", "nemo", filer_icon},
+      {"chrome", "google-chrome --restore-last-session", browser_icon},
+      {"apps", debian.menu.Debian_menu.Debian, debian_icon},
+      {"awesome", myawesomemenu, awesome_icon},
     }
 })
 
-lmenu = awful.widget.launcher({ image = beautiful.awesome_icon,
+lmenu = awful.widget.launcher({ image = awesome_icon,
 				menu = mymainmenu })
 lterminal = awful.widget.launcher({
     command = "mlterm",
-    image = "/usr/share/icons/Tango/scalable/apps/utilities-terminal.svg"
-})
-lbrowser = awful.widget.launcher({
-    command = "google-chrome",
-    image = "/opt/google/chrome/product_logo_64.png"
+    image = terminal_icon
 })
 lfiler = awful.widget.launcher({
     command = "nemo",
-    image = "/usr/share/icons/Tango/scalable/apps/system-file-manager.svg"
+    image = filer_icon
+})
+lbrowser = awful.widget.launcher({
+    command = "google-chrome",
+    image = browser_icon
 })
 
 -- Menubar configuration
@@ -137,11 +138,20 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 -- }}}
 
 -- Keyboard map indicator and switcher
-mykeyboardlayout = awful.widget.keyboardlayout()
+-- mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
--- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+
+--local markup = lain.util.markup
+-- Create widgets
+
+local net = require("widget.net")
+local volume = require("widget.volume")
+local cpu = require("widget.cpu")
+local temp = require("widget.temp")
+local clock = require("widget.clock")
+local battery = require("widget.battery")
+local keyboard = require("widget.keyboard")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -196,31 +206,6 @@ local function set_wallpaper(s)
 end
 
 
-local volume_control = require("volume-control")
-volumecfg = volume_control({})
-
-local cpu = lain.widget.cpu {
-  settings = function()
-    widget:set_markup("CPU " .. cpu_now.usage)
-  end
-}
-
-local markup = lain.util.markup
-
-local bat = lain.widget.bat({
-    settings = function()
-      local font = "Symbola 8"
-      local ac_status
-      if bat_now.ac_status == 1 then
-	ac_status = markup.fontfg(font, "#00ff00", "🔌")
-      else
-	ac_status = markup.fontfg(font, "#ff0000", "🔌")
-      end
-      print(ac_status)
-      local perc = bat_now.perc .. "% "
-      widget:set_markup(ac_status .. perc)
-    end
-})
 
 -- Re-set wallpaper when a screen's geometry changes (e.g. different resolution)
 screen.connect_signal("property::geometry", set_wallpaper)
@@ -266,20 +251,22 @@ awful.screen.connect_for_each_screen(function(s)
 	layout = wibox.layout.fixed.horizontal,
 	lmenu,
 	lterminal,
-	lbrowser,
 	lfiler,
+	lbrowser,
 	s.mytaglist,
 	s.mypromptbox,
       },
       s.mytasklist, -- Middle widget
       { -- Right widgets
 	layout = wibox.layout.fixed.horizontal,
-	mykeyboardlayout,
-	cpu,
-	volumecfg.widget,
 	wibox.widget.systray(),
-	mytextclock,
-	bat.widget,
+	keyboard,
+	net,
+	volume,
+	cpu,
+	temp,
+	clock,
+	battery,
 	s.mylayoutbox,
       },
     }
@@ -289,9 +276,7 @@ end)
 
 -- {{{ Mouse bindings
 root.buttons(gears.table.join(
-    awful.button({ }, 3, function () mymainmenu:toggle() end),
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
+    awful.button({ }, 3, function () mymainmenu:toggle() end)
 ))
 -- }}}
 
@@ -618,22 +603,16 @@ client.connect_signal("request::titlebars", function(c)
         },
         { -- Right
             awful.titlebar.widget.floatingbutton (c),
-            awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.stickybutton   (c),
             awful.titlebar.widget.ontopbutton    (c),
+            awful.titlebar.widget.minimizebutton (c),
+            awful.titlebar.widget.maximizedbutton(c),
             awful.titlebar.widget.closebutton    (c),
             layout = wibox.layout.fixed.horizontal()
         },
         layout = wibox.layout.align.horizontal
     }
 end)
-
--- sloppy focus, so that focus follows mouse.
---[[
-client.connect_signal("mouse::enter", function(c)
-    c:emit_signal("request::activate", "mouse_enter", {raise = false})
-end)
---]]
 
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
@@ -674,13 +653,12 @@ function run_once(prg,arg_string,pname,screen)
 end
 function run_dropbox()
   rc = os.execute('dropbox running')
-  print(rc)
   if rc == 0 then
     awful.spawn.with_shell("dropbox start")
   end
 end
 
--- for javaui
+-- fix javaui
 -- awful.spawn.with_shell("wmname LG3D")
 
 -- autostart
@@ -690,6 +668,16 @@ function autostart()
 end
 
 autostart()
+
+-- xmodmap
+function xmodmap()
+  path = os.getenv("HOME") .. "/.Xmodmap"
+  mode = lfs.attributes(path, "mode")
+  if mode == "file" then
+    awful.spawn.with_shell("xmodmap " .. path)
+  end
+end
+xmodmap()
 
 lain.layout.termfair.nmaster = 3
 lain.layout.termfair.ncol    = 1
