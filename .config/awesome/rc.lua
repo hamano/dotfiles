@@ -19,7 +19,7 @@ require("awful.hotkeys_popup.keys")
 
 -- Load Debian menu entries
 local debian = require("debian.menu")
-local pprint = require("pprint")
+local pprint = require("util.pprint")
 local lain = require("lain")
 
 -- {{{ Error handling
