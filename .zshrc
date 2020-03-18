@@ -22,21 +22,26 @@ if [[ -n ${LOAD_ZPLUG} && -f ~/.zplug/init.zsh ]]; then
     zplug "zsh-users/zsh-history-substring-search"
     zplug "zsh-users/zsh-syntax-highlighting", defer:2
     zplug "mrowa44/emojify", as:command, use:emojify
-    zplug "mafredri/zsh-async", from:github
-    zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
+#    zplug "mafredri/zsh-async", from:github
+#    zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
     zplug "hamano/ame.sh", as:command, use:ame.sh
     if ! zplug check; then
         zplug install
     fi
 
     # pure settings
-    PURE_PROMPT_SYMBOL='%%'
-    prompt_pure_username=' %F{white}%n@%m%f'
+#   PURE_PROMPT_SYMBOL='%%'
+#    prompt_pure_username=' %F{white}%n@%m%f'
 
     # load plugin
     zplug load
     # add path
     PATH=~/.zplug/bin:"${PATH}"
+fi
+
+# use starship prompt
+if [[ -x ~/bin/starship ]]; then
+    eval "$(~/bin/starship init zsh)"
 fi
 
 # aliases
