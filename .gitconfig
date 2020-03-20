@@ -14,7 +14,7 @@
     quotepath = false
 
 [alias]
-    st = status --short --branch
+    s = status --short --branch
     ci = commit -a
     co = checkout
     br = branch
