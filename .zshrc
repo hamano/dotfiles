@@ -65,6 +65,7 @@ setopt checkjobs
 stty -ixon
 
 # bindkey
+bindkey -d
 bindkey -e
 bindkey '^t' ''
 
