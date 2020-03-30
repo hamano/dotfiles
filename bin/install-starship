@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export BIN_DIR=~/bin
+curl -fsSL https://starship.rs/install.sh | bash
+
