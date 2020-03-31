@@ -281,6 +281,31 @@ root.buttons(gears.table.join(
 ))
 -- }}}
 
+function move_left()
+  c = client.focus
+  pos = c.geometry(c)
+  awful.client.moveresize(-pos.x, 0, 0, 0)
+end
+
+function move_right()
+  c = client.focus
+  pos = c.geometry(c)
+  awful.client.moveresize(screen[c.screen].workarea.width - pos.x - pos.width, 0, 0, 0)
+end
+
+function move_down()
+  c = client.focus
+  pos = c.geometry(c)
+  awful.client.moveresize(0, screen[c.screen].geometry.height - pos.y - pos.height, 0, 0)
+end
+
+function move_up()
+  c = client.focus
+  pos = c.geometry(c)
+  top = screen[c.screen].geometry.height - screen[c.screen].workarea.height
+  awful.client.moveresize(0, top - pos.y, 0, 0)
+end
+
 -- {{{ Key bindings
 globalkeys = gears.table.join(
     awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
@@ -380,6 +405,15 @@ globalkeys = gears.table.join(
                   }
               end,
               {description = "lua execute prompt", group = "awesome"}),
+
+    awful.key({ modkey, "Control"}, "Left", move_left,
+      {description = "move window left", group = "layout"}),
+    awful.key({ modkey, "Control"}, "Down", move_down,
+      {description = "move window down", group = "layout"}),
+    awful.key({ modkey, "Control"}, "Up", move_up,
+      {description = "move window up", group = "layout"}),
+    awful.key({ modkey, "Control"}, "Right", move_right,
+      {description = "move window right", group = "layout"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"})
