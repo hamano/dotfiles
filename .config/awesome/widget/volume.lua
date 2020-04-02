@@ -10,6 +10,9 @@ local conf_dir = gears.filesystem.get_configuration_dir()
 local icon_dir = string.format("%s/icon/", conf_dir)
 local volume_icon = wibox.widget.imagebox()
 local volume_high_icon = icon_dir.."volume-high.svg"
+local volume_medium_icon = icon_dir.."volume-medium.svg"
+local volume_low_icon = icon_dir.."volume-low.svg"
+local volume_off_icon = icon_dir.."volume-off.svg"
 local volume_mute_icon = icon_dir.."volume-mute.svg"
 local pprint = require("util.pprint")
 local volume_device = wibox.widget.textbox()
@@ -18,17 +21,22 @@ local volume = lain.widget.pulse {
   devicetype = "sink",
   settings = function()
     volume_device.text = volume_now.device
-    if volume_now.left == volume_now.right then
-      vlevel = volume_now.left.."% "
+    volume_level = (volume_now.left + volume_now.right) / 2
+    volume_level_text = string.format("%3d%% ", volume_level)
+    if volume_level > 100 then
+      volume_icon.image = volume_high_icon
+    elseif volume_level > 50 then
+      volume_icon.image = volume_medium_icon
+    elseif volume_level > 0 then
+      volume_icon.image = volume_low_icon
     else
-      vlevel = volume_now.left.."-"..volume_now.right.."%"
+      volume_icon.image = volume_off_icon
     end
+
     if volume_now.muted == "yes" then
       volume_icon.image = volume_mute_icon
-    else
-      volume_icon.image = volume_high_icon
     end
-    widget:set_markup(lain.util.markup.font(font, vlevel))
+    widget:set_markup(lain.util.markup.font(font, volume_level_text))
   end
 }
 
@@ -54,8 +62,8 @@ local change_sink = function()
   volume.update()
 end
 
-local layout = wibox.layout.fixed.horizontal()
-layout:buttons(
+local l1 = wibox.layout.fixed.horizontal()
+l1:buttons(
   awful.util.table.join(
     awful.button({}, 1, function() -- left click
         os.execute(string.format("pactl set-sink-mute %s toggle", volume.device))
@@ -81,7 +89,17 @@ layout:buttons(
     end)
 ))
 
-layout:add(wibox.container.margin(volume_icon, dpi(4), dpi(2), dpi(4), dpi(4)))
-layout:add(wibox.container.margin(volume.widget, 0, 0, dpi(1.5), 0))
+volume_device:buttons(
+  awful.util.table.join(
+    awful.button({}, 1, function() -- left click
+	change_sink()
+    end)
+))
+
+l1:add(wibox.container.margin(volume_icon, dpi(4), dpi(2), dpi(4), dpi(4)))
+l1:add(wibox.container.margin(volume.widget, 0, 0, dpi(1.5), 0))
+
+local layout = wibox.layout.fixed.horizontal()
+layout:add(l1)
 layout:add(wibox.container.margin(volume_device, 0, 0, dpi(1.5), 0))
 return layout;
