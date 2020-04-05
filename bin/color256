@@ -1,0 +1,23 @@
+#!/usr/bin/env zsh
+
+#autoload -U colors && colors
+
+# 256 colors
+for ((i = 0; i < 256; i++)); do
+    printf "\e[30;48;5;%dm" $i
+    if [[ $i -eq 0 ||
+          ($i -ge 16 && $i -le 31 ) ||
+          ($i -ge 232 && $i -le 246) ]]; then
+        printf "\e[38;5;015m %3d\e[m " $i
+    else
+        printf "\e[38;5;000m %3d\e[m " $i
+    fi
+    if [[ $i%16 -eq 15 ]]; then
+       printf "\n"
+    fi
+done
+echo
+
+# Local Variables:
+# mode: sh
+# End:
