@@ -33,7 +33,7 @@ if [[ -n ${LOAD_ZPLUG} && -f ~/.zplug/init.zsh ]]; then
     PATH=~/.zplug/bin:"${PATH}"
 fi
 
-function prompt_set_title(){
+function user_precmd(){
     # tell the terminal we are setting the title
     print -n '\e]0;'
     if [[ -n $SSH_CONNECTION ]]; then
@@ -46,10 +46,22 @@ function prompt_set_title(){
     print -n '\a'
 }
 
+function user_preexec(){
+    print -n '\e]0;'
+    if [[ -n $SSH_CONNECTION ]]; then
+        print -Pn '(%m) '
+    else
+        print -Pn '(localhost) '
+    fi
+	print -Pn "$1"
+    print -n '\a'
+}
+
 # use starship prompt
 if [[ -x ~/bin/starship ]]; then
     eval "$(~/bin/starship init zsh)"
-    precmd_functions+=(prompt_set_title)
+    precmd_functions+=(user_precmd)
+    preexec_functions+=(user_preexec)
 fi
 
 # aliases
