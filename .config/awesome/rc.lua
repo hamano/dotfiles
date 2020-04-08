@@ -330,7 +330,10 @@ globalkeys = gears.table.join(
         {description = "focus previous by index", group = "client"}
     ),
     --awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-    --          {description = "show main menu", group = "awesome"}),
+    --{description = "show main menu", group = "awesome"}),
+    awful.key({ modkey }, "w",
+      function() awful.util.spawn("rofi -show combi -theme ~/etc/.config/rofi/config") end,
+      {description = "open rofi", group = "lancher"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -392,8 +395,9 @@ globalkeys = gears.table.join(
               {description = "restore minimized", group = "client"}),
 
     -- Prompt
-    awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
-              {description = "run prompt", group = "launcher"}),
+    awful.key({ modkey }, "r",
+      function () awful.screen.focused().mypromptbox:run() end,
+      {description = "run prompt", group = "launcher"}),
 
     awful.key({ modkey }, "x",
               function ()
@@ -416,7 +420,7 @@ globalkeys = gears.table.join(
       {description = "move window right", group = "layout"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-              {description = "show the menubar", group = "launcher"})
+      {description = "show the menubar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
@@ -652,25 +656,10 @@ end)
 client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
--- Wallpaper settings
-require 'lfs'
-wallpapers = {}
-local wp_dir = string.format("%s/.wallpaper/", os.getenv("HOME"))
-for filename in lfs.dir(wp_dir) do
-  local filepath = wp_dir..filename
-  if lfs.attributes(filepath, "mode") == "file" then
-    table.insert(wallpapers, filepath)
-  end
-end
-math.randomseed(os.time())
-function random_wallpaper()
-  if #wallpapers == 0 then
-    return
-  end
-  wallpaper = wallpapers[math.random(1, #wallpapers)]
-  gears.wallpaper.maximized(wallpaper, s, true)
-end
-random_wallpaper()
+
+-- wallpaper module
+require('module.wallpaper')
+
 -- autostart
 
 function run_once(prg,arg_string,pname,screen)
