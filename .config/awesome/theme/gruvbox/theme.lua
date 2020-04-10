@@ -59,7 +59,10 @@ theme.titlebar_fg_focus  = bg0
 -- }}}
 
 local conf_dir = gears.filesystem.get_configuration_dir()
-local icon_dir = string.format("%s/icon/", conf_dir)
+local icon_dir = string.format("%s/theme/gruvbox/", conf_dir)
+theme.titlebar_close_button_normal = icon_dir .. "close_normal.png"
+theme.titlebar_close_button_focus  = icon_dir .. "close_focus.png"
+
 theme.titlebar_minimize_button_normal = icon_dir .. "minimize_normal.png"
 theme.titlebar_minimize_button_focus  = icon_dir .. "minimize_focus.png"
 

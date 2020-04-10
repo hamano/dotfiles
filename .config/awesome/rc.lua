@@ -51,7 +51,7 @@ end
 -- Themes define colours, icons, font and wallpapers.
 --beautiful.init(gears.filesystem.get_themes_dir() .. "default/theme.lua")
 --beautiful.init(gears.filesystem.get_themes_dir() .. "zenburn/theme.lua")
-beautiful.init(awful.util.getdir("config") .. "/gruvbox.lua")
+beautiful.init(awful.util.getdir("config") .. "/theme/gruvbox/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "mlterm"
