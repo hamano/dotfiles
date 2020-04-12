@@ -54,7 +54,11 @@ end
 beautiful.init(awful.util.getdir("config") .. "/theme/gruvbox/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-terminal = "mlterm"
+if os.execute('which mlterm') then
+    terminal = "mlterm"
+else
+    terminal = "xterm"
+end
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
 
@@ -111,7 +115,7 @@ local debian_icon = icon_dir .. "debian.svg"
 
 mymainmenu = awful.menu({
     items = {
-      {"mlterm", "mlterm", terminal_icon},
+      {"term", terminal, terminal_icon},
       {"file", "nemo", filer_icon},
       {"chrome", "google-chrome --restore-last-session", browser_icon},
       {"apps", debian.menu.Debian_menu.Debian, debian_icon},
