@@ -21,7 +21,12 @@ local volume = lain.widget.pulse {
   devicetype = "sink",
   settings = function()
     volume_device.text = volume_now.device
-    volume_level = (volume_now.left + volume_now.right) / 2
+    volume_level_left = tonumber(volume_now.left)
+    volume_level_right = tonumber(volume_now.right)
+    if volume_level_left == nil or volume_level_right == nil then
+      return
+    end
+    volume_level = (volume_level_left + volume_level_right) / 2
     volume_level_text = string.format("%3d%% ", volume_level)
     if volume_level > 100 then
       volume_icon.image = volume_high_icon
