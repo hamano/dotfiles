@@ -43,9 +43,15 @@ if [ -d ~/.mlterm ]; then
 	ln -sf ${ETCDIR}/.mlterm/color ~/.mlterm/
 fi
 
+echo creating .emacs.d links
 if [[ -d ~/.emacs.d ]]; then
-    echo creating .emacs.d links
     ln -sf ${ETCDIR}/.emacs.d/themes ~/.emacs.d/
+fi
+
+echo creating .config links
+if [[ -d ~/.config ]]; then
+    ln -sf ${ETCDIR}/.config/awesome ~/.config/
+    ln -sf ${ETCDIR}/.config/rofi ~/.config/
 fi
 
 # install zplug
