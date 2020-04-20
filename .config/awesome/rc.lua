@@ -336,7 +336,7 @@ globalkeys = gears.table.join(
     --awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
     --{description = "show main menu", group = "awesome"}),
     awful.key({ modkey }, "w",
-      function() awful.util.spawn("rofi -show combi -theme ~/etc/.config/rofi/config") end,
+      function() awful.util.spawn("rofi -show window") end,
       {description = "open rofi", group = "lancher"}),
 
     -- Layout manipulation
