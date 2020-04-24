@@ -11,11 +11,34 @@ local icon_dir = string.format("%s/icon/", conf_dir)
 local icon = wibox.widget.imagebox()
 local bat = lain.widget.bat({
     settings = function()
-      pprint(bat_now)
-      if bat_now.ac_status == 1 then
-	icon_path = icon_dir .. "battery-charging.svg"
+      --pprint(bat_now)
+      if bat_now.perc == 'N/A' then
+	icon_path = icon_dir .. 'round-battery-unknown.svg'
+	icon:set_image(icon_path)
+	widget:set_markup(markup.font(beautiful.font, 'N/A'))
+	return
+      end
+      if bat_now.status == 'Charging' then
+	charging = 'charging-'
+      elseif bat_now.status == 'Full' then
+	charging = 'charging-'
       else
-	icon_path = icon_dir .. "battery-full.svg"
+	charging = ''
+      end
+      if bat_now.perc > 99 then
+	icon_path = icon_dir .. 'round-battery-' .. charging .. 'full.svg'
+      elseif bat_now.perc > 90 then
+	icon_path = icon_dir .. 'round-battery-' .. charging .. '90.svg'
+      elseif bat_now.perc > 80 then
+	icon_path = icon_dir .. 'round-battery-' .. charging .. '80.svg'
+      elseif bat_now.perc > 60 then
+	icon_path = icon_dir .. 'round-battery-' .. charging .. '60.svg'
+      elseif bat_now.perc > 50 then
+	icon_path = icon_dir .. 'round-battery-' .. charging .. '50.svg'
+      elseif bat_now.perc > 30 then
+	icon_path = icon_dir .. 'round-battery-' .. charging .. '30.svg'
+      else
+	icon_path = icon_dir .. 'round-battery-' .. charging .. '20.svg'
       end
       icon:set_image(icon_path)
       local perc = bat_now.perc .. "% "
@@ -23,7 +46,8 @@ local bat = lain.widget.bat({
     end
 })
 
+local margin = wibox.container.margin
 local layout = wibox.layout.fixed.horizontal()
-layout:add(wibox.container.margin(icon, dpi(6), dpi(2), dpi(4), dpi(4)))
-layout:add(wibox.container.margin(bat.widget, 0, 0, dpi(1), 0))
+layout:add(margin(icon, dpi(2), dpi(2), dpi(4), dpi(4)))
+layout:add(margin(bat.widget, 0, dpi(2), dpi(2), 0))
 return layout
