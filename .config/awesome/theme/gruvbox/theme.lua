@@ -1,4 +1,5 @@
 local gears = require("gears")
+
 local fg0    = "#fbf1c7";
 local fg1    = "#ebdbb2";
 local fg2    = "#d5c4a1";
@@ -39,9 +40,12 @@ local dpi = require("beautiful.xresources").apply_dpi
 theme = dofile("/usr/share/awesome/themes/zenburn/theme.lua");
 theme.font      = "Ricty 11";
 
-local fg_focus  = fg
-local bg_focus = bg
-local fg_normal = white
+theme.menu_font      = "Ricty 14";
+theme.menu_height      = dpi(20);
+
+local fg_focus  = fg0
+local bg_focus = bg3
+local fg_normal = fg
 local bg_normal = bg1
 
 theme.bg_focus   = bg_focus
@@ -49,7 +53,7 @@ theme.bg_normal  = bg_normal
 theme.fg_focus   = fg_focus
 theme.fg_normal  = fg_normal
 theme.bg_urgent  = orange
-theme.bg_systray = bg_focus
+theme.bg_systray = bg_normal
 
 -- {{{ Borders
 theme.useless_gap   = dpi(0)
