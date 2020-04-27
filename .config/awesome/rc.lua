@@ -55,12 +55,21 @@ beautiful.init(awful.util.getdir("config") .. "/theme/gruvbox/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 if os.execute('which mlterm') then
-    terminal = "mlterm"
+  terminal = "mlterm"
 else
-    terminal = "xterm"
 end
+
 editor = os.getenv("EDITOR") or "vi"
 editor_cmd = terminal .. " -e " .. editor
+
+if os.execute('which dm-tool') then
+  locker = 'dm-tool switch-to-greeter'
+elseif os.execute('which i3lock') then
+  locker = 'i3lock -c "#282828"'
+else
+  locker = "slock"
+end
+print(locker)
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -71,13 +80,11 @@ modkey = "Mod4"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
-    awful.layout.suit.floating,
     --awful.layout.suit.tile,
-    --awful.layout.suit.tile.left,
+    awful.layout.suit.tile.left,
     lain.layout.termfair,
-    lain.layout.termfair.center,
     -- awful.layout.suit.tile.bottom,
-    -- awful.layout.suit.tile.top,
+    awful.layout.suit.tile.top,
     -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
@@ -89,21 +96,9 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
+    awful.layout.suit.floating,
 }
 -- }}}
-
--- {{{ Menu
--- Create a launcher widget and a main menu
-myawesomemenu = {
-  { "logout", "dm-tool switch-to-greeter" },
-  { "lock", "dm-tool lock" },
-  { "arander", "arander" },
-  { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
-  { "manual", terminal .. " -e man awesome" },
-  { "edit config", editor_cmd .. " " .. awesome.conffile },
-  { "restart", awesome.restart },
-  { "quit", function() awesome.quit() end },
-}
 
 local conf_dir = gears.filesystem.get_configuration_dir()
 local icon_dir = string.format("%s/icon/", conf_dir)
@@ -113,13 +108,24 @@ local browser_icon = icon_dir .. "logo-chrome.svg"
 local filer_icon = icon_dir .. "folder-open-outline.svg"
 local debian_icon = icon_dir .. "debian.svg"
 
+-- {{{ Menu
+-- Create a launcher widget and a main menu
+systemmenu = {
+  { "lock", locker },
+  { "logout", "dm-tool switch-to-greeter" },
+  { "arander", "arander" },
+  { "hotkeys", function() hotkeys_popup.show_help(nil, awful.screen.focused()) end },
+  { "restart", awesome.restart },
+  { "quit", function() awesome.quit() end },
+}
+
 mymainmenu = awful.menu({
     items = {
       {"term", terminal, terminal_icon},
       {"file", "nemo", filer_icon},
       {"chrome", "google-chrome --restore-last-session", browser_icon},
       {"apps", debian.menu.Debian_menu.Debian, debian_icon},
-      {"awesome", myawesomemenu, awesome_icon},
+      {"system", systemmenu, awesome_icon},ee
     }
 })
 
@@ -153,9 +159,6 @@ menubar.utils.terminal = terminal -- Set the terminal for applications that requ
 local net = require("widget.net")
 local volume = require("widget.volume")
 local cpu = require("widget.cpu")
-local temp = require("widget.temp")
-local clock = require("widget.clock")
-local battery = require("widget.battery")
 local keyboard = require("widget.keyboard")
 
 -- Create a wibox for each screen and add it
@@ -269,13 +272,13 @@ awful.screen.connect_for_each_screen(function(s)
 	net,
 	volume,
 	cpu,
-	temp,
-	clock,
-	battery,
+	require("widget.temp"),
+	require("widget.cal"),
+	require("widget.clock"),
+	require("widget.battery"),
 	s.mylayoutbox,
       },
     }
-
 end)
 -- }}}
 
@@ -333,11 +336,21 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    --awful.key({ modkey,           }, "w", function () mymainmenu:show() end,
-    --{description = "show main menu", group = "awesome"}),
     awful.key({ modkey }, "w",
-      function() awful.util.spawn("rofi -show window") end,
-      {description = "open rofi", group = "lancher"}),
+      function ()
+	local screen = awful.screen.focused()
+	-- centering
+	local coords = {
+	  x = (screen.geometry.width - beautiful.menu_width) / 2,
+	  -- menu has 5 items
+	  y = (screen.geometry.height - beautiful.menu_height * 5) / 2
+	}
+	mymainmenu:show({coords=coords})
+      end,
+      {description = "show main menu", group = "awesome"}),
+    awful.key({ modkey, "Shift" }, "w",
+      function() awful.spawn("rofi -show window") end,
+      {description = "open rofi", group = "launcher"}),
 
     -- Layout manipulation
     awful.key({ modkey, "Shift"   }, "j", function () awful.client.swap.byidx(  1)    end,
@@ -365,7 +378,8 @@ globalkeys = gears.table.join(
     awful.key({ modkey,           }, "/", function () awful.spawn("nemo") end,
       {description = "open a filer", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
-              {description = "reload awesome", group = "awesome"}),
+      {description = "reload awesome", group = "awesome"}),
+    
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
@@ -569,7 +583,6 @@ awful.rules.rules = {
           "Kruler",
           "MessageWin",  -- kalarm.
           "Sxiv",
-          "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
           "xtightvncviewer"},
@@ -595,9 +608,16 @@ awful.rules.rules = {
     -- { rule = { class = "Firefox" },
     --   properties = { screen = 1, tag = "2" } },
     { rule = { class = 'XEyes' },
-      properties = { placement = awful.placement.right }},
-    { rule = { class = 'google-chrome' },
-      properties = { placement = awful.placement.right }},
+      properties = {
+	placement = awful.placement.right,
+	floating = true
+    }},
+    { rule = { role = "browser" },
+      properties = {
+	tag = "2",
+	placement = awful.placement.left,
+	floating = true
+    }},
 }
 -- }}}
 
@@ -706,10 +726,5 @@ function xmodmap()
   end
 end
 xmodmap()
-
-lain.layout.termfair.nmaster = 3
-lain.layout.termfair.ncol    = 1
-lain.layout.termfair.center.nmaster = 3
-lain.layout.termfair.center.ncol    = 1
 
 print("loaded rc.lua")
