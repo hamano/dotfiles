@@ -160,6 +160,7 @@ local net = require("widget.net")
 local volume = require("widget.volume")
 local cpu = require("widget.cpu")
 local keyboard = require("widget.keyboard")
+local cal = require("widget.cal")
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -273,7 +274,7 @@ awful.screen.connect_for_each_screen(function(s)
 	volume,
 	cpu,
 	require("widget.temp"),
-	require("widget.cal"),
+	cal,
 	require("widget.clock"),
 	require("widget.battery"),
 	s.mylayoutbox,
@@ -438,7 +439,9 @@ globalkeys = gears.table.join(
       {description = "move window right", group = "layout"}),
     -- Menubar
     awful.key({ modkey }, "p", function() menubar.show() end,
-      {description = "show the menubar", group = "launcher"})
+      {description = "show the menubar", group = "launcher"}),
+    awful.key({ modkey }, "c", function() cal.lainwidget.show(5) end,
+      {description = "show the calendar", group = "launcher"})
 )
 
 clientkeys = gears.table.join(
