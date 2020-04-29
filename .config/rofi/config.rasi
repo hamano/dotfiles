@@ -1,5 +1,5 @@
 configuration {
-	modi: "window,drun,system:~/.config/rofi/system.py";
+	modi: "window,system:~/.config/rofi/system.py,drun";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
