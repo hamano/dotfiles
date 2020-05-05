@@ -565,13 +565,13 @@ awful.rules.rules = {
                      border_color = beautiful.border_normal,
                      focus = awful.client.focus.filter,
                      raise = true,
+		     floating = true,
                      keys = clientkeys,
                      buttons = clientbuttons,
                      screen = awful.screen.preferred,
                      placement = awful.placement.no_overlap+awful.placement.no_offscreen
      }
     },
-
     -- Floating clients.
     { rule_any = {
         instance = {
@@ -580,10 +580,10 @@ awful.rules.rules = {
           "pinentry",
         },
         class = {
+          "gimp",
           "Arandr",
           "Blueman-manager",
           "Gpick",
-          "Kruler",
           "MessageWin",  -- kalarm.
           "Sxiv",
           "Wpa_gui",
@@ -602,6 +602,15 @@ awful.rules.rules = {
         }
       }, properties = { floating = true }},
 
+    -- Tiled clients.
+    { rule_any = {
+        class = {
+          "XTerm",
+        },
+        name = {
+	  "mlterm",
+        },
+    }, properties = { floating = false }},
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
       }, properties = { titlebars_enabled = true }
