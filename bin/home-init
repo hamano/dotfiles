@@ -32,7 +32,6 @@ DOTFILES=(
     .terminfo
 )
 for f in ${DOTFILES[@]}; do
-    echo creating links $f
     ln -sf ${ETCDIR}/$f ~/
 done
 
@@ -48,10 +47,12 @@ if [[ -d ~/.emacs.d ]]; then
     ln -sf ${ETCDIR}/.emacs.d/themes ~/.emacs.d/
 fi
 
-echo creating .config links
+
 if [[ -d ~/.config ]]; then
-    ln -sf ${ETCDIR}/.config/awesome ~/.config/
-    ln -sf ${ETCDIR}/.config/rofi ~/.config/
+    echo creating .config links
+    for f in ${ETCDIR}/.config/*; do
+        ln -sf "$f" ~/.config/
+    done
 fi
 
 # install zplug
