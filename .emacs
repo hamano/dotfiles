@@ -379,6 +379,8 @@
          ("\\.t$" . perl-mode)
          ("\\.json$" . js-mode)
          ("\\.ts$" . js-mode)
+         ("\\.sass$" . css-mode)
+         ("\\.scss$" . css-mode)
          ) auto-mode-alist))
 
 ; packages
