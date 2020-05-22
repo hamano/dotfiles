@@ -8,8 +8,9 @@ import subprocess
 
 def main():
     menu = OrderedDict([
-        ('Lock', 'dm-tool switch-to-greeter'), # dm-tool lock does not work...
-#        ('Lock', 'i3lock -c "#282828"'),
+        ('Lock', 'dm-tool lock'), # dm-tool lock does not work with lightdm-gtk-greeter
+#        ('Lock', 'dm-tool switch-to-greeter'), # if you use lightdm-gtk-greeter
+#        ('i3lock', 'i3lock -c "#282828"'),
         ('Logout', 'dm-tool switch-to-greeter'),
         ('Reboot', 'systemctl reboot'),
         ('Poweroff', 'systemctl poweroff'),
