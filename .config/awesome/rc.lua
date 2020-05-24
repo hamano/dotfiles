@@ -82,9 +82,8 @@ modkey = "Mod4"
 awful.layout.layouts = {
     --awful.layout.suit.tile,
     awful.layout.suit.tile.left,
-    lain.layout.termfair,
     -- awful.layout.suit.tile.bottom,
-    awful.layout.suit.tile.top,
+    -- awful.layout.suit.tile.top,
     -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
@@ -96,6 +95,7 @@ awful.layout.layouts = {
     -- awful.layout.suit.corner.ne,
     -- awful.layout.suit.corner.sw,
     -- awful.layout.suit.corner.se,
+    lain.layout.termfair.center,
     awful.layout.suit.floating,
 }
 -- }}}
@@ -337,7 +337,7 @@ globalkeys = gears.table.join(
         end,
         {description = "focus previous by index", group = "client"}
     ),
-    awful.key({ modkey }, "w",
+    awful.key({ modkey, "Shift" }, "w",
       function ()
 	local screen = awful.screen.focused()
 	-- centering
@@ -349,7 +349,7 @@ globalkeys = gears.table.join(
 	mymainmenu:show({coords=coords})
       end,
       {description = "show main menu", group = "awesome"}),
-    awful.key({ modkey, "Shift" }, "w",
+    awful.key({ modkey }, "w",
       function() awful.spawn("rofi -show window") end,
       {description = "open rofi", group = "launcher"}),
 
@@ -738,5 +738,4 @@ function xmodmap()
   end
 end
 xmodmap()
-
 print("loaded rc.lua")
