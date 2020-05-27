@@ -45,7 +45,7 @@ theme.menu_height      = dpi(20);
 
 local fg_focus  = fg0
 local bg_focus = bg3
-local fg_normal = fg
+local fg_normal = fg2
 local bg_normal = bg1
 
 theme.bg_focus   = bg_focus
@@ -57,9 +57,9 @@ theme.bg_systray = bg_normal
 
 -- {{{ Borders
 theme.useless_gap   = dpi(0)
-theme.border_width  = dpi(1)
+theme.border_width  = dpi(2)
 theme.border_normal = fg_normal
-theme.border_focus  = fg_focus
+theme.border_focus  = blue
 theme.border_marked = yellow;
 -- }}}
 
