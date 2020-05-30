@@ -233,7 +233,7 @@
           (lambda ()
             (c-set-style "linux")
             (c-toggle-auto-state -1)
-            (c-toggle-hungry-state 1)
+            (c-toggle-hungry-state 0)
 ;            (setq indent-tabs-mode t)
 ;            (setq tab-width 4)
 ;            (setq c-basic-offset 4)
