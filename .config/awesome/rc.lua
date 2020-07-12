@@ -608,7 +608,7 @@ awful.rules.rules = {
           "XTerm",
         },
         name = {
-	  "mlterm",
+          "mlterm",
         },
     }, properties = { floating = false }},
     -- Add titlebars to normal clients and dialogs
@@ -621,14 +621,13 @@ awful.rules.rules = {
     --   properties = { screen = 1, tag = "2" } },
     { rule = { class = 'XEyes' },
       properties = {
-	placement = awful.placement.right,
-	floating = true
+        placement = awful.placement.right,
+        floating = true
     }},
     { rule = { role = "browser" },
       properties = {
-	tag = "2",
-	placement = awful.placement.left,
-	floating = true
+        placement = awful.placement.left,
+        floating = true
     }},
 }
 -- }}}
