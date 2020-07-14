@@ -515,6 +515,7 @@
             (lambda ()
               (setq lua-indent-level 2)
               (setq lua-electric-flag nil)
+              (setq indent-tabs-mode nil)
               (abbrev-mode 0)
               )))
 
