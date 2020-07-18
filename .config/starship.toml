@@ -9,3 +9,7 @@ disabled = true
 
 [aws]
 disabled = true
+
+[java]
+disabled = true
+
