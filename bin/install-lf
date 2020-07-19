@@ -1,0 +1,5 @@
+#!/bin/bash
+
+export BIN_DIR=~/bin
+
+curl -L https://github.com/gokcehan/lf/releases/latest/download/lf-linux-amd64.tar.gz | tar xzC ${BIN_DIR} 
