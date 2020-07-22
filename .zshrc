@@ -64,6 +64,11 @@ if [[ -x ~/bin/starship ]]; then
     preexec_functions+=(user_preexec)
 fi
 
+# load lfcd.sh
+if [[ -f ~/etc/bin/lfcd.sh ]]; then
+    source ~/etc/bin/lfcd.sh
+fi
+
 # aliases
 alias pyc='python-clean'
 alias nw='tmux-new-window'
