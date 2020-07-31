@@ -69,7 +69,6 @@ elseif os.execute('which i3lock') then
 else
   locker = "slock"
 end
-print(locker)
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -349,7 +348,7 @@ globalkeys = gears.table.join(
 	mymainmenu:show({coords=coords})
       end,
       {description = "show main menu", group = "awesome"}),
-    awful.key({ modkey }, "w",
+    awful.key({ }, "Menu",
       function() awful.spawn("rofi -show window") end,
       {description = "open rofi", group = "launcher"}),
 
