@@ -76,6 +76,8 @@ end
 -- I suggest you to remap Mod4 to another key using xmodmap or other tools.
 -- However, you can use another modifier like Mod1, but it may interact with others.
 modkey = "Mod4"
+mod4 = "Mod4"
+mod5 = "Mod5"
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
