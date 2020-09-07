@@ -351,7 +351,7 @@ globalkeys = gears.table.join(
       end,
       {description = "show main menu", group = "awesome"}),
     awful.key({ }, "Menu",
-      function() awful.spawn("rofi -show window") end,
+      function() awful.spawn("rofi -show drun") end,
       {description = "open rofi", group = "launcher"}),
 
     -- Layout manipulation
