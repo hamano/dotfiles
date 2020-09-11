@@ -4,9 +4,9 @@ echo setup xgd-mime
 xdg-mime default nemo.desktop inode/directory
 xdg-mime default leafpad.desktop text/plain
 xdg-mime default leafpad.desktop text/x-markdown
-xdg-mime default nomacs.desktop image/jpeg
-xdg-mime default nomacs.desktop image/png
-xdg-mime default nomacs.desktop image/gif
+xdg-mime default geeqie.desktop image/jpeg
+xdg-mime default geeqie.desktop image/png
+xdg-mime default geeqie.desktop image/gif
 xdg-mime default org.pwmt.zathura.desktop application/pdf
 xdg-mime default xarchive.desktop application/zip
 xdg-mime default xarchive.desktop application/x-compressed-tar
