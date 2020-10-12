@@ -31,7 +31,10 @@ DOTFILES=(
     .tmux.conf
     .terminfo
     .gtkrc-2.0
+    .icons
 )
+
+echo creating dotfiles links
 for f in ${DOTFILES[@]}; do
     ln -sf ${ETCDIR}/$f ~/
 done
