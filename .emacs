@@ -722,10 +722,10 @@
     (setq navi2ch-message-mail-address "sage")))
 
 ;; flycheck settings
-(use-package flycheck
-  :ensure
-  :init (global-flycheck-mode)
-  )
+;(use-package flycheck
+;  :ensure
+;  :init (global-flycheck-mode)
+;  )
 
 ;; google-translate settings
 (use-package google-translate
