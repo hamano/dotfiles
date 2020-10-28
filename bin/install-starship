@@ -1,5 +1,9 @@
 #!/bin/bash
 
 export BIN_DIR=~/bin
+
+if [[ ! -d ${BIN_DIR} ]]; then
+  mkdir -p ${BIN_DIR}
+fi
 curl -fsSL https://starship.rs/install.sh | bash
 
