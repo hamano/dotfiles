@@ -630,6 +630,16 @@ awful.rules.rules = {
         placement = awful.placement.left,
         floating = true
     }},
+    -- for Android Studio
+    { rule = {
+        class = "jetbrains-studio",
+        name="^win[0-9]+$"
+    },
+      properties = {
+        placement = awful.placement.no_offscreen,
+        titlebars_enabled = false
+      }
+    },
 }
 -- }}}
 
