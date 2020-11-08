@@ -519,6 +519,14 @@
               (abbrev-mode 0)
               )))
 
+;; swift-mode settings
+(use-package swift-mode
+  :ensure
+  :config
+  (add-to-list 'auto-mode-alist '("\\.swift$" . swift-mode))
+  (add-hook 'swift-mode-hook
+            (lambda ())))
+
 ;; php-mode settings
 (when (locate-library "php-mode")
   (add-to-list 'load-path "~/.emacs.d/site-lisp/php-mode")
