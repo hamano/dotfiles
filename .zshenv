@@ -47,6 +47,13 @@ if [ -d "${NODE_PATH}" ]; then
 	PATH=${NODE_PATH}/bin:"${PATH}"
 fi
 
+PYENV_ROOT="$HOME/lib/pyenv"
+if [ -d "${PYENV_ROOT}" ]; then
+    export PYENV_ROOT
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+fi
+
 # default pip
 if [ -d ~/.local/bin ]; then
 	PATH=~/.local/bin:"${PATH}"
