@@ -25,7 +25,7 @@ case "${SYSNAME}" in
         export TERM=xterm
 esac
 
-export WORKON_HOME=~/lib/venv
+WORDCHARS=${WORDCHARS/\/}
 
 export CABAL_HOME=~/.cabal
 if [ -d "${CABAL_HOME}" ]; then
