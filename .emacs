@@ -106,6 +106,13 @@
     (setq-default show-trailing-whitespace t)
     (set-face-background 'trailing-whitespace "gray"))))
 
+
+;; Workaround TLS-related "Bad request" issue
+;; https://www.reddit.com/r/orgmode/comments/cvmjjr/workaround_for_tlsrelated_bad_request_and_package/
+(when (and (>= libgnutls-version 30603)
+           (version<= (number-to-string emacs-major-version) "26.2"))
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+
 ;; Package settings
 (when (>= emacs-major-version 24)
   (setq package-archives
