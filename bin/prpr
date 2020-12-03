@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+
+while true; do
+    echo "mousermove 1 0"
+	sleep 10
+    echo "mousermove -1 0"
+	sleep 10
+done | xte
+
+# Local Variables:
+# mode: sh
+# End:
