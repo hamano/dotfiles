@@ -387,7 +387,7 @@
          ("\\.xs$" . c-mode)
          ("\\.tt$" . html-mode)
          ("\\.cst$" . html-mode)
-         ("\\.mak$" . html-mode)
+         ("\\.vue$" . html-mode)
          ("\\.jinja2$" . html-mode)
          ("\\.t$" . perl-mode)
          ("\\.json$" . js-mode)
