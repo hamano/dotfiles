@@ -405,6 +405,12 @@
   (set-face-background 'hl-line "#393939")
   )
 
+;; EditorConfig settings
+(use-package editorconfig
+  :ensure t
+  :config
+  (editorconfig-mode 1))
+
 ;; ido-mode settings
 (use-package ido
   :config
