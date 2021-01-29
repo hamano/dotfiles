@@ -238,7 +238,7 @@
 
 (add-hook 'c-mode-common-hook
           (lambda ()
-            (c-set-style "linux")
+            ;(c-set-style "linux")
             (c-toggle-auto-state -1)
             (c-toggle-hungry-state 0)
 ;            (setq indent-tabs-mode t)
