@@ -76,9 +76,10 @@ alias sw='tmux-split-window'
 alias x='extract'
 
 # setopt
+setopt auto_menu
 setopt auto_cd
 setopt no_auto_pushd
-setopt print_exit_value
+#setopt print_exit_value
 setopt hist_ignore_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
@@ -93,6 +94,7 @@ stty -ixon
 bindkey -d
 bindkey -e
 bindkey '^t' ''
+bindkey "^[[3~" delete-char
 
 # zstyle
 zstyle ':completion:*' verbose yes
