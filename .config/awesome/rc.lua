@@ -610,6 +610,7 @@ awful.rules.rules = {
         },
         name = {
           "mlterm",
+          "urxvt",
         },
     }, properties = { floating = false }},
     -- Add titlebars to normal clients and dialogs
