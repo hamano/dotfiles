@@ -55,61 +55,67 @@
 #define S_cyan          #2aa198
 #define S_green         #859900
 
-!! tomorrow night color theme
-#define TNE_background  #2d2d2d
-#define TNE_currentline #393939
-#define TNE_selection   #515151
-#define TNE_foreground  #cccccc
-#define TNE_comment     #999999
-#define TNE_red         #f2777a
+!! gruvbox color theme
+#define G_black		#282828
+#define G_red		#cc241d
+#define G_green 	#98971a
+#define G_yellow 	#d79921
+#define G_blue 		#458588
+#define G_magenta 	#b16286
+#define G_cyan 		#689d6a
+#define G_white 	#a89984
+#define G_hlblack	#928374
+#define G_hlred		#fb4934
+#define G_hlgreen 	#b8bb26
+#define G_hlyellow 	#fabd2f
+#define G_hlblue 	#83a598
+#define G_hlmagenta	#d3869b
+#define G_hlcyan 	#8ec07c
+#define G_hlwhite 	#ebdbb2
 
 !! system color
-*color0:     S_black
-*color1:     S_red
-*color2:     S_green
-*color3:     S_yellow
-*color4:     S_blue
-*color5:     S_violet
-*color6:     S_cyan
-*color7:     S_white
-*color8:     S_brightblack
-*color9:     S_orange
-*color10:    T_brightgreen
-*color11:    T_brightyellow
-*color12:    C_brightblue
-*color13:    S_magenta
-*color14:    C_brightcyan
-*color15:    S_brightwhite
+*color0:     G_black
+*color1:     G_red
+*color2:     G_green
+*color3:     G_yellow
+*color4:     G_blue
+*color5:     G_magenta
+*color6:     G_cyan
+*color7:     G_white
+*color8:     G_hlblack
+*color9:     G_hlred
+*color10:    G_hlgreen
+*color11:    G_hlyellow
+*color12:    G_hlblue
+*color13:    G_hlmagenta
+*color14:    G_hlcyan
+*color15:    G_hlwhite
 
 !!xterm
-xterm*background: S_base03
-xterm*foreground: S_base2
-xterm*cursorColor:             S_base1
-xterm*pointerColorBackground:  S_base01
-xterm*pointerColorForeground:  S_base1
-
+xterm*background: G_black
+xterm*foreground: G_hlwhite
+xterm*cursorColor:				G_green
+xterm*pointerColorBackground:	G_white
+xterm*pointerColor:	G_hlwhite
 xterm*saveLines: 10000
-xterm*scrollbar: left
 xterm*faceName: Ricty
-xterm*faceNameDoublesize: Ricty
-xterm*fontDoublesize: true
-xterm*ximFont: -misc-fixed-medium-r-normal--14-130-75-75-c-140-jisx0208.1983-0
-!xterm*ximFont: -jis-fixed-medium-r-normal--24-170-100-100-c-240-jisx0208.1983-0
-xterm*faceSize: 9
-xterm*utf8: 1
-xterm*locale: true
-xterm*cjkWidth: true
-XTerm*forcePackedFont: false
-xterm*eightBitInput: false
-xterm*eightBitOutput: true
-xterm*metaSendsEscape: true
+xterm*faceSize: 20
+!xterm*faceNameDoublesize: Ricty
+!xterm*fontDoublesize: true
+!xterm*utf8: 1
+!xterm*locale: true
+!xterm*cjkWidth: true
+!XTerm*forcePackedFont: false
+!xterm*eightBitInput: false
+!xterm*eightBitOutput: true
+!xterm*metaSendsEscape: true
 
 !!urxvt
-urxvt.background: S_base03
-urxvt.foreground: S_base2
+urxvt.background: G_black
+urxvt.foreground: G_hlwhite
 urxvt.fading:     20
-urxvt.fadeColor:               S_base03
-urxvt.cursorColor:             S_base1
+urxvt.fadeColor:               G_black
+urxvt.cursorColor:             G_green
 urxvt.pointerColorBackground:  S_base01
 urxvt.pointerColorForeground:  S_base1
 
@@ -118,38 +124,40 @@ urxvt.imLocale: ja_JP.UTF-8
 urxvt.termName: rxvt
 urxvt.geometry: 80x25
 urxvt.tripleclick-words: true
-urxvt.letterSpace: -1
+!urxvt.letterSpace: -1
 urxvt.lineSpace: 0
 urxvt.scrollBar_right: true
 urxvt.perl-lib: .urxvt/perl/
 !urxvt.perl-ext-common: default,matcher
-urxvt.perl-ext-common: default,url-select
+urxvt.perl-ext: default,xim-onthespot
 urxvt.keysym.M-u: perl:url-select:select_next
 urxvt.url-launcher: /usr/bin/xdg-open
 urxvt.matcher.button: 3
 urxvt.url-select.underline: true
-urxvt.preeditType: Root
+!urxvt.inputMethod: fcitx
+!urxvt.preeditType: OnTheSpot
 
+! see /usr/share/fonts/X11/misc/fonts.alias
 urxvt.font: \
- xft:Ricty:style=Regular:size=9, \
- -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
- r12, k12g
+ xft:Ricty:style=Regular:size=20, \
+ xft:Symbola:style=Regular:size=20, \
+ r24, kanji24
 urxvt.boldFont:	\
- xft:Ricty:style=Bold:size=9, \
- -shinonome-gothic-bold-r-normal--12-110-75-75-c-120-*, \
- r12b, k12b
+ xft:Ricty:style=Bold:size=20, \
+ xft:Symbola:style=Bold:size=20, \
+ r24, kanji24
 urxvt.italicFont: \
- xft:Ricty:style=Italic:size=9, \
- -shinonome-gothic-medium-i-normal--12-110-75-75-c-120-*, \
- r12i, k12i
+ xft:Ricty:style=Italic:size=20, \
+ xft:Symbola:style=Italic:size=20, \
+ r24, kanji24
 urxvt.boldItalicFont: \
- xft:Ricty:style=Bold Italic:size=9, \
- -shinonome-gothic-bold-i-normal--12-110-75-75-c-120-*, \
- r12bi, k12bi
+ xft:Ricty:style=Bold Italic:size=20, \
+ xft:Symbola:style=Bold Italic:size=20, \
+ r24, kanji24
 urxvt.imFont: \
- xft:Ricty:style=Regular:size=9, \
- -shinonome-gothic-medium-r-normal--12-110-75-75-c-120-*, \
- r12, k12g
+ xft:Ricty:style=Regular:size=20, \
+ xft:Symbola:style=Regular:size=20, \
+ r24, kanji24
 
 !!urxvt-light
 urxvt-light.background: honeydew
