@@ -30,6 +30,7 @@ DOTFILES=(
     .gitconfig
     .tmux.conf
     .terminfo
+    .Xresources
     .gtkrc-2.0
     .icons
 )
