@@ -54,8 +54,8 @@ end
 beautiful.init(awful.util.getdir("config") .. "/theme/gruvbox/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
-if os.execute('which mlterm') then
-  terminal = "mlterm"
+if os.execute('which urxvt') then
+  terminal = "urxvt"
 else
 end
 
@@ -133,7 +133,7 @@ mymainmenu = awful.menu({
 lmenu = awful.widget.launcher({ image = awesome_icon,
 				menu = mymainmenu })
 lterminal = awful.widget.launcher({
-    command = "mlterm",
+    command = "urxvt",
     image = terminal_icon
 })
 lfiler = awful.widget.launcher({
