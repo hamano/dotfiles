@@ -124,40 +124,46 @@ urxvt.imLocale: ja_JP.UTF-8
 urxvt.termName: rxvt
 urxvt.geometry: 80x25
 urxvt.tripleclick-words: true
-!urxvt.letterSpace: -1
-urxvt.lineSpace: 0
+!urxvt.letterSpace: 0
+!urxvt.lineSpace: 0
 urxvt.scrollBar_right: true
 urxvt.perl-lib: .urxvt/perl/
-!urxvt.perl-ext-common: default,matcher
-urxvt.perl-ext: default,xim-onthespot
+urxvt.perl-ext: default,matcher,tabbed,xim-onthespot
 urxvt.keysym.M-u: perl:url-select:select_next
 urxvt.url-launcher: /usr/bin/xdg-open
 urxvt.matcher.button: 3
-urxvt.url-select.underline: true
+urxvt.matcher.rend.0: Uline Bold fg6
+urxvt.keysym.C-Delete: perl:matcher:last
+urxvt.keysym.M-Delete: perl:matcher:list
+URxvt.tabbed.tabbar-fg: 7
+URxvt.tabbed.tabbar-bg: 0
+URxvt.tabbed.tab-fg: 0
+URxvt.tabbed.tab-bg: 2
+!urxvt.url-select.underline: true
 !urxvt.inputMethod: fcitx
 !urxvt.preeditType: OnTheSpot
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
 urxvt.font: \
- xft:Ricty:style=Regular:size=20, \
- xft:Symbola:style=Regular:size=20, \
- r24, kanji24
+ xft:Ricty:style=Regular:size=16, \
+ xft:Symbola:style=Regular:size=16, \
+ r16, kanji16
 urxvt.boldFont:	\
- xft:Ricty:style=Bold:size=20, \
- xft:Symbola:style=Bold:size=20, \
- r24, kanji24
+ xft:Ricty:style=Bold:size=16, \
+ xft:Symbola:style=Bold:size=16, \
+ r16, kanji16
 urxvt.italicFont: \
- xft:Ricty:style=Italic:size=20, \
- xft:Symbola:style=Italic:size=20, \
- r24, kanji24
+ xft:Ricty:style=Italic:size=16, \
+ xft:Symbola:style=Italic:size=16, \
+ r16, kanji16
 urxvt.boldItalicFont: \
- xft:Ricty:style=Bold Italic:size=20, \
- xft:Symbola:style=Bold Italic:size=20, \
- r24, kanji24
-urxvt.imFont: \
- xft:Ricty:style=Regular:size=20, \
- xft:Symbola:style=Regular:size=20, \
- r24, kanji24
+ xft:Ricty:style=Bold Italic:size=16, \
+ xft:Symbola:style=Bold Italic:size=16, \
+ r16, kanji16
+!urxvt.imFont: \
+! xft:Ricty:style=Regular:size=20, \
+! xft:Symbola:style=Regular:size=20, \
+! r24, kanji24
 
 !!urxvt-light
 urxvt-light.background: honeydew
