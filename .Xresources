@@ -92,82 +92,74 @@
 *color15:    G_hlwhite
 
 !!xterm
-xterm*background: G_black
-xterm*foreground: G_hlwhite
-xterm*cursorColor:				G_green
-xterm*pointerColorBackground:	G_white
-xterm*pointerColor:	G_hlwhite
-xterm*saveLines: 10000
-xterm*faceName: Ricty
-xterm*faceSize: 20
-!xterm*faceNameDoublesize: Ricty
-!xterm*fontDoublesize: true
-!xterm*utf8: 1
-!xterm*locale: true
-!xterm*cjkWidth: true
+XTerm*background: G_black
+XTerm*foreground: G_hlwhite
+XTerm*cursorColor:				G_green
+XTerm*pointerColorBackground:	G_white
+XTerm*pointerColor:	G_hlwhite
+XTerm*saveLines: 10000
+XTerm*faceName: Ricty
+XTerm*faceSize: 20
+!XTerm*faceNameDoublesize: Ricty
+!XTerm*fontDoublesize: true
+!XTerm*utf8: 1
+!XTerm*locale: true
+!XTerm*cjkWidth: true
 !XTerm*forcePackedFont: false
-!xterm*eightBitInput: false
-!xterm*eightBitOutput: true
-!xterm*metaSendsEscape: true
+!XTerm*eightBitInput: false
+!XTerm*eightBitOutput: true
+!XTerm*metaSendsEscape: true
 
 !!urxvt
-urxvt.background: G_black
-urxvt.foreground: G_hlwhite
-urxvt.fading:     20
-urxvt.fadeColor:               G_black
-urxvt.cursorColor:             G_green
-urxvt.pointerColorBackground:  S_base01
-urxvt.pointerColorForeground:  S_base1
+URxvt.background: G_black
+URxvt.foreground: G_hlwhite
+URxvt.fading:     20
+URxvt.fadeColor:               G_black
+URxvt.cursorColor:             G_green
+URxvt.pointerColorBackground:  S_base01
+URxvt.pointerColorForeground:  S_base1
 
-urxvt.saveLines: 10000
-urxvt.imLocale: ja_JP.UTF-8
-urxvt.termName: rxvt
-urxvt.geometry: 80x25
-urxvt.tripleclick-words: true
-!urxvt.letterSpace: 0
-!urxvt.lineSpace: 0
-urxvt.scrollBar_right: true
-urxvt.perl-lib: .urxvt/perl/
-urxvt.perl-ext: default,matcher,tabbed,xim-onthespot
-urxvt.keysym.M-u: perl:url-select:select_next
-urxvt.url-launcher: /usr/bin/xdg-open
-urxvt.matcher.button: 3
-urxvt.matcher.rend.0: Uline Bold fg6
-urxvt.keysym.C-Delete: perl:matcher:last
-urxvt.keysym.M-Delete: perl:matcher:list
+URxvt.saveLines: 10000
+URxvt.imLocale: ja_JP.UTF-8
+URxvt.termName: rxvt
+URxvt.geometry: 80x25
+URxvt.tripleclick-words: true
+!URxvt.letterSpace: 0
+!URxvt.lineSpace: 0
+URxvt.scrollBar_right: true
+URxvt.perl-lib: .urxvt/perl/
+URxvt.perl-ext: default,matcher,tabbed,xim-onthespot
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-launcher: /usr/bin/xdg-open
+URxvt.matcher.button: 3
+URxvt.matcher.rend.0: Uline Bold fg6
+URxvt.keysym.C-Delete: perl:matcher:last
+URxvt.keysym.M-Delete: perl:matcher:list
 URxvt.tabbed.tabbar-fg: 7
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg: 0
 URxvt.tabbed.tab-bg: 2
-!urxvt.url-select.underline: true
-!urxvt.inputMethod: fcitx
-!urxvt.preeditType: OnTheSpot
+!URxvt.url-select.underline: true
+!URxvt.inputMethod: fcitx
+!URxvt.preeditType: OnTheSpot
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
-urxvt.font: \
+URxvt.font: \
  xft:Ricty:style=Regular:size=16, \
  xft:Symbola:style=Regular:size=16, \
  r16, kanji16
-urxvt.boldFont:	\
+URxvt.boldFont:	\
  xft:Ricty:style=Bold:size=16, \
  xft:Symbola:style=Bold:size=16, \
  r16, kanji16
-urxvt.italicFont: \
+URxvt.italicFont: \
  xft:Ricty:style=Italic:size=16, \
  xft:Symbola:style=Italic:size=16, \
  r16, kanji16
-urxvt.boldItalicFont: \
+URxvt.boldItalicFont: \
  xft:Ricty:style=Bold Italic:size=16, \
  xft:Symbola:style=Bold Italic:size=16, \
  r16, kanji16
-!urxvt.imFont: \
-! xft:Ricty:style=Regular:size=20, \
-! xft:Symbola:style=Regular:size=20, \
-! r24, kanji24
-
-!!urxvt-light
-urxvt-light.background: honeydew
-urxvt-light.foreground: black
 
 !!emacs
 emacs.borderWidth: 20
