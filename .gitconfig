@@ -15,6 +15,7 @@
 
 [alias]
     s = status --short --branch
+    su = status --short --branch -uno
     ci = commit -a
     co = checkout
     br = branch
