@@ -31,7 +31,7 @@ DOTFILES=(
     .tmux.conf
     .terminfo
     .Xresources
-    .Xsessionrc
+    .xsessionrc
     .gtkrc-2.0
     .icons
 )
