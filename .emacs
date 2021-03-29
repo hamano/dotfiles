@@ -51,7 +51,7 @@
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-x\C-u" 'undo) ; for continuous undo
 ;(global-set-key "\M-h" 'delete-trailing-whitespace)
-(global-set-key "\M-k" 'delete-horizontal-space)
+;(global-set-key "\M-k" 'delete-horizontal-space)
 (global-set-key "\M-h"
                 (lambda () (interactive) (kill-line 0))) ; backward kill line
 
