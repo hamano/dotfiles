@@ -98,7 +98,7 @@ XTerm*cursorColor:				G_green
 XTerm*pointerColorBackground:	G_white
 XTerm*pointerColor:	G_hlwhite
 XTerm*saveLines: 10000
-XTerm*faceName: Ricty
+XTerm*faceName: Cica
 XTerm*faceSize: 20
 !XTerm*faceNameDoublesize: Ricty
 !XTerm*fontDoublesize: true
@@ -146,20 +146,16 @@ URxvt.tabbed.tab-bg: 2
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
 URxvt.font: \
- xft:Ricty:style=Regular:size=16, \
- xft:Symbola:style=Regular:size=16, \
+ xft:Cica:style=Regular:size=16, \
  r16, kanji16
 URxvt.boldFont:	\
- xft:Ricty:style=Bold:size=16, \
- xft:Symbola:style=Bold:size=16, \
+ xft:Cica:style=Bold:size=16, \
  r16, kanji16
 URxvt.italicFont: \
- xft:Ricty:style=Italic:size=16, \
- xft:Symbola:style=Italic:size=16, \
+ xft:Cica:style=Italic:size=16, \
  r16, kanji16
 URxvt.boldItalicFont: \
- xft:Ricty:style=Bold Italic:size=16, \
- xft:Symbola:style=Bold Italic:size=16, \
+ xft:Cica:style=Bold Italic:size=16, \
  r16, kanji16
 
 !!emacs
