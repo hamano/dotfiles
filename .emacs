@@ -11,20 +11,11 @@
 (if (<= emacs-major-version 21)
     (require 'jisx0213))
 
-(cond
- ((equal (getenv "LANG") "ja_JP.eucJP")
-  (set-default-coding-systems 'euc-japan)
-  (set-terminal-coding-system 'euc-japan)
-  (set-buffer-file-coding-system 'euc-japan)
-  (set-keyboard-coding-system 'euc-japan)
-  )
- (t
-  (prefer-coding-system 'utf-8)
-  (set-default-coding-systems 'utf-8)
-  (set-terminal-coding-system 'utf-8)
-  (set-buffer-file-coding-system 'utf-8)
-  (set-keyboard-coding-system 'utf-8)
-  ))
+(prefer-coding-system 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-buffer-file-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
 
 ;; Define functions
 (defun delete-line ()
@@ -79,33 +70,10 @@
 (setq compilation-scroll-output t)
 (setq compilation-ask-about-save nil)
 
-;; Version dependent settings
-(cond
- ((= emacs-major-version 21)
-  (iswitchb-default-keybindings)
-  (resize-minibuffer-mode t)
-  (tool-bar-mode nil))
- ((= emacs-major-version 22)
-  (iswitchb-mode 1))
- ((= emacs-major-version 23)
-  (iswitchb-mode 1))
- )
-
 ;; highliting white space at EOL
-(cond
- ((= emacs-major-version 22)
-  (defface ws-face-r-1 '((t (:background "cyan"))) nil)
-  (defadvice font-lock-mode (before my-font-lock-mode ())
-    (defvar ws-face-r-1 'ws-face-r-1)
-    (font-lock-add-keywords
-     major-mode '(("[ 　\t\r]+$" 0 ws-face-r-1 append))))
-  (ad-enable-advice 'font-lock-mode 'before 'my-font-lock-mode)
-  (ad-activate 'font-lock-mode))
- ((>= emacs-major-version 23)
-  (when (boundp 'show-trailing-whitespace)
-    (setq-default show-trailing-whitespace t)
-    (set-face-background 'trailing-whitespace "gray"))))
-
+(when (boundp 'show-trailing-whitespace)
+  (setq-default show-trailing-whitespace t)
+  (set-face-background 'trailing-whitespace "gray"))
 
 ;; Workaround TLS-related "Bad request" issue
 ;; https://www.reddit.com/r/orgmode/comments/cvmjjr/workaround_for_tlsrelated_bad_request_and_package/
@@ -117,9 +85,9 @@
 (when (>= emacs-major-version 24)
   (setq package-archives
         '(
-          ;;("gnu" . "http://elpa.gnu.org/packages/")
           ("melpa-stable" . "https://stable.melpa.org/packages/")
           ;;("melpa" . "https://melpa.org/packages/")
+          ;;("gnu" . "http://elpa.gnu.org/packages/")
           ;;("org" . "http://orgmode.org/elpa/")
           ;;("marmalade" . "http://marmalade-repo.org/packages/")
           ))
