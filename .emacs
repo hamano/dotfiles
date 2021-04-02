@@ -96,7 +96,6 @@
         '(
           use-package
           multi-term
-          yaml-mode
           jedi
           ))
   (unless package-archive-contents (package-refresh-contents))
@@ -759,6 +758,13 @@
 (use-package dockerfile-mode
   :ensure
   :mode (("Dockerfile\\'" . dockerfile-mode))
+  )
+
+;; yaml-mode
+(use-package yaml-mode
+  :ensure
+  :mode (("\\.yml\\'" . yaml-mode)
+         ("\\.yaml\\'" . yaml-mode))
   )
 
 (when (locate-library "elixir-mode")
