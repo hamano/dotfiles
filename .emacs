@@ -35,15 +35,23 @@
   (let ((system-time-locale "C"))
     (insert (format-time-string "%a %_d %b %Y %H:%M:%S %z"))))
 
-;; Keybind settings
-(global-unset-key "\C-t") ; used by screen
+(defun kill-whitespace ()
+  (interactive "*")
+  (save-excursion
+    (save-restriction
+      (save-match-data
+        (progn
+          (re-search-backward "[^ \t\r\n]" nil t)
+          (re-search-forward "[ \t\r\n]+" nil t)
+          (replace-match "" nil nil))))))
 
+;; Keybind settings
+(global-unset-key "\C-t") ; used by tmux
 (global-set-key "\C-h" 'backward-delete-char)
 (global-set-key "\M-g" 'goto-line)
 (global-set-key "\C-x\C-u" 'undo) ; for continuous undo
-;(global-set-key "\M-h" 'delete-trailing-whitespace)
-;(global-set-key "\M-k" 'delete-horizontal-space)
-(global-set-key "\M-h"
+(global-set-key "\M-h" 'kill-whitespace)
+(global-set-key "\M-k"
                 (lambda () (interactive) (kill-line 0))) ; backward kill line
 
 ;; Backup settings
