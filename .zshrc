@@ -58,8 +58,8 @@ function user_preexec(){
 }
 
 # use starship prompt
-if [[ -x ~/bin/starship ]]; then
-    eval "$(~/bin/starship init zsh)"
+if [[ -x ~/local/bin/starship ]]; then
+    eval "$(~/local/bin/starship init zsh)"
     precmd_functions+=(user_precmd)
     preexec_functions+=(user_preexec)
 fi
