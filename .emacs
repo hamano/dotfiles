@@ -89,6 +89,9 @@
            (version<= (number-to-string emacs-major-version) "26.2"))
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
 
+(when (>= emacs-major-version 26)
+  (global-display-line-numbers-mode t))
+
 (when (>= emacs-major-version 27)
   (tab-bar-mode 1))
 
