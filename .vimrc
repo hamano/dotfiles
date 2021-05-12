@@ -61,8 +61,9 @@ if has("syntax")
 endif
 
 if exists('&ambw')
-    set ambw=double
+    set ambw=single
 endif
+
 if exists('&cursorline')
     set cursorline
 "    hi cursorline term=underline cterm=underline
