@@ -394,6 +394,7 @@
 
 ;; ido-mode settings
 (use-package ido
+  :disabled t
   :config
   (ido-mode 1)
   (ido-everywhere t)
