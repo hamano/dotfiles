@@ -140,28 +140,27 @@ URxvt.tabbed.tabbar-fg: 7
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg: 0
 URxvt.tabbed.tab-bg: 2
+URxvt.inputMethod: fcitx
+URxvt.preeditType: OnTheSpot
 !URxvt.url-select.underline: true
-!URxvt.inputMethod: fcitx
-!URxvt.preeditType: OnTheSpot
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
 URxvt.font: \
- xft:Ricty Diminished Discord:style=Regular:size=16, \
- xft:Inconsolata Nerd Font:size=16, \
+ xft:Cica:style=Regular:size=16, \
  xft:Symbola:style=Regular:size=16, \
  r16, kanji16
 URxvt.boldFont:	\
- xft:Ricty Diminished Discord:style=Bold:size=16, \
+ xft:Cica:style=Bold:size=16, \
  xft:Inconsolata Nerd Font:size=16, \
  xft:Symbola:style=Bold:size=16, \
  r16, kanji16
 URxvt.italicFont: \
- xft:Ricty Diminished Discord:style=Oblique:size=16, \
+ xft:Cica:style=Italic:size=16, \
  xft:Inconsolata Nerd Font:size=16, \
  xft:Symbola:style=Regular:size=16, \
  r16, kanji16
 URxvt.boldItalicFont: \
- xft:Ricty Diminished Discord:style=Bold Oblique:size=16, \
+ xft:Cica:style=Bold Italic:size=16, \
  xft:Inconsolata Nerd Font:size=16, \
  xft:Symbola:style=Bold:size=16, \
  r16, kanji16
