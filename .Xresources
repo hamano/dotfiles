@@ -143,6 +143,7 @@ URxvt.tabbed.tab-bg: 2
 URxvt.inputMethod: fcitx
 URxvt.preeditType: OnTheSpot
 !URxvt.url-select.underline: true
+URxvt.iso14755: false
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
 URxvt.font: \
