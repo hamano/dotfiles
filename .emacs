@@ -789,7 +789,9 @@
 ;; East Asian Width settings
 (when (locate-library "eaw")
   (require 'eaw)
-  (eaw-fullwidth))
+  ;;(eaw-fullwidth)
+  (eaw-set-width 1)
+  )
 
 (when (locate-library "etags-table")
   (require 'etags-table)
