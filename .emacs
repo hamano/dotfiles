@@ -130,7 +130,7 @@
 
 ;; Theme settings
 ;(add-to-list 'load-path "~/.emacs.d/themes")
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(add-to-list 'custom-theme-load-path "~/etc/.emacs.d/themes/")
 ;;(load-theme 'misterioso t)
 
 (use-package doom-themes
