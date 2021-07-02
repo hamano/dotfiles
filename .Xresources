@@ -139,7 +139,7 @@ URxvt.keysym.F3: perl:matcher:last
 URxvt.tabbed.tabbar-fg: 7
 URxvt.tabbed.tabbar-bg: 0
 URxvt.tabbed.tab-fg: 0
-URxvt.tabbed.tab-bg: 2
+URxvt.tabbed.tab-bg: 6
 URxvt.inputMethod: fcitx
 URxvt.preeditType: OnTheSpot
 !URxvt.url-select.underline: true
