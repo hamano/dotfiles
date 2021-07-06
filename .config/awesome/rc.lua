@@ -381,7 +381,10 @@ globalkeys = gears.table.join(
       {description = "open a filer", group = "launcher"}),
     awful.key({ modkey, "Control" }, "r", awesome.restart,
       {description = "reload awesome", group = "awesome"}),
-    
+    awful.key({ modkey, "Control" }, "f",
+      function() awful.spawn("fcitx-remote -r") end,
+      {description = "reload fcitx", group = "awesome"}),
+
     awful.key({ modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
