@@ -703,9 +703,18 @@ client.connect_signal("request::titlebars", function(c)
     }
 end)
 
-client.connect_signal("focus", function(c) c.border_color = beautiful.border_focus end)
-client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
-
+client.connect_signal("focus", function(c)
+                        c.border_color = beautiful.border_focus
+end)
+client.connect_signal("unfocus", function(c)
+                        c.border_color = beautiful.border_normal
+end)
+client.connect_signal("unmanage", function(c)
+                        awful.client.focus.history.previous()
+                        if client.focus then
+                          client.focus:raise()
+                        end
+end)
 
 -- wallpaper module
 require('module.wallpaper')
