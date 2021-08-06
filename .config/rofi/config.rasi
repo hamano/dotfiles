@@ -4,9 +4,9 @@ configuration {
 /*	lines: 15;*/
 /*	columns: 1;*/
 	font: "Ricty 24";
-/*	bw: 1;*/
+	bw: 2;
 /*	location: 0;*/
-/*	padding: 5;*/
+	padding: 10;
 /*	yoffset: 0;*/
 /*	xoffset: 0;*/
 /*	fixed-num-lines: true;*/
@@ -51,9 +51,9 @@ configuration {
 /*	click-to-exit: true;*/
 /*	show-match: true;*/
 /*	theme: ;*/
-	color-normal: "#665c54, #ebdbb2, #7c6f64, #458588, #ebdbb2";
+	color-normal: "#3c3836, #ebdbb2, #504945, #458588, #ebdbb2";
 	color-urgent: "#00ff00";
-	color-active: "#665c54, #ebdbb2, #7c6f64, #458588, #ebdbb2";
+	color-active: "#3c3836, #ebdbb2, #504945, #458588, #ebdbb2";
 	color-window: "#282828";
 /*	max-history-size: 25;*/
 /*	combi-hide-mode-prefix: false;*/
