@@ -43,10 +43,10 @@ theme.font      = "Ricty 11";
 theme.menu_font      = "Ricty 14";
 theme.menu_height      = dpi(20);
 
-local fg_focus  = fg0
-local bg_focus = bg3
-local fg_normal = fg2
-local bg_normal = bg1
+local fg_focus  = fg1
+local bg_focus = bg0
+local fg_normal = fg3
+local bg_normal = bg0
 
 theme.bg_focus   = bg_focus
 theme.bg_normal  = bg_normal
@@ -59,7 +59,7 @@ theme.bg_systray = bg_normal
 theme.useless_gap   = dpi(0)
 theme.border_width  = dpi(2)
 theme.border_normal = fg_normal
-theme.border_focus  = blue
+theme.border_focus  = fg_focus
 theme.border_marked = yellow;
 -- }}}
 
