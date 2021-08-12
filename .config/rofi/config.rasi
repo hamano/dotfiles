@@ -1,5 +1,6 @@
 configuration {
-	modi: "drun,window,script:~/.config/rofi/script.py,calc:qalc";
+/*	modi: "drun,window,script:~/.config/rofi/script.py,calc:qalc"; */
+	modi: "drun,window,script:~/.config/rofi/script.py";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
