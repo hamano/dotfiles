@@ -57,6 +57,7 @@ beautiful.init(awful.util.getdir("config") .. "/theme/gruvbox/theme.lua")
 if os.execute('which urxvt') then
   terminal = "urxvt"
 else
+  terminal = "xterm"
 end
 
 editor = os.getenv("EDITOR") or "vi"
