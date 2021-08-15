@@ -11,16 +11,24 @@ local conf_dir = gears.filesystem.get_configuration_dir()
 local icon_dir = string.format("%s/icon/", conf_dir)
 local icon = wibox.widget.imagebox()
 
--- for GPD
-local batteries = {"BAT*", "max170xx_battery"}
 local ac = "AC"
 if fs.is_dir("/sys/class/power_supply/bq24190-charger") then
     ac = "bq24190-charger"
 end
 
+-- for Thinkpad
+local battery
+if fs.is_dir("/sys/class/power_supply/BAT0") then
+  battery = "BAT0"
+end
+-- for GPD
+if fs.is_dir("/sys/class/power_supply/max170xx_battery") then
+  battery = "BAT0"
+end
+
 local bat = lain.widget.bat({
     ac = ac,
-    batteries = batteries,
+    battery = battery,
     settings = function()
       --pprint(bat_now)
       if bat_now.perc == 'N/A' then
@@ -59,6 +67,6 @@ local bat = lain.widget.bat({
 
 local margin = wibox.container.margin
 local layout = wibox.layout.fixed.horizontal()
-layout:add(margin(icon, dpi(2), dpi(2), dpi(4), dpi(4)))
-layout:add(margin(bat.widget, 0, dpi(2), dpi(2), 0))
+layout:add(margin(icon, dpi(4), 0, dpi(4), dpi(4)))
+layout:add(margin(bat.widget, 0, dpi(4), 0, 0))
 return layout
