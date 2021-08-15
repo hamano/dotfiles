@@ -5,18 +5,29 @@ local dpi = require("beautiful.xresources").apply_dpi
 local lain = require("lain")
 local markup = lain.util.markup
 local pprint = require("util.pprint")
+local fs = require("gears.filesystem")
 
 local conf_dir = gears.filesystem.get_configuration_dir()
 local icon_dir = string.format("%s/icon/", conf_dir)
 local icon = wibox.widget.imagebox()
+
+-- for GPD
+local batteries = {"BAT*", "max170xx_battery"}
+local ac = "AC"
+if fs.is_dir("/sys/class/power_supply/bq24190-charger") then
+    ac = "bq24190-charger"
+end
+
 local bat = lain.widget.bat({
+    ac = ac,
+    batteries = batteries,
     settings = function()
       --pprint(bat_now)
       if bat_now.perc == 'N/A' then
-	icon_path = icon_dir .. 'round-battery-unknown.svg'
-	icon:set_image(icon_path)
-	widget:set_markup(markup.font(beautiful.font, 'N/A'))
-	return
+        icon_path = icon_dir .. 'round-battery-unknown.svg'
+        icon:set_image(icon_path)
+        widget:set_markup(markup.font(beautiful.font, 'N/A'))
+        return
       end
       if bat_now.status == 'Charging' then
 	charging = 'charging-'
