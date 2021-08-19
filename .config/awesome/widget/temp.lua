@@ -5,22 +5,29 @@ local dpi = require("beautiful.xresources").apply_dpi
 local font = beautiful.font
 local lain = require("lain")
 local markup = lain.util.markup
-local pprint = require("util.pprint")
 local fs = require("gears.filesystem")
+local pprint = require("util.pprint")
+local hostname = require("util.hostname")
 
 local conf_dir = gears.filesystem.get_configuration_dir()
 local icon_dir = string.format("%s/icon/", conf_dir)
 local icon = wibox.widget.imagebox(icon_dir .. "temperature.svg")
 local fs = require("gears.filesystem")
 
+local host = hostname()
+
 local tempfile
 -- for Intel
-if fs.file_readable("/sys/devices/virtual/thermal/thermal_zone0/temp") then
-  tempfile = "/sys/devices/virtual/thermal/thermal_zone0/temp"
+if fs.file_readable('/sys/devices/virtual/thermal/thermal_zone0/temp') then
+  tempfile = '/sys/devices/virtual/thermal/thermal_zone0/temp'
 end
--- for AMD
-if fs.file_readable("/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input") then
-  tempfile = "/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input"
+-- for Thinkpad AMD
+if fs.file_readable('/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input') then
+  tempfile = '/sys/devices/platform/thinkpad_hwmon/hwmon/hwmon4/temp1_input'
+end
+-- for GPD
+if host == 'gpd' then
+  tempfile = '/sys/devices/virtual/thermal/thermal_zone6/temp'
 end
 
 local temp = lain.widget.temp {
