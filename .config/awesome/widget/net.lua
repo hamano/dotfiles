@@ -20,9 +20,9 @@ end
 local net = lain.widget.net {settings = net_update}
 local layout = wibox.layout.fixed.horizontal()
 layout:add(net.widget)
-layout:add(wibox.container.margin(down_icon, dpi(4), dpi(4), dpi(4), dpi(4)))
-layout:add(wibox.container.margin(down_text, 0, 0, dpi(1.5), 0))
-layout:add(wibox.container.margin(up_icon, dpi(4), dpi(4), dpi(4), dpi(4)))
-layout:add(wibox.container.margin(up_text, 0, 0, dpi(1.5), 0))
+layout:add(wibox.container.margin(down_icon, dpi(4), 0, dpi(4), dpi(4)))
+layout:add(wibox.container.margin(down_text, dpi(2), 0, dpi(2), 0))
+layout:add(wibox.container.margin(up_icon, dpi(4), 0, dpi(4), dpi(4)))
+layout:add(wibox.container.margin(up_text, dpi(2), 0, dpi(2), 0))
 
 return layout

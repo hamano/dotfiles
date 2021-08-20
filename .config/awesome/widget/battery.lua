@@ -68,5 +68,5 @@ local bat = lain.widget.bat({
 local margin = wibox.container.margin
 local layout = wibox.layout.fixed.horizontal()
 layout:add(margin(icon, dpi(4), 0, dpi(4), dpi(4)))
-layout:add(margin(bat.widget, 0, dpi(4), 0, 0))
+layout:add(margin(bat.widget, dpi(2), 0, dpi(2), 0))
 return layout

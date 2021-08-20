@@ -24,7 +24,7 @@ local mem = lain.widget.mem {
 
 local layout = wibox.layout.fixed.horizontal()
 layout:add(wibox.container.margin(cpu_icon, dpi(4), 0, dpi(4), dpi(4)))
-layout:add(wibox.container.margin(cpu.widget, 0, 0, dpi(1.5), 0))
+layout:add(wibox.container.margin(cpu.widget, dpi(2), 0, dpi(2), 0))
 layout:add(wibox.container.margin(mem_icon, dpi(4), 0, dpi(4), dpi(4)))
-layout:add(wibox.container.margin(mem.widget, 0, 0, dpi(1.5), 0))
+layout:add(wibox.container.margin(mem.widget, dpi(2), 0, dpi(2), 0))
 return layout

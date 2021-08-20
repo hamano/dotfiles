@@ -11,8 +11,8 @@ local calendar = wibox.widget.textclock("%b %d %a")
 
 local margin = wibox.container.margin
 local layout = wibox.layout.fixed.horizontal()
-layout:add(margin(icon, dpi(2), dpi(2), dpi(4), dpi(4)))
-layout:add(margin(calendar, 0, dpi(2), dpi(2), 0))
+layout:add(margin(icon, dpi(4), 0, dpi(4), dpi(4)))
+layout:add(margin(calendar, dpi(2), 0, dpi(2), 0))
 layout.lainwidget = lain.widget.cal {
   attach_to = { layout },
   notification_preset = {

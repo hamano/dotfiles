@@ -45,5 +45,5 @@ local temp = lain.widget.temp {
 
 local layout = wibox.layout.fixed.horizontal()
 layout:add(wibox.container.margin(icon, dpi(4), 0, dpi(4), dpi(4)))
-layout:add(wibox.container.margin(temp.widget, 0, dpi(4), 0, 0))
+layout:add(wibox.container.margin(temp.widget, dpi(2), 0, dpi(2), 0))
 return layout

@@ -101,10 +101,10 @@ volume_device:buttons(
     end)
 ))
 
-l1:add(wibox.container.margin(volume_icon, dpi(4), dpi(2), dpi(4), dpi(4)))
-l1:add(wibox.container.margin(volume.widget, 0, 0, dpi(1.5), 0))
+l1:add(wibox.container.margin(volume_icon, dpi(4), 0, dpi(4), dpi(4)))
+l1:add(wibox.container.margin(volume.widget, dpi(2), 0, dpi(2), 0))
 
 local layout = wibox.layout.fixed.horizontal()
 layout:add(l1)
-layout:add(wibox.container.margin(volume_device, 0, 0, dpi(1.5), 0))
+layout:add(wibox.container.margin(volume_device, dpi(2), 0, dpi(2), 0))
 return layout;
