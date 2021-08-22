@@ -23,7 +23,7 @@ if fs.is_dir("/sys/class/power_supply/BAT0") then
 end
 -- for GPD
 if fs.is_dir("/sys/class/power_supply/max170xx_battery") then
-  battery = "BAT0"
+  battery = "max170xx_battery"
 end
 
 local bat = lain.widget.bat({
