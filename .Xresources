@@ -147,22 +147,19 @@ URxvt.iso14755: false
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
 URxvt.font: \
- xft:Cica:style=Regular:size=16, \
+ xft:HackGenNerd Console:style=Regular:size=16, \
  xft:Symbola:style=Regular:size=16, \
  r16, kanji16
 URxvt.boldFont:	\
- xft:Cica:style=Bold:size=16, \
- xft:Inconsolata Nerd Font:size=16, \
+ xft:HackGenNerd Console:style=Bold:size=16, \
  xft:Symbola:style=Bold:size=16, \
  r16, kanji16
 URxvt.italicFont: \
- xft:Cica:style=Italic:size=16, \
- xft:Inconsolata Nerd Font:size=16, \
+ xft:HackGenNerd Console:style=Italic:size=16, \
  xft:Symbola:style=Regular:size=16, \
  r16, kanji16
 URxvt.boldItalicFont: \
- xft:Cica:style=Bold Italic:size=16, \
- xft:Inconsolata Nerd Font:size=16, \
+ xft:HackGenNerd Console:style=Bold Italic:size=16, \
  xft:Symbola:style=Bold:size=16, \
  r16, kanji16
 
