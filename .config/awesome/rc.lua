@@ -712,9 +712,9 @@ client.connect_signal("unfocus", function(c)
 end)
 client.connect_signal("unmanage", function(c)
                         awful.client.focus.history.previous()
-                        if client.focus then
-                          client.focus:raise()
-                        end
+--                        if client.focus then
+--                          client.focus:raise()
+--                        end
 end)
 
 -- wallpaper module
