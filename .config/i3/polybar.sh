@@ -11,6 +11,9 @@ function set_env() {
         export TEMP_HWMON_PATH=/sys/class/thermal/thermal_zone0/temp
     fi
     # for AMD
+    if [[ -f /sys/class/hwmon/hwmon3/temp1_input ]]; then
+        export TEMP_HWMON_PATH=/sys/class/hwmon/hwmon3/temp1_input
+    fi
     if [[ -f /sys/class/hwmon/hwmon4/temp1_input ]]; then
         export TEMP_HWMON_PATH=/sys/class/hwmon/hwmon4/temp1_input
     fi
