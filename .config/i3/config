@@ -200,3 +200,7 @@ client.focused_inactive $fg     $bg1    $fg     $fg       $fg
 client.unfocused        $fg     $bg     $fg     $fg       $blue
 #client.urgent           #2F343A #900000 #FFFFFF #900000   #900000
 #client.placeholder      #000000 #0C0C0C #FFFFFF #000000   #0C0C0C
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
+bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
