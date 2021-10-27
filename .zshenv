@@ -71,6 +71,12 @@ if [ "${SYSNAME}" = "SunOS" ]; then
 	export TERM=xterm
 fi
 
+CARGO_HOME="$HOME/.cargo"
+if [ -d "${CARGO_HOME}" ]; then
+    . "$CARGO_HOME/env"
+    export CARGO_HOME
+fi
+
 export PATH
 export EDITOR=vi
 export CVSEDITOR=vi
