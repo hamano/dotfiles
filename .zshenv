@@ -77,6 +77,11 @@ if [ -d "${CARGO_HOME}" ]; then
     export CARGO_HOME
 fi
 
+PICO_SDK_PATH=~/local/pico-sdk
+if [ -d "${PICO_SDK_PATH}" ]; then
+    export PICO_SDK_PATH
+fi
+
 export PATH
 export EDITOR=vi
 export CVSEDITOR=vi
