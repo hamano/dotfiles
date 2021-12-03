@@ -177,10 +177,10 @@ bindsym $mod+r mode "resize"
 #    position top
 #}
 
+exec_always --no-startup-id ~/.config/i3/polybar.sh start
 exec_always --no-startup-id dropbox start
 exec_always --no-startup-id nm-applet
 exec_always --no-startup-id light-locker
-exec_always --no-startup-id ~/.config/i3/polybar.sh start
 
 focus_follows_mouse no
 
