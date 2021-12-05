@@ -88,6 +88,7 @@
 (when (and (>= libgnutls-version 30603)
            (version<= (number-to-string emacs-major-version) "26.2"))
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3"))
+(setq package-check-signature nil)
 
 (when (>= emacs-major-version 26)
   (global-display-line-numbers-mode t))
@@ -99,9 +100,9 @@
 (when (>= emacs-major-version 24)
   (setq package-archives
         '(
+          ("gnu" . "https://elpa.gnu.org/packages/")
           ("melpa-stable" . "https://stable.melpa.org/packages/")
           ;;("melpa" . "https://melpa.org/packages/")
-          ;;("gnu" . "http://elpa.gnu.org/packages/")
           ;;("org" . "http://orgmode.org/elpa/")
           ;;("marmalade" . "http://marmalade-repo.org/packages/")
           ))
@@ -110,7 +111,6 @@
         '(
           use-package
           multi-term
-          jedi
           ))
   (unless package-archive-contents (package-refresh-contents))
   (dolist (pkg package-list)
@@ -177,6 +177,13 @@
 ;(setq font-lock-support-mode 'fast-lock-mode)
 ;(setq fast-lock-cache-directories '("~/.emacs.d/flc"))
 (setq temporary-file-directory "~/.emacs.tmp")
+
+(use-package lsp-mode
+  :ensure t
+  :hook (
+         (python-mode . lsp)
+         )
+  )
 
 ;; mode-hook
 (add-hook 'text-mode-hook
@@ -317,13 +324,12 @@
             ;;(when (locate-library "company")
             ;;(company-mode)
             ;;(define-key python-mode-map (kbd "M-/") 'company-complete))
-            (when (locate-library "jedi")
-              (setq jedi:complete-on-dot t)
-              (jedi:setup)
-              (define-key python-mode-map (kbd "M-/") 'jedi:complete))
+;            (when (locate-library "jedi")
+;              (setq jedi:complete-on-dot t)
+;              (jedi:setup)
+;              (define-key python-mode-map (kbd "M-/") 'jedi:complete))
             (setq python-shell-completion-native-enable nil)
             ))
-
 (add-hook 'latex-mode-hook
           (lambda ()
             (define-key latex-mode-map "\C-c\C-c" 'compile)
@@ -818,19 +824,7 @@
 (when (file-exists-p "~/.emacs.d/custom.el")
   (load (expand-file-name "~/.emacs.d/custom")))
 
+
 ;(condition-case nil
 ;    (load (expand-file-name "~/.emacs.d/custom"))
 ;  (error nil))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(swift-mode yaml-mode use-package multi-term markdown-mode lua-mode jedi ido-vertical-mode groovy-mode google-translate go-mode flycheck editorconfig doom-themes dockerfile-mode)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
