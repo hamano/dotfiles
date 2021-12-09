@@ -821,9 +821,9 @@
   )
 
 ;; Load custom settings
-(when (file-exists-p "~/.emacs.d/custom.el")
-  (load (expand-file-name "~/.emacs.d/custom")))
-
+(setq custom-file (concat user-emacs-directory "/custom.el"))
+(when (file-exists-p custom-file)
+  (load (expand-file-name custom-file)))
 
 ;(condition-case nil
 ;    (load (expand-file-name "~/.emacs.d/custom"))
