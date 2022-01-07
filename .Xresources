@@ -127,8 +127,9 @@ URxvt.tripleclick-words: true
 URxvt.letterSpace: -2
 !URxvt.lineSpace: 0
 URxvt.scrollBar_right: true
-URxvt.perl-lib: .urxvt/perl/
-URxvt.perl-ext: default,matcher,tabbed,xim-onthespot
+!URxvt.perl-lib: .urxvt/perl/
+!URxvt.perl-ext: default,matcher,tabbed,xim-onthespot
+URxvt.perl-ext: default,matcher,xim-onthespot
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 3
