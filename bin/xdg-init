@@ -20,6 +20,14 @@ xdg-mime default google-chrome.desktop x-scheme-handler/https
 xdg-mime default google-chrome.desktop text/html
 xdg-settings set default-web-browser google-chrome.desktop
 
+# audio
+xdg-mime default audacious.desktop audio/flac
+xdg-mime default audacious.desktop audio/mpeg
+xdg-mime default audacious.desktop audio/ogg
+xdg-mime default audacious.desktop audio/opus
+xdg-mime default audacious.desktop audio/aac
+
+
 # Local Variables:
 # mode: zsh
 # End:
