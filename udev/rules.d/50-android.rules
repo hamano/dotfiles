@@ -1,6 +1,15 @@
-#
-SUBSYSTEM=="usb", ATTR{idVendor}=="0fce", ATTR{idProduct}=="612e", GROUP="plugdev", MODE="0660", SYMLINK+="android"
 # SO-02G
 SUBSYSTEM=="usb", ATTR{idVendor}=="0fce", ATTR{idProduct}=="51bb", GROUP="plugdev", MODE="0660", SYMLINK+="android"
 # Pixel3
 SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", ATTR{idProduct}=="4ee7", GROUP="plugdev", MODE="0660", SYMLINK+="android"
+# OPPO Reno5 A
+SUBSYSTEM=="usb", ATTR{idVendor}=="22d9", ATTR{idProduct}=="2769", GROUP="plugdev", MODE="0660", SYMLINK+="android"
+
+# Samsung
+SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", GROUP="plugdev", MODE="0660", SYMLINK+="android"
+# Fujitsu
+SUBSYSTEM=="usb", ATTR{idVendor}=="30ee", GROUP="plugdev", MODE="0660", SYMLINK+="android"
+# Sharp
+SUBSYSTEM=="usb", ATTR{idVendor}=="04dd", GROUP="plugdev", MODE="0660", SYMLINK+="android"
+# LG
+SUBSYSTEM=="usb", ATTR{idVendor}=="1004", GROUP="plugdev", MODE="0660", SYMLINK+="android"
