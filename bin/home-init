@@ -34,6 +34,7 @@ DOTFILES=(
     .xsessionrc
     .gtkrc-2.0
     .icons
+    .mime.types
 )
 
 echo creating dotfiles links
