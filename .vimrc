@@ -104,3 +104,7 @@ augroup encrypted
     " after the file has been written.
     autocmd BufWritePost,FileWritePost *.gpg u
 augroup END
+
+call plug#begin('~/.local/lib/plugged')
+Plug 'editorconfig/editorconfig-vim'
+call plug#end()
