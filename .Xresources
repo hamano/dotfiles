@@ -124,7 +124,7 @@ URxvt.imLocale: ja_JP.UTF-8
 URxvt.termName: rxvt
 URxvt.geometry: 80x25
 URxvt.tripleclick-words: true
-URxvt.letterSpace: -2
+URxvt.letterSpace: 0
 !URxvt.lineSpace: 0
 URxvt.scrollBar_right: true
 !URxvt.perl-lib: .urxvt/perl/
@@ -148,24 +148,24 @@ URxvt.iso14755: false
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
 URxvt.font: \
- xft:Hack Nerd Font Mono:style=Regular:size=16, \
- xft:HackGenNerd Console:style=Regular:size=16, \
- xft:Symbola:style=Regular:size=16, \
+ xft:UDEV Gothic:style=Regular:size=16, \
+ xft:UDEV Gothic NF:style=Regular:size=16, \
+ xft:Symbola:style=Regular:size=10, \
  r16, kanji16
 URxvt.boldFont:	\
- xft:Hack Nerd Font Mono:style=Bold:size=16, \
- xft:HackGenNerd Console:style=Bold:size=16, \
- xft:Symbola:style=Bold:size=16, \
+ xft:UDEV Gothic:style=Bold:size=16, \
+ xft:UDEV Gothic NF:style=Bold:size=16, \
+ xft:Symbola:style=Bold:size=10, \
  r16, kanji16
 URxvt.italicFont: \
- xft:Hack Nerd Font Mono:style=Italic:size=16, \
- xft:HackGenNerd Console:style=Italic:size=16, \
- xft:Symbola:style=Regular:size=16, \
+ xft:UDEV Gothic:style=Italic:size=16, \
+ xft:UDEV Gothic NF:style=Italic:size=16, \
+ xft:Symbola:style=Regular:size=10, \
  r16, kanji16
 URxvt.boldItalicFont: \
- xft:Hack Nerd Font Mono:style=Bold Italic:size=16, \
- xft:HackGenNerd Console:style=Bold Italic:size=16, \
- xft:Symbola:style=Bold:size=16, \
+ xft:UDEV Gothic:style=Bold Italic:size=16, \
+ xft:UDEV Gothic NF:style=Bold Italic:size=16, \
+ xft:Symbola:style=Bold:size=10, \
  r16, kanji16
 
 !!emacs
