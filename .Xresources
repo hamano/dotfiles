@@ -150,22 +150,26 @@ URxvt.iso14755: false
 URxvt.font: \
  xft:UDEV Gothic:style=Regular:size=16, \
  xft:UDEV Gothic NF:style=Regular:size=16, \
- xft:Symbola:style=Regular:size=10, \
+ xft:Noto Emoji:style=Regular:size=16, \
+ xft:Symbola:style=Regular:size=11, \
  r16, kanji16
 URxvt.boldFont:	\
  xft:UDEV Gothic:style=Bold:size=16, \
  xft:UDEV Gothic NF:style=Bold:size=16, \
- xft:Symbola:style=Bold:size=10, \
+ xft:Noto Emoji:style=Regular:size=16, \
+ xft:Symbola:style=Regular:size=11, \
  r16, kanji16
 URxvt.italicFont: \
  xft:UDEV Gothic:style=Italic:size=16, \
  xft:UDEV Gothic NF:style=Italic:size=16, \
- xft:Symbola:style=Regular:size=10, \
+ xft:Noto Emoji:style=Regular:size=16, \
+ xft:Symbola:style=Regular:size=11, \
  r16, kanji16
 URxvt.boldItalicFont: \
  xft:UDEV Gothic:style=Bold Italic:size=16, \
  xft:UDEV Gothic NF:style=Bold Italic:size=16, \
- xft:Symbola:style=Bold:size=10, \
+ xft:Noto Emoji:style=Regular:size=16, \
+ xft:Symbola:style=Bold:size=11, \
  r16, kanji16
 
 !!emacs
