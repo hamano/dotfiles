@@ -80,6 +80,10 @@ case "${file:u}" in
     *.XZ)
         xz -dk "${file}"
         ;;
+    *.APPIMAGE)
+        ./${file} --appimage-extract
+        mv squashfs-root "${base}"
+        ;;
     *)
         echo "unsupported archive: ${file}"
         ;;
