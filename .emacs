@@ -534,6 +534,30 @@
   (add-hook 'swift-mode-hook
             (lambda ())))
 
+;; mmm-mode settings
+(use-package mmm-mode
+  :ensure
+  :config
+  (set-face-background 'mmm-default-submode-face nil)
+  (mmm-add-classes
+    '((vue-embeded-html-mode
+        :submode html-mode
+        :front "^<template>\n"
+        :back "^</template>\n")
+       (vue-embeded-js-mode
+         :submode js-mode
+         :front "^<script.*>\n"
+         :back "^</script>")
+       (vue-embeded-css-mode
+         :submode css-mode
+         :front "^<style.*>\n"
+         :back "^</style>")
+       ))
+  (mmm-add-mode-ext-class 'html-mode "\\.vue\\'" 'vue-embeded-html-mode)
+  (mmm-add-mode-ext-class 'html-mode "\\.vue\\'" 'vue-embeded-js-mode)
+  (mmm-add-mode-ext-class 'html-mode "\\.vue\\'" 'vue-embeded-css-mode)
+  )
+
 ;; php-mode settings
 (when (locate-library "php-mode")
   (add-to-list 'load-path "~/.emacs.d/site-lisp/php-mode")
