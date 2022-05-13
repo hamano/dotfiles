@@ -35,6 +35,7 @@ DOTFILES=(
     .gtkrc-2.0
     .icons
     .mime.types
+    .editorconfig
 )
 
 echo creating dotfiles links
