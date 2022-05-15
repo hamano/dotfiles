@@ -94,8 +94,9 @@ stty -ixon
 # bindkey
 bindkey -d
 bindkey -e
-bindkey '^t' ''
 bindkey "^[[3~" delete-char
+bindkey -r "^t"
+bindkey -r "^[T"
 
 # zstyle
 zstyle ':completion:*' verbose yes
