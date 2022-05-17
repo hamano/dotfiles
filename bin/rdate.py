@@ -23,7 +23,7 @@ def main():
     delta = timedelta(seconds=randrange(24 * 60 * 60))
     today = datetime.combine(d, time(0))
     d = today + delta
-    print(d)
+    print(d.isoformat())
 
 if __name__ == '__main__':
     main()
