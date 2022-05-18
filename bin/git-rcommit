@@ -1,0 +1,7 @@
+#!/bin/bash
+
+git commit --date $(~/etc/bin/rdate.py) "$@"
+
+# Local Variables:
+# mode: bash
+# End:
