@@ -106,6 +106,5 @@ augroup encrypted
 augroup END
 
 call plug#begin('~/.local/lib/plugged')
-Plug 'https://github.com/cohama/lexima.vim'
 Plug 'editorconfig/editorconfig-vim'
 call plug#end()
