@@ -1,7 +1,5 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env python3
 
-perl -MURI::Escape -lne 'print uri_unescape($_)' <<< "$1";
-
-# Local Variables:
-# mode: zsh
-# End:
+import sys
+import urllib.parse
+print(urllib.parse.unquote(sys.argv[1]))
