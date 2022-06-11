@@ -597,6 +597,15 @@
               (setq c-basic-offset 4)
               )))
 
+;; rust-mode settings
+(use-package rust-mode
+  :ensure t
+  :custom rust-format-on-save t)
+
+(use-package cargo
+  :ensure t
+  :hook (rust-mode . cargo-minor-mode))
+
 ;; jdee settings
 (when (file-directory-p "~/.emacs.d/site-lisp/jdee/lisp")
   (progn
