@@ -2,4 +2,13 @@
 
 import sys
 import urllib.parse
-print(urllib.parse.unquote(sys.argv[1]))
+
+def main():
+    if len(sys.argv) > 1:
+        print(urllib.parse.unquote(sys.argv[1]))
+    else:
+        print(urllib.parse.unquote(sys.stdin.buffer.read()))
+
+if __name__ == '__main__':
+    main()
+
