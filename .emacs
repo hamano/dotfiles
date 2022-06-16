@@ -552,10 +552,15 @@
          :submode css-mode
          :front "^<style.*>\n"
          :back "^</style>")
+       (vue-embeded-yaml-mode
+         :submode yaml-mode
+         :front "^<i18n.*lang=\"yaml\".*>\n"
+         :back "^</i18n>")
        ))
   (mmm-add-mode-ext-class 'html-mode "\\.vue\\'" 'vue-embeded-html-mode)
   (mmm-add-mode-ext-class 'html-mode "\\.vue\\'" 'vue-embeded-js-mode)
   (mmm-add-mode-ext-class 'html-mode "\\.vue\\'" 'vue-embeded-css-mode)
+  (mmm-add-mode-ext-class 'html-mode "\\.vue\\'" 'vue-embeded-yaml-mode)
   )
 
 ;; php-mode settings
