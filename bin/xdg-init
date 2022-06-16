@@ -7,6 +7,8 @@ xdg-mime default leafpad.desktop text/x-markdown
 xdg-mime default geeqie.desktop image/jpeg
 xdg-mime default geeqie.desktop image/png
 xdg-mime default geeqie.desktop image/gif
+xdg-mime default geeqie.desktop image/gif
+xdg-mime default geeqie.desktop image/x-portable-bitmap
 # xdg-mime default org.pwmt.zathura.desktop application/pdf
 xdg-mime default org.gnome.Evince.desktop application/pdf
 xdg-mime default xarchive.desktop application/zip
