@@ -340,12 +340,6 @@
             (setq indent-tabs-mode nil)
             ))
 
-(add-hook 'css-mode-hook
-          (lambda ()
-            (setq indent-tabs-mode t)
-            (setq css-indent-offset 2)
-            ))
-
 (add-hook 'dns-mode-hook
           (lambda ()
             (setq indent-tabs-mode t)
