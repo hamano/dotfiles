@@ -1,11 +1,12 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env python3
 
-if [ $# != 1 ]; then
-    echo "usage: errno num";
-    return 1;
-fi
-python -c "import os, errno; print errno.errorcode[$1], os.strerror($1)"
+import errno
+import os
+import sys
 
-# Local Variables:
-# mode: zsh
-# End:
+def main():
+     errcode = int(sys.argv[1])
+     print(errno.errorcode[errcode], os.strerror(errcode))
+
+if __name__ == '__main__':
+    main()
