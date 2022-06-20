@@ -95,6 +95,8 @@ stty -ixon
 bindkey -d
 bindkey -e
 bindkey "^[[3~" delete-char
+bindkey '^[[c' forward-word
+bindkey '^[[d' backward-word
 bindkey -r "^t"
 bindkey -r "^[T"
 
