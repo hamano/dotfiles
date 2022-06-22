@@ -6,30 +6,24 @@ if [[ -z $1 ]]; then
 fi
 
 function set_env() {
-    # for Intel
-    if [[ -f /sys/class/thermal/thermal_zone0/temp ]]; then
-        export TEMP_HWMON_PATH=/sys/class/thermal/thermal_zone0/temp
-    fi
-    # for AMD
-    if [[ -f /sys/class/hwmon/hwmon3/temp1_input ]]; then
-        export TEMP_HWMON_PATH=/sys/class/hwmon/hwmon3/temp1_input
-    fi
-    if [[ -f /sys/class/hwmon/hwmon4/temp1_input ]]; then
-        export TEMP_HWMON_PATH=/sys/class/hwmon/hwmon4/temp1_input
-    fi
-    # for GPD
-    if [[ -f /sys/devices/virtual/thermal/thermal_zone6/temp ]]; then
-        export TEMP_HWMON_PATH=/sys/devices/virtual/thermal/thermal_zone6/temp
-    fi
-    HOST=$(hostname)
-    if [[ $HOST == "x1c" ]]; then
-        export POLYBAR_ETH_INTERFACE=enp0s31f6
-        export POLYBAR_WLAN_INTERFACE=wlp2s0
-    fi
-    if [[ $HOST == "t14" ]]; then
-        export POLYBAR_ETH_INTERFACE=enp6s0
-        export POLYBAR_WLAN_INTERFACE=wlp3s0
-    fi
+    case $(hostname) in
+        'x1c')
+            export POLYBAR_ETH_INTERFACE=enp0s31f6
+            export POLYBAR_WLAN_INTERFACE=wlp2s0
+            export POLYBAR_TEMP_PATH=/sys/class/thermal/thermal_zone0/temp
+            ;;
+        't14')
+            export POLYBAR_ETH_INTERFACE=enp6s0
+            export POLYBAR_WLAN_INTERFACE=wlp3s0
+            export POLYBAR_TEMP_PATH=/sys/class/hwmon/hwmon3/temp1_input
+            # or /sys/class/hwmon/hwmon4/temp1_input
+            ;;
+        'gpd')
+            #export POLYBAR_ETH_INTERFACE=enp6s0
+            #export POLYBAR_WLAN_INTERFACE=wlp3s0
+            export POLYBAR_TEMP_PATH=/sys/class/hwmon/hwmon3/temp1_input
+            ;;
+    esac
 }
 
 function start() {
@@ -46,5 +40,6 @@ function stop() {
 case $1 in
     "start") start;;
     "stop") stop;;
+    "env") set_env && env | grep POLYBAR_;;
 esac
 
