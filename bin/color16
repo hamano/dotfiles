@@ -22,21 +22,21 @@ COLOR_NAMES=(
 )
 
 for i in {0..7}; do
-    echo -ne "\x1b[48;5;${i}m"
+    echo -ne "\e[38;5;15m"
+    echo -ne "\e[48;5;${i}m"
     echo -ne "${COLOR_NAMES[$i + 1]}"
     for s in {0..$(( 22 - ${#COLOR_NAMES[$i + 1]} ))}; do
         echo -ne " "
     done
     j=$((${i} + 8))
-    echo -ne "\x1b[48;5;${j}m"
+    echo -ne "\e[38;5;0m"
+    echo -ne "\e[48;5;${j}m"
     echo -ne "${COLOR_NAMES[$j + 1]}"
     for s in {0..$(( 22 - ${#COLOR_NAMES[$j + 1]} ))}; do
         echo -ne " "
     done
-    echo -ne "\x1b[0m"
-    echo
+    echo -e "\e[0m"
 done
-echo
 
 # Local Variables:
 # mode: sh
