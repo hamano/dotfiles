@@ -95,10 +95,12 @@ stty -ixon
 bindkey -d
 bindkey -e
 bindkey "^[[3~" delete-char
-bindkey '^[[c' forward-word
-bindkey '^[[d' backward-word
+bindkey "^[^[[3~" delete-word
+bindkey "\e$terminfo[kcuf1]" forward-word
+bindkey "\e$terminfo[kcub1]" backward-word
 bindkey -r "^t"
 bindkey -r "^[T"
+bindkey -r "^[h"
 
 # zstyle
 zstyle ':completion:*' verbose yes
