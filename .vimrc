@@ -105,6 +105,8 @@ augroup encrypted
     autocmd BufWritePost,FileWritePost *.gpg u
 augroup END
 
+let netrw_home = ~
+
 call plug#begin('~/.local/lib/plugged')
 Plug 'editorconfig/editorconfig-vim'
 call plug#end()
