@@ -128,8 +128,12 @@ URxvt.letterSpace: 1
 URxvt.lineSpace: 1
 URxvt.scrollBar_right: true
 !URxvt.perl-lib: .urxvt/perl/
-URxvt.perl-ext: default,matcher,xim-onthespot,resize-font
+URxvt.perl-ext: default,matcher,xim-onthespot,font-size
 URxvt.resize-font.step: 2
+URxvt.keysym.C-apostrophe: font-size:increase
+URxvt.keysym.C-underscore: font-size:decrease
+URxvt.keysym.C-backslash:  font-size:reset
+
 URxvt.keysym.M-u: perl:url-select:select_next
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 3
