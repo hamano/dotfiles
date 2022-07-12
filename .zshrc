@@ -176,7 +176,7 @@ fi
 # settings for exa
 if [[ -x /usr/bin/exa ]]; then
     alias ls=exa
-elif [[ $GNU ]]; then
+elif [[ ${GNU} ]]; then
     alias ls='ls --color=auto'
 fi
 
