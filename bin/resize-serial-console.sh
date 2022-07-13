@@ -1,6 +1,7 @@
 #!/bin/bash
 # virsh consoleの画面サイズを調整する
 # /etc/profile.d に置くと便利
+# wget -q -O /etc/profile.d/resize-serial-console.sh https://raw.githubusercontent.com/hamano/dotfiles/master/bin/resize-serial-console.sh
 # https://blog.n-z.jp/blog/2022-01-30-serial-console-resize.html
 # https://wiki.archlinux.org/title/working_with_the_serial_console#Resizing_a_terminal
 
