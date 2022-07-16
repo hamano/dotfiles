@@ -36,6 +36,7 @@ DOTFILES=(
     .icons
     .mime.types
     .editorconfig
+    .xbindkeysrc
 )
 
 echo creating dotfiles links
