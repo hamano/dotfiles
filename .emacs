@@ -59,7 +59,6 @@
 (setq auto-save-list-file-prefix nil)
 
 ;; Common settings
-(display-time)
 (line-number-mode t)
 (column-number-mode t)
 (menu-bar-mode nil)
