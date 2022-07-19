@@ -63,10 +63,10 @@
 #
 ## Control + mouse button 2 release event starts rxvt
 "xvkbd -xsendevent -text "\[Control]\[Page_Up]""
-  b:6 + Release
+  b:6
 
 "xvkbd -xsendevent -text "\[Control]\[Page_Down]""
-  b:7 + Release
+  b:7
 
 "xvkbd -xsendevent -text "\[Page_Down]""
   b:8
