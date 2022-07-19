@@ -143,16 +143,9 @@
       (tool-bar-mode nil)
       (mwheel-install)
       ;; Font settings
-      (set-default-font "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
-      (set-face-font 'default
-                     "-shinonome-gothic-medium-r-normal--12-*-*-*-*-*-*-*")
-      (set-face-font 'bold
-                     "-shinonome-gothic-bold-r-normal--12-*-*-*-*-*-*-*")
-      (set-face-font 'italic
-                     "-shinonome-gothic-medium-i-normal--12-*-*-*-*-*-*-*")
-      (set-face-font 'bold-italic
-                     "-shinonome-gothic-bold-i-normal--12-*-*-*-*-*-*-*")
-
+      (custom-set-faces
+        '(default
+           ((t (:family "UDEV Gothic" :foundry "twr " :slant normal :weight normal :height 160 :width normal)))))
       ;; Clip board settings
       (setq x-select-enable-clipboard t)
       (if (file-exists-p "/usr/bin/xsel")
