@@ -3,7 +3,7 @@ root = true
 indent_style = space
 indent_size = 4
 
-[*.{el,emacs}]
+[*.{el,emacs,yml,yaml}]
 indent_style = space
 indent_size = 2
 
