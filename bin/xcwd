@@ -1,0 +1,7 @@
+#!/bin/bash
+
+TERM_WID=$(xprop -root | awk '/_NET_ACTIVE_WINDOW\(WINDOW\)/{print $NF}')
+TERM_PID=$(xprop -id "$TERM_WID" | grep -m 1 PID | cut -d " " -f 3)
+SHELL_PID=$(ps --no-headers -o pid,comm --ppid $TERM_PID | awk '/zsh/{print $1}')
+CURRENT_PATH=$(readlink "/proc/$SHELL_PID/cwd")
+echo $CURRENT_PATH
