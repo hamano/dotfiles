@@ -30,7 +30,7 @@ font xft:HackGenNerd Console:size=12
 floating_modifier $mod
 
 # start terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec i3-sensible-terminal -cd $(~/etc/bin/xcwd)
 
 # start fm
 bindsym $mod+slash exec nemo
