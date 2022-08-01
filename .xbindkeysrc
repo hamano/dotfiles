@@ -64,15 +64,17 @@
 ## Control + mouse button 2 release event starts rxvt
 "xvkbd -xsendevent -text "\[Control]\[Page_Up]""
   b:6
-
 "xvkbd -xsendevent -text "\[Control]\[Page_Down]""
   b:7
-
-"xvkbd -xsendevent -text "\[Page_Down]""
-  b:8
-
-"xvkbd -xsendevent -text "\[Page_Up]""
+"xvkbd -xsendevent -text "\[Control]w""
   b:9
+"xvkbd -xsendevent -text "\[Control]T""
+  b:8
+#"xvkbd -xsendevent -text "\[Page_Down]""
+#  b:8
+
+#"xvkbd -xsendevent -text "\[Page_Up]""
+#  b:9
 
 ##################################
 # End of xbindkeys configuration #
