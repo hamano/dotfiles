@@ -5,5 +5,5 @@ export BIN_DIR=~/local/bin
 if [[ ! -d ${BIN_DIR} ]]; then
   mkdir -p ${BIN_DIR}
 fi
-curl -fsSL https://starship.rs/install.sh | bash
+curl -fsSL https://starship.rs/install.sh | sh
 
