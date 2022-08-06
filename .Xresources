@@ -127,14 +127,15 @@ URxvt.tripleclick-words: true
 URxvt.letterSpace: 1
 URxvt.lineSpace: 1
 URxvt.scrollBar_right: true
-!URxvt.perl-lib: .urxvt/perl/
-URxvt.perl-ext: default,matcher,xim-onthespot,font-size
+URxvt.perl-lib: .config/urxvt/perl/
+URxvt.perl-ext: default,matcher,xim-onthespot,font-size,osc52
 URxvt.resize-font.step: 2
 URxvt.keysym.C-apostrophe: font-size:increase
 URxvt.keysym.C-underscore: font-size:decrease
 URxvt.keysym.C-backslash:  font-size:reset
 
-URxvt.keysym.M-u: perl:url-select:select_next
+!URxvt.keysym.M-u: perl:url-select:select_next
+!URxvt.url-select.underline: true
 URxvt.url-launcher: /usr/bin/xdg-open
 URxvt.matcher.button: 3
 URxvt.matcher.rend.0: Uline Bold fg6
@@ -147,7 +148,6 @@ URxvt.tabbed.tab-fg: 0
 URxvt.tabbed.tab-bg: 6
 URxvt.inputMethod: fcitx
 URxvt.preeditType: OnTheSpot
-!URxvt.url-select.underline: true
 URxvt.iso14755: false
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
