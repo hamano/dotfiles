@@ -74,6 +74,7 @@ alias pyc='python-clean'
 alias nw='tmux-new-window'
 alias sw='tmux-split-window'
 alias x='extract'
+alias dc='docker compose'
 alias mozc-dict='/usr/lib/mozc/mozc_tool --mode=dictionary_tool'
 
 # setopt
