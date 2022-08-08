@@ -119,7 +119,7 @@ REPORTTIME=3
 # set alias
 alias l='ls -lh'
 alias ll='ls -l'
-alias la='ls -A'
+alias la='ls -la'
 alias j='jobs'
 alias f='find'
 alias SL='env sl'
