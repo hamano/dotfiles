@@ -2,6 +2,7 @@
 ;;; Commentary: initialization for Emacs
 ;;; Code:
 (add-to-list 'load-path "~/.emacs.d/site-lisp")
+;(set-display-table-slot standard-display-table 'wrap ?\ )
 
 ;; User information
 (setq user-mail-address (getenv "EMAIL"))
@@ -136,6 +137,10 @@
   :ensure t
   :config
   (load-theme 'doom-gruvbox16 t))
+
+(use-package clipetty
+  :ensure t
+  :bind ("M-w" . clipetty-kill-ring-save))
 
 ;; X settings
 (if window-system
