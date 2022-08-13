@@ -128,7 +128,7 @@ URxvt.letterSpace: 1
 URxvt.lineSpace: 1
 URxvt.scrollBar_right: true
 URxvt.perl-lib: .config/urxvt/perl/
-URxvt.perl-ext: default,matcher,xim-onthespot,font-size,osc52
+URxvt.perl-ext: default,-confirm-paste,matcher,xim-onthespot,font-size,osc52
 URxvt.resize-font.step: 2
 URxvt.keysym.C-apostrophe: font-size:increase
 URxvt.keysym.C-underscore: font-size:decrease
