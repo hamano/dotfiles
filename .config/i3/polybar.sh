@@ -13,7 +13,7 @@ function set_env() {
             export POLYBAR_TEMP_PATH=/sys/class/thermal/thermal_zone0/temp
             ;;
         't14')
-            export POLYBAR_ETH_INTERFACE=enp6s0
+            export POLYBAR_ETH_INTERFACE=enp2s0f0
             export POLYBAR_WLAN_INTERFACE=wlp3s0
             export POLYBAR_TEMP_PATH=/sys/class/hwmon/hwmon3/temp1_input
             # or /sys/class/hwmon/hwmon4/temp1_input
