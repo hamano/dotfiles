@@ -1,4 +1,24 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
+
+ETCDIR=~/etc
+
+function pkg_install() {
+  pkg=$1
+  if ! dpkg -l $pkg 2>&1 >/dev/null; then
+    echo install $pkg
+    sudo apt install -y $pkg
+  fi
+}
+
+pkg_install bibata-cursor-theme
+
+echo creating gtk-3.0 links
+if [[ ! -f .config/gtk-3.0/settings.ini ]]; then
+    mkdir -p ~/.config/gtk-3.0/
+    ln -sf ${ETCDIR}/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/
+fi
+
+exit 0
 
 echo setup xgd-mime
 xdg-mime default nemo.desktop inode/directory
