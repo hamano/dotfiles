@@ -3,6 +3,9 @@
 
 #include ".Xresources.local"
 
+!! cursor size
+Xcursor.size: 40
+
 !! custom color pallete
 #define C_red           #a54242
 #define C_brightred     #cc6666
