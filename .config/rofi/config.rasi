@@ -4,7 +4,7 @@ configuration {
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
-	font: "UDEV Gothic NF 24"
+	font: "UDEV Gothic NF 24";
 	bw: 2;
 /*	location: 0;*/
 	padding: 10;
