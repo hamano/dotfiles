@@ -174,6 +174,8 @@
 ;(setq font-lock-support-mode 'fast-lock-mode)
 ;(setq fast-lock-cache-directories '("~/.emacs.d/flc"))
 (setq temporary-file-directory "~/.emacs.tmp")
+(unless (file-directory-p temporary-file-directory)
+        (make-directory temporary-file-directory))
 
 (use-package lsp-mode
   :ensure t
