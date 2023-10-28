@@ -180,6 +180,7 @@ bindsym $mod+r mode "resize"
 exec_always --no-startup-id ~/.config/i3/polybar.sh start
 exec_always --no-startup-id dropbox start
 exec_always --no-startup-id light-locker
+exec_always --no-startup-id connman-gtk
 
 focus_follows_mouse no
 
