@@ -30,7 +30,7 @@ font pango:UDEV Gothic NF 12
 floating_modifier $mod
 
 # start terminal
-bindsym $mod+Return exec i3-sensible-terminal -cd $(~/etc/bin/xcwd)
+bindsym $mod+Return exec wezterm || urxvt || xterm
 
 # start fm
 bindsym $mod+slash exec nemo
