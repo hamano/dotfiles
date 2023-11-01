@@ -101,9 +101,9 @@ XTerm*cursorColor:				G_green
 XTerm*pointerColorBackground:	G_white
 XTerm*pointerColor:	G_hlwhite
 XTerm*saveLines: 10000
-XTerm*faceName: Cica
-XTerm*faceSize: 20
-!XTerm*faceNameDoublesize: Ricty
+XTerm*faceSize: 16
+XTerm*faceName: UDEV Gothic NF
+!XTerm*faceNameDoublesize: UDEV Gothic NF
 !XTerm*fontDoublesize: true
 !XTerm*utf8: 1
 !XTerm*locale: true
