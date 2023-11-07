@@ -19,6 +19,8 @@ config.font = wezterm.font_with_fallback {
   'Symbola',
 }
 config.font_size = 16.0
+config.keys = require 'keys'.keys
 
+-- config.debug_key_events = true
 -- and finally, return the configuration to wezterm
 return config
