@@ -10,9 +10,6 @@ if wezterm.config_builder then
 end
 
 config.use_ime = true
-config.enable_scroll_bar = true
-
-config.color_scheme = 'GruvboxDark'
 config.font = wezterm.font_with_fallback {
   'UDEV Gothic NF',
   'Noto Emoji',
@@ -20,6 +17,13 @@ config.font = wezterm.font_with_fallback {
 }
 config.font_size = 16.0
 config.keys = require 'keys'.keys
+config.enable_scroll_bar = true
+
+config.color_scheme = 'GruvboxDark'
+local scheme = wezterm.get_builtin_color_schemes()[config.color_scheme]
+config.colors = {
+    scrollbar_thumb = scheme["foreground"]
+}
 
 -- config.debug_key_events = true
 -- and finally, return the configuration to wezterm
