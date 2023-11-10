@@ -18,8 +18,6 @@ if [[ ! -f .config/gtk-3.0/settings.ini ]]; then
     ln -sf ${ETCDIR}/.config/gtk-3.0/settings.ini ~/.config/gtk-3.0/
 fi
 
-exit 0
-
 echo setup xgd-mime
 xdg-mime default nemo.desktop inode/directory
 xdg-mime default leafpad.desktop text/plain
@@ -49,6 +47,9 @@ xdg-mime default audacious.desktop audio/mp4
 xdg-mime default audacious.desktop audio/ogg
 xdg-mime default audacious.desktop audio/aac
 xdg-mime default audacious.desktop audio/x-opus+ogg
+
+# remove mailto: wlでメールアドレスのコピーに支障がでる
+sed -i -e '/x-scheme-handler\/mailto/ s/^/#/' .config/mimeapps.list
 
 # Local Variables:
 # mode: zsh
