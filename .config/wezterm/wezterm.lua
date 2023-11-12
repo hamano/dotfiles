@@ -19,7 +19,7 @@ config.font_size = 16.0
 config.keys = require 'keys'.keys
 config.enable_scroll_bar = true
 config.check_for_updates = false
-config.selection_word_boundary = '{}[]()"\'`.,;: 　'
+config.selection_word_boundary = '{}[]()"\'`,;: 　'
 
 config.color_scheme = 'GruvboxDark'
 local scheme = wezterm.get_builtin_color_schemes()[config.color_scheme]
