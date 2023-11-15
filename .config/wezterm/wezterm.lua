@@ -35,4 +35,47 @@ config.colors = {
 config.treat_east_asian_ambiguous_width_as_wide = true
 -- config.pane_focus_follows_mouse = true
 -- config.debug_key_events = true
+
+-- from https://github.com/wez/wezterm/issues/3803
+config.hyperlink_rules = {
+  -- Matches: a URL in parens: (URL)
+  {
+    regex = '\\((\\w+://\\S+)\\)',
+    format = '$1',
+    highlight = 1,
+  },
+  -- Matches: a URL in brackets: [URL]
+  {
+    regex = '\\[(\\w+://\\S+)\\]',
+    format = '$1',
+    highlight = 1,
+  },
+  -- Matches: a URL in curly braces: {URL}
+  {
+    regex = '\\{(\\w+://\\S+)\\}',
+    format = '$1',
+    highlight = 1,
+  },
+  -- Matches: a URL in angle brackets: <URL>
+  {
+    regex = '<(\\w+://\\S+)>',
+    format = '$1',
+    highlight = 1,
+  },
+  -- Then handle URLs not wrapped in brackets
+  {
+    -- Before
+    --regex = '\\b\\w+://\\S+[)/a-zA-Z0-9-]+',
+    --format = '$0',
+    -- After
+    regex = '[^(]\\b(\\w+://\\S+[)/a-zA-Z0-9-]+)',
+    format = '$1',
+    highlight = 1,
+  },
+  -- implicit mailto link
+  {
+    regex = '\\b\\w+@[\\w-]+(\\.[\\w-]+)+\\b',
+    format = 'mailto:$0',
+  },
+}
 return config
