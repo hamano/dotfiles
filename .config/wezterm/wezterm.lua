@@ -32,6 +32,7 @@ local scheme = wezterm.get_builtin_color_schemes()[config.color_scheme]
 config.colors = {
     scrollbar_thumb = scheme["foreground"]
 }
+config.treat_east_asian_ambiguous_width_as_wide = true
 -- config.pane_focus_follows_mouse = true
 -- config.debug_key_events = true
 return config
