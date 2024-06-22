@@ -102,7 +102,7 @@ XTerm*pointerColorBackground:	G_white
 XTerm*pointerColor:	G_hlwhite
 XTerm*saveLines: 10000
 XTerm*faceSize: 16
-XTerm*faceName: UDEV Gothic NF
+XTerm*faceName: Bizin Gothic Discord NF
 !XTerm*faceNameDoublesize: UDEV Gothic NF
 !XTerm*fontDoublesize: true
 !XTerm*utf8: 1
@@ -155,22 +155,22 @@ URxvt.iso14755: false
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
 URxvt.font: \
- xft:UDEV Gothic NF:style=Regular:size=16, \
+ xft:Bizin Gothic Discord NF:style=Regular:size=16, \
  xft:Noto Emoji:style=Regular:size=16, \
  xft:Symbola:style=Regular:size=12, \
  r16, kanji16
 URxvt.boldFont:	\
- xft:UDEV Gothic NF:style=Bold:size=16, \
+ xft:Bizin Gothic Discord NF:style=Bold:size=16, \
  xft:Noto Emoji:style=Regular:size=16, \
  xft:Symbola:style=Regular:size=12, \
  r16, kanji16
 URxvt.italicFont: \
- xft:UDEV Gothic NF:style=Italic:size=16, \
+ xft:Bizin Gothic Discord NF:style=Italic:size=16, \
  xft:Noto Emoji:style=Regular:size=16, \
  xft:Symbola:style=Regular:size=12, \
  r16, kanji16
 URxvt.boldItalicFont: \
- xft:UDEV Gothic NF:style=Bold Italic:size=16, \
+ xft:Bizin Gothic Discord NF:style=Bold Italic:size=16, \
  xft:Noto Emoji:style=Regular:size=16, \
  xft:Symbola:style=Bold:size=12, \
  r16, kanji16
