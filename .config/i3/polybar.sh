@@ -15,7 +15,7 @@ function set_env() {
         't14')
             export POLYBAR_ETH_INTERFACE=enp2s0f0
             export POLYBAR_WLAN_INTERFACE=wlp3s0
-            export POLYBAR_TEMP_PATH=/sys/class/hwmon/hwmon3/temp1_input
+            export POLYBAR_TEMP_PATH=$(ls /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon*/temp1_input|head -1)
             # or /sys/class/hwmon/hwmon4/temp1_input
             ;;
         'gpd')
