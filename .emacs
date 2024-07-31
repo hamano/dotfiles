@@ -596,9 +596,9 @@
               )))
 
 ;; rust-mode settings
-(use-package rust-mode
-  :ensure t
-  :custom rust-format-on-save t)
+;(use-package rust-mode
+;  :ensure t
+;  :custom rust-format-on-save t)
 
 (use-package cargo
   :ensure t
@@ -823,12 +823,14 @@
   (autoload 'elixir-mode "elixir-mode"
     "Major mode for editing Elixir files" t))
 
+;; disable
+(global-auto-composition-mode 0)
+
 ;; East Asian Width settings
-(when (locate-library "eaw")
-  (require 'eaw)
-  ;;(eaw-fullwidth)
-  (eaw-set-width 1)
-  )
+;(when (locate-library "eaw-fullwidth")
+;  (require 'eaw-fullwidth))
+(when (locate-library "eaw-console")
+  (require 'eaw-console))
 
 (when (locate-library "etags-table")
   (require 'etags-table)
