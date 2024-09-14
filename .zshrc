@@ -46,22 +46,10 @@ function user_precmd(){
     print -n '\a'
 }
 
-function user_preexec(){
-    print -n '\e]0;'
-    if [[ -n $SSH_CONNECTION ]]; then
-        print -Pn '(%m) '
-    else
-        print -Pn '(localhost) '
-    fi
-	print -Pn "$1"
-    print -n '\a'
-}
-
 # use starship prompt
 if [[ -x ~/local/bin/starship ]]; then
     eval "$(~/local/bin/starship init zsh)"
     precmd_functions+=(user_precmd)
-    preexec_functions+=(user_preexec)
 fi
 
 # load lfcd.sh
@@ -95,10 +83,14 @@ stty -ixon
 # bindkey
 bindkey -d
 bindkey -e
-bindkey "^[[3~" delete-char
-bindkey "^[^[[3~" delete-word
 bindkey "\e$terminfo[kcuf1]" forward-word
 bindkey "\e$terminfo[kcub1]" backward-word
+bindkey "^H" backward-kill-word
+bindkey "^[[3~" delete-char
+bindkey "^[^[[3~" delete-word
+bindkey "5~" kill-word
+bindkey "^[[7~" beginning-of-line
+bindkey "^[[8~" end-of-line
 bindkey -r "^t"
 bindkey -r "^[T"
 bindkey -r "^[h"
