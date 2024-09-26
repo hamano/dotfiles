@@ -22,6 +22,8 @@ function set_env() {
             #export POLYBAR_ETH_INTERFACE=enp6s0
             #export POLYBAR_WLAN_INTERFACE=wlp3s0
             export POLYBAR_TEMP_PATH=/sys/class/hwmon/hwmon3/temp1_input
+            export POLYBAR_BAT=max170xx_battery
+            export POLYBAR_FONT_SIZE=26
             ;;
     esac
 }
