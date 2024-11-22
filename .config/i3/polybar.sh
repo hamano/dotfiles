@@ -17,6 +17,7 @@ function set_env() {
             export POLYBAR_WLAN_INTERFACE=wlp3s0
             export POLYBAR_TEMP_PATH=$(ls /sys/devices/platform/thinkpad_hwmon/hwmon/hwmon*/temp1_input|head -1)
             # or /sys/class/hwmon/hwmon4/temp1_input
+            export POLYBAR_FONT_SIZE=16
             ;;
         'gpd')
             #export POLYBAR_ETH_INTERFACE=enp6s0
