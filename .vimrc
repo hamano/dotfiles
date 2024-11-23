@@ -110,3 +110,9 @@ let netrw_home = "~"
 call plug#begin('~/.local/lib/plugged')
 Plug 'editorconfig/editorconfig-vim'
 call plug#end()
+
+augroup filetype_yaml
+  autocmd!
+  autocmd BufEnter *.yaml,*.yml
+  \ setlocal indentkeys-=0#
+augroup END
