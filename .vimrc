@@ -60,9 +60,7 @@ if has("syntax")
     augroup END
 endif
 
-if exists('&ambw')
-    set ambw=single
-endif
+source ~/.vim/eaw-console.vim
 
 if exists('&cursorline')
     set cursorline
