@@ -48,8 +48,11 @@ xdg-mime default audacious.desktop audio/ogg
 xdg-mime default audacious.desktop audio/aac
 xdg-mime default audacious.desktop audio/x-opus+ogg
 
+# video
+xdg-mime default vlc.desktop video/mp4
+
 # remove mailto: wlでメールアドレスのコピーに支障がでる
-sed -i -e '/x-scheme-handler\/mailto/ s/^/#/' .config/mimeapps.list
+sed -i -e '/^x-scheme-handler\/mailto/ s/^/#/' ~/.config/mimeapps.list
 
 # Local Variables:
 # mode: zsh
