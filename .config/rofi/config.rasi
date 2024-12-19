@@ -86,14 +86,14 @@ ssh-command: "wezterm ssh {host}";
 /*	kb-accept-custom: "Control+Return";*/
 /*	kb-accept-alt: "Shift+Return";*/
 /*	kb-delete-entry: "Shift+Delete";*/
-	kb-mode-next: "Tab,Shift+Right,Control+Tab,Super+Tab";
+	kb-mode-next: "Tab,Shift+Right,Super+Tab";
 /*	kb-mode-previous: "Shift+Left,Control+ISO_Left_Tab";*/
 /*	kb-row-left: "Control+Page_Up";*/
 /*	kb-row-right: "Control+Page_Down";*/
 /*	kb-row-up: "Up,Control+p,ISO_Left_Tab";*/
 /*	kb-row-down: "Down,Control+n";*/
 /*	kb-row-tab: "Tab";*/
-	kb-row-tab: "";
+	kb-element-next: "";
 /*	kb-page-prev: "Page_Up";*/
 /*	kb-page-next: "Page_Down";*/
 /*	kb-row-first: "Home,KP_Home";*/
