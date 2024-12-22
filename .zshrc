@@ -152,8 +152,6 @@ alias svn-eliminate='test -d .svn && find ./ -type d -name .svn | xargs rm -rfv'
 alias qwerty='xmodmap ~/.Xmodmap.qwerty ~/.Xmodmap'
 alias dvorak='xmodmap ~/.Xmodmap.dvorak ~/.Xmodmap'
 alias aoeui=qwerty
-alias warchive="wget -r -k -p -n -np"
-
 alias elc='emacs --batch -Q -f batch-byte-compile'
 alias xrdb-reload='xrdb ~/.Xresources'
 
