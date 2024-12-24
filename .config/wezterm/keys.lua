@@ -3,8 +3,10 @@ local act = wezterm.action
 
 return {
   keys = {
+    { key = 'DownArrow', mods = 'SHIFT', action = act.SpawnTab 'CurrentPaneDomain' },
+    { key = 'RightArrow', mods = 'SHIFT', action = act.ActivateTabRelative(1) },
+    { key = 'LeftArrow', mods = 'SHIFT', action = act.ActivateTabRelative(-1) },
     { key = 'Enter', mods = 'ALT', action = act.SpawnTab 'CurrentPaneDomain' },
-
     { key = 'Tab', mods = 'CTRL', action = act.ActivateTabRelative(1) },
     { key = 'Tab', mods = 'SHIFT|CTRL', action = act.ActivateTabRelative(-1) },
     { key = '!', mods = 'CTRL', action = act.ActivateTab(0) },
