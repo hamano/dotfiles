@@ -30,7 +30,7 @@ font pango:EAW CONSOLE 12
 floating_modifier $mod
 
 # start terminal
-bindsym $mod+Return exec wezterm || urxvt || xterm
+bindsym $mod+Return exec urxvt || xterm
 
 # start fm
 bindsym $mod+slash exec nemo
@@ -152,7 +152,7 @@ mode "resize" {
         # Pressing down will grow the window’s height.
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
-        bindsym j resize shrink height 10 px or 10 ppt
+#        bindsym j resize shrink height 10 px or 10 ppt
         bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
