@@ -1,0 +1,99 @@
+* {
+  padding: 0;
+  margin: 0;
+  min-height: 0;
+  border-radius: 0;
+  border: none;
+  text-shadow: none;
+  transition: none;
+  box-shadow: none;
+  font-family: "EAW CONSOLE";
+  font-size: 14px;
+}
+
+window {
+  color: #ebdbb2;
+  background: #282828;
+}
+
+#mpris,
+#window,
+#cpu,
+#backlight,
+#memory,
+#wireplumber,
+#wireplumber.muted,
+#battery,
+#battery.critical,
+#battery.warning,
+#network,
+#clock {
+  margin-right: 3px;
+  margin-left: 3px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-right: 4px;
+  padding-left: 4px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+#workspaces {
+  margin: 0;
+}
+
+#workspaces button {
+  color: rgba(222, 222, 222, 0.8);
+  padding: 0px;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+  color: rgba(53, 132, 228, 0.8);
+}
+
+#tray {
+  padding: 5px;
+}
+
+#cpu {
+}
+
+#backlight {
+}
+
+#memory {
+}
+
+#wireplumber {
+}
+
+#wireplumber.muted {
+}
+
+#mpris,
+#battery {
+}
+
+#battery.critical {
+  color: rgba(224, 27, 36, 0.8);
+}
+
+#battery.warning {
+  color: rgba(255, 120, 0, 0.8);
+}
+
+#clock {
+}
+
+#network {
+}
+
+tooltip {
+  background: rgba(36, 36, 36, 0.8);
+  border: 1px solid rgba(53, 53, 53, 0.8);
+}
+
+tooltip label {
+  color: rgba(255, 255, 255, 0.8);
+}
