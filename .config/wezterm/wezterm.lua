@@ -11,18 +11,18 @@ end
 
 config.use_ime = true
 config.font = wezterm.font_with_fallback {
-  'UDEV Gothic NF',
-  'Noto Emoji',
-  'Symbola',
+  { family = 'EAW CONSOLE' },
+  { family = 'EAW CONSOLE', assume_emoji_presentation = true },
 }
+
 config.font_size = 16.0
 config.keys = require 'keys'.keys
 config.enable_scroll_bar = true
 config.check_for_updates = false
 config.selection_word_boundary = '{}[]()"\'`,;: 　'
 config.window_padding = {
-  left = 16,
-  right = 16,
+  left = 4,
+  right = 4,
   top = 0,
   bottom = 0,
 }
@@ -32,7 +32,19 @@ local scheme = wezterm.get_builtin_color_schemes()[config.color_scheme]
 config.colors = {
     scrollbar_thumb = scheme["foreground"]
 }
-config.treat_east_asian_ambiguous_width_as_wide = true
+
+-- config.treat_east_asian_ambiguous_width_as_wide = true
+config.cell_widths = require 'eaw-console'
+
+-- config.cell_widths = {
+--   {first = 0x1F604, last = 0x1F604, width = 2}, -- smile
+--   {first = 0x2460, last = 0x2473, width = 2}, -- ①..⑳
+--   {first = 0x24EA, last = 0x24EA, width = 2}, -- ⓪
+--   {first = 0x2668, last = 0x2668, width = 2}, -- ♨
+--   {first = 0xE000, last = 0xF8FF, width = 2}, -- Private Use Area
+--   {first = 0xF0000, last = 0xF2000, width = 2}, -- Last of Nerdfont
+-- }
+
 -- config.pane_focus_follows_mouse = true
 -- config.debug_key_events = true
 
