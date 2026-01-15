@@ -30,7 +30,7 @@ font pango:EAW CONSOLE 12
 floating_modifier $mod
 
 # start terminal
-bindsym $mod+Return exec wezterm || urxvt || xterm
+bindsym $mod+Return exec urxvt || xterm
 
 # start fm
 bindsym $mod+slash exec nemo
@@ -209,3 +209,8 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym $mod+F3              exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym $mod+F11 exec ~/etc/bin/xkb-switch.sh
+
+for_window [class="Google-chrome" window_role="pop-up"] floating enable
+for_window [class="Google-chrome" window_role="bubble"] floating enable
+for_window [class="Google-chrome" window_role="dialog"] floating enable
+
