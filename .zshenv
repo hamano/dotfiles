@@ -42,11 +42,6 @@ if [ -d "${GOPATH}" ]; then
     PATH=${GOPATH}/bin:"${PATH}"
 fi
 
-export NODE_PATH=~/lib/node
-if [ -d "${NODE_PATH}" ]; then
-	PATH=${NODE_PATH}/bin:"${PATH}"
-fi
-
 PYENV_ROOT="$HOME/lib/pyenv"
 if [ -d "${PYENV_ROOT}" ]; then
     export PYENV_ROOT
