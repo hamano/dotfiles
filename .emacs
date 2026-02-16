@@ -407,31 +407,6 @@
     )
   )
 
-;; flymake
-(when (>= emacs-major-version 22)
-  (require 'flymake)
-  (setenv "INCLUDE" "/mnt/usb/git/linux-2.6/include/")
-  (push '("\\.java$" nil) flymake-allowed-file-name-masks)
-  (defun flymake-c-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "gcc" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
-  (push '("\\.c$" flymake-c-init) flymake-allowed-file-name-masks)
-  (defun flymake-cc-init ()
-    (let* ((temp-file (flymake-init-create-temp-buffer-copy
-                       'flymake-create-temp-inplace))
-           (local-file (file-relative-name
-                        temp-file
-                        (file-name-directory buffer-file-name))))
-      (list "g++" (list "-Wall" "-Wextra" "-fsyntax-only" local-file))))
-  (push '("\\.cc$" flymake-cc-init) flymake-allowed-file-name-masks)
-  (push '("\\.cpp$" flymake-cc-init) flymake-allowed-file-name-masks)
-  (defun flymake-php-init () nil) ; disable flymake-php
-  )
-
 ;; auto-insert
 (add-hook 'find-file-hooks 'auto-insert)
 (setq auto-insert-query t)
