@@ -176,14 +176,17 @@ bindsym $mod+r mode "resize"
 #    status_command i3status -c ~/.config/i3/i3status.conf
 #    position top
 #}
-exec xrdb -merge ~/.Xresources
 
-exec_always --no-startup-id waybar
-exec_always --no-startup-id dropbox start
-#exec_always --no-startup-id light-locker
-exec_always --no-startup-id connman-gtk
+exec_always xrdb -display :0 -merge ~/.Xresources
+exec fcitx5 -d --replace
+
+exec --no-startup-id waybar
+exec --no-startup-id dropbox start
+#exec --no-startup-id light-locker
+exec --no-startup-id connman-gtk
 
 focus_follows_mouse no
+exec_always "xrdb -merge ~/.Xresources"
 
 set $fg      #ebdbb2
 set $fg2     #d5c4a1
