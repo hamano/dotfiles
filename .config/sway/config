@@ -26,6 +26,12 @@ font pango:EAW CONSOLE 12
 # X core fonts rendering does not support right-to-left and this being a bitmap
 # font, it doesn’t scale on retina/hidpi displays.
 
+# Keyboard layout
+input type:keyboard {
+    xkb_layout jp
+    xkb_model jp106
+}
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
