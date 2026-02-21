@@ -95,5 +95,12 @@ tooltip {
 }
 
 tooltip label {
-  color: rgba(255, 255, 255, 0.8);
+}
+
+menu {
+    color: #ebdbb2;
+    background: #282828;
+    border: 1px solid #ebdbb2;
+    border-radius: 8px;   /* 角丸 */
+    padding: 8px;         /* 内側の余白 */
 }
