@@ -30,7 +30,6 @@
         "sway/language",
         "battery",
         "battery#bat2",
-        "clock",
         "tray",
         "clock"
     ],
