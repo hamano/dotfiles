@@ -1,10 +1,10 @@
 configuration {
 /*	modi: "drun,window,script:~/.config/rofi/script.py,calc:qalc"; */
-	modi: "drun,ssh,window,script:~/.config/rofi/script.py";
+	modi: "drun,window,system:~/.config/rofi/script.py";
 /*	width: 50;*/
 /*	lines: 15;*/
 /*	columns: 1;*/
-	font: "UDEV Gothic NF 24";
+	font: "EAW CONSOLE 24";
 	bw: 2;
 /*	location: 0;*/
 	padding: 10;
@@ -15,7 +15,7 @@ configuration {
 /*	terminal: "rofi-sensible-terminal";*/
 /*	ssh-client: "ssh";*/
 /*	ssh-command: "{terminal} -e {ssh-client} {host}";*/
-ssh-command: "wezterm ssh {host}";
+//ssh-command: "wezterm ssh {host}";
 /*	run-command: "{cmd}";*/
 /*	run-list-command: "";*/
 /*	run-shell-command: "{terminal} -e {cmd}";*/
