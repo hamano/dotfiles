@@ -101,7 +101,7 @@ XTerm*cursorColor:				G_green
 XTerm*pointerColorBackground:	G_white
 XTerm*pointerColor:	G_hlwhite
 XTerm*saveLines: 10000
-XTerm*faceName: xft:EAW CONSOLE:size=16
+XTerm*faceName: xft:EAW CONSOLE:size=14
 !XTerm*faceSize: 16
 XTerm*forceXftHeight: true
 XTerm*vt100.lineSpace: 10
@@ -123,7 +123,8 @@ URxvt.fadeColor:               G_black
 URxvt.cursorColor:             G_green
 URxvt.pointerColorBackground:  S_base01
 URxvt.pointerColorForeground:  S_base1
-
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
 URxvt.saveLines: 10000
 URxvt.imLocale: ja_JP.UTF-8
 URxvt.termName: rxvt
@@ -156,17 +157,17 @@ URxvt.iso14755: false
 
 ! see /usr/share/fonts/X11/misc/fonts.alias
 URxvt.font: \
- xft:EAW CONSOLE:style=Regular:size=16, \
- r16, kanji16
+ xft:EAW CONSOLE:style=Regular:size=14, \
+ r14, kanji14
 URxvt.boldFont:	\
- xft:EAW CONSOLE:style=Bold:size=16, \
- r16, kanji16
+ xft:EAW CONSOLE:style=Bold:size=14, \
+ r14, kanji14
 URxvt.italicFont: \
- xft:EAW CONSOLE:style=Italic:size=16, \
- r16, kanji16
+ xft:EAW CONSOLE:style=Italic:size=14, \
+ r14, kanji14
 URxvt.boldItalicFont: \
- xft:EAW CONSOLE:style=BoldItalic:size=16, \
- r16, kanji16
+ xft:EAW CONSOLE:style=BoldItalic:size=14, \
+ r14, kanji14
 
 !!emacs
 !!emacs.borderWidth: 20
