@@ -27,10 +27,10 @@ font pango:EAW CONSOLE 14
 # font, it doesn’t scale on retina/hidpi displays.
 
 # Keyboard layout
-input type:keyboard {
-    xkb_layout jp
-    xkb_model jp106
-}
+#input type:keyboard {
+#    xkb_layout jp
+#    xkb_model jp106
+#}
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -114,8 +114,10 @@ set $ws5 "5"
 set $ws6 "6"
 set $ws7 "7"
 
-workspace 8 output eDP1
-workspace 9 output HDMI1
+output "Eizo Nanao Corporation EV3895 21917034" {
+    pos 0 0
+    scale 1.5
+}
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
