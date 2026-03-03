@@ -16,24 +16,6 @@ Xcursor.size: 40
 #define C_cyan          #5e8f87
 #define C_brightcyan    #8abeb7
 
-!! tango color pallete
-#define T_black	        #2e3436
-#define T_red           #a40000
-#define T_green	        #4e9a06
-#define T_yellow        #c4a000
-#define T_blue          #204a87
-#define T_magenta       #85678f
-#define T_cyan          C_cyan
-#define T_white         #babdb9
-#define T_brightblack   #888a85
-#define T_brightred     #ef2929
-#define T_brightgreen   #8ae234
-#define T_brightyellow  #fce94f
-#define T_brightblue    #729fcf
-#define T_brightmagenta #b294bb
-#define T_brightcyan    C_brightcyan
-#define T_brightwhite   #eeeeec
-
 !! solarized color theme
 #define S_base03        #002b36
 #define S_base02        #073642
