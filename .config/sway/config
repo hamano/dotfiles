@@ -192,6 +192,7 @@ exec --no-startup-id waybar
 exec --no-startup-id dropbox start
 #exec --no-startup-id light-locker
 exec --no-startup-id connman-gtk
+exec swayidle -w timeout 300 'swaylock -f -c 282828' timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
 
 focus_follows_mouse no
 exec_always "xrdb -merge ~/.Xresources"
