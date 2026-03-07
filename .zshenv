@@ -78,6 +78,7 @@ if [ -d "${PICO_SDK_PATH}" ]; then
 fi
 
 export PATH
+export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/openssh_agent"
 export EDITOR=vi
 export CVSEDITOR=vi
 export MALLOC_CHECK_=0
