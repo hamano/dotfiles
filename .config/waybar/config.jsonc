@@ -111,7 +111,7 @@
         "spacing": 10
     },
     "clock": {
-        // "timezone": "America/New_York",
+        "timezone": "Asia/Tokyo",
         "format": "{:%Y-%m-%d(%a) %H:%M}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
     },
@@ -204,11 +204,12 @@
         // "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
     },
     "custom/power": {
-        "format" : "",
+        "format" : "<span color='#cc241d'>󰣚</span>",
 		"tooltip": false,
 		"menu": "on-click",
-		"menu-file": "~/.config/waybar/power_menu.xml", // Menu file in resources folder
+		"menu-file": "~/.config/waybar/power_menu.xml",
 		"menu-actions": {
+			"lock": "swaylock",
 			"logout": "loginctl terminate-session $XDG_SESSION_ID",
 			"shutdown": "systemctl poweroff",
 			"reboot": "systemctl reboot",
