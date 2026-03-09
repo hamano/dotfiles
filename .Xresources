@@ -116,11 +116,12 @@ URxvt.letterSpace: 0
 URxvt.lineSpace: 1
 URxvt.scrollBar_right: true
 URxvt.perl-lib: .config/urxvt/perl/
-URxvt.perl-ext: default,-confirm-paste,matcher,xim-onthespot,font-size,osc52
+URxvt.perl-ext: default,selection-to-clipboard,matcher,xim-onthespot,font-size,osc52
 URxvt.resize-font.step: 2
 URxvt.keysym.C-apostrophe: font-size:increase
 URxvt.keysym.C-underscore: font-size:decrease
 URxvt.keysym.C-backslash:  font-size:reset
+URxvt.keysym.C-v: eval:paste_clipboard
 
 !URxvt.keysym.M-u: perl:url-select:select_next
 !URxvt.url-select.underline: true
