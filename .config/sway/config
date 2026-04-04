@@ -36,7 +36,7 @@ font pango:EAW CONSOLE 14
 floating_modifier $mod
 
 # start terminal
-bindsym $mod+Return exec urxvt || xterm
+bindsym $mod+Return exec wezterm || urxvt || xterm
 
 # start fm
 bindsym $mod+slash exec nemo
@@ -74,6 +74,9 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+
+bindsym $mod+bracketleft focus left
+bindsym $mod+bracketright focus right
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -184,18 +187,19 @@ bindsym $mod+r mode "resize"
 #    status_command i3status -c ~/.config/i3/i3status.conf
 #    position top
 #}
-
-exec_always xrdb -display :0 -merge ~/.Xresources
+xwayland force
+exec_always "xrdb -merge ~/.Xresources"
 exec fcitx5 -d --replace
-
-exec --no-startup-id waybar
-exec --no-startup-id dropbox start
+exec dunst
+exec iwgtk -i
+exec waybar
+exec dropbox start
 #exec --no-startup-id light-locker
-exec --no-startup-id connman-gtk
-exec swayidle -w timeout 300 'swaylock -f -c 282828' timeout 300 'swaymsg "output * power off"' resume 'swaymsg "output * power on"'
+exec swayidle -w timeout 300 'swaylock -f -c 282828' \
+                 timeout 300 'swaymsg "output * power off"' \
+                 resume 'swaymsg "output * power on"'
 
 focus_follows_mouse no
-exec_always "xrdb -merge ~/.Xresources"
 
 set $fg      #ebdbb2
 set $fg2     #d5c4a1
@@ -222,5 +226,13 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -5%
 bindsym $mod+F3              exec pactl set-sink-volume 0 +5%
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
 bindsym $mod+F11 exec ~/etc/bin/xkb-switch.sh
+
+# X11
+for_window [class="Google-chrome" window_role="pop-up"] floating enable
+for_window [class="Google-chrome" window_role="bubble"] floating enable
+for_window [class="Google-chrome" window_role="dialog"] floating enable
+# wayland
+for_window [app_id="^chrome-.*"] floating enable
+
 
 include config.d/local.conf
