@@ -10,14 +10,14 @@
         "custom/power",
         "sway/workspaces",
         "sway/mode",
-        "sway/scratchpad",
-        "custom/media"
+        "sway/scratchpad"
+        //"custom/media"
     ],
     "modules-center": [
         "sway/window"
     ],
     "modules-right": [
-        "mpd",
+        //"mpd",
         "idle_inhibitor",
         "pulseaudio",
         "network",
@@ -26,7 +26,6 @@
         "memory",
         "temperature",
         "backlight",
-        "keyboard-state",
         "sway/language",
         "battery",
         "battery#bat2",
@@ -50,15 +49,6 @@
     //         "default": ""
     //     }
     // },
-    "keyboard-state": {
-        "numlock": true,
-        "capslock": true,
-        "format": "{name} {icon}",
-        "format-icons": {
-            "locked": "",
-            "unlocked": ""
-        }
-    },
     "sway/language": {
         "expand": false,
         "format": "lang {short}"
@@ -209,7 +199,7 @@
 		"menu": "on-click",
 		"menu-file": "~/.config/waybar/power_menu.xml",
 		"menu-actions": {
-			"lock": "swaylock",
+			"lock": "~/.config/sway/lock.sh",
 			"logout": "loginctl terminate-session $XDG_SESSION_ID",
 			"shutdown": "systemctl poweroff",
 			"reboot": "systemctl reboot",
