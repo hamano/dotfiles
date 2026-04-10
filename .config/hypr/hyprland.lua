@@ -128,8 +128,8 @@ hl.config({
         },
 
         groupbar = {
-            font_size           = 12,
-            height              = 18,
+            font_size           = 14,
+            height              = 20,
             text_color          = fg,
             text_color_inactive = fg,
             col = {
@@ -140,6 +140,8 @@ hl.config({
     },
 
     misc = {
+        -- like sway "font pango:EAW CONSOLE 14" (groupbar uses this too)
+        font_family             = "EAW CONSOLE",
         force_default_wallpaper = 0,
         disable_hyprland_logo   = true,
     },
