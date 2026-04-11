@@ -15,7 +15,7 @@ config.font = wezterm.font_with_fallback {
   { family = 'EAW CONSOLE', assume_emoji_presentation = true },
 }
 
-config.font_size = 16.0
+config.font_size = 18.0
 config.keys = require 'keys'.keys
 config.enable_scroll_bar = true
 config.check_for_updates = false
@@ -89,5 +89,19 @@ config.hyperlink_rules = {
     regex = '\\b\\w+@[\\w-]+(\\.[\\w-]+)+\\b',
     format = 'mailto:$0',
   },
+}
+--#config.debug_key_events = true
+
+config.mouse_bindings = {
+    {
+        event = { Down = { streak = 2, button = 'Middle' } },
+        mods = 'NONE',
+        action = wezterm.action.PasteFrom 'Clipboard',
+    },
+    {
+        event = { Down = { streak = 3, button = 'Middle' } },
+        mods = 'NONE',
+        action = wezterm.action.PasteFrom 'Clipboard',
+    },
 }
 return config
