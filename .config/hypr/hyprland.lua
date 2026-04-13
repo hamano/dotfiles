@@ -46,9 +46,9 @@ local runner      = "rofi -show run"
 
 hl.env("XCURSOR_SIZE", "24")
 hl.env("HYPRCURSOR_SIZE", "24")
-hl.env("GTK_IM_MODULE", "fcitx")
-hl.env("QT_IM_MODULE", "fcitx")
-hl.env("XMODIFIERS", "@im=fcitx")
+--hl.env("GTK_IM_MODULE", "fcitx")
+--hl.env("QT_IM_MODULE", "fcitx")
+--hl.env("XMODIFIERS", "@im=fcitx")
 
 
 -------------------
@@ -62,7 +62,7 @@ hl.on("hyprland.start", function ()
     hl.exec_cmd("iwgtk -i")
     hl.exec_cmd("waybar")
     hl.exec_cmd("dropbox start")
-    hl.exec_cmd("swayidle -w timeout 300 'swaylock -f -c 282828'")
+    hl.exec_cmd("hypridle")
 end)
 
 
@@ -147,8 +147,10 @@ hl.config({
     },
 
     input = {
-        kb_layout = "jp",
-        kb_model  = "jp106",
+        -- JIS 配列のマシンは下の KEYBOARD (per-device) で内蔵キーボードだけ jp にする
+        kb_layout = "us",
+        -- kb_layout = "jp",
+        -- kb_model  = "jp106",
 
         -- like sway "focus_follows_mouse no"
         follow_mouse = 0,
@@ -160,6 +162,32 @@ hl.config({
         },
     },
 })
+
+------------------
+---- KEYBOARD ----
+------------------
+
+-- 内蔵キーボードが JIS 配列のマシン (hostname)。外付けキーボードは us のまま
+local jis_hosts = {
+    -- ["hostname"] = true,
+}
+
+local function hostname()
+    local f = io.open("/etc/hostname")
+    if not f then return "" end
+    local h = f:read("l") or ""
+    f:close()
+    return h
+end
+
+if jis_hosts[hostname()] then
+    -- 名前は hyprctl devices で確認する
+    hl.device({
+        name      = "at-translated-set-2-keyboard",
+        kb_layout = "jp",
+        kb_model  = "jp106",
+    })
+end
 
 hl.gesture({
     fingers   = 3,
