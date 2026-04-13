@@ -8,8 +8,8 @@ import subprocess
 
 def main():
     menu = OrderedDict([
-        ('System Lock', 'dm-tool lock'),
-        ('System Logout', 'dm-tool switch-to-greeter'),
+        ('System Lock', 'loginctl lock-session'),
+        ('System Logout', 'loginctl terminate-session self'),
         ('System Reboot', 'systemctl reboot'),
         ('System Poweroff', 'systemctl poweroff'),
         ('Scrot focused', "scrot -u -d 1 -e 'mv $f ~/Pictures/'"),
