@@ -48,6 +48,9 @@ xdg-mime default audacious.desktop audio/ogg
 xdg-mime default audacious.desktop audio/aac
 xdg-mime default audacious.desktop audio/x-opus+ogg
 
+# stl
+xdg-mime default fstl.desktop model/stl
+
 # video
 xdg-mime default vlc.desktop video/mp4
 
