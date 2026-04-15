@@ -199,8 +199,8 @@
 		"menu": "on-click",
 		"menu-file": "~/.config/waybar/power_menu.xml",
 		"menu-actions": {
-			"lock": "~/.config/sway/lock.sh",
-			"logout": "loginctl terminate-session $XDG_SESSION_ID",
+			"lock": "loginctl lock-session",
+			"logout": "loginctl terminate-session self",
 			"shutdown": "systemctl poweroff",
 			"reboot": "systemctl reboot",
 			"suspend": "systemctl suspend",
