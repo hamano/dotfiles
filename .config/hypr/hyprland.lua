@@ -11,14 +11,14 @@ hl.monitor({
     output   = "eDP-1",
     mode     = "preferred",
     position = "auto",
-    scale    = 1.75,
+    scale    = 1.6,       -- 3840x2160 → 2400x1350
 })
 
 hl.monitor({
     output   = "desc:Eizo Nanao Corporation EV3895 21917034",
     mode     = "preferred",
     position = "0x0",
-    scale    = 1.5,
+    scale    = 1.6,       -- 3840x1600 → 2400x1000
 })
 
 -- fallback for any other output
@@ -160,6 +160,12 @@ hl.config({
         touchpad = {
             natural_scroll = false,
         },
+    },
+
+    -- write Hyprland's own logs (notifications, config errors) to
+    -- $XDG_RUNTIME_DIR/hypr/<instance>/hyprland.log
+    debug = {
+        disable_logs = true,
     },
 })
 
