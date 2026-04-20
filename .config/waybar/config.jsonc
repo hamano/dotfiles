@@ -18,7 +18,7 @@
     ],
     "modules-right": [
         //"mpd",
-        "idle_inhibitor",
+        //"idle_inhibitor",
         "pulseaudio",
         "network",
         "power-profiles-daemon",
@@ -92,8 +92,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "",
-            "deactivated": ""
+            "activated": "",
+            "deactivated": ""
         }
     },
     "tray": {
