@@ -78,7 +78,10 @@ if [ -d "${PICO_SDK_PATH}" ]; then
 fi
 
 export PATH
-export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/openssh_agent"
+# keep forwarded agent (ssh -A) in ssh sessions
+if [ -z "$SSH_CONNECTION" ] || [ -z "$SSH_AUTH_SOCK" ]; then
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/openssh_agent"
+fi
 export EDITOR=vi
 export CVSEDITOR=vi
 export MALLOC_CHECK_=0
