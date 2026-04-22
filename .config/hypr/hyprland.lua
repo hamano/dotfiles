@@ -176,6 +176,7 @@ hl.config({
 -- 内蔵キーボードが JIS 配列のマシン (hostname)。外付けキーボードは us のまま
 local jis_hosts = {
     -- ["hostname"] = true,
+    ["x1c"] = true,
 }
 
 local function hostname()
