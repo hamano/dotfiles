@@ -12,9 +12,9 @@ def main():
         ('System Logout', 'loginctl terminate-session self'),
         ('System Reboot', 'systemctl reboot'),
         ('System Poweroff', 'systemctl poweroff'),
-        ('Scrot focused', "scrot -u -d 1 -e 'mv $f ~/Pictures/'"),
-        ('Scrot select', "scrot -s -e 'mv $f ~/Pictures/'"),
-        ('Scrot full', "scrot -d 1 -e 'mv $f ~/Pictures/'"),
+        ('Screenshot focused', "sleep 1; grim -g \"$(hyprctl activewindow -j | jq -r '\"\\(.at[0]),\\(.at[1]) \\(.size[0])x\\(.size[1])\"')\" ~/Pictures/$(date +%Y-%m-%d-%H%M%S).png"),
+        ('Screenshot select', "sleep 0.2; grim -g \"$(slurp)\" ~/Pictures/$(date +%Y-%m-%d-%H%M%S).png"),
+        ('Screenshot full', "sleep 1; grim ~/Pictures/$(date +%Y-%m-%d-%H%M%S).png"),
     ])
     if len(sys.argv) > 1:
         subprocess.Popen(menu[sys.argv[1]], shell=True, stdout=subprocess.PIPE)
