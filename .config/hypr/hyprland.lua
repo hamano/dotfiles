@@ -226,6 +226,8 @@ hl.bind(mod .. " + SHIFT + E",   hl.dsp.exit())
 hl.bind(mod .. " + W",            hl.dsp.group.toggle())
 hl.bind(mod .. " + Prior",        hl.dsp.group.prev())
 hl.bind(mod .. " + Next",         hl.dsp.group.next())
+hl.bind(mod .. " + SHIFT + Prior", hl.dsp.group.move_window({ forward = false }))
+hl.bind(mod .. " + SHIFT + Next",  hl.dsp.group.move_window({ forward = true }))
 hl.bind(mod .. " + SHIFT + W",    hl.dsp.window.move({ out_of_group = true }))
 
 -- focus / move (vi keys and arrows)
@@ -235,8 +237,8 @@ local dirs = {
 }
 for _, d in ipairs(dirs) do
     hl.bind(mod .. " + " .. d[1],             hl.dsp.focus({ direction = d[2] }))
-    hl.bind(mod .. " + SHIFT + " .. d[1],     hl.dsp.window.move({ direction = d[2] }))
-    hl.bind(mod .. " + CTRL + " .. d[1],      hl.dsp.window.move({ into_group = d[2] }))
+    hl.bind(mod .. " + SHIFT + " .. d[1],     hl.dsp.window.move({ into_group = d[2] }))
+    hl.bind(mod .. " + CTRL + " .. d[1],      hl.dsp.window.move({ direction = d[2] }))
 end
 
 -- workspaces
@@ -294,5 +296,11 @@ hl.window_rule({
 hl.window_rule({
     name  = "float-chrome-apps",
     match = { class = "^chrome-.*" },
+    float = true,
+})
+
+hl.window_rule({
+    name  = "float-jeidreader",
+    match = { class = "^jeidreader$" },
     float = true,
 })
