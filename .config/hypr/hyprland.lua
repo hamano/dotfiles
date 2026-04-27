@@ -21,6 +21,15 @@ hl.monitor({
     scale    = 1.6,       -- 3840x1600 → 2400x1000
 })
 
+-- 4K HDMI monitor (PDX VM280UHD)
+-- preferred の 4096x2160@30 だと i915 の atomic commit が失敗し続けて入力ごと固まるので明示する
+hl.monitor({
+    output   = "desc:PDX VM280UHD 0x00006410",
+    mode     = "3840x2160@30",
+    position = "1600x0",  -- eDP-1 (論理 1600x900) の右
+    scale    = 2,         -- 3840x2160 → 1920x1080
+})
+
 -- fallback for any other output
 hl.monitor({
     output   = "",
@@ -146,6 +155,12 @@ hl.config({
         disable_hyprland_logo   = true,
     },
 
+    cursor = {
+        -- i915 (UHD 620) だと PDX VM280UHD (HDMI) でハードウェアカーソルが表示されない
+        -- 使うときだけコメントを外して hyprctl reload
+        -- no_hardware_cursors = true,
+    },
+
     input = {
         -- JIS 配列のマシンは下の KEYBOARD (per-device) で内蔵キーボードだけ jp にする
         kb_layout = "us",
@@ -248,6 +263,12 @@ for i = 1, 10 do
     hl.bind(mod .. " + SHIFT + " .. key, hl.dsp.window.move({ workspace = i }))
 end
 
+-- multi monitor
+hl.bind(mod .. " + comma",          hl.dsp.focus({ monitor = "-1" }))
+hl.bind(mod .. " + period",         hl.dsp.focus({ monitor = "+1" }))
+hl.bind(mod .. " + SHIFT + comma",  hl.dsp.workspace.move({ monitor = "-1" }))
+hl.bind(mod .. " + SHIFT + period", hl.dsp.workspace.move({ monitor = "+1" }))
+
 -- scratchpad
 hl.bind(mod .. " + S",         hl.dsp.workspace.toggle_special("magic"))
 hl.bind(mod .. " + SHIFT + S", hl.dsp.window.move({ workspace = "special:magic" }))
@@ -303,4 +324,12 @@ hl.window_rule({
     name  = "float-jeidreader",
     match = { class = "^jeidreader$" },
     float = true,
+})
+
+hl.window_rule({
+    name   = "float-bluetui",
+    match  = { class = "^bluetui$" },
+    float  = true,
+    size   = "1000 600",
+    center = true,
 })
